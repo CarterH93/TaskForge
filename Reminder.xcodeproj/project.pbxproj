@@ -8,18 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */; };
-		BC7FBE7E2BDEFE300027A00C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE7D2BDEFE300027A00C /* ContentView.swift */; };
 		BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */; };
 		BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */; };
+		BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8C2BDEFE710027A00C /* Alarm.swift */; };
+		BC7FBEA02BDEFE710027A00C /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8E2BDEFE710027A00C /* Calendar.swift */; };
+		BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */; };
+		BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE902BDEFE710027A00C /* ContentView.swift */; };
+		BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE912BDEFE710027A00C /* Date.swift */; };
+		BC7FBEA42BDEFE710027A00C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE922BDEFE710027A00C /* DetailView.swift */; };
+		BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE932BDEFE710027A00C /* Event.swift */; };
+		BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE942BDEFE710027A00C /* iCal.swift */; };
+		BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE952BDEFE710027A00C /* iCalError.swift */; };
+		BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE982BDEFE710027A00C /* IcsElement.swift */; };
+		BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE992BDEFE710027A00C /* Parser.swift */; };
+		BC7FBEAB2BDEFE710027A00C /* SchoolAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */; };
+		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC7FBE782BDEFE300027A00C /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderApp.swift; sourceTree = "<group>"; };
-		BC7FBE7D2BDEFE300027A00C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC7FBE812BDEFE320027A00C /* Reminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reminder.entitlements; sourceTree = "<group>"; };
 		BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BC7FBE8C2BDEFE710027A00C /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		BC7FBE8E2BDEFE710027A00C /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarComponent.swift; sourceTree = "<group>"; };
+		BC7FBE902BDEFE710027A00C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BC7FBE912BDEFE710027A00C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		BC7FBE922BDEFE710027A00C /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		BC7FBE932BDEFE710027A00C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		BC7FBE942BDEFE710027A00C /* iCal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCal.swift; sourceTree = "<group>"; };
+		BC7FBE952BDEFE710027A00C /* iCalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCalError.swift; sourceTree = "<group>"; };
+		BC7FBE982BDEFE710027A00C /* IcsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IcsElement.swift; sourceTree = "<group>"; };
+		BC7FBE992BDEFE710027A00C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolAssignment.swift; sourceTree = "<group>"; };
+		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +76,10 @@
 		BC7FBE7A2BDEFE300027A00C /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
-				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
-				BC7FBE7D2BDEFE300027A00C /* ContentView.swift */,
+				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
+				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
+				BC7FBE922BDEFE710027A00C /* DetailView.swift */,
+				BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
@@ -67,6 +93,24 @@
 				BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */ = {
+			isa = PBXGroup;
+			children = (
+				BC7FBE8C2BDEFE710027A00C /* Alarm.swift */,
+				BC7FBE8E2BDEFE710027A00C /* Calendar.swift */,
+				BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */,
+				BC7FBE912BDEFE710027A00C /* Date.swift */,
+				BC7FBE932BDEFE710027A00C /* Event.swift */,
+				BC7FBE942BDEFE710027A00C /* iCal.swift */,
+				BC7FBE952BDEFE710027A00C /* iCalError.swift */,
+				BC7FBE982BDEFE710027A00C /* IcsElement.swift */,
+				BC7FBE992BDEFE710027A00C /* Parser.swift */,
+				BC7FBE9B2BDEFE710027A00C /* String.swift */,
+				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
+			);
+			path = "ICS Parser";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +183,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC7FBE7E2BDEFE300027A00C /* ContentView.swift in Sources */,
+				BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */,
+				BC7FBEAB2BDEFE710027A00C /* SchoolAssignment.swift in Sources */,
+				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
+				BC7FBEA42BDEFE710027A00C /* DetailView.swift in Sources */,
+				BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */,
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,
+				BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */,
+				BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */,
+				BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */,
+				BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */,
+				BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */,
+				BC7FBEA02BDEFE710027A00C /* Calendar.swift in Sources */,
+				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
+				BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
