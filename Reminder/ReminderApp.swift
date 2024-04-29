@@ -16,10 +16,18 @@ struct ReminderApp: App {
         }
         .modelContainer(for: Assignment.self) { result in
             do {
+                //Accessing saved data
                 let container = try result.get()
+                let descriptor = FetchDescriptor<Assignment>()
+                let existingAssignments = try container.mainContext.fetch(descriptor)
+                //Now able to access all existing assignments
+                print(existingAssignments.count)
+                print(existingAssignments.first?.name ?? "nothing")
                 
                 
-                // Load data
+                
+                //Accessing remote data
+                
                 
                 
             } catch {
