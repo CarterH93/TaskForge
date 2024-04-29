@@ -28,7 +28,7 @@ struct ContentView: View {
 
     
     func addSamples() {
-        let sampleAssignment = Assignment(id: "1", name: "carterIsCool", info: "Nothing", notes: "Nothing")
+        let sampleAssignment = Assignment(id: "1", name: "Test", info: "hi", due: Date.now)
         modelContext.insert(sampleAssignment)
     }
     

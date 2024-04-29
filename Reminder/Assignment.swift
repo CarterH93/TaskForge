@@ -14,17 +14,20 @@ class Assignment {
     var id: String
     var name: String
     var info: String
+    var due: Date
     //Provided by user
-    var notes: String
+    var notes: String?
     
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
     @Attribute(.externalStorage)
     var image: Data?
     
-    init(id: String, name: String, info: String, notes: String) {
+    init(id: String, name: String, info: String, due: Date, notes: String? = nil, image: Data? = nil) {
         self.id = id
         self.name = name
         self.info = info
+        self.due = due
         self.notes = notes
+        self.image = image
     }
 }
