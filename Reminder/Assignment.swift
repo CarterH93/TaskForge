@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import SwiftUI
 import SwiftData
 
 @Model
-class Assignment: Identifiable {
+class Assignment {
     //Provided by calendar
     var id: String
     var name: String
@@ -22,11 +21,10 @@ class Assignment: Identifiable {
     @Attribute(.externalStorage)
     var image: Data?
     
-    init(id: String, name: String, info: String, notes: String, image: Data? = nil) {
+    init(id: String, name: String, info: String, notes: String) {
         self.id = id
         self.name = name
         self.info = info
         self.notes = notes
-        self.image = image
     }
 }

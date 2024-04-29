@@ -14,6 +14,17 @@ struct ReminderApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Assignment.self)
+        .modelContainer(for: Assignment.self) { result in
+            do {
+                let container = try result.get()
+                
+                
+                // Load data
+                
+                
+            } catch {
+                
+            }
+        }
     }
 }
