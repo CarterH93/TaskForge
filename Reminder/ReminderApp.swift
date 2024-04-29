@@ -34,7 +34,7 @@ struct ReminderApp: App {
                    
                     
                 
-                let cals = try await iCal.load(url: url)
+                let cals = try! iCal.load(url: url)
                     
 
                     for cal in cals {
