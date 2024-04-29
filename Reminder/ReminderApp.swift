@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct ReminderApp: App {
@@ -13,5 +14,6 @@ struct ReminderApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Assignment.self)
     }
 }

@@ -15,7 +15,6 @@
 		BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */; };
 		BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE902BDEFE710027A00C /* ContentView.swift */; };
 		BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE912BDEFE710027A00C /* Date.swift */; };
-		BC7FBEA42BDEFE710027A00C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE922BDEFE710027A00C /* DetailView.swift */; };
 		BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE932BDEFE710027A00C /* Event.swift */; };
 		BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE942BDEFE710027A00C /* iCal.swift */; };
 		BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE952BDEFE710027A00C /* iCalError.swift */; };
@@ -23,6 +22,7 @@
 		BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE992BDEFE710027A00C /* Parser.swift */; };
 		BC7FBEAB2BDEFE710027A00C /* SchoolAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */; };
 		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
+		BC7FBEAF2BDF00EF0027A00C /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* Assignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,6 @@
 		BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarComponent.swift; sourceTree = "<group>"; };
 		BC7FBE902BDEFE710027A00C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC7FBE912BDEFE710027A00C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		BC7FBE922BDEFE710027A00C /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BC7FBE932BDEFE710027A00C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BC7FBE942BDEFE710027A00C /* iCal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCal.swift; sourceTree = "<group>"; };
 		BC7FBE952BDEFE710027A00C /* iCalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCalError.swift; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		BC7FBE992BDEFE710027A00C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolAssignment.swift; sourceTree = "<group>"; };
 		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		BC7FBEAE2BDF00EF0027A00C /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +76,11 @@
 		BC7FBE7A2BDEFE300027A00C /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
-				BC7FBE922BDEFE710027A00C /* DetailView.swift */,
 				BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */,
+				BC7FBEAE2BDF00EF0027A00C /* Assignment.swift */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
@@ -108,7 +109,6 @@
 				BC7FBE982BDEFE710027A00C /* IcsElement.swift */,
 				BC7FBE992BDEFE710027A00C /* Parser.swift */,
 				BC7FBE9B2BDEFE710027A00C /* String.swift */,
-				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
 			);
 			path = "ICS Parser";
 			sourceTree = "<group>";
@@ -186,7 +186,7 @@
 				BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */,
 				BC7FBEAB2BDEFE710027A00C /* SchoolAssignment.swift in Sources */,
 				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
-				BC7FBEA42BDEFE710027A00C /* DetailView.swift in Sources */,
+				BC7FBEAF2BDF00EF0027A00C /* Assignment.swift in Sources */,
 				BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */,
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,
 				BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */,

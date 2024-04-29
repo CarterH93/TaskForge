@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/*
 struct Assignment: Identifiable, Equatable {
     var id: String
     var startDate: Date
@@ -16,3 +16,4 @@ struct Assignment: Identifiable, Equatable {
     var description: String
     var summary: String
 }
+*/
