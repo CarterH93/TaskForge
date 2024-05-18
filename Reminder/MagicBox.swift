@@ -13,20 +13,6 @@ class MagicBox {
     
     func work(_ modelContext: ModelContext) async {
         do {
-            //Accessing saved data
-            let descriptor = FetchDescriptor<Assignment>()
-            var existingAssignments: [Assignment] = []
-            // existingAssignments = try container.mainContext.fetch(descriptor)
-            
-            try modelContext.enumerate(descriptor) { assignment in
-                existingAssignments.append(assignment)
-            }
-            //Now able to access all existing assignments
-            print(existingAssignments.count)
-            print(existingAssignments.first?.name ?? "nothing")
-            
-            
-            
             //Accessing remote data
             
             var listOfAssignments = [Assignment]()
@@ -73,13 +59,29 @@ class MagicBox {
                         }
                     }
                 }
+            
+            //Program waits to receive remote data below continuing into any code below!!!
                 
             //Now able to access all remote data
             print(listOfAssignments.count)
             print(listOfAssignments.first?.name ?? "nothing")
             
             
-           
+            //Accessing saved data
+            let descriptor = FetchDescriptor<Assignment>()
+            var existingAssignments: [Assignment] = []
+            // existingAssignments = try container.mainContext.fetch(descriptor)
+            
+            try modelContext.enumerate(descriptor) { assignment in
+                existingAssignments.append(assignment)
+            }
+            //Now able to access all existing assignments
+            print(existingAssignments.count)
+            print(existingAssignments.first?.name ?? "nothing")
+            
+            
+            //Compare data here
+            
             
             
             
