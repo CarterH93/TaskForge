@@ -23,6 +23,12 @@ struct ContentView: View {
                     .toolbar {
                         Button("Add Samples", action: addSamples)
                     }
+                    .task {
+                        await MagicBox().work(modelContext)
+                    }
+                    .refreshable {
+                        await MagicBox().work(modelContext)
+                    }
                 }
         }
 
