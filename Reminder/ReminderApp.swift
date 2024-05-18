@@ -33,7 +33,7 @@ struct ReminderApp: App {
                     let url = URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!
                    
                     
-                
+                //IMPORTANT NOTE https://www.notion.so/carterhawkins/Retrieving-ics-information-in-on-a-background-task-eda6730290e04a0999a4c76286570c79?pvs=4
                 let cals = try! iCal.load(url: url)
                     
 
@@ -78,7 +78,7 @@ struct ReminderApp: App {
                 print(listOfAssignments.first?.name ?? "nothing")
                 
                 
-                
+               
                 
             } catch {
                 
