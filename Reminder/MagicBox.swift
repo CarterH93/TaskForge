@@ -11,19 +11,15 @@ import SwiftData
 class MagicBox {
     @MainActor
     
-    func work(_ modelContext: ModelContext) async {
+    
+    private func parseRemoteData(_ url: URL) async -> [Assignment] {
+        
+        var listOfAssignments = [Assignment]()
+        
         do {
-            //Accessing remote data
             
-            var listOfAssignments = [Assignment]()
-                
-                let url = URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!
-               
-                
-            //IMPORTANT NOTE https://www.notion.so/carterhawkins/Retrieving-ics-information-in-on-a-background-task-eda6730290e04a0999a4c76286570c79?pvs=4
             let cals = try await iCal.load(url: url)
-                
-
+            
                 for cal in cals {
                     for event in cal.subComponents{
                        
@@ -59,6 +55,29 @@ class MagicBox {
                         }
                     }
                 }
+            
+        } catch {
+            print("error parsing remote data")
+        }
+        
+       return listOfAssignments
+        
+    }
+    
+    func work(_ modelContext: ModelContext) async {
+        do {
+            //Accessing remote data
+            
+            var listOfAssignments = [Assignment]()
+                
+                let url = [URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!, URL(string: "https://learn.lcps.org/calendar/feed/ical/1599581327/9336f6d23a186ce170b60460ec33395d/ical.ics")!]
+            
+            for item in url {
+                await listOfAssignments.append(contentsOf: parseRemoteData(item))
+            }
+            
+
+           
             
             //Program waits to receive remote data below continuing into any code below!!!
                 
