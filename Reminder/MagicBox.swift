@@ -8,7 +8,15 @@
 import Foundation
 import SwiftData
 
-class MagicBox {
+actor MagicBox {
+    
+    
+    //Retrieves information from remote source based on URL
+   private func load(url: URL, encoding: String.Encoding = .utf8) async throws -> [Calendar] {
+        let data = try Data(contentsOf: url)
+        guard let string = String(data: data, encoding: encoding) else { throw iCalError.encoding }
+       return iCal.load(string: string)
+    }
     
     
     private func parseRemoteData(_ url: URL) async -> [Assignment] {
@@ -17,7 +25,7 @@ class MagicBox {
         
         do {
             
-            let cals = try await iCal.load(url: url)
+            let cals = try await load(url: url)
             
                 for cal in cals {
                     for event in cal.subComponents{

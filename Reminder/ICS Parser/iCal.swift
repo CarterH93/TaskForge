@@ -18,11 +18,14 @@ public enum iCal {
     /// - Returns: List of contained `Calendar`s.
     /// - Throws: Error encountered during loading of URL or decoding of data.
     /// - Warning: This is a **synchronous** operation! Use `load(string:)` and fetch your data beforehand for async handling.
+  
+    /*
     public static func load(url: URL, encoding: String.Encoding = .utf8) async throws -> [Calendar] {
         let data = try Data(contentsOf: url)
         guard let string = String(data: data, encoding: encoding) else { throw iCalError.encoding }
         return load(string: string)
     }
+     */
 
     private static func parse(_ icsContent: [String]) -> [Calendar] {
         let parser = Parser(icsContent)
