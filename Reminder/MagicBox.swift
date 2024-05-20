@@ -9,7 +9,6 @@ import Foundation
 import SwiftData
 
 class MagicBox {
-    @MainActor
     
     
     private func parseRemoteData(_ url: URL) async -> [Assignment] {
