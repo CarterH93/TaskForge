@@ -19,9 +19,9 @@ actor MagicBox {
     }
     
     
-    private func parseRemoteData(_ url: URL) async -> [Assignment] {
+    private func parseRemoteData(_ url: URL) async -> [Task] {
         
-        var listOfAssignments = [Assignment]()
+        var listOfTasks = [Task]()
         
         do {
             
@@ -41,9 +41,9 @@ actor MagicBox {
                         let summary: String = eventItems["SUMMARY"] ?? "N/A"
                         
                         
-                        let newAssignment = Assignment(id: id, name: summary, info: description, due: startDate)
+                        let newTask = Task(id: id, name: summary, info: description, due: startDate)
                         
-                        listOfAssignments.append(newAssignment)
+                        listOfTasks.append(newTask)
                         
                         func getDate(_ dateString: String) -> Date? {
 
@@ -67,7 +67,7 @@ actor MagicBox {
             print("error parsing remote data")
         }
         
-       return listOfAssignments
+       return listOfTasks
         
     }
     
@@ -75,12 +75,12 @@ actor MagicBox {
         do {
             //Accessing remote data
             
-            var listOfAssignments = [Assignment]()
+            var listOfTasks = [Task]()
                 
                 let url = [URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!, URL(string: "https://learn.lcps.org/calendar/feed/ical/1599581327/9336f6d23a186ce170b60460ec33395d/ical.ics")!]
             
             for item in url {
-                await listOfAssignments.append(contentsOf: parseRemoteData(item))
+                await listOfTasks.append(contentsOf: parseRemoteData(item))
             }
             
 
@@ -89,21 +89,21 @@ actor MagicBox {
             //Program waits to receive remote data below continuing into any code below!!!
                 
             //Now able to access all remote data
-            print(listOfAssignments.count)
-            print(listOfAssignments.first?.name ?? "nothing")
+            print(listOfTasks.count)
+            print(listOfTasks.first?.name ?? "nothing")
             
             
             //Accessing saved data
-            let descriptor = FetchDescriptor<Assignment>()
-            var existingAssignments: [Assignment] = []
-            // existingAssignments = try container.mainContext.fetch(descriptor)
+            let descriptor = FetchDescriptor<Task>()
+            var existingTasks: [Task] = []
+            // existingTasks = try container.mainContext.fetch(descriptor)
             
-            try modelContext.enumerate(descriptor) { assignment in
-                existingAssignments.append(assignment)
+            try modelContext.enumerate(descriptor) { task in
+                existingTasks.append(task)
             }
-            //Now able to access all existing assignments
-            print(existingAssignments.count)
-            print(existingAssignments.first?.name ?? "nothing")
+            //Now able to access all existing tasks
+            print(existingTasks.count)
+            print(existingTasks.first?.name ?? "nothing")
             
             
             //Compare data here

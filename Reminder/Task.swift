@@ -1,5 +1,5 @@
 //
-//  Assignment.swift
+//  Task.swift
 //  Reminder
 //
 //  Created by Carter Hawkins on 4/28/24.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Assignment {
+class Task {
     //Provided by calendar
     var id: String
     var name: String

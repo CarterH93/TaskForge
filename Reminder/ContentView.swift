@@ -9,14 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Query var assignments: [Assignment]
+    @Query var tasks: [Task]
     @Environment(\.modelContext) var modelContext
     
         var body: some View {
                 NavigationStack {
                     List {
-                        ForEach(assignments) { assignment in
-                            Text(assignment.name)
+                        ForEach(tasks) { task in
+                            Text(task.name)
                         }
                     }
                     .navigationTitle("Reminders")
@@ -24,6 +24,8 @@ struct ContentView: View {
                         Button("Add Samples", action: addSamples)
                     }
                     .task {
+                        //Fix this error using this video
+                   // https://www.notion.so/carterhawkins/Fixing-data-race-issues-e4d800127da74fda9b3b10bcbc3599a0?pvs=4
                         await MagicBox().work(modelContext)
                     }
                     .refreshable {
@@ -34,8 +36,8 @@ struct ContentView: View {
 
     
     func addSamples() {
-        let sampleAssignment = Assignment(id: "1", name: "Test", info: "hi", due: Date.now)
-        modelContext.insert(sampleAssignment)
+        let sampleTask = Task(id: "1", name: "Test", info: "hi", due: Date.now)
+        modelContext.insert(sampleTask)
     }
     
 }

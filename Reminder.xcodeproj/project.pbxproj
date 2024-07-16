@@ -23,7 +23,7 @@
 		BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE992BDEFE710027A00C /* Parser.swift */; };
 		BC7FBEAB2BDEFE710027A00C /* SchoolAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */; };
 		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
-		BC7FBEAF2BDF00EF0027A00C /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* Assignment.swift */; };
+		BC7FBEAF2BDF00EF0027A00C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 		BC7FBE992BDEFE710027A00C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolAssignment.swift; sourceTree = "<group>"; };
 		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		BC7FBEAE2BDF00EF0027A00C /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		BC7FBEAE2BDF00EF0027A00C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,7 @@
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
 				BC7FBE9A2BDEFE710027A00C /* SchoolAssignment.swift */,
-				BC7FBEAE2BDF00EF0027A00C /* Assignment.swift */,
+				BC7FBEAE2BDF00EF0027A00C /* Task.swift */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
@@ -189,7 +189,7 @@
 				BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */,
 				BC7FBEAB2BDEFE710027A00C /* SchoolAssignment.swift in Sources */,
 				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
-				BC7FBEAF2BDF00EF0027A00C /* Assignment.swift in Sources */,
+				BC7FBEAF2BDF00EF0027A00C /* Task.swift in Sources */,
 				BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */,
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,
 				BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */,

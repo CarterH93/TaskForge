@@ -14,7 +14,7 @@ struct ReminderApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Assignment.self)
+        .modelContainer(for: Task.self)
         
     }
 }
