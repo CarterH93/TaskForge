@@ -86,6 +86,7 @@ actor MagicBox {
             
             var listOfTasks = [Task]()
                 
+            //retrieving tasks from ICS URL
                 let url = [URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!, URL(string: "https://learn.lcps.org/calendar/feed/ical/1599581327/9336f6d23a186ce170b60460ec33395d/ical.ics")!]
             
             for item in url {
