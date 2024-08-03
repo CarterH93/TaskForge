@@ -18,7 +18,7 @@ actor MagicBox {
    private func load(url: URL) async throws -> [Calendar] {
        // let data = try Data(contentsOf: url)
        
-       //maybe ignore warning if we are absolutly sure it wont cause a problem
+       //can ignore the warning from the below line of code. We are certain this wont cause data race issues as the code waits for the result before continuing. Swift isnt smart enough to know that.
        let (data, _) = try await URLSession.shared.data(from: url)
        
         guard let string = String(data: data, encoding: .utf8) else { throw iCalError.encoding }
@@ -80,6 +80,8 @@ actor MagicBox {
     
     func work() async {
         do {
+            
+            print("accessing data")
             //Accessing remote data
             
             var listOfTasks = [Task]()
@@ -91,7 +93,7 @@ actor MagicBox {
             }
             
 
-           
+           print("data access complete")
             
             //Program waits to receive remote data below continuing into any code below!!!
                 

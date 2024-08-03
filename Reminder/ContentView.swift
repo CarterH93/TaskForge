@@ -24,9 +24,6 @@ struct ContentView: View {
                         Button("Add Samples", action: addSamples)
                     }
                     .task(priority: .background) {
-                        
-                        //maybe retrieve URL data here and pass it into the magicbox
-                       
                         let cache = MagicBox(modelContainer: modelContext.container)
                         
                         await cache.work()
