@@ -16,7 +16,6 @@ actor MagicBox {
     
     //Retrieves information from remote source based on URL
    private func load(url: URL) async throws -> [Calendar] {
-       // let data = try Data(contentsOf: url)
        
        //can ignore the warning from the below line of code. We are certain this wont cause data race issues as the code waits for the result before continuing. Swift isnt smart enough to know that.
        let (data, _) = try await URLSession.shared.data(from: url)
@@ -25,7 +24,7 @@ actor MagicBox {
        return iCal.load(string: string)
     }
     
-    
+    //Creates list of tasks
     private func parseRemoteData(_ url: URL) async -> [Task] {
         
         var listOfTasks = [Task]()
@@ -78,6 +77,7 @@ actor MagicBox {
         
     }
     
+    //Main Function
     func work() async {
         do {
             
@@ -105,11 +105,13 @@ actor MagicBox {
             //Accessing saved data
             let descriptor = FetchDescriptor<Task>()
             var existingTasks: [Task] = []
-            // existingTasks = try container.mainContext.fetch(descriptor)
+            
             
             try modelContext.enumerate(descriptor) { task in
                 existingTasks.append(task)
             }
+            
+            
             //Now able to access all existing tasks
             print(existingTasks.count)
             print(existingTasks.first?.name ?? "nothing")
