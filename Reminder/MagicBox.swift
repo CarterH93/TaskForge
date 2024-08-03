@@ -8,13 +8,20 @@
 import Foundation
 import SwiftData
 
+
+
+@ModelActor
 actor MagicBox {
     
     
     //Retrieves information from remote source based on URL
-   private func load(url: URL, encoding: String.Encoding = .utf8) async throws -> [Calendar] {
-        let data = try Data(contentsOf: url)
-        guard let string = String(data: data, encoding: encoding) else { throw iCalError.encoding }
+   private func load(url: URL) async throws -> [Calendar] {
+       // let data = try Data(contentsOf: url)
+       
+       //maybe ignore warning if we are absolutly sure it wont cause a problem
+       let (data, _) = try await URLSession.shared.data(from: url)
+       
+        guard let string = String(data: data, encoding: .utf8) else { throw iCalError.encoding }
        return iCal.load(string: string)
     }
     
@@ -71,7 +78,7 @@ actor MagicBox {
         
     }
     
-    func work(_ modelContext: ModelContext) async {
+    func work() async {
         do {
             //Accessing remote data
             

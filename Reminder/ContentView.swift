@@ -23,13 +23,18 @@ struct ContentView: View {
                     .toolbar {
                         Button("Add Samples", action: addSamples)
                     }
-                    .task {
-                        //Fix this error using this video
-                   // https://www.notion.so/carterhawkins/Fixing-data-race-issues-e4d800127da74fda9b3b10bcbc3599a0?pvs=4
-                        await MagicBox().work(modelContext)
+                    .task(priority: .background) {
+                        
+                        //maybe retrieve URL data here and pass it into the magicbox
+                       
+                        let cache = MagicBox(modelContainer: modelContext.container)
+                        
+                        await cache.work()
                     }
                     .refreshable {
-                        await MagicBox().work(modelContext)
+                        let cache = MagicBox(modelContainer: modelContext.container)
+                        
+                        await cache.work()
                     }
                 }
         }
