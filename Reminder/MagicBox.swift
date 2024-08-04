@@ -84,13 +84,13 @@ actor MagicBox {
             print("accessing data")
             //Accessing remote data
             
-            var listOfTasks = Set<Task>()
+            var remoteTasks = Set<Task>()
                 
             //retrieving tasks from ICS URL
                 let url = [URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!, URL(string: "https://learn.lcps.org/calendar/feed/ical/1599581327/9336f6d23a186ce170b60460ec33395d/ical.ics")!]
             
             for item in url {
-                await listOfTasks = listOfTasks.union(parseRemoteData(item))
+                await remoteTasks = remoteTasks.union(parseRemoteData(item))
             }
             
 
@@ -99,33 +99,67 @@ actor MagicBox {
             //Program waits to receive remote data below continuing into any code below!!!
                 
             //Now able to access all remote data
-            print(listOfTasks.count)
-            print(listOfTasks.first?.name ?? "nothing")
+            print(remoteTasks.count)
+            print(remoteTasks.first?.name ?? "nothing")
             
             
             //Accessing saved data
             let descriptor = FetchDescriptor<Task>()
-            var existingTasks = Set<Task>()
+            var swiftDataTasks = Set<Task>()
             
             
             try modelContext.enumerate(descriptor) { task in
-                existingTasks.insert(task)
+                swiftDataTasks.insert(task)
             }
             
             
             //Now able to access all existing tasks
-            print(existingTasks.count)
-            print(existingTasks.first?.name ?? "nothing")
+            print(swiftDataTasks.count)
+            print(swiftDataTasks.first?.name ?? "nothing")
             
             
             //Compare data here
-            /*
-            for item in existingTasks {
+            
+            //removes any existing tasks that were created by the user
+            //We dont want to compare any user generated tasks. The comparisons below are only for remote data tasks.
+            for item in swiftDataTasks {
                 if item.inAppGenerated == true {
-                    existingTasks.remove(item)
+                    swiftDataTasks.remove(item)
                 }
             }
-            */
+            
+            //Creating sets with only ids for both data sets
+            var swiftDataTasksIDOnly = Set<String>()
+            for item in swiftDataTasks {
+                swiftDataTasksIDOnly.insert(item.id)
+            }
+            
+            var remoteTasksIDOnly = Set<String>()
+            for item in remoteTasks {
+                remoteTasksIDOnly.insert(item.id)
+            }
+            
+            //Comparing the two ID Only sets
+            
+            //Creating set where both sets contain the same tasks
+            let bothContainSet = swiftDataTasksIDOnly.intersection(remoteTasksIDOnly)
+            
+            //Do work on these same task sets
+            
+            
+            
+            //Creating set of tasks that are in ICS Data but not in SwiftData
+            let inICSDataButNotSwiftData = remoteTasksIDOnly.subtracting(swiftDataTasksIDOnly)
+            //Adding these tasks to SwiftData
+            
+            
+            
+            
+            //Creating set of tasks that are in SwiftData but not in ICS Data
+            let inSwiftDataButNotICSData = swiftDataTasksIDOnly.subtracting(remoteTasksIDOnly)
+            //Removing these tasks from SwiftData
+            
+            
             
             //save data at the end
             //try? modelContext.save()
