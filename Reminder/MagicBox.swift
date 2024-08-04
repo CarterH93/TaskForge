@@ -25,9 +25,9 @@ actor MagicBox {
     }
     
     //Creates list of tasks
-    private func parseRemoteData(_ url: URL) async -> [Task] {
+    private func parseRemoteData(_ url: URL) async -> Set<Task> {
         
-        var listOfTasks = [Task]()
+        var listOfTasks = Set<Task>()
         
         do {
             
@@ -49,7 +49,7 @@ actor MagicBox {
                         
                         let newTask = Task(id: id, name: summary, info: description, due: startDate)
                         
-                        listOfTasks.append(newTask)
+                        listOfTasks.insert(newTask)
                         
                         func getDate(_ dateString: String) -> Date? {
 
@@ -84,13 +84,13 @@ actor MagicBox {
             print("accessing data")
             //Accessing remote data
             
-            var listOfTasks = [Task]()
+            var listOfTasks = Set<Task>()
                 
             //retrieving tasks from ICS URL
                 let url = [URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!, URL(string: "https://learn.lcps.org/calendar/feed/ical/1599581327/9336f6d23a186ce170b60460ec33395d/ical.ics")!]
             
             for item in url {
-                await listOfTasks.append(contentsOf: parseRemoteData(item))
+                await listOfTasks = listOfTasks.union(parseRemoteData(item))
             }
             
 
@@ -105,11 +105,11 @@ actor MagicBox {
             
             //Accessing saved data
             let descriptor = FetchDescriptor<Task>()
-            var existingTasks: [Task] = []
+            var existingTasks = Set<Task>()
             
             
             try modelContext.enumerate(descriptor) { task in
-                existingTasks.append(task)
+                existingTasks.insert(task)
             }
             
             
@@ -119,7 +119,16 @@ actor MagicBox {
             
             
             //Compare data here
+            /*
+            for item in existingTasks {
+                if item.inAppGenerated == true {
+                    existingTasks.remove(item)
+                }
+            }
+            */
             
+            //save data at the end
+            //try? modelContext.save()
             
             
             
