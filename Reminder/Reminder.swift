@@ -1,22 +1,18 @@
 //
-//  Task.swift
+//  Reminder.swift
 //  Reminder
 //
-//  Created by Carter Hawkins on 4/28/24.
+//  Created by Carter Hawkins on 8/4/24.
 //
 
 import Foundation
 import SwiftData
 
 @Model
-class Task {
-    //Provided by calendar
+class Reminder {
     var id: String
     var name: String
-    var info: String
     var due: Date
-    var inAppGenerated: Bool
-    //Provided by user
     var completed: Bool
     var notes: String?
     var label: String?
@@ -25,14 +21,12 @@ class Task {
     @Attribute(.externalStorage)
     var image: [Data]?
     
-    var reminders = [Reminder]()
+    var task: Task?
     
-    init(id: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, completed: Bool = false, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
+    init(id: String, name: String, due: Date, completed: Bool, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
         self.id = id
         self.name = name
-        self.info = info
         self.due = due
-        self.inAppGenerated = inAppGenerated
         self.completed = completed
         self.notes = notes
         self.label = label

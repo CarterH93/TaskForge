@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C062A2BF937E400AD85F5 /* MagicBox.swift */; };
+		BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31B2282C5FF1F700548F7E /* Reminder.swift */; };
 		BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */; };
 		BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */; };
 		BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		BC2C062A2BF937E400AD85F5 /* MagicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicBox.swift; sourceTree = "<group>"; };
+		BC31B2282C5FF1F700548F7E /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		BC7FBE782BDEFE300027A00C /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderApp.swift; sourceTree = "<group>"; };
 		BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
 				BC7FBEAE2BDF00EF0027A00C /* Task.swift */,
+				BC31B2282C5FF1F700548F7E /* Reminder.swift */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
@@ -192,6 +195,7 @@
 				BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */,
 				BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */,
 				BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */,
+				BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */,
 				BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */,
 				BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */,
 				BC7FBEA02BDEFE710027A00C /* Calendar.swift in Sources */,
