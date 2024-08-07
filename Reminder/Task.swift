@@ -28,7 +28,11 @@ class Task {
     var reminders = [Reminder]()
     
     var id: String {
-        return "\(oldid)\(name)\(due)\(info)"
+        return "\(oldid)\(name)\(info)\(due)"
+    }
+    
+    var magicBoxID: MagicBoxID {
+        return MagicBoxID(oldID: oldid, id: id)
     }
     
     init(oldid: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, completed: Bool = false, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
@@ -42,4 +46,10 @@ class Task {
         self.label = label
         self.image = image
     }
+}
+
+
+struct MagicBoxID: Hashable {
+    var oldID: String
+    var id: String
 }

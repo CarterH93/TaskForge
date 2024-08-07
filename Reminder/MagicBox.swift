@@ -27,7 +27,9 @@ actor MagicBox {
     //Creates list of tasks
     private func parseRemoteData(_ url: URL) async -> Set<Task> {
         
-        var listOfTasks = Set<Task>()
+        var listOfTasks: [Task] = []
+        //used to check for duplicates. Normal Set duplicate checking does not work because they are an @model.
+        var listOfIDs = Set<String>()
         
         do {
             
@@ -39,9 +41,14 @@ actor MagicBox {
                         let eventItems = event.toCal()
                         
                         
+                        //Creating fallback date
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+                        let someDateTime = formatter.date(from: "2016/10/08 22:31")!
+                        
                         let oldid: String = eventItems["UID"] ?? "Error"
-                        let startDate: Date = getDate(eventItems["DTSTART"] ?? "Error") ?? Date()
-                        let endDate: Date = getDate(eventItems["DTEND"] ?? "Error") ?? Date()
+                        let startDate: Date = getDate(eventItems["DTSTART"] ?? "Error") ?? someDateTime
+                        let endDate: Date = getDate(eventItems["DTEND"] ?? "Error") ?? someDateTime
                         let link: URL = URL(string: eventItems["URL;VALUE=URI"] ?? "Error") ?? URL(string: "https://google.com")!
                         let description: String = eventItems["DESCRIPTION"] ?? "N/A"
                         let summary: String = eventItems["SUMMARY"] ?? "N/A"
@@ -49,7 +56,16 @@ actor MagicBox {
                         
                         let newTask = Task(oldid: oldid, name: summary, info: description, due: startDate)
                         
-                        listOfTasks.insert(newTask)
+                        if listOfIDs.contains(oldid) {
+                            //This is a duplicate task
+                            //DO NOTHING
+                            
+                        } else {
+                            listOfTasks.append(newTask)
+                            listOfIDs.insert(oldid)
+                        }
+                        
+                        
                         
                         func getDate(_ dateString: String) -> Date? {
 
@@ -73,7 +89,7 @@ actor MagicBox {
             print("error parsing remote data")
         }
         
-       return listOfTasks
+       return Set(listOfTasks)
         
     }
     
@@ -164,9 +180,18 @@ actor MagicBox {
                 
                 
                 //currently have an issue where you cannot compare swiftDatamodels within a Set.
-                //Solutions: https://www.notion.so/carterhawkins/Issues-comparing-two-different-SwiftData-Models-06a51beca0d04248adbe4fecca6a6fad?pvs=4
                 
-            let bothContainSetAndExactSameObjects = swiftDataTasks.intersection(remoteTasks)
+                var tempSwiftDataTasksMagicBoxIDOnly = Set<(MagicBoxID)>()
+                for item in swiftDataTasks {
+                    tempSwiftDataTasksMagicBoxIDOnly.insert(item.magicBoxID)
+                }
+                
+                var tempRemoteTasksMagicBoxIDOnly = Set<(MagicBoxID)>()
+                for item in remoteTasks {
+                    tempRemoteTasksMagicBoxIDOnly.insert(item.magicBoxID)
+                }
+                
+            let bothContainSetAndExactSameObjects = tempSwiftDataTasksMagicBoxIDOnly.intersection(tempRemoteTasksMagicBoxIDOnly)
             print("2")
                 print(bothContainSetAndExactSameObjects.count)
                 
@@ -179,7 +204,7 @@ actor MagicBox {
             var bothContainSetAndExactSameObjectsIDOnly = Set<String>()
                 
                 for item in bothContainSetAndExactSameObjects {
-                    bothContainSetAndExactSameObjectsIDOnly.insert(item.oldid)
+                    bothContainSetAndExactSameObjectsIDOnly.insert(item.oldID)
                 }
                 
                 //Removes exact same objects from same ids to find the ones that have different information but same id
@@ -189,16 +214,21 @@ actor MagicBox {
                 
                 //Can uncomment this out once we fix above issue
                 
+                
+                
+                ///NEED TO FIND A WAY TO UPDATE TASKS AFTER FINDING ABOVE SAME IDS BUT DIFFERENT INFORMATION!!!!
+                
+                //Code below still freezes everything
                 /*
                 for id in bothContainSetDifference {
                     var remoteTask: Task?
                     for task in remoteTasks {
-                        if task.id == id {
+                        if task.oldid == id {
                             remoteTask = task
                         }
                         
                         for task in swiftDataTasks {
-                            if task.id == id {
+                            if task.oldid == id {
                                 
                                 if let remoteTask = remoteTask {
                                     
@@ -211,8 +241,8 @@ actor MagicBox {
                         }
                     }
                 }
-                */
                 
+                */
                 
                 
                 //Eventually fully remove this code. This is just for reference for now. THIS DOES NOT WORK!!!
