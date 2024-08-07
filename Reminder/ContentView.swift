@@ -38,7 +38,7 @@ struct ContentView: View {
 
     
     func addSamples() {
-        let sampleTask = Task(id: "1", name: "Test", info: "hi", due: Date.now)
+        let sampleTask = Task(oldid: "1", name: "Test", info: "hi", due: Date.now)
         modelContext.insert(sampleTask)
     }
     

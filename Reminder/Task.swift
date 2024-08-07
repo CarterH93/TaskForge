@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class Task {
     //Provided by calendar
-    var id: String
+    var oldid: String
     var name: String
     var info: String
     var due: Date
@@ -27,8 +27,12 @@ class Task {
     
     var reminders = [Reminder]()
     
-    init(id: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, completed: Bool = false, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
-        self.id = id
+    var id: String {
+        return "\(oldid)\(name)\(due)\(info)"
+    }
+    
+    init(oldid: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, completed: Bool = false, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
+        self.oldid = oldid
         self.name = name
         self.info = info
         self.due = due

@@ -39,7 +39,7 @@ actor MagicBox {
                         let eventItems = event.toCal()
                         
                         
-                        let id: String = eventItems["UID"] ?? "Error"
+                        let oldid: String = eventItems["UID"] ?? "Error"
                         let startDate: Date = getDate(eventItems["DTSTART"] ?? "Error") ?? Date()
                         let endDate: Date = getDate(eventItems["DTEND"] ?? "Error") ?? Date()
                         let link: URL = URL(string: eventItems["URL;VALUE=URI"] ?? "Error") ?? URL(string: "https://google.com")!
@@ -47,7 +47,7 @@ actor MagicBox {
                         let summary: String = eventItems["SUMMARY"] ?? "N/A"
                         
                         
-                        let newTask = Task(id: id, name: summary, info: description, due: startDate)
+                        let newTask = Task(oldid: oldid, name: summary, info: description, due: startDate)
                         
                         listOfTasks.insert(newTask)
                         
@@ -138,12 +138,12 @@ actor MagicBox {
             //Creating sets with only ids for both data sets
             var swiftDataTasksIDOnly = Set<String>()
             for item in swiftDataTasks {
-                swiftDataTasksIDOnly.insert(item.id)
+                swiftDataTasksIDOnly.insert(item.oldid)
             }
             
             var remoteTasksIDOnly = Set<String>()
             for item in remoteTasks {
-                remoteTasksIDOnly.insert(item.id)
+                remoteTasksIDOnly.insert(item.oldid)
             }
             
             
@@ -163,6 +163,9 @@ actor MagicBox {
                 
                 
                 
+                //currently have an issue where you cannot compare swiftDatamodels within a Set.
+                //Solutions: https://www.notion.so/carterhawkins/Issues-comparing-two-different-SwiftData-Models-06a51beca0d04248adbe4fecca6a6fad?pvs=4
+                
             let bothContainSetAndExactSameObjects = swiftDataTasks.intersection(remoteTasks)
             print("2")
                 print(bothContainSetAndExactSameObjects.count)
@@ -176,13 +179,16 @@ actor MagicBox {
             var bothContainSetAndExactSameObjectsIDOnly = Set<String>()
                 
                 for item in bothContainSetAndExactSameObjects {
-                    bothContainSetAndExactSameObjectsIDOnly.insert(item.id)
+                    bothContainSetAndExactSameObjectsIDOnly.insert(item.oldid)
                 }
                 
                 //Removes exact same objects from same ids to find the ones that have different information but same id
                 let bothContainSetDifference = bothContainSet.subtracting(bothContainSetAndExactSameObjectsIDOnly)
                 print("3")
                 print(bothContainSetDifference.count)
+                
+                //Can uncomment this out once we fix above issue
+                
                 /*
                 for id in bothContainSetDifference {
                     var remoteTask: Task?
@@ -207,6 +213,9 @@ actor MagicBox {
                 }
                 */
                 
+                
+                
+                //Eventually fully remove this code. This is just for reference for now. THIS DOES NOT WORK!!!
                 //This code below is freezing up the app
                 //(Code)
                 
@@ -256,7 +265,7 @@ actor MagicBox {
                 //Adding these tasks to SwiftData
                 for ID in inICSDataButNotSwiftData {
                     for task in remoteTasks {
-                        if ID == task.id {
+                        if ID == task.oldid {
                             modelContext.insert(task)
                         }
                     }
@@ -269,7 +278,7 @@ actor MagicBox {
                 //Removing these tasks from SwiftData
                 for ID in inSwiftDataButNotICSData {
                     for task in swiftDataTasks {
-                        if ID == task.id {
+                        if ID == task.oldid {
                             modelContext.delete(task)
                         }
                     }
