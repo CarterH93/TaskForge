@@ -35,11 +35,6 @@ struct ContentView: View {
         }
 
     
-    func addSamples() {
-        let sampleTask = Task(oldid: String(Int.random(in: 1...88888)), name: "Test123", info: "test", due: Date.now, inAppGenerated: true)
-        modelContext.insert(sampleTask)
-    }
-    
 }
 
 
