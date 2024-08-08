@@ -11,17 +11,25 @@ import SwiftData
 struct listOfTasksView: View {
     @Query var tasks: [Task]
     @Environment(\.modelContext) var modelContext
-    
+    @State private var showingSheetForNewTaskCreation = false
         var body: some View {
             NavigationStack {
                 List {
                     ForEach(tasks) { task in
-                        Text(task.name)
+                        HStack {
+                            Text(task.name)
+                            Text(task.due.formatted())
+                        }
                     }
                 }
                 .navigationTitle("Tasks")
+                .sheet(isPresented: $showingSheetForNewTaskCreation) {
+                            createNewTaskView()
+                        }
                 .toolbar {
-                    Button("Add Samples", action: addSamples)
+                    Button("Add Task") {
+                        showingSheetForNewTaskCreation = true
+                    }
                 }
             }
             .refreshable {
@@ -31,17 +39,6 @@ struct listOfTasksView: View {
             }
         }
 
-    
-    func addSamples() {
-        let sampleTask = Task(oldid: String(Int.random(in: 1...88888)), name: "Test123", info: "test", due: Date.now, inAppGenerated: true)
-        modelContext.insert(sampleTask)
-        do {
-            try modelContext.save()
-        } catch {
-            
-        }
-        
-    }
     
 }
 

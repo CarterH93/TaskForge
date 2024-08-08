@@ -11,17 +11,26 @@ import SwiftData
 struct listOfRemindersView: View {
     @Query var reminders: [Reminder]
     @Environment(\.modelContext) var modelContext
+    @State private var showingSheetForNewReminderCreation = false
     
         var body: some View {
             NavigationStack {
                 List {
                     ForEach(reminders) { reminder in
-                        Text(reminder.name)
+                        HStack {
+                            Text(reminder.name)
+                            Text(reminder.due.formatted())
+                        }
                     }
                 }
                 .navigationTitle("Reminders")
+                .sheet(isPresented: $showingSheetForNewReminderCreation) {
+                            createNewReminderView()
+                        }
                 .toolbar {
-                    Button("Add Samples", action: addSamples)
+                    Button("Add Reminder") {
+                        showingSheetForNewReminderCreation = true
+                    }
                 }
             }
         }
