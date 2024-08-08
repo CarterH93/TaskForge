@@ -179,7 +179,7 @@ actor MagicBox {
                 
                 
                 
-                //currently have an issue where you cannot compare swiftDatamodels within a Set.
+            
                 
                 var tempSwiftDataTasksMagicBoxIDOnly = Set<(MagicBoxID)>()
                 for item in swiftDataTasks {
