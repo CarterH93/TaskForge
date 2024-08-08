@@ -115,8 +115,8 @@ actor MagicBox {
             //Program waits to receive remote data below continuing into any code below!!!
                 
             //Now able to access all remote data
-            print(remoteTasks.count)
-            print(remoteTasks.first?.name ?? "nothing")
+            //print(remoteTasks.count)
+           // print(remoteTasks.first?.name ?? "nothing")
             
             
             //Accessing saved data
@@ -130,8 +130,8 @@ actor MagicBox {
             
             
             //Now able to access all existing tasks
-            print(swiftDataTasks.count)
-            print(swiftDataTasks.first?.name ?? "nothing")
+           // print(swiftDataTasks.count)
+            //print(swiftDataTasks.first?.name ?? "nothing")
             
             
             //Compare data here
@@ -172,8 +172,8 @@ actor MagicBox {
                 
                 //Gives set where ID are the same from both sets
             let bothContainSet = swiftDataTasksIDOnly.intersection(remoteTasksIDOnly)
-                print("1")
-                print(bothContainSet.count)
+               // print("1")
+                //print(bothContainSet.count)
                 
                 //Gives set where task objects are the exact same from both sets
                 
@@ -192,8 +192,8 @@ actor MagicBox {
                 }
                 
             let bothContainSetAndExactSameObjects = tempSwiftDataTasksMagicBoxIDOnly.intersection(tempRemoteTasksMagicBoxIDOnly)
-            print("2")
-                print(bothContainSetAndExactSameObjects.count)
+          //  print("2")
+               // print(bothContainSetAndExactSameObjects.count)
                 
                 
                 
@@ -209,96 +209,40 @@ actor MagicBox {
                 
                 //Removes exact same objects from same ids to find the ones that have different information but same id
                 let bothContainSetDifference = bothContainSet.subtracting(bothContainSetAndExactSameObjectsIDOnly)
-                print("3")
-                print(bothContainSetDifference.count)
+              //  print("3")
+               // print(bothContainSetDifference.count)
                 
-                //Can uncomment this out once we fix above issue
+               //Updates old swift data tasks with new information
                 
-                
-                
-                ///NEED TO FIND A WAY TO UPDATE TASKS AFTER FINDING ABOVE SAME IDS BUT DIFFERENT INFORMATION!!!!
-                
-                //Code below still freezes everything
-                /*
                 for id in bothContainSetDifference {
-                    var remoteTask: Task?
-                    for task in remoteTasks {
-                        if task.oldid == id {
-                            remoteTask = task
+                    if let swiftDataTaskItem = swiftDataTasks.first(where: {$0.oldid == id}) {
+                        
+                        
+                        if let remoteTaskItem = remoteTasks.first(where: {$0.oldid == id}) {
+                            
+                            
+                            swiftDataTaskItem.name = remoteTaskItem.name
+                            swiftDataTaskItem.info = remoteTaskItem.info
+                            swiftDataTaskItem.due = remoteTaskItem.due
                         }
                         
-                        for task in swiftDataTasks {
-                            if task.oldid == id {
-                                
-                                if let remoteTask = remoteTask {
-                                    
-                                    //update information here
-                                    task.name = remoteTask.name
-                                    task.info = remoteTask.info
-                                    task.due = remoteTask.due
-                                }
-                            }
-                        }
                     }
                 }
                 
-                */
-                
-                
-                //Eventually fully remove this code. This is just for reference for now. THIS DOES NOT WORK!!!
-                //This code below is freezing up the app
-                //(Code)
-                
-                /*
-            //Updating SwiftData to match ICS Data
-            for ID in bothContainSet {
-                //Create a temp task variable and put the task from the ICS data into it.
-                var tempTask: Task?
-                
-                for task in remoteTasks {
-                    if task.id == ID {
-                        tempTask = task
-                    }
-                    
-                    //Update swiftdata to match ICS data here
-                    for task in swiftDataTasks {
-                        if let tempTask = tempTask {
-                            if task.id == tempTask.id {
-                            
-                            //NEED TO CHECK TO MAKE SURE THEY ARE NOT ALREADY THE SAME
-                            
-                                if task == tempTask {
-                                    //Do nothing
-                                } else {
-                                    //update information here
-                                    task.name = tempTask.name
-                                    task.info = tempTask.info
-                                    task.due = tempTask.due
-                                }
-                                
-                                
-                                
-                            }
-                        }
-                       
-                    }
-                    
-                }
-            }
-            //(Code)
-            
-           */
+               
                 
                 
                 //Creating set of tasks that are in ICS Data but not in SwiftData
                 let inICSDataButNotSwiftData = remoteTasksIDOnly.subtracting(swiftDataTasksIDOnly)
                 //Adding these tasks to SwiftData
+
+                
                 for ID in inICSDataButNotSwiftData {
-                    for task in remoteTasks {
-                        if ID == task.oldid {
-                            modelContext.insert(task)
-                        }
+                    
+                    if let task = remoteTasks.first(where: {$0.oldid == ID}) {
+                        modelContext.insert(task)
                     }
+                
                 }
                 
                 
@@ -307,11 +251,11 @@ actor MagicBox {
                 let inSwiftDataButNotICSData = swiftDataTasksIDOnly.subtracting(remoteTasksIDOnly)
                 //Removing these tasks from SwiftData
                 for ID in inSwiftDataButNotICSData {
-                    for task in swiftDataTasks {
-                        if ID == task.oldid {
-                            modelContext.delete(task)
-                        }
+                    
+                    if let task = swiftDataTasks.first(where: {$0.oldid == ID}) {
+                        modelContext.delete(task)
                     }
+                    
                 }
                 
                 
