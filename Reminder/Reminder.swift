@@ -5,6 +5,10 @@
 //  Created by Carter Hawkins on 8/4/24.
 //
 
+//explanation on how the magic box works
+//https://www.notion.so/carterhawkins/How-the-Magic-Box-Works-3659eff58882494792a6775a0f44963b?pvs=4
+
+
 import Foundation
 import SwiftData
 
