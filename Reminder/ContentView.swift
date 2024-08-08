@@ -30,11 +30,7 @@ struct ContentView: View {
                         
                         await cache.work()
                     }
-                    .refreshable {
-                        let cache = MagicBox(modelContainer: modelContext.container)
-                        
-                        await cache.work()
-                    }
+                    
                 
         }
 

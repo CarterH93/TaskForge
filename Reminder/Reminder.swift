@@ -27,7 +27,7 @@ class Reminder {
     
     var task: Task?
     
-    init(id: String, name: String, due: Date, completed: Bool, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
+    init(id: String, name: String, due: Date, completed: Bool = false, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
         self.id = id
         self.name = name
         self.due = due

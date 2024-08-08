@@ -24,12 +24,23 @@ struct listOfTasksView: View {
                     Button("Add Samples", action: addSamples)
                 }
             }
+            .refreshable {
+                let cache = MagicBox(modelContainer: modelContext.container)
+                
+                await cache.work()
+            }
         }
 
     
     func addSamples() {
         let sampleTask = Task(oldid: String(Int.random(in: 1...88888)), name: "Test123", info: "test", due: Date.now, inAppGenerated: true)
         modelContext.insert(sampleTask)
+        do {
+            try modelContext.save()
+        } catch {
+            
+        }
+        
     }
     
 }

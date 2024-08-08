@@ -6,10 +6,37 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct listOfRemindersView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @Query var reminders: [Reminder]
+    @Environment(\.modelContext) var modelContext
+    
+        var body: some View {
+            NavigationStack {
+                List {
+                    ForEach(reminders) { reminder in
+                        Text(reminder.name)
+                    }
+                }
+                .navigationTitle("Reminders")
+                .toolbar {
+                    Button("Add Samples", action: addSamples)
+                }
+            }
+        }
+
+    
+    func addSamples() {
+        let sampleReminder = Reminder(id: String(Int.random(in: 1...88888)), name: "Test 123", due: Date.now)
+        
+       
+        modelContext.insert(sampleReminder)
+        do {
+            try modelContext.save()
+        } catch {
+            
+        }
     }
 }
 
