@@ -9,19 +9,21 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Query var tasks: [Task]
     @Environment(\.modelContext) var modelContext
     
         var body: some View {
-                NavigationStack {
-                    List {
-                        ForEach(tasks) { task in
-                            Text(task.name)
-                        }
-                    }
-                    .navigationTitle("Reminders")
-                    .toolbar {
-                        Button("Add Samples", action: addSamples)
+                    TabView {
+                        
+                        listOfRemindersView()
+                            .tabItem {
+                                Label("Reminders", systemImage: "bell")
+                            }
+                        
+                        
+                        listOfTasksView()
+                            .tabItem {
+                                Label("Tasks", systemImage: "list.bullet.clipboard")
+                            }
                     }
                     .task(priority: .background) {
                         let cache = MagicBox(modelContainer: modelContext.container)
@@ -33,7 +35,7 @@ struct ContentView: View {
                         
                         await cache.work()
                     }
-                }
+                
         }
 
     
