@@ -7,31 +7,6 @@
 
 import SwiftUI
 
-struct newReminderSubView: View {
-    @Environment(\.dismiss) var dismiss
-    @Binding var reminders: [Reminder]
-    @State private var newReminderDue = Date.now
-    @State private var newReminderName: String
-    init(reminders: Binding<[Reminder]>, taskName: String) {
-        self._reminders = reminders
-        self.taskName = taskName
-        _newReminderName = State(initialValue: "Work on \(taskName)")
-    }
-    
-    var taskName: String
-    var body: some View {
-        VStack {
-            TextField("type here...", text: $newReminderName)
-            DatePicker("Remind", selection: $newReminderDue)
-                .padding()
-            Button("Add New Reminder") {
-                reminders.append(Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue))
-                dismiss()
-            }
-        }
-        .padding()
-    }
-}
 
 struct createNewTaskView: View {
     @Environment(\.dismiss) var dismiss
@@ -45,9 +20,6 @@ struct createNewTaskView: View {
     @State private var description = ""
     @State private var due = Date.now.addingTimeInterval(3600)
     
-    @State private var reminders: [Reminder] = []
-    
-    @State private var showingNewReminderSheet = false
     var body: some View {
         NavigationStack {
             Form {
@@ -63,19 +35,7 @@ struct createNewTaskView: View {
                     DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
                 }
                 
-                Section("Reminders") {
-                    
-                    List(reminders) { reminder in
-                        HStack {
-                            Text(reminder.name)
-                            Text(reminder.due.formatted())
-                        }
-                    }
-                    Button("Create New Reminder") {
-                        showingNewReminderSheet = true
-                    }
-                    .disabled(name.isEmpty ? true : false)
-                }
+                
                 
                 
                 Button("Add New Task") {
@@ -94,10 +54,7 @@ struct createNewTaskView: View {
                 
             }
             .navigationTitle("New Task")
-            .sheet(isPresented: $showingNewReminderSheet) {
-                newReminderSubView(reminders: $reminders, taskName: name)
-                    .presentationDetents([.fraction(1/5)])
-                    }
+            
         }
     }
 }

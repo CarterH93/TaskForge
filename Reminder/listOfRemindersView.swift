@@ -26,6 +26,7 @@ struct listOfRemindersView: View {
                 .navigationTitle("Reminders")
                 .sheet(isPresented: $showingSheetForNewReminderCreation) {
                             createNewReminderView()
+                        .presentationDragIndicator(.visible)
                         }
                 .toolbar {
                     Button("Add Reminder") {

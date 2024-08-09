@@ -16,15 +16,21 @@ struct listOfTasksView: View {
             NavigationStack {
                 List {
                     ForEach(tasks) { task in
-                        HStack {
-                            Text(task.name)
-                            Text(task.due.formatted())
+                        NavigationLink {
+                            viewTaskView(task: task)
+                        } label: {
+                            HStack {
+                                Text(task.name)
+                                Text(task.due.formatted())
+                            }
                         }
+                        
                     }
                 }
                 .navigationTitle("Tasks")
                 .sheet(isPresented: $showingSheetForNewTaskCreation) {
                             createNewTaskView()
+                        .presentationDragIndicator(.visible)
                         }
                 .toolbar {
                     Button("Add Task") {
