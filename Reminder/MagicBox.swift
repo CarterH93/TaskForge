@@ -128,6 +128,16 @@ actor MagicBox {
                 swiftDataTasks.insert(task)
             }
             
+            //Accessing Settings
+            let descriptorSettings = FetchDescriptor<Settings>()
+            var settingsHolder = Set<Settings>()
+            
+            
+            try modelContext.enumerate(descriptorSettings) { settings in
+                settingsHolder.insert(settings)
+            }
+            
+            let settings: Settings = settingsHolder.first ?? Settings()
             
             //Now able to access all existing tasks
            // print(swiftDataTasks.count)
@@ -240,6 +250,9 @@ actor MagicBox {
                 for ID in inICSDataButNotSwiftData {
                     
                     if let task = remoteTasks.first(where: {$0.oldid == ID}) {
+                        
+                        //Auto creates a reminder based on the information given in settings
+                        task.reminders.append(Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminder)))
                         modelContext.insert(task)
                     }
                 
