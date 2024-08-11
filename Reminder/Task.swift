@@ -25,7 +25,7 @@ class Task {
     @Attribute(.externalStorage)
     var image: [Data]?
     
-    var reminders = [Reminder]()
+    @Relationship(deleteRule: .cascade) var reminders = [Reminder]()
     
     var id: String {
         return "\(oldid)\(name)\(info)\(due)"

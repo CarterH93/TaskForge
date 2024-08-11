@@ -121,10 +121,11 @@ struct viewTaskView: View {
                     .presentationDetents([.fraction(1/5)])
                     .presentationDragIndicator(.visible)
                     }
-            .alert("Are you sure you want to permanently delete this task?", isPresented: $showingDeleteAlert) {
+            .alert("Are you sure you want to permanently delete this task and it's associated reminders?", isPresented: $showingDeleteAlert) {
                 Button("Delete", role: .destructive) {
-                    dismiss()
                     modelContext.delete(task)
+                    dismiss()
+                    
                             }
                     }
         }
