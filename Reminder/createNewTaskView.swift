@@ -16,6 +16,7 @@ struct createNewTaskView: View {
     }
     
     @Environment(\.modelContext) var modelContext
+    @Environment(Settings.self) var settings
     @State private var name = ""
     @State private var description = ""
     @State private var due = Date.now.addingTimeInterval(3600)
@@ -41,6 +42,7 @@ struct createNewTaskView: View {
                 Button("Add New Task") {
                     if isValidTask {
                         let newTask = Task(oldid: UUID().uuidString, name: name, info: description, due: due, inAppGenerated: true)
+                        newTask.reminders.append(Reminder(id: UUID().uuidString, name: "Work on \(newTask.name)", due: due.addingTimeInterval(-settings.defaultReminder)))
                         modelContext.insert(newTask)
                         
                         dismiss()

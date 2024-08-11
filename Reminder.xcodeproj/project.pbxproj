@@ -30,6 +30,7 @@
 		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
 		BC7FBEAF2BDF00EF0027A00C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* Task.swift */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
+		BCEE6B112C6909600090E274 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BC7FBEAE2BDF00EF0027A00C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
+		BCEE6B102C6909600090E274 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
+				BCEE6B102C6909600090E274 /* Settings.swift */,
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
@@ -224,6 +227,7 @@
 				BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */,
 				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
 				BC39F06D2C6567930019BB7F /* listOfRemindersView.swift in Sources */,
+				BCEE6B112C6909600090E274 /* Settings.swift in Sources */,
 				BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
