@@ -48,7 +48,7 @@ struct viewReminderView: View {
     
     @Environment(\.modelContext) var modelContext
 
-    var reminder: Reminder
+   @State var reminder: Reminder
     
     
     func deleteTaskLink(_ indexSet: IndexSet) {
@@ -62,12 +62,12 @@ struct viewReminderView: View {
         NavigationStack {
             Form {
                 
-                Section("description") {
-                    Text(reminder.notes ?? "N/A")
+                Section("notes") {
+                    TextField("type here...", text: $reminder.notes)
                 }
                 
                 Section("due") {
-                    Text(reminder.due.formatted())
+                    DatePicker("Due:", selection: $reminder.due)
                 }
                 
                 Section("Task") {

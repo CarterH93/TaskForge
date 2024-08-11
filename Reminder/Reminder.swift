@@ -18,7 +18,7 @@ class Reminder {
     var name: String
     var due: Date
     var completed: Bool
-    var notes: String?
+    var notes: String
     var label: String?
     
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
@@ -27,7 +27,7 @@ class Reminder {
     
     var task: Task?
     
-    init(id: String, name: String, due: Date, completed: Bool = false, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
+    init(id: String, name: String, due: Date, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
         self.id = id
         self.name = name
         self.due = due

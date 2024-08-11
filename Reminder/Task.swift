@@ -18,7 +18,7 @@ class Task {
     var inAppGenerated: Bool
     //Provided by user
     var completed: Bool
-    var notes: String?
+    var notes: String
     var label: String?
     
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
@@ -35,7 +35,7 @@ class Task {
         return MagicBoxID(oldID: oldid, id: id)
     }
     
-    init(oldid: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, completed: Bool = false, notes: String? = nil, label: String? = nil, image: [Data]? = nil) {
+    init(oldid: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
         self.oldid = oldid
         self.name = name
         self.info = info
