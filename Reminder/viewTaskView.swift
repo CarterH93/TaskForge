@@ -36,7 +36,7 @@ struct newReminderSubView: View {
 struct viewTaskView: View {
     @Environment(\.dismiss) var dismiss
     
-   
+    @State private var showingDeleteAlert = false
     
     @Environment(\.modelContext) var modelContext
 
@@ -93,8 +93,8 @@ struct viewTaskView: View {
                 Section {
                     if task.inAppGenerated == true {
                         Button("Delete Task", role: .destructive) {
-                            dismiss()
-                            modelContext.delete(task)
+                            showingDeleteAlert = true
+                            
                             
                         }
                     }
@@ -107,6 +107,12 @@ struct viewTaskView: View {
                 newReminderSubView(task: task)
                     .presentationDetents([.fraction(1/5)])
                     .presentationDragIndicator(.visible)
+                    }
+            .alert("Are you sure you want to permanently delete this task?", isPresented: $showingDeleteAlert) {
+                Button("Delete", role: .destructive) {
+                    dismiss()
+                    modelContext.delete(task)
+                            }
                     }
         }
     }
