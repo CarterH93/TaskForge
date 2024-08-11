@@ -13,10 +13,21 @@ struct listOfRemindersView: View {
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewReminderCreation = false
     
+    
+    @State private var showCompleted = false
+    
+    var filteredReminder: [Reminder] {
+        if showCompleted {
+            return reminders
+        } else {
+            return reminders.filter { $0.completedWrapper == false }
+        }
+    }
+    
         var body: some View {
             NavigationStack {
                 List {
-                    ForEach(reminders) { reminder in
+                    ForEach(filteredReminder) { reminder in
                         NavigationLink {
                             viewReminderView(reminder: reminder)
                         } label: {
@@ -43,6 +54,11 @@ struct listOfRemindersView: View {
                 .toolbar {
                     Button("Add Reminder") {
                         showingSheetForNewReminderCreation = true
+                    }
+                    Button {
+                        showCompleted.toggle()
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
                     }
                 }
             }

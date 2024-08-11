@@ -9,13 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct listOfTasksView: View {
+    
     @Query var tasks: [Task]
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewTaskCreation = false
+    
+    @State private var showCompleted = true
+    
+    var filteredTasks: [Task] {
+        if showCompleted {
+            return tasks
+        } else {
+            return tasks.filter { $0.completed == false }
+        }
+    }
+    
         var body: some View {
             NavigationStack {
                 List {
-                    ForEach(tasks) { task in
+                    ForEach(filteredTasks) { task in
                        
                                 
                                 NavigationLink {
@@ -48,6 +60,11 @@ struct listOfTasksView: View {
                 .toolbar {
                     Button("Add Task") {
                         showingSheetForNewTaskCreation = true
+                    }
+                    Button {
+                        showCompleted.toggle()
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
                     }
                 }
             }

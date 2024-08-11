@@ -12,6 +12,7 @@ import SwiftData
 class Settings {
     var defaultReminder: Double
     
+    
     init(defaultReminder: Double = 118800) {
         self.defaultReminder = defaultReminder
     }
