@@ -49,6 +49,11 @@ struct viewReminderView: View {
     @Environment(\.modelContext) var modelContext
 
     var reminder: Reminder
+    
+    
+    func deleteTaskLink(_ indexSet: IndexSet) {
+        reminder.task = nil
+    }
 
    @State private var viewUpdater = "anyTextWorksHere"
     
@@ -68,10 +73,16 @@ struct viewReminderView: View {
                 Section("Task") {
                     if !viewUpdater.isEmpty {
                         if let task = reminder.task {
-                            HStack {
-                                Text(task.name)
-                                Text(task.due.formatted())
+                            List {
+                                ForEach([task]) { task in
+                                HStack {
+                                    Text(task.name)
+                                    Text(task.due.formatted())
+                                }
+                                    
                             }
+                            .onDelete(perform: deleteTaskLink)
+                        }
                         } else {
                             Button("Link to task") {
                                 //Add linking feature here
