@@ -33,11 +33,7 @@ struct createNewReminderView: View {
                     if isValidReminder {
                         let newReminder = Reminder(id: UUID().uuidString, name: name, due: due)
                         modelContext.insert(newReminder)
-                        do {
-                            try modelContext.save()
-                        } catch {
-                            
-                        }
+                       
                         dismiss()
                     }
                 }

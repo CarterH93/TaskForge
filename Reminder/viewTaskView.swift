@@ -26,11 +26,6 @@ struct newReminderSubView: View {
                 .padding()
             Button("Add New Reminder") {
                 task.reminders.append(Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue))
-                do {
-                    try modelContext.save()
-                } catch {
-                    
-                }
                 dismiss()
             }
         }
@@ -47,6 +42,12 @@ struct viewTaskView: View {
 
     var task: Task
 
+    func deleteReminder(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let reminder = task.reminders[index]
+            modelContext.delete(reminder)
+        }
+    }
     
     @State private var showingNewReminderSheet = false
     var body: some View {
@@ -63,18 +64,41 @@ struct viewTaskView: View {
                 
                 Section("Reminders") {
                     
-                    List(task.reminders) { reminder in
-                        HStack {
-                            Text(reminder.name)
-                            Text(reminder.due.formatted())
+                    List {
+                        
+                        ForEach(task.reminders) { reminder in
+                            HStack {
+                                Text(reminder.name)
+                                Text(reminder.due.formatted())
+                            }
+                            
                         }
+                        .onDelete(perform: deleteReminder)
+                       
+                        
                     }
+                    
                     Button("Create New Reminder") {
                         showingNewReminderSheet = true
                     }
                 }
                 
+                Section {
+                    Button(task.completed ? "Mark as uncomplete" : "Mark as complete") {
+                        task.completed.toggle()
+                        
+                    }
+                }
                 
+                Section {
+                    if task.inAppGenerated == true {
+                        Button("Delete Task", role: .destructive) {
+                            dismiss()
+                            modelContext.delete(task)
+                            
+                        }
+                    }
+                }
                 
                 
             }

@@ -42,11 +42,7 @@ struct createNewTaskView: View {
                     if isValidTask {
                         let newTask = Task(oldid: UUID().uuidString, name: name, info: description, due: due, inAppGenerated: true)
                         modelContext.insert(newTask)
-                        do {
-                            try modelContext.save()
-                        } catch {
-                            
-                        }
+                        
                         dismiss()
                     }
                 }

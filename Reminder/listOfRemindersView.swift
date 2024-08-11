@@ -36,18 +36,6 @@ struct listOfRemindersView: View {
             }
         }
 
-    
-    func addSamples() {
-        let sampleReminder = Reminder(id: String(Int.random(in: 1...88888)), name: "Test 123", due: Date.now)
-        
-       
-        modelContext.insert(sampleReminder)
-        do {
-            try modelContext.save()
-        } catch {
-            
-        }
-    }
 }
 
 #Preview {
