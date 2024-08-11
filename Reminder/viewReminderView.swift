@@ -32,6 +32,18 @@ struct viewReminderView: View {
                     Text(reminder.due.formatted())
                 }
                 
+                Section("Task") {
+                    if let task = reminder.task {
+                        HStack {
+                            Text(task.name)
+                            Text(task.due.formatted())
+                        }
+                    } else {
+                        Button("Link to task") {
+                            //Add linking feature here
+                        }
+                    }
+                }
                 
                 
                 Section {
