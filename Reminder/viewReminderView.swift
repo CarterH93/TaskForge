@@ -8,16 +8,49 @@
 import SwiftUI
 import SwiftData
 
+
+struct simpleListOfTasks: View {
+    @Query var tasks: [Task]
+    
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
+    
+    var reminder: Reminder
+    @Binding var viewUpdater: String
+    
+    var body: some View {
+        NavigationStack {
+            List(tasks) { task in
+                Button {
+                    task.reminders.append(reminder)
+                    viewUpdater += "123"
+                    dismiss()
+                    
+                } label: {
+                    HStack {
+                        Text(task.name)
+                        Text(task.due.formatted())
+                    }
+                }
+                .buttonStyle(.plain)
+            }
+            .navigationTitle("Select Task")
+        }
+    }
+}
+
 struct viewReminderView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var showingReminderAlert = false
     
+    @State private var showingSheetForTaskLinking = false
+    
     @Environment(\.modelContext) var modelContext
 
     var reminder: Reminder
 
-   
+   @State private var viewUpdater = "anyTextWorksHere"
     
   
     var body: some View {
@@ -33,14 +66,17 @@ struct viewReminderView: View {
                 }
                 
                 Section("Task") {
-                    if let task = reminder.task {
-                        HStack {
-                            Text(task.name)
-                            Text(task.due.formatted())
-                        }
-                    } else {
-                        Button("Link to task") {
-                            //Add linking feature here
+                    if !viewUpdater.isEmpty {
+                        if let task = reminder.task {
+                            HStack {
+                                Text(task.name)
+                                Text(task.due.formatted())
+                            }
+                        } else {
+                            Button("Link to task") {
+                                //Add linking feature here
+                                showingSheetForTaskLinking = true
+                            }
                         }
                     }
                 }
@@ -65,6 +101,10 @@ struct viewReminderView: View {
                 
                 
             }
+            .sheet(isPresented: $showingSheetForTaskLinking) {
+                        simpleListOfTasks(reminder: reminder, viewUpdater: $viewUpdater)
+                    .presentationDragIndicator(.visible)
+                    }
             .navigationTitle(reminder.name)
             .alert("Are you sure you want to permanently delete this reminder?", isPresented: $showingReminderAlert) {
                 Button("Delete", role: .destructive) {
