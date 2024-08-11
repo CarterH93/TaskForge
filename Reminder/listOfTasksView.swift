@@ -16,14 +16,27 @@ struct listOfTasksView: View {
             NavigationStack {
                 List {
                     ForEach(tasks) { task in
-                        NavigationLink {
-                            viewTaskView(task: task)
-                        } label: {
-                            HStack {
-                                Text(task.name)
-                                Text(task.due.formatted())
-                            }
-                        }
+                       
+                                
+                                NavigationLink {
+                                    viewTaskView(task: task)
+                                } label: {
+                                    HStack {
+                                        
+                                        Image(systemName: task.completed ? "checkmark.circle.fill" : "circle")
+                                            .onTapGesture {
+                                                task.completed.toggle()
+                                            }
+                                            .accessibilityAddTraits(.isButton)
+                                        HStack {
+                                            Text(task.name)
+                                            Text(task.due.formatted())
+                                        }
+                                    }
+                                }
+                                
+                            
+                        
                         
                     }
                 }

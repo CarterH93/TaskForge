@@ -21,8 +21,15 @@ struct listOfRemindersView: View {
                             viewReminderView(reminder: reminder)
                         } label: {
                             HStack {
-                                Text(reminder.name)
-                                Text(reminder.due.formatted())
+                                Image(systemName: reminder.completed ? "checkmark.circle.fill" : "circle")
+                                    .onTapGesture {
+                                        reminder.completed.toggle()
+                                    }
+                                    .accessibilityAddTraits(.isButton)
+                                HStack {
+                                    Text(reminder.name)
+                                    Text(reminder.due.formatted())
+                                }
                             }
                         }
                         
