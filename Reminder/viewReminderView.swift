@@ -75,10 +75,16 @@ struct viewReminderView: View {
                         if let task = reminder.task {
                             List {
                                 ForEach([task]) { task in
-                                HStack {
-                                    Text(task.name)
-                                    Text(task.due.formatted())
-                                }
+                                    NavigationLink {
+                                        viewTaskView(task: task)
+                                    } label: {
+                                        HStack {
+                                            Text(task.name)
+                                            Text(task.due.formatted())
+                                        }
+                                    }
+                                    .buttonStyle(.plain)
+                                
                                     
                             }
                             .onDelete(perform: deleteTaskLink)

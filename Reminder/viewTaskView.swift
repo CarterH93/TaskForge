@@ -67,10 +67,15 @@ struct viewTaskView: View {
                     List {
                         
                         ForEach(task.reminders) { reminder in
-                            HStack {
-                                Text(reminder.name)
-                                Text(reminder.due.formatted())
+                            NavigationLink {
+                                viewReminderView(reminder: reminder)
+                            } label: {
+                                HStack {
+                                    Text(reminder.name)
+                                    Text(reminder.due.formatted())
+                                }
                             }
+                           
                             
                         }
                         .onDelete(perform: deleteReminder)
