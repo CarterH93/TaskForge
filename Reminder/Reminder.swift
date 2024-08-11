@@ -21,6 +21,22 @@ class Reminder {
     var notes: String
     var label: String?
     
+    //The variable to go off for the correct completed value. Looks at parent tasks to see if they are marked off as completed
+    var completedWrapper: Bool {
+        
+        if completed {
+            return true
+        }
+        
+        if let task = task {
+            if task.completed {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
     @Attribute(.externalStorage)
     var image: [Data]?

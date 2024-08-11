@@ -21,7 +21,7 @@ struct listOfRemindersView: View {
                             viewReminderView(reminder: reminder)
                         } label: {
                             HStack {
-                                Image(systemName: reminder.completed ? "checkmark.circle.fill" : "circle")
+                                Image(systemName: reminder.completedWrapper ? "checkmark.circle.fill" : "circle")
                                     .onTapGesture {
                                         reminder.completed.toggle()
                                     }
