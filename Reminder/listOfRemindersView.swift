@@ -9,7 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct listOfRemindersView: View {
-    @Query var reminders: [Reminder]
+    @Query(
+        sort: \Reminder.due
+    ) var reminders: [Reminder]
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewReminderCreation = false
     

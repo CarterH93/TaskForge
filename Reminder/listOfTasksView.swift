@@ -10,7 +10,9 @@ import SwiftData
 
 struct listOfTasksView: View {
     
-    @Query var tasks: [Task]
+    @Query(
+        sort: \Task.due
+    ) var tasks: [Task]
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewTaskCreation = false
     
