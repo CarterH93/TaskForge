@@ -65,7 +65,11 @@ struct viewTaskView: View {
                 }
                 
                 Section("due") {
-                    DatePicker("Due:", selection: $task.due)
+                    if task.inAppGenerated == true {
+                        DatePicker("Due:", selection: $task.due)
+                    } else {
+                        Text(task.due.formatted())
+                    }
                 }
                 
                 
