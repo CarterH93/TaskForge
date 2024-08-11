@@ -29,6 +29,7 @@
 		BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE992BDEFE710027A00C /* Parser.swift */; };
 		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
 		BC7FBEAF2BDF00EF0027A00C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* Task.swift */; };
+		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		BC7FBE992BDEFE710027A00C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BC7FBEAE2BDF00EF0027A00C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
 				BC39F06E2C6578B60019BB7F /* createNewTaskView.swift */,
 				BC39F0762C65C3820019BB7F /* viewTaskView.swift */,
+				BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */,
 				BC39F0702C65820E0019BB7F /* createNewReminderView.swift */,
 				BC39F06A2C6567850019BB7F /* listOfTasksView.swift */,
 				BC39F06C2C6567930019BB7F /* listOfRemindersView.swift */,
@@ -218,6 +221,7 @@
 				BC39F0772C65C3820019BB7F /* viewTaskView.swift in Sources */,
 				BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */,
 				BC7FBEA02BDEFE710027A00C /* Calendar.swift in Sources */,
+				BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */,
 				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
 				BC39F06D2C6567930019BB7F /* listOfRemindersView.swift in Sources */,
 				BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */,

@@ -17,10 +17,15 @@ struct listOfRemindersView: View {
             NavigationStack {
                 List {
                     ForEach(reminders) { reminder in
-                        HStack {
-                            Text(reminder.name)
-                            Text(reminder.due.formatted())
+                        NavigationLink {
+                            viewReminderView(reminder: reminder)
+                        } label: {
+                            HStack {
+                                Text(reminder.name)
+                                Text(reminder.due.formatted())
+                            }
                         }
+                        
                     }
                 }
                 .navigationTitle("Reminders")
