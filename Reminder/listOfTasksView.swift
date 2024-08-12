@@ -102,7 +102,9 @@ struct listOfTasksView: View {
                                         
                                         Image(systemName: task.completed ? "checkmark.circle.fill" : "circle")
                                             .onTapGesture {
-                                                task.completed.toggle()
+                                                withAnimation(.linear(duration: 0.01)) {
+                                                    task.completed.toggle()
+                                                }
                                             }
                                             .accessibilityAddTraits(.isButton)
                                         HStack {
@@ -128,7 +130,9 @@ struct listOfTasksView: View {
                         showingSheetForNewTaskCreation = true
                     }
                     Button {
-                        showCompleted.toggle()
+                        withAnimation(.linear(duration: 0.01)) {
+                            showCompleted.toggle()
+                        }
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
