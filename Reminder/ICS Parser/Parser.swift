@@ -8,12 +8,12 @@ internal class Parser {
         icsContent = ics
     }
 
-    func read() throws -> [Calendar] {
-        var completeCal = [Calendar?]()
+    func read() throws -> [CalendarICS] {
+        var completeCal = [CalendarICS?]()
 
         // Such state, much wow
         var inCalendar = false
-        var currentCalendar: Calendar?
+        var currentCalendar: CalendarICS?
         var inEvent = false
         var currentEvent: Event?
         var inAlarm = false
@@ -26,7 +26,7 @@ internal class Parser {
             switch line {
             case "BEGIN:VCALENDAR":
                 inCalendar = true
-                currentCalendar = Calendar(withComponents: nil)
+                currentCalendar = CalendarICS(withComponents: nil)
                 continue
             case "END:VCALENDAR":
                 inCalendar = false

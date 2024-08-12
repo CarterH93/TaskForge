@@ -15,7 +15,7 @@ actor MagicBox {
     
     
     //Retrieves information from remote source based on URL
-   private func load(url: URL) async throws -> [Calendar] {
+   private func load(url: URL) async throws -> [CalendarICS] {
        
        //can ignore the warning from the below line of code. We are certain this wont cause data race issues as the code waits for the result before continuing. Swift isnt smart enough to know that.
        let (data, _) = try await URLSession.shared.data(from: url)

@@ -5,7 +5,7 @@ public enum iCal {
     ///
     /// - Parameter string: string to load
     /// - Returns: List of containted `Calendar`s
-    public static func load(string: String) -> [Calendar] {
+    public static func load(string: String) -> [CalendarICS] {
         let icsContent = string.components(separatedBy: "\n")
         return parse(icsContent)
     }
@@ -27,7 +27,7 @@ public enum iCal {
     }
      */
 
-    private static func parse(_ icsContent: [String]) -> [Calendar] {
+    private static func parse(_ icsContent: [String]) -> [CalendarICS] {
         let parser = Parser(icsContent)
         do {
             return try parser.read()

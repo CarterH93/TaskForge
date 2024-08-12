@@ -18,7 +18,7 @@
 		BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */; };
 		BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */; };
 		BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8C2BDEFE710027A00C /* Alarm.swift */; };
-		BC7FBEA02BDEFE710027A00C /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8E2BDEFE710027A00C /* Calendar.swift */; };
+		BC7FBEA02BDEFE710027A00C /* CalendarICS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8E2BDEFE710027A00C /* CalendarICS.swift */; };
 		BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */; };
 		BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE902BDEFE710027A00C /* ContentView.swift */; };
 		BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE912BDEFE710027A00C /* Date.swift */; };
@@ -47,7 +47,7 @@
 		BC7FBE812BDEFE320027A00C /* Reminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Reminder.entitlements; sourceTree = "<group>"; };
 		BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC7FBE8C2BDEFE710027A00C /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
-		BC7FBE8E2BDEFE710027A00C /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		BC7FBE8E2BDEFE710027A00C /* CalendarICS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarICS.swift; sourceTree = "<group>"; };
 		BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarComponent.swift; sourceTree = "<group>"; };
 		BC7FBE902BDEFE710027A00C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BC7FBE912BDEFE710027A00C /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7FBE8C2BDEFE710027A00C /* Alarm.swift */,
-				BC7FBE8E2BDEFE710027A00C /* Calendar.swift */,
+				BC7FBE8E2BDEFE710027A00C /* CalendarICS.swift */,
 				BC7FBE8F2BDEFE710027A00C /* CalendarComponent.swift */,
 				BC7FBE912BDEFE710027A00C /* Date.swift */,
 				BC7FBE932BDEFE710027A00C /* Event.swift */,
@@ -223,7 +223,7 @@
 				BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */,
 				BC39F0772C65C3820019BB7F /* viewTaskView.swift in Sources */,
 				BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */,
-				BC7FBEA02BDEFE710027A00C /* Calendar.swift in Sources */,
+				BC7FBEA02BDEFE710027A00C /* CalendarICS.swift in Sources */,
 				BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */,
 				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
 				BC39F06D2C6567930019BB7F /* listOfRemindersView.swift in Sources */,

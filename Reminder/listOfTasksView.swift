@@ -8,7 +8,9 @@
 import SwiftUI
 import SwiftData
 
+
 struct listOfTasksView: View {
+    
     
     @Query(
         sort: \Task.due
@@ -23,6 +25,13 @@ struct listOfTasksView: View {
             return tasks
         } else {
             return tasks.filter { $0.completed == false }
+        }
+    }
+    
+    func filterDate(_ date: Date) -> [Task] {
+        return tasks.filter {
+            Calendar.current.isDate(date, inSameDayAs: $0.due)
+            
         }
     }
     
