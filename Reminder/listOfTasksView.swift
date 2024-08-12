@@ -11,6 +11,8 @@ import SwiftData
 
 struct listOfTasksView: View {
     
+    let maxDayRange = 8
+    
     
     @Query(
         sort: \Task.due
@@ -20,27 +22,79 @@ struct listOfTasksView: View {
     
     @State private var showCompleted = true
     
-    var filteredTasks: [Task] {
-        if showCompleted {
-            return tasks
-        } else {
-            return tasks.filter { $0.completed == false }
-        }
-    }
     
-    func filterDate(_ date: Date) -> [Task] {
-        return tasks.filter {
+    func filterDate(date: Date, num: Int) -> [Task] {
+        var firstFilter: [Task]
+        
+        if showCompleted {
+            firstFilter = tasks
+        } else {
+            firstFilter = tasks.filter { $0.completed == false }
+        }
+        
+        if num >= maxDayRange {
+            return firstFilter.filter {
+                $0.due >= date
+               
+                
+            }
+        }
+        
+        if num < 0 {
+            return firstFilter.filter {
+                $0.due < date
+               
+                
+            }
+        }
+        
+        return firstFilter.filter {
             Calendar.current.isDate(date, inSameDayAs: $0.due)
             
         }
+        
+        
     }
+    
+    
+    func dateBasedOnNum(_ num: Int) -> Date {
+        Calendar.current.startOfDay(for: Date.now.addingTimeInterval(Double(num * 86400)))
+    }
+    
+    func formatDateBasedOnNum(_ num: Int) -> String {
+        
+        let date = dateBasedOnNum(num)
+    
+        
+        if Calendar.current.isDate(date, inSameDayAs: Date.now) {
+            return "Today"
+        }
+        
+        if Calendar.current.isDate(date, inSameDayAs: Date.now.addingTimeInterval(86400)) {
+            return "Tomorrow"
+        }
+        
+        if num >= maxDayRange {
+            return "later"
+        }
+        if num < 0 {
+            return "Over Due"
+        }
+        
+        return date.formatted(.dateTime.weekday().day().month())
+        
+    }
+    
     
         var body: some View {
             NavigationStack {
                 List {
-                    ForEach(filteredTasks) { task in
-                       
-                                
+                    
+                    ForEach(-1...maxDayRange, id: \.self) { num in
+                        
+                        Section(formatDateBasedOnNum(num)) {
+                            
+                            ForEach(filterDate(date: dateBasedOnNum(num), num: num)) { task in
                                 NavigationLink {
                                     viewTaskView(task: task)
                                 } label: {
@@ -53,15 +107,16 @@ struct listOfTasksView: View {
                                             .accessibilityAddTraits(.isButton)
                                         HStack {
                                             Text(task.name)
-                                            Text(task.due.formatted())
+                                            Text(num >= maxDayRange || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
                                 }
-                                
-                            
-                        
-                        
+                            }
+                        }
+                        .headerProminence(num < 1 ? .increased : .standard)
                     }
+                
+                    
                 }
                 .navigationTitle("Tasks")
                 .sheet(isPresented: $showingSheetForNewTaskCreation) {

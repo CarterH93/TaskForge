@@ -25,6 +25,12 @@ struct ContentView: View {
                                 Label("Tasks", systemImage: "list.bullet.clipboard")
                             }
                     }
+                    .onAppear {
+                        
+                        //Needed to fix weird glitch with tabview and updating swiftdata.
+                        modelContext.insert(Task(oldid: "temp", name: "temp", info: "", due: Date.now))
+                        modelContext.delete(Task(oldid: "temp", name: "temp", info: "", due: Date.now))
+                    }
                     .task(priority: .background) {
                         let cache = MagicBox(modelContainer: modelContext.container)
                         
