@@ -28,8 +28,13 @@ struct ContentView: View {
                     .onAppear {
                         
                         //Needed to fix weird glitch with tabview and updating swiftdata.
-                        modelContext.insert(Task(oldid: "temp", name: "temp", info: "", due: Date.now))
-                        modelContext.delete(Task(oldid: "temp", name: "temp", info: "", due: Date.now))
+                        let task = Task(oldid: "temp", name: "temp", info: "", due: Date.now)
+                        modelContext.insert(task)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                            modelContext.delete(task)
+                                                                        })
+                       
                     }
                     .task(priority: .background) {
                         let cache = MagicBox(modelContainer: modelContext.container)
