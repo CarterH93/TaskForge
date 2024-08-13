@@ -62,12 +62,10 @@ actor MagicBox {
                             
                         } else {
                             
-                            //Only adds tasks that are today or in the future.
-                            //Reduces the importing clutter
-                            if newTask.due > Calendar.current.startOfDay(for: Date.now) {
+                            
                                 listOfTasks.append(newTask)
                                 listOfIDs.insert(oldid)
-                            }
+                            
                         }
                         
                         
