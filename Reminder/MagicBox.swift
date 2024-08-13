@@ -100,13 +100,24 @@ actor MagicBox {
     func work() async {
         do {
             
+            //Accessing Settings
+            let descriptorSettings = FetchDescriptor<Settings>()
+            var settingsHolder = Set<Settings>()
+            
+            
+            try modelContext.enumerate(descriptorSettings) { settings in
+                settingsHolder.insert(settings)
+            }
+            
+            let settings: Settings = settingsHolder.first ?? Settings()
+            
             print("accessing data")
             //Accessing remote data
             
             var remoteTasks = Set<Task>()
                 
             //retrieving tasks from ICS URL
-                let url = [URL(string: "https://calendar.google.com/calendar/ical/carterhawkins93%40gmail.com/private-aaf5f5c80fdd58e64a12f421a32baa8c/basic.ics")!, URL(string: "https://learn.lcps.org/calendar/feed/ical/1599581327/9336f6d23a186ce170b60460ec33395d/ical.ics")!]
+            let url = settings.icsSources
             
             for item in url {
                 await remoteTasks = remoteTasks.union(parseRemoteData(item))
@@ -131,16 +142,7 @@ actor MagicBox {
                 swiftDataTasks.insert(task)
             }
             
-            //Accessing Settings
-            let descriptorSettings = FetchDescriptor<Settings>()
-            var settingsHolder = Set<Settings>()
-            
-            
-            try modelContext.enumerate(descriptorSettings) { settings in
-                settingsHolder.insert(settings)
-            }
-            
-            let settings: Settings = settingsHolder.first ?? Settings()
+           
             
             //Now able to access all existing tasks
            // print(swiftDataTasks.count)
