@@ -20,7 +20,7 @@ struct listOfTasksView: View {
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewTaskCreation = false
     
-    @State private var showCompleted = true
+    @State private var showCompleted = false
     
     
     func filterDate(date: Date, num: Int) -> [Task] {
@@ -67,7 +67,10 @@ struct listOfTasksView: View {
     func formatDateBasedOnNum(_ num: Int) -> String {
         
         let date = dateBasedOnNum(num)
-    
+        
+        if num < 0 {
+            return "Over Due"
+        }
         
         if Calendar.current.isDate(date, inSameDayAs: Date.now) {
             return "Today"
@@ -80,9 +83,7 @@ struct listOfTasksView: View {
         if num >= maxDayRange {
             return "later"
         }
-        if num < 0 {
-            return "Over Due"
-        }
+        
         
         return date.formatted(.dateTime.weekday().day().month())
         
