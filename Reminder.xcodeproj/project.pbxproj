@@ -16,6 +16,7 @@
 		BC39F0772C65C3820019BB7F /* viewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC39F0762C65C3820019BB7F /* viewTaskView.swift */; };
 		BC628D612C6AF3AE00D75E37 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D602C6AF3AE00D75E37 /* More.swift */; };
 		BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D632C6AF5C300D75E37 /* syncing.swift */; };
+		BC628D662C6B04F300D75E37 /* cleanUpSpam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */; };
 		BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */; };
 		BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */; };
 		BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		BC39F0762C65C3820019BB7F /* viewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewTaskView.swift; sourceTree = "<group>"; };
 		BC628D602C6AF3AE00D75E37 /* More.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More.swift; sourceTree = "<group>"; };
 		BC628D632C6AF5C300D75E37 /* syncing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syncing.swift; sourceTree = "<group>"; };
+		BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cleanUpSpam.swift; sourceTree = "<group>"; };
 		BC7FBE782BDEFE300027A00C /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderApp.swift; sourceTree = "<group>"; };
 		BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				BC628D602C6AF3AE00D75E37 /* More.swift */,
 				BC628D632C6AF5C300D75E37 /* syncing.swift */,
+				BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */,
 				BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */,
 				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
+				BC628D662C6B04F300D75E37 /* cleanUpSpam.swift in Sources */,
 				BC39F06D2C6567930019BB7F /* listOfRemindersView.swift in Sources */,
 				BCEE6B112C6909600090E274 /* Settings.swift in Sources */,
 				BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */,

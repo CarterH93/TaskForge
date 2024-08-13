@@ -25,7 +25,7 @@ actor MagicBox {
     }
     
     //Creates list of tasks
-    private func parseRemoteData(_ url: URL) async -> Set<Task> {
+    private func parseRemoteData(_ url: URL, deletePastDueTasksOnIntialSync: Bool) async -> Set<Task> {
         
         var listOfTasks: [Task] = []
         //used to check for duplicates. Normal Set duplicate checking does not work because they are an @model.
@@ -52,9 +52,17 @@ actor MagicBox {
                         let link: URL = URL(string: eventItems["URL;VALUE=URI"] ?? "Error") ?? URL(string: "https://google.com")!
                         let description: String = eventItems["DESCRIPTION"] ?? "N/A"
                         let summary: String = eventItems["SUMMARY"] ?? "N/A"
+                        //Deletes any tasks before todays date. Removes clutter.
+                        var deleted: Bool {
+                            if startDate < Calendar.current.startOfDay(for: Date.now) && deletePastDueTasksOnIntialSync {
+                                return true
+                            } else {
+                                return false
+                            }
+                        }
                         
+                        let newTask = Task(oldid: oldid, name: summary, info: description, due: startDate, deleted1: deleted)
                         
-                        let newTask = Task(oldid: oldid, name: summary, info: description, due: startDate)
                         
                         if listOfIDs.contains(oldid) {
                             //This is a duplicate task
@@ -62,7 +70,8 @@ actor MagicBox {
                             
                         } else {
                             
-                            
+                           
+                              
                                 listOfTasks.append(newTask)
                                 listOfIDs.insert(oldid)
                             
@@ -97,7 +106,7 @@ actor MagicBox {
     }
     
     //Main Function
-    func work() async {
+    func work(deletePastDueTasksOnIntialSync: Bool = false) async {
         do {
             
             //Accessing Settings
@@ -120,7 +129,7 @@ actor MagicBox {
             let url = settings.icsSources
             
             for item in url {
-                await remoteTasks = remoteTasks.union(parseRemoteData(item))
+                await remoteTasks = remoteTasks.union(parseRemoteData(item, deletePastDueTasksOnIntialSync: deletePastDueTasksOnIntialSync))
             }
             
 
@@ -255,9 +264,16 @@ actor MagicBox {
                 for ID in inICSDataButNotSwiftData {
                     
                     if let task = remoteTasks.first(where: {$0.oldid == ID}) {
+                    
                         
+                        //Makes sure this task wasnt deleted behind the scenes
+                        if task.deleted1 == false  {
                         //Auto creates a reminder based on the information given in settings
                         task.reminders.append(Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminder)))
+                            print(task.deleted1.description)
+                        
+                            
+                        }
                         modelContext.insert(task)
                     }
                 

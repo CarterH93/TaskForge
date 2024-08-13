@@ -12,6 +12,7 @@ import SwiftUI
 struct syncing: View {
     @State private var link = ""
     @Environment(Settings.self) var settings
+    @State private var showingNewSheet = false
     
     func removeRows(at offsets: IndexSet) {
         settings.icsSources.remove(atOffsets: offsets)
@@ -26,6 +27,8 @@ struct syncing: View {
                     if let url = URL(string: link) {
                         //Do work
                         settings.icsSources.append(url)
+                        
+                        showingNewSheet = true
                     }
                     link = ""
                 }
@@ -39,6 +42,9 @@ struct syncing: View {
             }
             
         }
+        .sheet(isPresented: $showingNewSheet) {
+            cleanUpSpam()
+                }
         .navigationTitle("Syncing")
     }
 }

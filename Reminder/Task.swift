@@ -16,6 +16,7 @@ class Task {
     var info: String
     var due: Date
     var inAppGenerated: Bool
+    var deleted1: Bool
     //Provided by user
     var completed: Bool
     var notes: String
@@ -35,12 +36,13 @@ class Task {
         return MagicBoxID(oldID: oldid, id: id)
     }
     
-    init(oldid: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
+    init(oldid: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, deleted1: Bool = false, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
         self.oldid = oldid
         self.name = name
         self.info = info
         self.due = due
         self.inAppGenerated = inAppGenerated
+        self.deleted1 = deleted1
         self.completed = completed
         self.notes = notes
         self.label = label

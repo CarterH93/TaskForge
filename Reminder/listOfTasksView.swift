@@ -24,12 +24,14 @@ struct listOfTasksView: View {
     
     
     func filterDate(date: Date, num: Int) -> [Task] {
+        let preFilter = tasks.filter { $0.deleted1 == false }
+        
         var firstFilter: [Task]
         
         if showCompleted {
-            firstFilter = tasks
+            firstFilter = preFilter
         } else {
-            firstFilter = tasks.filter { $0.completed == false }
+            firstFilter = preFilter.filter { $0.completed == false }
         }
         
         if num >= maxDayRange {
