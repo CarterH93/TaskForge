@@ -15,18 +15,18 @@ struct listOfTasksView: View {
     
     
     @Query(
-        sort: \Task.due
-    ) var tasks: [Task]
+        sort: \TaskObject.due
+    ) var tasks: [TaskObject]
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewTaskCreation = false
     
     @State private var showCompleted = false
     
     
-    func filterDate(date: Date, num: Int) -> [Task] {
+    func filterDate(date: Date, num: Int) -> [TaskObject] {
         let preFilter = tasks.filter { $0.deleted1 == false }
         
-        var firstFilter: [Task]
+        var firstFilter: [TaskObject]
         
         if showCompleted {
             firstFilter = preFilter

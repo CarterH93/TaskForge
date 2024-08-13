@@ -13,8 +13,8 @@ struct newReminderSubView: View {
     @Environment(\.dismiss) var dismiss
     @State private var newReminderDue = Date.now
     @State private var newReminderName: String
-    private var task: Task
-    init(task: Task) {
+    private var task: TaskObject
+    init(task: TaskObject) {
         self.task = task
         _newReminderName = State(initialValue: "Work on \(task.name)")
     }
@@ -40,7 +40,7 @@ struct viewTaskView: View {
     
     @Environment(\.modelContext) var modelContext
 
-    @State var task: Task
+    @State var task: TaskObject
 
     func deleteReminder(_ indexSet: IndexSet) {
         for index in indexSet {

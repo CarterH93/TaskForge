@@ -14,7 +14,7 @@ struct ReminderApp: App {
         WindowGroup {
             RootView()
         }
-        .modelContainer(for: [Task.self, Settings.self])
+        .modelContainer(for: [TaskObject.self, Settings.self])
 
         
     }

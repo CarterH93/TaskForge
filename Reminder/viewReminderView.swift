@@ -10,7 +10,7 @@ import SwiftData
 
 
 struct simpleListOfTasks: View {
-    @Query var tasks: [Task]
+    @Query var tasks: [TaskObject]
     
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss

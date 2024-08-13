@@ -33,7 +33,7 @@ struct ContentView: View {
                     .onAppear {
                         
                         //Needed to fix weird glitch with tabview and updating swiftdata.
-                        let task = Task(oldid: "temp", name: "temp", info: "", due: Date.now)
+                        let task = TaskObject(oldid: "temp", name: "temp", info: "", due: Date.now)
                         modelContext.insert(task)
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {

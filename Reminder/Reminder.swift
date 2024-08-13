@@ -51,7 +51,7 @@ class Reminder {
     @Attribute(.externalStorage)
     var image: [Data]?
     
-    var task: Task?
+    var task: TaskObject?
     
     init(id: String, name: String, due: Date, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
         self.id = id

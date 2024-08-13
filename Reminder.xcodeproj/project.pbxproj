@@ -31,7 +31,7 @@
 		BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE982BDEFE710027A00C /* IcsElement.swift */; };
 		BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE992BDEFE710027A00C /* Parser.swift */; };
 		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
-		BC7FBEAF2BDF00EF0027A00C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* Task.swift */; };
+		BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +63,7 @@
 		BC7FBE982BDEFE710027A00C /* IcsElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IcsElement.swift; sourceTree = "<group>"; };
 		BC7FBE992BDEFE710027A00C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		BC7FBEAE2BDF00EF0027A00C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
 		BCEE6B102C6909600090E274 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +119,7 @@
 				BC39F0702C65820E0019BB7F /* createNewReminderView.swift */,
 				BC39F06A2C6567850019BB7F /* listOfTasksView.swift */,
 				BC39F06C2C6567930019BB7F /* listOfRemindersView.swift */,
-				BC7FBEAE2BDF00EF0027A00C /* Task.swift */,
+				BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */,
 				BC31B2282C5FF1F700548F7E /* Reminder.swift */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
@@ -227,7 +227,7 @@
 				BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */,
 				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
 				BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */,
-				BC7FBEAF2BDF00EF0027A00C /* Task.swift in Sources */,
+				BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */,
 				BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */,
 				BC628D612C6AF3AE00D75E37 /* More.swift in Sources */,
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,

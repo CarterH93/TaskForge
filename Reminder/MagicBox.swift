@@ -25,9 +25,9 @@ actor MagicBox {
     }
     
     //Creates list of tasks
-    private func parseRemoteData(_ url: URL, deletePastDueTasksOnIntialSync: Bool) async -> Set<Task> {
+    private func parseRemoteData(_ url: URL, deletePastDueTasksOnIntialSync: Bool) async -> Set<TaskObject> {
         
-        var listOfTasks: [Task] = []
+        var listOfTasks: [TaskObject] = []
         //used to check for duplicates. Normal Set duplicate checking does not work because they are an @model.
         var listOfIDs = Set<String>()
         
@@ -61,7 +61,7 @@ actor MagicBox {
                             }
                         }
                         
-                        let newTask = Task(oldid: oldid, name: summary, info: description, due: startDate, deleted1: deleted)
+                        let newTask = TaskObject(oldid: oldid, name: summary, info: description, due: startDate, deleted1: deleted)
                         
                         
                         if listOfIDs.contains(oldid) {
@@ -123,7 +123,7 @@ actor MagicBox {
             print("accessing data")
             //Accessing remote data
             
-            var remoteTasks = Set<Task>()
+            var remoteTasks = Set<TaskObject>()
                 
             //retrieving tasks from ICS URL
             var url: [URL] = []
@@ -149,8 +149,8 @@ actor MagicBox {
             
             
             //Accessing saved data
-            let descriptor = FetchDescriptor<Task>()
-            var swiftDataTasks = Set<Task>()
+            let descriptor = FetchDescriptor<TaskObject>()
+            var swiftDataTasks = Set<TaskObject>()
             
             
             try modelContext.enumerate(descriptor) { task in

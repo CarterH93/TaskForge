@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Task {
+class TaskObject {
     //Provided by calendar
     var oldid: String
     var name: String
