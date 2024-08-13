@@ -48,6 +48,7 @@ struct syncing: View {
         }
         .sheet(isPresented: $showingNewSheet) {
             cleanUpSpam(localTempURLHold: localTempURLHold)
+                .presentationDragIndicator(.visible)
                 }
         .navigationTitle("Syncing")
     }
