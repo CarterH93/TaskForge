@@ -24,6 +24,11 @@ struct ContentView: View {
                             .tabItem {
                                 Label("Tasks", systemImage: "list.bullet.clipboard")
                             }
+                        
+                        More()
+                            .tabItem {
+                                Label("More", systemImage: "ellipsis.circle")
+                            }
                     }
                     .onAppear {
                         

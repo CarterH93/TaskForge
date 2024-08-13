@@ -12,8 +12,10 @@ import SwiftData
 class Settings {
     var defaultReminder: Double
     
+    var icsSources: [URL]
     
-    init(defaultReminder: Double = 118800) {
+    init(defaultReminder: Double = 118800, icsSources: [URL] = []) {
         self.defaultReminder = defaultReminder
+        self.icsSources = icsSources
     }
 }
