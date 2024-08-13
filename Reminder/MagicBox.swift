@@ -293,6 +293,10 @@ actor MagicBox {
                 for ID in inSwiftDataButNotICSData {
                     
                     if let task = swiftDataTasks.first(where: {$0.oldid == ID}) {
+                        for reminder in task.reminders {
+                            modelContext.delete(reminder)
+                        }
+                        
                         modelContext.delete(task)
                     }
                     

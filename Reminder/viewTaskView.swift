@@ -127,6 +127,9 @@ struct viewTaskView: View {
                     }
             .alert("Are you sure you want to permanently delete this task and it's associated reminders?", isPresented: $showingDeleteAlert) {
                 Button("Delete", role: .destructive) {
+                    for reminder in task.reminders {
+                        modelContext.delete(reminder)
+                    }
                     modelContext.delete(task)
                     dismiss()
                     
