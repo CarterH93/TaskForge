@@ -17,6 +17,8 @@ struct syncing: View {
     @State private var localTempURLHold: [URL] = []
     
     func removeRows(at offsets: IndexSet) {
+        localTempURLHold = settings.icsSources
+        localTempURLHold.remove(atOffsets: offsets)
         settings.icsSources.remove(atOffsets: offsets)
         showingNewSheet = true
         }
