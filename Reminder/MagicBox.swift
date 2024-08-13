@@ -106,7 +106,7 @@ actor MagicBox {
     }
     
     //Main Function
-    func work(deletePastDueTasksOnIntialSync: Bool = false) async {
+    func work(deletePastDueTasksOnIntialSync: Bool = false, inputURLS: [URL]? = nil) async {
         do {
             
             //Accessing Settings
@@ -126,7 +126,13 @@ actor MagicBox {
             var remoteTasks = Set<Task>()
                 
             //retrieving tasks from ICS URL
-            let url = settings.icsSources
+            var url: [URL] = []
+            
+            if let inputURLS = inputURLS {
+                url = inputURLS
+            } else {
+                url = settings.icsSources
+            }
             
             for item in url {
                 await remoteTasks = remoteTasks.union(parseRemoteData(item, deletePastDueTasksOnIntialSync: deletePastDueTasksOnIntialSync))
@@ -161,7 +167,7 @@ actor MagicBox {
             //Compare data here
             
             //Only run if remote ICS data has contents
-            if remoteTasks.isEmpty {
+            if remoteTasks.isEmpty && !url.isEmpty {
                 //DO NOTHING. No internet connection.
             } else {
                 //valid items are in the remote set

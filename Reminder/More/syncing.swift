@@ -14,6 +14,8 @@ struct syncing: View {
     @Environment(Settings.self) var settings
     @State private var showingNewSheet = false
     
+    @State private var localTempURLHold: [URL] = []
+    
     func removeRows(at offsets: IndexSet) {
         settings.icsSources.remove(atOffsets: offsets)
         }
@@ -26,6 +28,8 @@ struct syncing: View {
                     
                     if let url = URL(string: link) {
                         //Do work
+                        localTempURLHold = settings.icsSources
+                        localTempURLHold.append(url)
                         settings.icsSources.append(url)
                         
                         showingNewSheet = true
@@ -43,7 +47,7 @@ struct syncing: View {
             
         }
         .sheet(isPresented: $showingNewSheet) {
-            cleanUpSpam()
+            cleanUpSpam(localTempURLHold: localTempURLHold)
                 }
         .navigationTitle("Syncing")
     }
