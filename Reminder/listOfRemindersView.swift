@@ -56,7 +56,10 @@ struct listOfRemindersView: View {
     
     
     func dateBasedOnNum(_ num: Int) -> Date {
-        Calendar.current.startOfDay(for: Date.now.addingTimeInterval(Double(num * 86400)))
+        if num < 0 {
+            return Calendar.current.startOfDay(for: Date.now)
+        }
+        return Calendar.current.startOfDay(for: Date.now.addingTimeInterval(Double(num * 86400)))
     }
     
     func formatDateBasedOnNum(_ num: Int) -> String {
