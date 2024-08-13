@@ -61,8 +61,13 @@ actor MagicBox {
                             //DO NOTHING
                             
                         } else {
-                            listOfTasks.append(newTask)
-                            listOfIDs.insert(oldid)
+                            
+                            //Only adds tasks that are today or in the future.
+                            //Reduces the importing clutter
+                            if newTask.due > Calendar.current.startOfDay(for: Date.now) {
+                                listOfTasks.append(newTask)
+                                listOfIDs.insert(oldid)
+                            }
                         }
                         
                         
@@ -253,10 +258,6 @@ actor MagicBox {
                         
                         //Auto creates a reminder based on the information given in settings
                         task.reminders.append(Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminder)))
-                        //Auto complete any tasks before today
-                        if task.due < Date.now {
-                            task.completed = true
-                        }
                         modelContext.insert(task)
                     }
                 
