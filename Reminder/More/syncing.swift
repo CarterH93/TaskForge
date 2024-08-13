@@ -18,6 +18,7 @@ struct syncing: View {
     
     func removeRows(at offsets: IndexSet) {
         settings.icsSources.remove(atOffsets: offsets)
+        showingNewSheet = true
         }
     
     var body: some View {
