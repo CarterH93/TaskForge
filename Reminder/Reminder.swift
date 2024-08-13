@@ -37,6 +37,16 @@ class Reminder {
         return false
     }
     
+    //We do not want the user changing the reminder completed bool if the parent task is completed. Results in weird behavior.
+    var canChangeCompleted: Bool {
+        if let task = task {
+            if task.completed {
+                return false
+            }
+        }
+        return true
+    }
+    
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
     @Attribute(.externalStorage)
     var image: [Data]?
