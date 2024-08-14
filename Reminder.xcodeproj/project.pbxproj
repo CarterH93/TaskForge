@@ -17,6 +17,11 @@
 		BC628D612C6AF3AE00D75E37 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D602C6AF3AE00D75E37 /* More.swift */; };
 		BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D632C6AF5C300D75E37 /* syncing.swift */; };
 		BC628D662C6B04F300D75E37 /* cleanUpSpam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */; };
+		BC628E842C6C234800D75E37 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E832C6C234800D75E37 /* LocalNotificationManager.swift */; };
+		BC628E872C6C235900D75E37 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E862C6C235900D75E37 /* LocalNotification.swift */; };
+		BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8A2C6C283B00D75E37 /* NextView.swift */; };
+		BC628E8D2C6C2B6C00D75E37 /* EnableNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8C2C6C2B6C00D75E37 /* EnableNotifications.swift */; };
+		BC628E8F2C6C2C5500D75E37 /* ContentViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */; };
 		BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */; };
 		BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */; };
 		BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */; };
@@ -47,6 +52,11 @@
 		BC628D602C6AF3AE00D75E37 /* More.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More.swift; sourceTree = "<group>"; };
 		BC628D632C6AF5C300D75E37 /* syncing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syncing.swift; sourceTree = "<group>"; };
 		BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cleanUpSpam.swift; sourceTree = "<group>"; };
+		BC628E832C6C234800D75E37 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		BC628E862C6C235900D75E37 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		BC628E8A2C6C283B00D75E37 /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
+		BC628E8C2C6C2B6C00D75E37 /* EnableNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotifications.swift; sourceTree = "<group>"; };
+		BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewWrapper.swift; sourceTree = "<group>"; };
 		BC7FBE782BDEFE300027A00C /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderApp.swift; sourceTree = "<group>"; };
 		BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,10 +93,21 @@
 			isa = PBXGroup;
 			children = (
 				BC628D602C6AF3AE00D75E37 /* More.swift */,
+				BC628E8C2C6C2B6C00D75E37 /* EnableNotifications.swift */,
 				BC628D632C6AF5C300D75E37 /* syncing.swift */,
 				BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		BC628E852C6C234A00D75E37 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				BC628E832C6C234800D75E37 /* LocalNotificationManager.swift */,
+				BC628E8A2C6C283B00D75E37 /* NextView.swift */,
+				BC628E862C6C235900D75E37 /* LocalNotification.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		BC7FBE6F2BDEFE300027A00C = {
@@ -113,6 +134,7 @@
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
+				BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */,
 				BC39F06E2C6578B60019BB7F /* createNewTaskView.swift */,
 				BC39F0762C65C3820019BB7F /* viewTaskView.swift */,
 				BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */,
@@ -120,6 +142,7 @@
 				BC39F06A2C6567850019BB7F /* listOfTasksView.swift */,
 				BC39F06C2C6567930019BB7F /* listOfRemindersView.swift */,
 				BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */,
+				BC628E852C6C234A00D75E37 /* Notifications */,
 				BC31B2282C5FF1F700548F7E /* Reminder.swift */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
@@ -224,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC628E8F2C6C2C5500D75E37 /* ContentViewWrapper.swift in Sources */,
 				BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */,
 				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
 				BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */,
@@ -231,6 +255,7 @@
 				BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */,
 				BC628D612C6AF3AE00D75E37 /* More.swift in Sources */,
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,
+				BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */,
 				BC39F06F2C6578B60019BB7F /* createNewTaskView.swift in Sources */,
 				BC39F0712C65820E0019BB7F /* createNewReminderView.swift in Sources */,
 				BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */,
@@ -240,12 +265,15 @@
 				BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */,
 				BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */,
 				BC39F0772C65C3820019BB7F /* viewTaskView.swift in Sources */,
+				BC628E842C6C234800D75E37 /* LocalNotificationManager.swift in Sources */,
 				BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */,
 				BC7FBEA02BDEFE710027A00C /* CalendarICS.swift in Sources */,
 				BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */,
+				BC628E8D2C6C2B6C00D75E37 /* EnableNotifications.swift in Sources */,
 				BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */,
 				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
 				BC628D662C6B04F300D75E37 /* cleanUpSpam.swift in Sources */,
+				BC628E872C6C235900D75E37 /* LocalNotification.swift in Sources */,
 				BC39F06D2C6567930019BB7F /* listOfRemindersView.swift in Sources */,
 				BCEE6B112C6909600090E274 /* Settings.swift in Sources */,
 				BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */,
@@ -314,7 +342,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 			};
 			name = Debug;
 		};
@@ -369,7 +397,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 			};
 			name = Release;
 		};
@@ -407,7 +435,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,7 +475,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

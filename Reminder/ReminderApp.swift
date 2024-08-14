@@ -10,9 +10,11 @@ import SwiftData
 
 @main
 struct ReminderApp: App {
+    @State var lnManager = LocalNotificationManager()
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environment(lnManager)
         }
         .modelContainer(for: [TaskObject.self, Settings.self])
 
@@ -34,10 +36,10 @@ struct RootView: View {
             
             Group {
                 if let currentSettings {
-                    ContentView()
+                    ContentViewWrapper()
                         
                 } else {
-                    ContentView()
+                    ContentViewWrapper()
                         
                 }
             }

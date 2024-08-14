@@ -14,6 +14,7 @@ struct More: View {
     var body: some View {
         NavigationStack {
             List {
+                EnableNotifications()
                 Section("Syncing") {
                     NavigationLink("Add Canvas or Calendar Connection") {
                         syncing()
