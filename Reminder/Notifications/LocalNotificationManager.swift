@@ -17,6 +17,9 @@ class LocalNotificationManager: NSObject {
     var pendingRequests: [UNNotificationRequest] = []
     var nextView: NextView?
     
+    
+    
+    
     override init() {
         super.init()
         notificationCenter.delegate = self

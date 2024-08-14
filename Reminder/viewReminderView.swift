@@ -10,7 +10,9 @@ import SwiftData
 
 
 struct simpleListOfTasks: View {
-    @Query var tasks: [TaskObject]
+    @Query(filter: #Predicate<TaskObject> { task in
+        task.deleted1 == false
+    }) var tasks: [TaskObject]
     
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
@@ -41,6 +43,12 @@ struct simpleListOfTasks: View {
 
 struct viewReminderView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(LocalNotificationManager.self) var lnManager
+    
+    
+    func makeReminderNotification() {
+        
+    }
     
     @State private var showingReminderAlert = false
     
@@ -59,6 +67,7 @@ struct viewReminderView: View {
     
   
     var body: some View {
+        @Bindable var lnManager: LocalNotificationManager = lnManager
         NavigationStack {
             Form {
                 
@@ -130,6 +139,18 @@ struct viewReminderView: View {
                     modelContext.delete(reminder)
                             }
                     }
+            .onChange(of: reminder.due) {
+                Task {
+                    
+                    lnManager.removeRequest(withIdentifier: reminder.id)
+                    
+                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
+                    
+                    let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: reminder.notes, dateComponents: dateComponents, repeats: false)
+                    
+                    await lnManager.schedule(localNotification: localNotification)
+                }
+            }
         }
     }
 }
