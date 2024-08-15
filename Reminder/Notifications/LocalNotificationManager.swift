@@ -163,12 +163,22 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                 let predicate = #Predicate<Reminder>{ reminder in
                     reminder.id == value
                         }
+                let settingsPredicate = #Predicate<Settings>{ _ in
+                    true
+                        }
                         var fetchDescriptor = FetchDescriptor(predicate: predicate)
                         fetchDescriptor.fetchLimit = 1
+                
+                var settingsFetchDescriptor = FetchDescriptor(predicate: settingsPredicate)
+                settingsFetchDescriptor.fetchLimit = 1
                 do {
                     let reminders = try modelContext.fetch(fetchDescriptor)
                     
+                    let settings = try modelContext.fetch(settingsFetchDescriptor)
                     reminders.first?.completed = true
+                    settings.first?.remindersThatNeedUIUpdate.insert(value)
+                    
+                    try modelContext.save()
                 } catch {
                     
                 }
@@ -222,14 +232,24 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                 let predicate = #Predicate<Reminder>{ reminder in
                     reminder.id == value
                         }
+                let settingsPredicate = #Predicate<Settings>{ _ in
+                    true
+                        }
                         var fetchDescriptor = FetchDescriptor(predicate: predicate)
                         fetchDescriptor.fetchLimit = 1
+                var settingsFetchDescriptor = FetchDescriptor(predicate: settingsPredicate)
+                settingsFetchDescriptor.fetchLimit = 1
                 do {
                     let reminders = try modelContext.fetch(fetchDescriptor)
                     
+                    let settings = try modelContext.fetch(settingsFetchDescriptor)
+                    
                     if let reminder = reminders.first {
                         
+                        
                         reminder.due = Date.now.addingTimeInterval(snoozeInterval)
+                        
+                        settings.first?.remindersThatNeedUIUpdate.insert(reminder.id)
                         
                         try modelContext.save()
                     }

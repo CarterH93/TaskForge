@@ -10,7 +10,7 @@ import SwiftData
 
 struct listOfRemindersView: View {
     let maxDayRange = 8
-    
+    @Environment(Settings.self) var settings
     
     @Query(
         sort: \Reminder.due
@@ -87,9 +87,23 @@ struct listOfRemindersView: View {
         
     }
     
+    @Environment(\.scenePhase) var scenePhase
+    
+    
     
         var body: some View {
             NavigationStack {
+                Button("update") {
+                    for reminder in settings.remindersThatNeedUIUpdate {
+                        let realReminder = reminders.first(where: { $0.id == reminder})
+                        realReminder?.UIUpdate += "fdsa"
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1), execute: {
+                            settings.remindersThatNeedUIUpdate.remove(reminder)
+                                                                        })
+                        
+                        
+                    }
+                }
                 List {
                     
                     ForEach(-1...maxDayRange, id: \.self) { num in
@@ -124,6 +138,7 @@ struct listOfRemindersView: View {
                 
                     
                 }
+                
                 .navigationTitle("Reminders")
                 .sheet(isPresented: $showingSheetForNewReminderCreation) {
                             createNewReminderView()

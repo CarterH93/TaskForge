@@ -20,6 +20,7 @@ class Reminder {
     var completed: Bool
     var notes: String
     var label: String?
+    var UIUpdate: String
     
     //The variable to go off for the correct completed value. Looks at parent tasks to see if they are marked off as completed
     var completedWrapper: Bool {
@@ -53,7 +54,7 @@ class Reminder {
     
     var task: TaskObject?
     
-    init(id: String, name: String, due: Date, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
+    init(id: String, name: String, due: Date, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil, UIUpdate: String = "") {
         self.id = id
         self.name = name
         self.due = due
@@ -61,7 +62,7 @@ class Reminder {
         self.notes = notes
         self.label = label
         self.image = image
-        
+        self.UIUpdate = UIUpdate
         
         
     }
