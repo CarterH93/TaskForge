@@ -93,17 +93,6 @@ struct listOfRemindersView: View {
     
         var body: some View {
             NavigationStack {
-                Button("update") {
-                    for reminder in settings.remindersThatNeedUIUpdate {
-                        let realReminder = reminders.first(where: { $0.id == reminder})
-                        realReminder?.UIUpdate += "fdsa"
-                        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1), execute: {
-                            settings.remindersThatNeedUIUpdate.remove(reminder)
-                                                                        })
-                        
-                        
-                    }
-                }
                 List {
                     
                     ForEach(-1...maxDayRange, id: \.self) { num in
@@ -155,6 +144,31 @@ struct listOfRemindersView: View {
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
+                }
+                .onChange(of: scenePhase) { _, newPhase in
+                   
+                    
+                    if newPhase == .inactive {
+                                        print("Inactive")
+                                    } else if newPhase == .active {
+                                        print("Active")
+                                        
+                                        for reminder in settings.remindersThatNeedUIUpdate {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                                                let realReminder = reminders.first(where: { $0.id == reminder})
+                                                realReminder?.UIUpdate += "fdsa"
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                                                    settings.remindersThatNeedUIUpdate.remove(reminder)
+                                                                                                })
+                                                                                            })
+                                            
+                                            
+                                            
+                                        }
+                                        
+                                    } else if newPhase == .background {
+                                        print("Background")
+                                    }
                 }
             }
         }

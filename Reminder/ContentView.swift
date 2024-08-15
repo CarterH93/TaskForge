@@ -53,6 +53,10 @@ struct ContentView: View {
                         
                         await cache.work()
                         
+                        
+                        
+                    }
+                    .onAppear {
                         lnManager.clearRequests()
                         
                         for newReminder in filterReminders {
@@ -66,7 +70,6 @@ struct ContentView: View {
                                 
                             }
                         }
-                        
                     }
                     
                 
