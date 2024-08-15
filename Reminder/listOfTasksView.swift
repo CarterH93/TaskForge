@@ -13,6 +13,12 @@ struct listOfTasksView: View {
     
     let maxDayRange = 8
     
+    static var now: Date { Date.now }
+    @Query var reminders: [Reminder]
+    
+    var filterReminders: [Reminder] {
+    reminders.filter { $0.due > Date.now && $0.completedWrapper == false }
+    }
     
     @Query(
         sort: \TaskObject.due
@@ -21,7 +27,7 @@ struct listOfTasksView: View {
     @State private var showingSheetForNewTaskCreation = false
     
     @State private var showCompleted = false
-    
+    @Environment(LocalNotificationManager.self) var lnManager
     
     func filterDate(date: Date, num: Int) -> [TaskObject] {
         let preFilter = tasks.filter { $0.deleted1 == false }
@@ -93,6 +99,7 @@ struct listOfTasksView: View {
     
     
         var body: some View {
+            @Bindable var lnManager: LocalNotificationManager = lnManager
             NavigationStack {
                 List {
                     
@@ -148,6 +155,21 @@ struct listOfTasksView: View {
                 let cache = MagicBox(modelContainer: modelContext.container)
                 
                 await cache.work()
+                
+                lnManager.clearRequests()
+                
+                for newReminder in filterReminders {
+                    Task {
+                        
+                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)
+                        
+                        let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: newReminder.notes, dateComponents: dateComponents, repeats: false)
+                        
+                        await lnManager.schedule(localNotification: localNotification)
+                        
+                    }
+                }
+                
             }
         }
 

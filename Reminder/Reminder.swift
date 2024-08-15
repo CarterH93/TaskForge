@@ -61,5 +61,8 @@ class Reminder {
         self.notes = notes
         self.label = label
         self.image = image
+        
+        
+        
     }
 }
