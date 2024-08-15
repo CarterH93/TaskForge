@@ -9,6 +9,7 @@
 
 import Foundation
 import NotificationCenter
+import SwiftData
 
 @Observable
 class LocalNotificationManager: NSObject {
@@ -17,7 +18,7 @@ class LocalNotificationManager: NSObject {
     var pendingRequests: [UNNotificationRequest] = []
     var nextView: NextView?
     
-    
+   
     
     
     override init() {
@@ -125,9 +126,31 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
     
     @MainActor
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
-        if let value = response.notification.request.content.userInfo["nextView"] as? String {
-            nextView = NextView(id: value)
-        }
+        
+        
+        
+             
+             let persistenceContainer: ModelContainer = {
+                 print(URL.applicationSupportDirectory.path(percentEncoded: false))
+                 let schema = Schema([
+                    TaskObject.self, Settings.self
+                 ])
+                 
+                 let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+                 do {
+                     return try ModelContainer(for: schema, configurations: [modelConfiguration])
+                 } catch {
+                     fatalError("Could not create ModelContainer: \(error)")
+                 }
+             }()
+             
+             var modelContext: ModelContext {
+                 persistenceContainer.mainContext
+             }
+        
+        
+        
         
         // Respond to snooze action
         var snoozeInterval: Double?
@@ -137,6 +160,21 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
             //complete reminder
             if let value = response.notification.request.content.userInfo["nextView"] as? String {
                 //Complete reminder based on id
+                let predicate = #Predicate<Reminder>{ reminder in
+                    reminder.id == value
+                        }
+                        var fetchDescriptor = FetchDescriptor(predicate: predicate)
+                        fetchDescriptor.fetchLimit = 1
+                do {
+                    let reminders = try modelContext.fetch(fetchDescriptor)
+                    
+                    reminders.first?.completed = true
+                } catch {
+                    
+                }
+                        
+                
+                
             }
             break
             //fix numbers below. Messed with them for testing purposes.
@@ -150,7 +188,10 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
             snoozeInterval = 24
             break
         default:
-            //Do nothing
+            if let value = response.notification.request.content.userInfo["nextView"] as? String {
+                nextView = NextView(id: value)
+            }
+            
             break
             
         }
@@ -158,6 +199,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
     
         
         if let snoozeInterval = snoozeInterval {
+            let snoozeIntervalFinal = snoozeInterval * 3600
             let content = response.notification.request.content
             let newContent = content.mutableCopy() as! UNMutableNotificationContent
             //Need to multiply snoozeinterval value below by 3600. Not doing this right now for testing purposes.
@@ -175,7 +217,33 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
             
             
             //Change reminder date and time based on time and id
-            //Still need to do
+            if let value = response.notification.request.content.userInfo["nextView"] as? String {
+                //change reminder due date
+                let predicate = #Predicate<Reminder>{ reminder in
+                    reminder.id == value
+                        }
+                        var fetchDescriptor = FetchDescriptor(predicate: predicate)
+                        fetchDescriptor.fetchLimit = 1
+                do {
+                    let reminders = try modelContext.fetch(fetchDescriptor)
+                    
+                    if let reminder = reminders.first {
+                        
+                        reminder.due = Date.now.addingTimeInterval(snoozeInterval)
+                        
+                        try modelContext.save()
+                    }
+                } catch {
+                    
+                }
+                        
+                
+                
+            }
+            
+            
+            
+            
             
             do {
                 try await notificationCenter.add(request)

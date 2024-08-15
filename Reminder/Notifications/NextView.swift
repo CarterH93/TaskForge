@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct NextView: View, Identifiable {
+    @Environment(\.modelContext) var modelContext
     var id: String
     var body: some View {
-        Text(id)
+        VStack {
+            Text(id)
+        }
     }
 }
 
