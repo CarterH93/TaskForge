@@ -43,7 +43,7 @@ struct ContentView: View {
                         let task = TaskObject(oldid: "temp", name: "temp", info: "", due: Date.now)
                         modelContext.insert(task)
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1), execute: {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                             modelContext.delete(task)
                                                                         })
                        
