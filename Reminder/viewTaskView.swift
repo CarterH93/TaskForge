@@ -25,7 +25,7 @@ struct newReminderSubView: View {
             DatePicker("Remind", selection: $newReminderDue)
                 .padding()
             Button("Add New Reminder") {
-                task.reminders.append(Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue))
+                task.reminders!.append(Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue))
                 dismiss()
             }
         }
@@ -44,7 +44,7 @@ struct viewTaskView: View {
 
     func deleteReminder(_ indexSet: IndexSet) {
         for index in indexSet {
-            let reminder = task.reminders[index]
+            let reminder = task.reminders![index]
             modelContext.delete(reminder)
         }
     }
@@ -78,7 +78,7 @@ struct viewTaskView: View {
                     
                     List {
                         
-                        ForEach(task.reminders) { reminder in
+                        ForEach(task.reminders!) { reminder in
                             NavigationLink {
                                 viewReminderView(reminder: reminder)
                             } label: {
@@ -127,7 +127,7 @@ struct viewTaskView: View {
                     }
             .alert("Are you sure you want to permanently delete this task and it's associated reminders?", isPresented: $showingDeleteAlert) {
                 Button("Delete", role: .destructive) {
-                    for reminder in task.reminders {
+                    for reminder in task.reminders! {
                         modelContext.delete(reminder)
                     }
                     modelContext.delete(task)

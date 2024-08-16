@@ -24,7 +24,7 @@ struct simpleListOfTasks: View {
         NavigationStack {
             List(tasks) { task in
                 Button {
-                    task.reminders.append(reminder)
+                    task.reminders!.append(reminder)
                     viewUpdater += "123"
                     dismiss()
                     

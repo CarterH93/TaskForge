@@ -74,6 +74,7 @@
 		BC7FBE992BDEFE710027A00C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
+		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
 		BCEE6B102C6909600090E274 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +114,7 @@
 		BC7FBE6F2BDEFE300027A00C = {
 			isa = PBXGroup;
 			children = (
+				BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */,
 				BC7FBE7A2BDEFE300027A00C /* Reminder */,
 				BC7FBE792BDEFE300027A00C /* Products */,
 			);
@@ -415,6 +417,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Task-Forge-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -455,6 +458,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Task-Forge-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

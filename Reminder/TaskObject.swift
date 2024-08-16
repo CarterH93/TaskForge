@@ -11,22 +11,22 @@ import SwiftData
 @Model
 class TaskObject {
     //Provided by calendar
-    var oldid: String
-    var name: String
-    var info: String
-    var due: Date
-    var inAppGenerated: Bool
-    var deleted1: Bool
+    var oldid: String = ""
+    var name: String = ""
+    var info: String = ""
+    var due: Date = Date.now
+    var inAppGenerated: Bool = false
+    var deleted1: Bool = false
     //Provided by user
-    var completed: Bool
-    var notes: String
+    var completed: Bool = false
+    var notes: String = ""
     var label: String?
     
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
     @Attribute(.externalStorage)
     var image: [Data]?
     
-    var reminders = [Reminder]()
+    var reminders: [Reminder]?
     
     var id: String {
         return "\(oldid)\(name)\(info)\(due)"

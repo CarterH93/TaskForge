@@ -14,13 +14,13 @@ import SwiftData
 
 @Model
 class Reminder {
-    var id: String
-    var name: String
-    var due: Date
-    var completed: Bool
-    var notes: String
+    var id: String = ""
+    var name: String = ""
+    var due: Date = Date.now
+    var completed: Bool = false
+    var notes: String = ""
     var label: String?
-    var UIUpdate: String
+    var UIUpdate: String = ""
     
     //The variable to go off for the correct completed value. Looks at parent tasks to see if they are marked off as completed
     var completedWrapper: Bool {

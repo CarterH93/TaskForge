@@ -42,7 +42,7 @@ struct createNewTaskView: View {
                 Button("Add New Task") {
                     if isValidTask {
                         let newTask = TaskObject(oldid: UUID().uuidString, name: name, info: description, due: due, inAppGenerated: true)
-                        newTask.reminders.append(Reminder(id: UUID().uuidString, name: "Work on \(newTask.name)", due: due.addingTimeInterval(-settings.defaultReminder)))
+                        newTask.reminders!.append(Reminder(id: UUID().uuidString, name: "Work on \(newTask.name)", due: due.addingTimeInterval(-settings.defaultReminder)))
                         modelContext.insert(newTask)
                         
                         dismiss()

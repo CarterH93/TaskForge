@@ -10,9 +10,9 @@ import SwiftData
 
 @Model
 class Settings {
-    var defaultReminder: Double
+    var defaultReminder: Double = 0
     
-    var icsSources: [URL]
+    var icsSources: [URL] = [URL(string: "google.com")!]
     
     var remindersThatNeedUIUpdate = Set<String>()
     
