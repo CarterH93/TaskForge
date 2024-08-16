@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NextView: View, Identifiable {
     @Environment(\.modelContext) var modelContext
+    @Query var reminders: [Reminder]
+    
     var id: String
+    
+    
+    
     var body: some View {
-        VStack {
-            Text(id)
-        }
+            viewReminderView(reminder: reminders.first(where: { $0.id == id } )!)
+       
     }
 }
 
