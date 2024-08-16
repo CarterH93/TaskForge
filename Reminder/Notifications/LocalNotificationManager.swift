@@ -133,7 +133,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
              let persistenceContainer: ModelContainer = {
                  print(URL.applicationSupportDirectory.path(percentEncoded: false))
                  let schema = Schema([
-                    TaskObject.self, Settings.self
+                    TaskObject.self, Settings1.self
                  ])
                  
                  let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
@@ -163,20 +163,38 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                 let predicate = #Predicate<Reminder>{ reminder in
                     reminder.id == value
                         }
-                let settingsPredicate = #Predicate<Settings>{ _ in
+                let settingsPredicate = #Predicate<Settings1>{ _ in
                     true
                         }
                         var fetchDescriptor = FetchDescriptor(predicate: predicate)
                         fetchDescriptor.fetchLimit = 1
                 
                 var settingsFetchDescriptor = FetchDescriptor(predicate: settingsPredicate)
-                settingsFetchDescriptor.fetchLimit = 1
+
+                
                 do {
                     let reminders = try modelContext.fetch(fetchDescriptor)
                     
-                    let settings = try modelContext.fetch(settingsFetchDescriptor)
+                    let settingsHold = try modelContext.fetch(settingsFetchDescriptor)
                     reminders.first?.completed = true
-                    settings.first?.remindersThatNeedUIUpdate.insert(value)
+                    
+                    var settingsTemp: Settings1?
+                    
+                    for item in settingsHold {
+                        if let settingsTempWrapper = settingsTemp {
+                            
+                            if item.Date1 < settingsTempWrapper.Date1 {
+                                settingsTemp = item
+                            }
+                            
+                        } else {
+                            settingsTemp = item
+                        }
+                    }
+                    
+                    let settings = settingsTemp!
+                    
+                    settings.remindersThatNeedUIUpdate.insert(value)
                     
                     try modelContext.save()
                 } catch {
@@ -232,7 +250,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                 let predicate = #Predicate<Reminder>{ reminder in
                     reminder.id == value
                         }
-                let settingsPredicate = #Predicate<Settings>{ _ in
+                let settingsPredicate = #Predicate<Settings1>{ _ in
                     true
                         }
                         var fetchDescriptor = FetchDescriptor(predicate: predicate)

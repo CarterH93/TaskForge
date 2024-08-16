@@ -110,15 +110,25 @@ actor MagicBox {
         do {
             
             //Accessing Settings
-            let descriptorSettings = FetchDescriptor<Settings>()
-            var settingsHolder = Set<Settings>()
+            let descriptorSettings = FetchDescriptor<Settings1>()
+            var settingsHold: Settings1?
+            
             
             
             try modelContext.enumerate(descriptorSettings) { settings in
-                settingsHolder.insert(settings)
+                
+                if let settingsHoldWrapped = settingsHold {
+                    
+                    if settings.Date1 < settingsHoldWrapped.Date1 {
+                        settingsHold = settings
+                    }
+                } else {
+                    settingsHold = settings
+                }
             }
             
-            let settings: Settings = settingsHolder.first ?? Settings()
+            
+            let settings: Settings1 = settingsHold!
             
             print("accessing data")
             //Accessing remote data

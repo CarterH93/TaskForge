@@ -38,7 +38,7 @@
 		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
 		BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
-		BCEE6B112C6909600090E274 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings.swift */; };
+		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,7 +76,7 @@
 		BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
 		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
-		BCEE6B102C6909600090E274 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		BCEE6B102C6909600090E274 /* Settings1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
-				BCEE6B102C6909600090E274 /* Settings.swift */,
+				BCEE6B102C6909600090E274 /* Settings1.swift */,
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
@@ -277,7 +277,7 @@
 				BC628D662C6B04F300D75E37 /* cleanUpSpam.swift in Sources */,
 				BC628E872C6C235900D75E37 /* LocalNotification.swift in Sources */,
 				BC39F06D2C6567930019BB7F /* listOfRemindersView.swift in Sources */,
-				BCEE6B112C6909600090E274 /* Settings.swift in Sources */,
+				BCEE6B112C6909600090E274 /* Settings1.swift in Sources */,
 				BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

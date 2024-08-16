@@ -9,8 +9,9 @@ import Foundation
 import SwiftData
 
 @Model
-class Settings {
+class Settings1 {
     var defaultReminder: Double = 0
+    var Date1: Date = Date.now
     
     var icsSources: [URL] = [URL(string: "google.com")!]
     

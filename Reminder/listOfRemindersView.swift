@@ -10,7 +10,11 @@ import SwiftData
 
 struct listOfRemindersView: View {
     let maxDayRange = 8
-    @Environment(Settings.self) var settings
+   
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
+    
     
     @Query(
         sort: \Reminder.due
@@ -153,12 +157,12 @@ struct listOfRemindersView: View {
                                     } else if newPhase == .active {
                                         print("Active")
                                         
-                                        for reminder in settings.remindersThatNeedUIUpdate {
+                                        for reminder in settings.first!.remindersThatNeedUIUpdate {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                                                 let realReminder = reminders.first(where: { $0.id == reminder})
                                                 realReminder?.UIUpdate += "fdsa"
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                                                    settings.remindersThatNeedUIUpdate.remove(reminder)
+                                                    settings.first!.remindersThatNeedUIUpdate.remove(reminder)
                                                                                                 })
                                                                                             })
                                             

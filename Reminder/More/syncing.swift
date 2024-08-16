@@ -6,20 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 
 struct syncing: View {
     @State private var link = ""
-    @Environment(Settings.self) var settings
     @State private var showingNewSheet = false
+    
+    @Environment(\.modelContext) var modelContext
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
     
     @State private var localTempURLHold: [URL] = []
     
     func removeRows(at offsets: IndexSet) {
-        localTempURLHold = settings.icsSources
+        localTempURLHold = settings.first!.icsSources
         localTempURLHold.remove(atOffsets: offsets)
-        settings.icsSources.remove(atOffsets: offsets)
+        settings.first!.icsSources.remove(atOffsets: offsets)
         showingNewSheet = true
         }
     
@@ -31,9 +36,9 @@ struct syncing: View {
                     
                     if let url = URL(string: link) {
                         //Do work
-                        localTempURLHold = settings.icsSources
+                        localTempURLHold = settings.first!.icsSources
                         localTempURLHold.append(url)
-                        settings.icsSources.append(url)
+                        settings.first!.icsSources.append(url)
                         
                         showingNewSheet = true
                     }
@@ -42,7 +47,7 @@ struct syncing: View {
             }
             
             Section("Synced Sources") {
-                ForEach(settings.icsSources, id: \.self) { link in
+                ForEach(settings.first!.icsSources, id: \.self) { link in
                     Text(link.description)
                 }
                 .onDelete(perform: removeRows)
