@@ -74,6 +74,11 @@ extension Event: IcsElement {
         case "DTEND;VALUE=DATE-TIME":
             dtend = value.toDate()
             
+        case "DTSTART;VALUE=DATE;VALUE=DATE":
+            //Makes default time for all day events be 11:59pm
+            dtstart = String("\(value)T235900Z").toDateAlllDay()
+            
+            
         case "DTSTART;VALUE=DATE":
             //Makes default time for all day events be 11:59pm
             dtstart = String("\(value)T235900Z").toDateAlllDay()
