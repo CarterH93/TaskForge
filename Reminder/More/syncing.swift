@@ -53,6 +53,12 @@ struct syncing: View {
                 .onDelete(perform: removeRows)
             }
             
+            Section {
+                NavigationLink("Clean up spam") {
+                   deleteListOfTasks()
+                }
+            }
+            
         }
         .sheet(isPresented: $showingNewSheet) {
             cleanUpSpam(localTempURLHold: localTempURLHold)
