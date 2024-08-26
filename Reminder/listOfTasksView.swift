@@ -10,7 +10,7 @@ import SwiftData
 
 
 struct listOfTasksView: View {
-    
+    @EnvironmentObject var dataload: dataLoad
     let maxDayRange = 8
     
     static var now: Date { Date.now }
@@ -156,12 +156,12 @@ struct listOfTasksView: View {
                 }
             }
             .refreshable {
-                if settings[0].loadingICSData == false {
-                    settings[0].loadingICSData = true
+                if dataload.loadingICSData == false {
+                    dataload.loadingICSData = true
                     let cache = MagicBox(modelContainer: modelContext.container)
                     
                     await cache.work()
-                    settings[0].loadingICSData = false
+                    dataload.loadingICSData = false
                 }
                 
                 lnManager.clearRequests()

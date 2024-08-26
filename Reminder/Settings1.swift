@@ -12,15 +12,14 @@ import SwiftData
 class Settings1 {
     var defaultReminder: Double = 0
     var Date1: Date = Date.now
-    var loadingICSData: Bool = false
     
     var icsSources: [URL] = [URL(string: "google.com")!]
     
     var remindersThatNeedUIUpdate = Set<String>()
     
-    init(defaultReminder: Double = 118800, icsSources: [URL] = [], loadingICSData: Bool = false) {
+    init(defaultReminder: Double = 118800, icsSources: [URL] = []) {
         self.defaultReminder = defaultReminder
         self.icsSources = icsSources
-        self.loadingICSData = loadingICSData
+     
     }
 }

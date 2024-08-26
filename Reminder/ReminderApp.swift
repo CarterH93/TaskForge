@@ -15,6 +15,7 @@ struct ReminderApp: App {
         WindowGroup {
             RootView()
                 .environment(lnManager)
+                .environmentObject(dataLoad())
         }
         .modelContainer(for: [TaskObject.self, Settings1.self])
 

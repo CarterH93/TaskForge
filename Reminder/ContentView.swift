@@ -11,8 +11,9 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(LocalNotificationManager.self) var lnManager
-    @Query var reminders: [Reminder]
     
+    @Query var reminders: [Reminder]
+    @EnvironmentObject var dataload: dataLoad
     @Query(
         sort: \Settings1.Date1
     ) var settings: [Settings1]
@@ -53,12 +54,12 @@ struct ContentView: View {
                        
                     }
                     .task(priority: .background) {
-                        if settings[0].loadingICSData == false {
-                            settings[0].loadingICSData = true
+                        if dataload.loadingICSData == false {
+                            dataload.loadingICSData = true
                             let cache = MagicBox(modelContainer: modelContext.container)
                             
                             await cache.work()
-                            settings[0].loadingICSData = false
+                            dataload.loadingICSData = false
                         }
                         
                         

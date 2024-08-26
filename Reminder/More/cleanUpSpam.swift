@@ -20,19 +20,19 @@ struct cleanUpSpam: View {
     @Query(
         sort: \Settings1.Date1
     ) var settings: [Settings1]
-    
+    @EnvironmentObject var dataload: dataLoad
     
     var localTempURLHold: [URL]
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
-        Text("Delete unwanted assignments")
+        deleteListOfTasks()
             .task {
-                if settings[0].loadingICSData == false {
-                    settings[0].loadingICSData = true
+                if dataload.loadingICSData == false {
+                    dataload.loadingICSData = true
                     let cache = MagicBox(modelContainer: modelContext.container)
                     
                     await cache.work(deletePastDueTasksOnIntialSync: true, inputURLS: localTempURLHold)
-                    settings[0].loadingICSData = false
+                    dataload.loadingICSData = false
                 }
                 lnManager.clearRequests()
                 
