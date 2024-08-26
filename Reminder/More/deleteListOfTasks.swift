@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct deleteListOfTasks: View {
-    @Query var tasks: [TaskObject]
+    @Query(sort: \TaskObject.due) var tasks: [TaskObject]
+    
     var body: some View {
         Form {
             Section {

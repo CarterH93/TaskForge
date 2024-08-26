@@ -12,7 +12,12 @@ import SwiftData
 struct simpleListOfTasks: View {
     @Query(filter: #Predicate<TaskObject> { task in
         task.deleted1 == false
-    }) var tasks: [TaskObject]
+        
+    }, sort: \TaskObject.due) var tasks: [TaskObject]
+    
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
     
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
