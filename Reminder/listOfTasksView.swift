@@ -21,6 +21,10 @@ struct listOfTasksView: View {
     }
     
     @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
+    
+    @Query(
         sort: \TaskObject.due
     ) var tasks: [TaskObject]
     @Environment(\.modelContext) var modelContext
@@ -152,9 +156,13 @@ struct listOfTasksView: View {
                 }
             }
             .refreshable {
-                let cache = MagicBox(modelContainer: modelContext.container)
-                
-                await cache.work()
+                if settings[0].loadingICSData == false {
+                    settings[0].loadingICSData = true
+                    let cache = MagicBox(modelContainer: modelContext.container)
+                    
+                    await cache.work()
+                    settings[0].loadingICSData = false
+                }
                 
                 lnManager.clearRequests()
                 

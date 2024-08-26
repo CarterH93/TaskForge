@@ -13,6 +13,10 @@ struct ContentView: View {
     @Environment(LocalNotificationManager.self) var lnManager
     @Query var reminders: [Reminder]
     
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
+    
     var filterReminders: [Reminder] {
     reminders.filter { $0.due > Date.now && $0.completedWrapper == false }
     }
@@ -49,10 +53,13 @@ struct ContentView: View {
                        
                     }
                     .task(priority: .background) {
-                        let cache = MagicBox(modelContainer: modelContext.container)
-                        
-                        await cache.work()
-                        
+                        if settings[0].loadingICSData == false {
+                            settings[0].loadingICSData = true
+                            let cache = MagicBox(modelContainer: modelContext.container)
+                            
+                            await cache.work()
+                            settings[0].loadingICSData = false
+                        }
                         
                         
                     }

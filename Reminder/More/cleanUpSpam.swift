@@ -17,17 +17,23 @@ struct cleanUpSpam: View {
     reminders.filter { $0.due > Date.now && $0.completedWrapper == false }
     }
     
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
+    
     
     var localTempURLHold: [URL]
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
         Text("Delete unwanted assignments")
             .task {
-                let cache = MagicBox(modelContainer: modelContext.container)
-                
-                await cache.work(deletePastDueTasksOnIntialSync: true, inputURLS: localTempURLHold)
-                
-                
+                if settings[0].loadingICSData == false {
+                    settings[0].loadingICSData = true
+                    let cache = MagicBox(modelContainer: modelContext.container)
+                    
+                    await cache.work(deletePastDueTasksOnIntialSync: true, inputURLS: localTempURLHold)
+                    settings[0].loadingICSData = false
+                }
                 lnManager.clearRequests()
                 
                 for newReminder in filterReminders {
