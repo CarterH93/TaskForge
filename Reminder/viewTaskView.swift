@@ -71,7 +71,7 @@ struct viewTaskView: View {
                 }
                 
                 Section("notes") {
-                    TextField("type here...", text: $task.notes)
+                    TextEditor(text: $task.notes)
                 }
                 
                 Section("due") {

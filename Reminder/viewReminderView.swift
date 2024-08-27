@@ -81,7 +81,7 @@ struct viewReminderView: View {
                 }
                 
                 Section("notes") {
-                    TextField("type here...", text: $reminder.notes)
+                    TextEditor(text: $reminder.notes)
                 }
                 
                 Section("due") {
