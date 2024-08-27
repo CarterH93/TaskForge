@@ -111,7 +111,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
         let complete = UNNotificationAction(identifier: "complete", title: "Complete")
         let oneHourRemind = UNNotificationAction(identifier: "1hour", title: "Remind in 1 hour")
         let fourHourRemind = UNNotificationAction(identifier: "4hour", title: "Remind in 4 hours")
-        let twentyFourHourRemind = UNNotificationAction(identifier: "24hour", title: "Remind in 24 hours")
+        let twentyFourHourRemind = UNNotificationAction(identifier: "24hour", title: "Remind in 12 hours")
         let reminderCategory = UNNotificationCategory(identifier: "reminderNotification",
                                                     actions: [complete, oneHourRemind, fourHourRemind, twentyFourHourRemind],
                                                     intentIdentifiers: [])
@@ -207,13 +207,13 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
             break
             //fix numbers below. Messed with them for testing purposes.
         case "1hour":
-            snoozeInterval = 60
+            snoozeInterval = 1
             break
         case "4hour":
-            snoozeInterval = 30
+            snoozeInterval = 4
             break
         case "24hour":
-            snoozeInterval = 24
+            snoozeInterval = 12
             break
         default:
             if let value = response.notification.request.content.userInfo["nextView"] as? String {
@@ -231,7 +231,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
             let content = response.notification.request.content
             let newContent = content.mutableCopy() as! UNMutableNotificationContent
             //Need to multiply snoozeinterval value below by 3600. Not doing this right now for testing purposes.
-            let newTrigger = UNTimeIntervalNotificationTrigger(timeInterval: snoozeInterval , repeats: false)
+            let newTrigger = UNTimeIntervalNotificationTrigger(timeInterval: snoozeIntervalFinal , repeats: false)
             
             var UUIDReminder = UUID().uuidString
             
