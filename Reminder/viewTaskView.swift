@@ -54,6 +54,16 @@ struct viewTaskView: View {
         NavigationStack {
             Form {
                 
+                Section("name") {
+                    if task.inAppGenerated {
+                        TextField("task name", text: $task.name)
+                            .font(.title)
+                    } else {
+                        Text(task.name)
+                            .font(.title)
+                    }
+                }
+                
                 if task.inAppGenerated == false {
                     Section("description") {
                         Text(task.info)
@@ -119,7 +129,6 @@ struct viewTaskView: View {
                 
                 
             }
-            .navigationTitle(task.name)
             .sheet(isPresented: $showingNewReminderSheet) {
                 newReminderSubView(task: task)
                     .presentationDetents([.fraction(1/5)])

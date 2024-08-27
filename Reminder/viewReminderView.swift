@@ -75,6 +75,10 @@ struct viewReminderView: View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
         NavigationStack {
             Form {
+                Section("name") {
+                    TextField("reminder name", text: $reminder.name)
+                        .font(.title)
+                }
                 
                 Section("notes") {
                     TextField("type here...", text: $reminder.notes)
@@ -137,7 +141,6 @@ struct viewReminderView: View {
                         simpleListOfTasks(reminder: reminder, viewUpdater: $viewUpdater)
                     .presentationDragIndicator(.visible)
                     }
-            .navigationTitle(reminder.name)
             .alert("Are you sure you want to permanently delete this reminder?", isPresented: $showingReminderAlert) {
                 Button("Delete", role: .destructive) {
                     dismiss()
