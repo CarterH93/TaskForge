@@ -17,7 +17,7 @@ class Settings1 {
     
     var remindersThatNeedUIUpdate = Set<String>()
     
-    init(defaultReminder: Double = 118800, icsSources: [URL] = []) {
+    init(defaultReminder: Double = 32460, icsSources: [URL] = []) {
         self.defaultReminder = defaultReminder
         self.icsSources = icsSources
      
