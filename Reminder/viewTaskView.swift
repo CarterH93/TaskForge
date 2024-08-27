@@ -118,13 +118,13 @@ struct viewTaskView: View {
                 }
                 
                 Section {
-                    if task.inAppGenerated == true {
+                  
                         Button("Delete Task", role: .destructive) {
                             showingDeleteAlert = true
                             
                             
                         }
-                    }
+                    
                 }
                 
                 
@@ -139,7 +139,11 @@ struct viewTaskView: View {
                     for reminder in task.reminders! {
                         modelContext.delete(reminder)
                     }
-                    modelContext.delete(task)
+                    if task.inAppGenerated == true {
+                        modelContext.delete(task)
+                    } else {
+                        task.deleted1 = true
+                    }
                     dismiss()
                     
                             }
