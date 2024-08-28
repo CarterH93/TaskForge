@@ -55,3 +55,24 @@ struct MagicBoxID: Hashable {
     var oldID: String
     var id: String
 }
+
+func taskBody(_ task: TaskObject) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMM dd h:mm a"
+    let time = DateFormatter()
+    time.dateFormat = "h:mm a"
+    
+    let relativeDateFormatter = DateFormatter()
+    relativeDateFormatter.timeStyle = .none
+    relativeDateFormatter.dateStyle = .medium
+    relativeDateFormatter.locale = Locale(identifier: "en_GB")
+    relativeDateFormatter.doesRelativeDateFormatting = true
+   
+    let string = relativeDateFormatter.string(from: task.due)
+    
+        if let _ = string.rangeOfCharacter(from: .decimalDigits) {
+            return dateFormatter.string(from: task.due)
+        } else {
+            return "\(string), \(time.string(from: task.due))"
+        }
+}

@@ -119,7 +119,13 @@ struct listOfRemindersView: View {
                                             }
                                             .accessibilityAddTraits(.isButton)
                                         HStack {
-                                            Text(reminder.name)
+                                            VStack {
+                                                Text(reminder.name)
+                                                if let task = reminder.task {
+                                                    Text("Task Due: \(taskBody(task))")
+                                                        .foregroundColor(.orange)
+                                                }
+                                            }
                                             Text(num >= maxDayRange || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
