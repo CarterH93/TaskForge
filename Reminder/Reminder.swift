@@ -67,3 +67,25 @@ class Reminder {
         
     }
 }
+
+
+func reminderBody(_ reminder: Reminder) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMM dd h:mm a"
+    let time = DateFormatter()
+    time.dateFormat = "h:mm a"
+    
+    let relativeDateFormatter = DateFormatter()
+    relativeDateFormatter.timeStyle = .none
+    relativeDateFormatter.dateStyle = .medium
+    relativeDateFormatter.locale = Locale(identifier: "en_GB")
+    relativeDateFormatter.doesRelativeDateFormatting = true
+   
+    let string = relativeDateFormatter.string(from: reminder.due)
+    
+        if let _ = string.rangeOfCharacter(from: .decimalDigits) {
+            return dateFormatter.string(from: reminder.due)
+        } else {
+            return "\(string), \(time.string(from: reminder.due))"
+        }
+}

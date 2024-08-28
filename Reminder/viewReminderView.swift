@@ -154,7 +154,9 @@ struct viewReminderView: View {
                     
                     let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
                     
-                    let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: reminder.notes, dateComponents: dateComponents, repeats: false)
+                   
+                    
+                    let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: reminderBody(reminder), dateComponents: dateComponents, repeats: false)
                     
                     await lnManager.schedule(localNotification: localNotification)
                 }
