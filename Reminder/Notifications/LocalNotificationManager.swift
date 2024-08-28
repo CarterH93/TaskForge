@@ -265,7 +265,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                     if let reminder = reminders.first {
                         
                         
-                        reminder.due = Date.now.addingTimeInterval(snoozeInterval)
+                        reminder.due = Date.now.addingTimeInterval(snoozeIntervalFinal)
                         
                         settings.first?.remindersThatNeedUIUpdate.insert(reminder.id)
                         
