@@ -98,7 +98,7 @@ struct viewReminderView: View {
                                     } label: {
                                         HStack {
                                             Text(task.name)
-                                            Text(task.due.formatted())
+                                            Text(taskBody(task))
                                         }
                                     }
                                     .buttonStyle(.plain)
