@@ -30,7 +30,7 @@ class Reminder {
         }
         
         if let task = task {
-            if task.completed {
+            if task.completed || task.deleted1 {
                 return true
             }
         }
@@ -41,7 +41,7 @@ class Reminder {
     //We do not want the user changing the reminder completed bool if the parent task is completed. Results in weird behavior.
     var canChangeCompleted: Bool {
         if let task = task {
-            if task.completed || task.deleted1 {
+            if task.completed {
                 return false
             }
         }
