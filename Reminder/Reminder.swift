@@ -89,3 +89,9 @@ func reminderBody(_ reminder: Reminder) -> String {
             return "\(string), \(time.string(from: reminder.due))"
         }
 }
+
+func todayReminderBody(_ reminder: Reminder) -> String {
+    let time = DateFormatter()
+    time.dateFormat = "h:mm a"
+    return "Today, \(time.string(from: reminder.due))"
+}

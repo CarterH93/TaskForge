@@ -45,7 +45,7 @@ struct createNewReminderView: View {
                            
                             
                             
-                            let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: reminderBody(newReminder), dateComponents: dateComponents, repeats: false)
+                            let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: todayReminderBody(newReminder), dateComponents: dateComponents, repeats: false)
                             
                             await lnManager.schedule(localNotification: localNotification)
                             
