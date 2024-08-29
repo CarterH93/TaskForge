@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC12CB152C80169A00473C6B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC12CB142C80169A00473C6B /* CloudKit.framework */; };
 		BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C062A2BF937E400AD85F5 /* MagicBox.swift */; };
 		BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31B2282C5FF1F700548F7E /* Reminder.swift */; };
 		BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC39F06A2C6567850019BB7F /* listOfTasksView.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC12CB142C80169A00473C6B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		BC2C062A2BF937E400AD85F5 /* MagicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicBox.swift; sourceTree = "<group>"; };
 		BC31B2282C5FF1F700548F7E /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		BC39F06A2C6567850019BB7F /* listOfTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listOfTasksView.swift; sourceTree = "<group>"; };
@@ -88,12 +90,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC12CB152C80169A00473C6B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC12CB132C80169A00473C6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC12CB142C80169A00473C6B /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BC628D622C6AF5B300D75E37 /* More */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +133,7 @@
 				BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */,
 				BC7FBE7A2BDEFE300027A00C /* Reminder */,
 				BC7FBE792BDEFE300027A00C /* Products */,
+				BC12CB132C80169A00473C6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

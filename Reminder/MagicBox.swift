@@ -128,7 +128,7 @@ actor MagicBox {
             }
             
             
-            let settings: Settings1 = settingsHold!
+            let settings: Settings1 = settingsHold ?? Settings1()
             
             print("accessing data")
             //Accessing remote data
