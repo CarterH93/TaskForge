@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC12CB152C80169A00473C6B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC12CB142C80169A00473C6B /* CloudKit.framework */; };
+		BC12CB172C814E4500473C6B /* generateSpacedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */; };
 		BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C062A2BF937E400AD85F5 /* MagicBox.swift */; };
 		BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31B2282C5FF1F700548F7E /* Reminder.swift */; };
 		BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC39F06A2C6567850019BB7F /* listOfTasksView.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		BC12CB142C80169A00473C6B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateSpacedReminders.swift; sourceTree = "<group>"; };
 		BC2C062A2BF937E400AD85F5 /* MagicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicBox.swift; sourceTree = "<group>"; };
 		BC31B2282C5FF1F700548F7E /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		BC39F06A2C6567850019BB7F /* listOfTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listOfTasksView.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				BCB55E682C7D18C900150A93 /* dataLoad.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
+				BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */,
 				BCEE6B102C6909600090E274 /* Settings1.swift */,
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
@@ -294,6 +297,7 @@
 				BC628E8D2C6C2B6C00D75E37 /* EnableNotifications.swift in Sources */,
 				BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */,
 				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
+				BC12CB172C814E4500473C6B /* generateSpacedReminders.swift in Sources */,
 				BC628D662C6B04F300D75E37 /* cleanUpSpam.swift in Sources */,
 				BC628E872C6C235900D75E37 /* LocalNotification.swift in Sources */,
 				BC39F06D2C6567930019BB7F /* listOfRemindersView.swift in Sources */,
