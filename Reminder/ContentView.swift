@@ -43,7 +43,9 @@ struct ContentView: View {
                             }
                     }
                     .onAppear {
-                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                           
+                                                                       
                         //Needed to fix weird glitch with tabview and updating swiftdata.
                         let task = TaskObject(oldid: "temp", name: "temp", info: "", due: Date.now)
                         modelContext.insert(task)
@@ -51,6 +53,7 @@ struct ContentView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                             modelContext.delete(task)
                                                                         })
+                        })
                        
                     }
                     .task(priority: .background) {
