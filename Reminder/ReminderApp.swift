@@ -36,11 +36,15 @@ struct RootView: View {
         
         ContentViewWrapper()
             .onAppear {
+                print("settingscount11\(settings.count)")
                 if settings.isEmpty {
                     context.insert(Settings1())
+                    print("settingscount11    inserted")
                     
                 }
+                    print("settingscount11\(settings.count)")
+                }
                 
-            }
+            
     }
 }
