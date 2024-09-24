@@ -119,7 +119,7 @@ struct viewReminderView: View {
                 if reminder.canChangeCompleted  {
                     Section {
                         Button(reminder.completed ? "Mark as uncomplete" : "Mark as complete") {
-                            reminder.completed.toggle()
+                            reminder.toggleCompleted()
                             
                         }
                     }

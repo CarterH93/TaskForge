@@ -176,7 +176,7 @@ extension LocalNotificationManager: UNUserNotificationCenterDelegate {
                     let reminders = try modelContext.fetch(fetchDescriptor)
                     
                     let settingsHold = try modelContext.fetch(settingsFetchDescriptor)
-                    reminders.first?.completed = true
+                    reminders.first?.toggleCompleted(true)
                     
                     var settingsTemp: Settings1?
                     

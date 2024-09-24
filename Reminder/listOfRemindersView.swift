@@ -113,7 +113,7 @@ struct listOfRemindersView: View {
                                             .onTapGesture {
                                                 withAnimation(.linear(duration: 0.01)) {
                                                     if reminder.canChangeCompleted  {
-                                                        reminder.completed.toggle()
+                                                        reminder.toggleCompleted()
                                                     }
                                                 }
                                             }

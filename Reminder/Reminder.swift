@@ -22,6 +22,31 @@ class Reminder {
     var label: String?
     var UIUpdate: String = ""
     
+    
+    func toggleCompleted(_ manuelBool: Bool? = nil) {
+        if let manuelBool = manuelBool {
+            //manuelly sets value to given parameter
+            self.completed = manuelBool
+            
+        } else {
+            //If no manuel value given, just do normal toggling function
+            self.completed.toggle()
+        }
+        
+        var notCompleted = false
+        
+        for reminder in self.task?.reminders ?? [] {
+            if !reminder.completed {
+                notCompleted = true
+            }
+        }
+        
+        if notCompleted == false {
+            self.task?.completed = true
+        }
+        
+    }
+    
     //The variable to go off for the correct completed value. Looks at parent tasks to see if they are marked off as completed
     var completedWrapper: Bool {
         
