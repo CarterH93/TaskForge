@@ -29,6 +29,7 @@ struct More: View {
                 Section("Default Reminder creation") {
                     stepperDefaultReminder(settings: settings.first ?? Settings1())
                 }
+                .headerProminence(.increased)
                 
             }
             .navigationTitle("More")

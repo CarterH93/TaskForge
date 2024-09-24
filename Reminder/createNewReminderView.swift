@@ -19,6 +19,7 @@ struct createNewReminderView: View {
     
     @Environment(\.modelContext) var modelContext
     @State private var name = ""
+    @State private var notes = ""
     @State private var due = Date.now.addingTimeInterval(3600)
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
@@ -28,6 +29,9 @@ struct createNewReminderView: View {
                     TextField("type here...", text: $name)
                 }
                 
+                Section("Notes") {
+                    TextEditor(text: $notes)
+                }
                 
                 Section("due") {
                     DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
@@ -35,7 +39,7 @@ struct createNewReminderView: View {
                 
                 Button("Add New Reminder") {
                     if isValidReminder {
-                        let newReminder = Reminder(id: UUID().uuidString, name: name, due: due)
+                        let newReminder = Reminder(id: UUID().uuidString, name: name, due: due, notes: notes)
                         modelContext.insert(newReminder)
                         
                         Task {

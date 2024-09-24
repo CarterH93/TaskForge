@@ -126,9 +126,16 @@ struct listOfTasksView: View {
                                             .accessibilityAddTraits(.isButton)
                                         HStack {
                                             Text(task.name)
+                                            if !task.notes.isEmpty {
+                                                Text(task.notes)
+                                                    .font(.caption)
+                                                    .foregroundColor(.secondary)
+                                                    .lineLimit(1)
+                                            }
                                             Text(num >= maxDayRange || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
+                                    .padding(5)
                                 }
                             }
                         }

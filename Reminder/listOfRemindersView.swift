@@ -121,6 +121,12 @@ struct listOfRemindersView: View {
                                         HStack {
                                             VStack {
                                                 Text(reminder.name)
+                                                if !reminder.notes.isEmpty {
+                                                    Text(reminder.notes)
+                                                        .font(.caption)
+                                                        .foregroundColor(.secondary)
+                                                        .lineLimit(1)
+                                                }
                                                 if let task = reminder.task {
                                                     Text("Task Due: \(taskBody(task))")
                                                         .foregroundColor(.orange)
@@ -129,6 +135,7 @@ struct listOfRemindersView: View {
                                             Text(num >= maxDayRange || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
+                                    .padding(5)
                                 }
                             }
                         }
