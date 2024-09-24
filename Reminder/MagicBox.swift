@@ -286,7 +286,7 @@ actor MagicBox {
                         if task.deleted1 == false  {
                         //Auto creates a reminder based on the information given in settings
                             
-                            task.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminder))]
+                            task.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminderWrapper))]
                             print(task.deleted1.description)
                         
                             

@@ -10,14 +10,18 @@ import SwiftData
 
 @Model
 class Settings1 {
-    var defaultReminder: Double = 0
+    var defaultReminder: Int
     var Date1: Date = Date.now
+    
+    var defaultReminderWrapper: Double {
+        (Double(self.defaultReminder) * 86400) + 32340
+    }
     
     var icsSources: [URL] = [URL(string: "google.com")!]
     
     var remindersThatNeedUIUpdate = Set<String>()
     //Inorder to change default reminder time you need to delete icloud data
-    init(defaultReminder: Double = 32340, icsSources: [URL] = []) {
+    init(defaultReminder: Int = 1 , icsSources: [URL] = []) {
         self.defaultReminder = defaultReminder
         self.icsSources = icsSources
      

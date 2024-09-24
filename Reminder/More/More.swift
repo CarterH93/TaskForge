@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct More: View {
     
-    
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
     
     var body: some View {
+        
         NavigationStack {
             List {
                 EnableNotifications()
@@ -22,6 +26,9 @@ struct More: View {
                 }
                 .headerProminence(.increased)
                 
+                Section("Default Reminder creation") {
+                    stepperDefaultReminder(settings: settings.first ?? Settings1())
+                }
                 
             }
             .navigationTitle("More")
@@ -29,6 +36,12 @@ struct More: View {
     }
 }
 
-#Preview {
-    More()
+struct stepperDefaultReminder: View {
+    
+    @State var settings: Settings1
+    
+    var body: some View {
+        Stepper("Remind \(settings.defaultReminder) \(settings.defaultReminder == 1 ? "day" : "days") before task due", value: $settings.defaultReminder, in: 0...30)
+        
+    }
 }
