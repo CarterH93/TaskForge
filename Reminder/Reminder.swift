@@ -17,22 +17,7 @@ class Reminder {
     var id: String = ""
     var name: String = ""
     var due: Date = Date.now
-    var completed: Bool = false {
-        didSet {
-            //Code to mark task as completed if all reminders associated with that task are completed
-            var isNotCompleted = false
-            for reminder in self.task?.reminders {
-                if !reminder.completed {
-                    isNotCompleted = true
-                }
-            }
-            if isNotCompleted == false {
-            //All reminders are completed
-            //mark task as complete
-                self.task?.completed = true
-            }
-        }
-    }
+    var completed: Bool = false
     var notes: String = ""
     var label: String?
     var UIUpdate: String = ""
