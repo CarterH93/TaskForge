@@ -297,7 +297,7 @@ actor MagicBox {
                 }
                 
                 
-                //Only run if deleting past tasks. (This code below is causing problems by randomly wiping out all canvas tasks. Not sure the reason. But implementing this safety feature to make sure it can't happen in the first place).
+                //Only run if deleting past tasks. (This code below is causing problems by randomly wiping out all canvas tasks. Related to caching from URLSession when there is no internet connection. But implementing this safety feature to make sure it can't happen in the first place).
                 //This means this code will only run when a new link is added or deleted.
                 if deletePastDueTasksOnIntialSync {
                     
@@ -317,10 +317,12 @@ actor MagicBox {
                     }
                     
                     
-                    //save data at the end
-                    try? modelContext.save()
                     
                 }
+                
+                //save data at the end
+                try? modelContext.save()
+                
             }
             
             
