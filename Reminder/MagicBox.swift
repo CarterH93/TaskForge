@@ -18,7 +18,7 @@ actor MagicBox {
    private func load(url: URL) async throws -> [CalendarICS] {
        
        //can ignore the warning from the below line of code. We are certain this wont cause data race issues as the code waits for the result before continuing. Swift isnt smart enough to know that.
-       let (data, _) = try await URLSession.shared.data(from: url)
+       let (data, _) = try await URLSession(configuration: .ephemeral).data(from: url)
        
         guard let string = String(data: data, encoding: .utf8) else { throw iCalError.encoding }
        return iCal.load(string: string)
@@ -48,8 +48,8 @@ actor MagicBox {
                         
                         let oldid: String = eventItems["UID"] ?? "Error"
                         let startDate: Date = getDate(eventItems["DTSTART"] ?? "Error") ?? someDateTime
-                        let endDate: Date = getDate(eventItems["DTEND"] ?? "Error") ?? someDateTime
-                        let link: URL = URL(string: eventItems["URL;VALUE=URI"] ?? "Error") ?? URL(string: "https://google.com")!
+                        //let endDate: Date = getDate(eventItems["DTEND"] ?? "Error") ?? someDateTime
+                        //let link: URL = URL(string: eventItems["URL;VALUE=URI"] ?? "Error") ?? URL(string: "https://google.com")!
                         let description: String = eventItems["DESCRIPTION"] ?? "N/A"
                         let summary: String = eventItems["SUMMARY"] ?? "N/A"
                         //Deletes any tasks before todays date. Removes clutter.
@@ -297,25 +297,30 @@ actor MagicBox {
                 }
                 
                 
-                
-                //Creating set of tasks that are in SwiftData but not in ICS Data
-                let inSwiftDataButNotICSData = swiftDataTasksIDOnly.subtracting(remoteTasksIDOnly)
-                //Removing these tasks from SwiftData
-                for ID in inSwiftDataButNotICSData {
+                //Only run if deleting past tasks. (This code below is causing problems by randomly wiping out all canvas tasks. Not sure the reason. But implementing this safety feature to make sure it can't happen in the first place).
+                //This means this code will only run when a new link is added or deleted.
+                if deletePastDueTasksOnIntialSync {
                     
-                    if let task = swiftDataTasks.first(where: {$0.oldid == ID}) {
-                        for reminder in task.reminders! {
-                            modelContext.delete(reminder)
+                    //Creating set of tasks that are in SwiftData but not in ICS Data
+                    let inSwiftDataButNotICSData = swiftDataTasksIDOnly.subtracting(remoteTasksIDOnly)
+                    //Removing these tasks from SwiftData
+                    for ID in inSwiftDataButNotICSData {
+                        
+                        if let task = swiftDataTasks.first(where: {$0.oldid == ID}) {
+                            for reminder in task.reminders! {
+                                modelContext.delete(reminder)
+                            }
+                            
+                            modelContext.delete(task)
                         }
                         
-                        modelContext.delete(task)
                     }
                     
+                    
+                    //save data at the end
+                    try? modelContext.save()
+                    
                 }
-                
-                
-                //save data at the end
-                try? modelContext.save()
             }
             
             
