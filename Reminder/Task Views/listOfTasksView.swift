@@ -146,21 +146,29 @@ struct listOfTasksView: View {
                 
                     
                 }
+                .safeAreaInset(edge: .bottom, alignment: .trailing) {
+                    Button {
+                        showingSheetForNewTaskCreation = true
+                    } label: {
+                        plusButton()
+                    }
+                    .padding(.bottom, 40)
+                    .padding(.trailing)
+                    
+                }
                 .navigationTitle("Tasks")
                 .sheet(isPresented: $showingSheetForNewTaskCreation) {
                             createNewTaskView()
                         .presentationDragIndicator(.visible)
                         }
                 .toolbar {
-                    Button("Add Task") {
-                        showingSheetForNewTaskCreation = true
-                    }
                     Button {
                         withAnimation(.linear(duration: 0.01)) {
                             showCompleted.toggle()
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
+                            .font(.title3)
                     }
                 }
             }

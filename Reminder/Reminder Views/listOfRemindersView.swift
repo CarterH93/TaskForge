@@ -149,7 +149,17 @@ struct listOfRemindersView: View {
                         }
                         .headerProminence(num < 1 ? .increased : .standard)
                     }
-                
+                    
+                    
+                }
+                .safeAreaInset(edge: .bottom, alignment: .trailing) {
+                    Button {
+                        showingSheetForNewReminderCreation = true
+                    } label: {
+                        plusButton()
+                    }
+                    .padding(.bottom, 40)
+                    .padding(.trailing)
                     
                 }
                 .refreshable {
@@ -185,15 +195,13 @@ struct listOfRemindersView: View {
                         .presentationDragIndicator(.visible)
                         }
                 .toolbar {
-                    Button("Add Reminder") {
-                        showingSheetForNewReminderCreation = true
-                    }
                     Button {
                         withAnimation(.linear(duration: 0.01)) {
                             showCompleted.toggle()
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
+                            .font(.title3)
                     }
                 }
                 .onChange(of: scenePhase) { _, newPhase in

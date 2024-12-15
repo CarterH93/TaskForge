@@ -41,6 +41,7 @@
 		BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */; };
 		BCB55E672C7D161E00150A93 /* deleteListOfTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */; };
 		BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E682C7D18C900150A93 /* dataLoad.swift */; };
+		BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBBCC812D0F19A000B4FE3E /* plusButton.swift */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteListOfTasks.swift; sourceTree = "<group>"; };
 		BCB55E682C7D18C900150A93 /* dataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoad.swift; sourceTree = "<group>"; };
 		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
+		BCBBCC812D0F19A000B4FE3E /* plusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plusButton.swift; sourceTree = "<group>"; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
 		BCEE6B102C6909600090E274 /* Settings1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +154,7 @@
 			children = (
 				BCB55E682C7D18C900150A93 /* dataLoad.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
+				BCBBCC812D0F19A000B4FE3E /* plusButton.swift */,
 				BCBBCC7D2D0F10C000B4FE3E /* Reminder Views */,
 				BCEE6B102C6909600090E274 /* Settings1.swift */,
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
@@ -299,6 +302,7 @@
 				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
 				BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */,
 				BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */,
+				BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */,
 				BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */,
 				BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */,
 				BC628D612C6AF3AE00D75E37 /* More.swift in Sources */,
