@@ -8,6 +8,10 @@
 import Foundation
 import SwiftData
 
+func cleanName(_ input: String) -> String {
+    //Implement logic here
+    return input.components(separatedBy: "[")[0]
+}
 
 
 @ModelActor
@@ -51,7 +55,11 @@ actor MagicBox {
                         //let endDate: Date = getDate(eventItems["DTEND"] ?? "Error") ?? someDateTime
                         //let link: URL = URL(string: eventItems["URL;VALUE=URI"] ?? "Error") ?? URL(string: "https://google.com")!
                         let description: String = eventItems["DESCRIPTION"] ?? "N/A"
-                        let summary: String = eventItems["SUMMARY"] ?? "N/A"
+                        
+                        //Need to cleanup summary (name) data
+                        let tempSummary: String = eventItems["SUMMARY"] ?? "N/A"
+                        let summary: String = cleanName(tempSummary)
+                        
                         //Deletes any tasks before todays date. Removes clutter.
                         var deleted: Bool {
                             if startDate < Calendar.current.startOfDay(for: Date.now) && deletePastDueTasksOnIntialSync {
