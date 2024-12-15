@@ -152,21 +152,15 @@
 			children = (
 				BCB55E682C7D18C900150A93 /* dataLoad.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
-				BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */,
+				BCBBCC7D2D0F10C000B4FE3E /* Reminder Views */,
 				BCEE6B102C6909600090E274 /* Settings1.swift */,
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
 				BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */,
-				BC39F06E2C6578B60019BB7F /* createNewTaskView.swift */,
-				BC39F0762C65C3820019BB7F /* viewTaskView.swift */,
-				BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */,
-				BC39F0702C65820E0019BB7F /* createNewReminderView.swift */,
-				BC39F06A2C6567850019BB7F /* listOfTasksView.swift */,
-				BC39F06C2C6567930019BB7F /* listOfRemindersView.swift */,
-				BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */,
+				BCBBCC7E2D0F10D700B4FE3E /* Task Views */,
 				BC628E852C6C234A00D75E37 /* Notifications */,
-				BC31B2282C5FF1F700548F7E /* Reminder.swift */,
+				BCBBCC7F2D0F115800B4FE3E /* Data Store Models */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
 				BC628D622C6AF5B300D75E37 /* More */,
@@ -198,6 +192,36 @@
 				BC7FBE9B2BDEFE710027A00C /* String.swift */,
 			);
 			path = "ICS Parser";
+			sourceTree = "<group>";
+		};
+		BCBBCC7D2D0F10C000B4FE3E /* Reminder Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC39F06C2C6567930019BB7F /* listOfRemindersView.swift */,
+				BC39F0702C65820E0019BB7F /* createNewReminderView.swift */,
+				BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */,
+				BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */,
+			);
+			path = "Reminder Views";
+			sourceTree = "<group>";
+		};
+		BCBBCC7E2D0F10D700B4FE3E /* Task Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC39F06A2C6567850019BB7F /* listOfTasksView.swift */,
+				BC39F0762C65C3820019BB7F /* viewTaskView.swift */,
+				BC39F06E2C6578B60019BB7F /* createNewTaskView.swift */,
+			);
+			path = "Task Views";
+			sourceTree = "<group>";
+		};
+		BCBBCC7F2D0F115800B4FE3E /* Data Store Models */ = {
+			isa = PBXGroup;
+			children = (
+				BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */,
+				BC31B2282C5FF1F700548F7E /* Reminder.swift */,
+			);
+			path = "Data Store Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
