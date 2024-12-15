@@ -11,7 +11,15 @@ import SwiftData
 
 struct listOfTasksView: View {
     @EnvironmentObject var dataload: dataLoad
-    let maxDayRange = 8
+    private var maxDayRange: Int {
+        if showOnlyToday {
+            return 0
+        } else {
+            return 8
+        }
+    }
+    
+    @State private var showOnlyToday = false
     
     static var now: Date { Date.now }
     @Query var reminders: [Reminder]
@@ -44,7 +52,7 @@ struct listOfTasksView: View {
             firstFilter = preFilter.filter { $0.completed == false }
         }
         
-        if num >= maxDayRange {
+        if num >= maxDayRange && !showOnlyToday {
             return firstFilter.filter {
                 $0.due >= date
                
@@ -141,7 +149,7 @@ struct listOfTasksView: View {
                                                         .lineLimit(1)
                                                 }
                                             }
-                                            Text(num >= maxDayRange || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
+                                            Text((num >= maxDayRange && !showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
                                     .strikethrough(task.completed)
@@ -170,10 +178,20 @@ struct listOfTasksView: View {
                         .presentationDragIndicator(.visible)
                         }
                 .toolbar {
-                    Button {
-                        withAnimation(.linear(duration: 0.01)) {
-                            showCompleted.toggle()
+                    Menu {
+                        Button(showOnlyToday ? "Show All" : "Show Only Today") {
+                            withAnimation(.linear(duration: 0.01)) {
+                                showOnlyToday.toggle()
+                            }
                         }
+                        
+                        Button(showCompleted ? "Hide Completed" : "Show Completed") {
+                            withAnimation(.linear(duration: 0.01)) {
+                                showCompleted.toggle()
+                                }
+                            }
+                        
+                        
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                             .font(.title3)

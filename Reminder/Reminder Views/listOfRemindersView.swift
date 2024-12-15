@@ -9,7 +9,13 @@ import SwiftUI
 import SwiftData
 
 struct listOfRemindersView: View {
-    let maxDayRange = 8
+    private var maxDayRange: Int {
+        if showOnlyToday {
+            return 0
+        } else {
+            return 8
+        }
+    }
    
     @Query(
         sort: \Settings1.Date1
@@ -23,6 +29,8 @@ struct listOfRemindersView: View {
     @State private var showingSheetForNewReminderCreation = false
     
     @State private var showCompleted = false
+    
+    @State private var showOnlyToday = false
     
     @EnvironmentObject var dataload: dataLoad
     
@@ -42,7 +50,7 @@ struct listOfRemindersView: View {
             firstFilter = reminders.filter { $0.completedWrapper == false }
         }
         
-        if num >= maxDayRange {
+        if num >= maxDayRange && !showOnlyToday {
             return firstFilter.filter {
                 $0.due >= date
                
@@ -148,7 +156,7 @@ struct listOfRemindersView: View {
                                                         .foregroundColor(.orange)
                                                 }
                                             }
-                                            Text(num >= maxDayRange || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
+                                            Text((num >= maxDayRange && !showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                                         }
                                         .strikethrough(reminder.completedWrapper)
                                     }
@@ -204,14 +212,25 @@ struct listOfRemindersView: View {
                         .presentationDragIndicator(.visible)
                         }
                 .toolbar {
-                    Button {
-                        withAnimation(.linear(duration: 0.01)) {
-                            showCompleted.toggle()
+                    Menu {
+                        Button(showOnlyToday ? "Show All" : "Show Only Today") {
+                            withAnimation(.linear(duration: 0.01)) {
+                                showOnlyToday.toggle()
+                            }
                         }
+                        
+                        Button(showCompleted ? "Hide Completed" : "Show Completed") {
+                            withAnimation(.linear(duration: 0.01)) {
+                                showCompleted.toggle()
+                                }
+                            }
+                        
+                        
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                             .font(.title3)
                     }
+                    
                 }
                 .onChange(of: scenePhase) { _, newPhase in
                    
