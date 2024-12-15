@@ -150,6 +150,7 @@ struct listOfRemindersView: View {
                                             }
                                             Text(num >= maxDayRange || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                                         }
+                                        .strikethrough(reminder.completedWrapper)
                                     }
                                     .padding(5)
                                 }

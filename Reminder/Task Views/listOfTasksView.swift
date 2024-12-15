@@ -144,6 +144,7 @@ struct listOfTasksView: View {
                                             Text(num >= maxDayRange || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
+                                    .strikethrough(task.completed)
                                     .padding(5)
                                 }
                             }

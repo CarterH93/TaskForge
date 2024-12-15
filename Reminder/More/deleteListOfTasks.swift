@@ -14,7 +14,7 @@ struct deleteListOfTasks: View {
     var body: some View {
         Form {
             Section {
-                Text("Select assignments to hide")
+                Text("Select Tasks to Delete")
             }
             Section {
                 ForEach(tasks.indices,  id:\.self) { index in
@@ -22,12 +22,13 @@ struct deleteListOfTasks: View {
                                             HStack {
                                                 Image(
                                                     systemName:
-                                                        tasks[index].deleted1 ? "checkmark.circle" : "circle"
+                                                        tasks[index].deleted1 ? "minus.circle" : "circle"
                                                 )
                                                 HStack {
                                                     Text(tasks[index].name)
                                                     Text(tasks[index].due.formatted())
                                                 }
+                                                .strikethrough(tasks[index].deleted1)
                                             }
                                             .onTapGesture {
                                                 tasks[index].deleted1.toggle()
