@@ -24,6 +24,14 @@ struct listOfRemindersView: View {
     
     @State private var showCompleted = false
     
+    @EnvironmentObject var dataload: dataLoad
+    
+    @Environment(LocalNotificationManager.self) var lnManager
+    
+    var filterReminders: [Reminder] {
+    reminders.filter { $0.due > Date.now && $0.completedWrapper == false }
+    }
+    
     
     func filterDate(date: Date, num: Int) -> [Reminder] {
         var firstFilter: [Reminder]
@@ -142,6 +150,32 @@ struct listOfRemindersView: View {
                         .headerProminence(num < 1 ? .increased : .standard)
                     }
                 
+                    
+                }
+                .refreshable {
+                    if dataload.loadingICSData == false {
+                        dataload.loadingICSData = true
+                        let cache = MagicBox(modelContainer: modelContext.container)
+                        
+                        await cache.work()
+                        dataload.loadingICSData = false
+                    }
+                    
+                    lnManager.clearRequests()
+                    
+                    for newReminder in filterReminders {
+                        Task {
+                            
+                            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)
+                            
+                            
+                            
+                            let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: todayReminderBody(newReminder), dateComponents: dateComponents, repeats: false)
+                            
+                            await lnManager.schedule(localNotification: localNotification)
+                            
+                        }
+                    }
                     
                 }
                 
