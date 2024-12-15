@@ -23,7 +23,7 @@ struct createNewTaskView: View {
     ) var settings: [Settings1]
     
     @State private var name = ""
-    @State private var description = ""
+    @State private var notes = ""
     @State private var due = Date.now.addingTimeInterval(3600)
     
     var body: some View {
@@ -33,8 +33,8 @@ struct createNewTaskView: View {
                     TextField("type here...", text: $name)
                 }
                 
-                Section("description") {
-                    TextField("type here...", text: $description)
+                Section("notes") {
+                    TextField("type here...", text: $notes)
                 }
                 
                 Section("due") {
@@ -46,7 +46,7 @@ struct createNewTaskView: View {
                 
                 Button("Add New Task") {
                     if isValidTask {
-                        let newTask = TaskObject(oldid: UUID().uuidString, name: name, info: description, due: due, inAppGenerated: true)
+                        let newTask = TaskObject(oldid: UUID().uuidString, name: name, due: due, inAppGenerated: true, notes: notes)
                         newTask.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(newTask.name)", due: due.addingTimeInterval(-settings.first!.defaultReminderWrapper))]
                         modelContext.insert(newTask)
                         

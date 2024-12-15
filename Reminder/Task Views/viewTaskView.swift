@@ -159,11 +159,6 @@ struct viewTaskView: View {
                     }
                 }
                 
-                if task.inAppGenerated == false {
-                    Section("description") {
-                        Text(task.info)
-                    }
-                }
                 
                 Section("notes") {
                     TextEditor(text: $task.notes)

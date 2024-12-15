@@ -36,7 +36,7 @@ class TaskObject {
         return MagicBoxID(oldID: oldid, id: id)
     }
     
-    init(oldid: String, name: String, info: String, due: Date, inAppGenerated: Bool = false, deleted1: Bool = false, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
+    init(oldid: String, name: String, info: String = "", due: Date, inAppGenerated: Bool = false, deleted1: Bool = false, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil) {
         self.oldid = oldid
         self.name = name
         self.info = info
