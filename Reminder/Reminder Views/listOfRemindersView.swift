@@ -99,6 +99,14 @@ struct listOfRemindersView: View {
         
     }
     
+    var startOfDaySections: Int {
+        if filterDate(date: dateBasedOnNum(-1), num: -1).count == 0 {
+            return 0
+        } else {
+            return -1
+        }
+    }
+    
     @Environment(\.scenePhase) var scenePhase
     
     
@@ -107,7 +115,7 @@ struct listOfRemindersView: View {
             NavigationStack {
                 List {
                     
-                    ForEach(-1...maxDayRange, id: \.self) { num in
+                    ForEach(startOfDaySections...maxDayRange, id: \.self) { num in
                         
                         Section(formatDateBasedOnNum(num)) {
                             

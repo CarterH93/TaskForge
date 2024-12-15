@@ -101,13 +101,20 @@ struct listOfTasksView: View {
         
     }
     
+    var startOfDaySections: Int {
+        if filterDate(date: dateBasedOnNum(-1), num: -1).count == 0 {
+            return 0
+        } else {
+            return -1
+        }
+    }
     
         var body: some View {
             @Bindable var lnManager: LocalNotificationManager = lnManager
             NavigationStack {
                 List {
                     
-                    ForEach(-1...maxDayRange, id: \.self) { num in
+                    ForEach(startOfDaySections...maxDayRange, id: \.self) { num in
                         
                         Section(formatDateBasedOnNum(num)) {
                             
