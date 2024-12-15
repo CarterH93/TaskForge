@@ -21,7 +21,7 @@ class Settings1 {
     
     var remindersThatNeedUIUpdate = Set<String>()
     //Inorder to change default reminder time you need to delete icloud data
-    init(defaultReminder: Int = 1 , icsSources: [URL] = []) {
+    init(defaultReminder: Int = 3 , icsSources: [URL] = []) {
         self.defaultReminder = defaultReminder
         self.icsSources = icsSources
      
