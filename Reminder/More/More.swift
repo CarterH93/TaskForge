@@ -107,7 +107,7 @@ struct stepperDefaultReminder: View {
     
     var body: some View {
         Toggle("Default Reminder Creation", isOn: $settings.defaultReminderEnabled)
-        Stepper("Remind \(settings.defaultReminder) \(settings.defaultReminder == 1 ? "Day" : "Days") Before Task Due", value: $settings.defaultReminder, in: 0...30)
+        Stepper("Remind \(settings.defaultReminder) \(settings.defaultReminder == 1 ? "Day" : "Days") Before Task Due", value: $settings.defaultReminder, in: 0...28)
         
     }
 }

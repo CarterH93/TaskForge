@@ -288,17 +288,18 @@ actor MagicBox {
                 for ID in inICSDataButNotSwiftData {
                     
                     if let task = remoteTasks.first(where: {$0.oldid == ID}) {
-                    
                         
+                        //Makes sure the user has automatic reminders enabled and
                         //Makes sure this task wasnt deleted behind the scenes
-                        if task.deleted1 == false  {
-                        //Auto creates a reminder based on the information given in settings
+                        if task.deleted1 == false && settings.defaultReminderEnabled {
+                            //Auto creates a reminder based on the information given in settings
                             
                             task.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminderWrapper))]
                             print(task.deleted1.description)
-                        
                             
-                        }
+                            
+                        
+                    }
                         modelContext.insert(task)
                     }
                 
