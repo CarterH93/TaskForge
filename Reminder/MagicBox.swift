@@ -12,6 +12,20 @@ func cleanName(_ input: String) -> String {
     return input.components(separatedBy: "[")[0]
 }
 
+let defaultSpacedRemindersKeyWords = ["test", "quiz", "project", "report", "essay", "paper", "final"]
+
+func autoSpacedRemindersLookForKeyWords(_ input: String) -> Bool {
+    
+    var doesContain = false
+    for keyWord in defaultSpacedRemindersKeyWords {
+        if let _ = input.range(of: keyWord, options: .caseInsensitive) {
+            doesContain = true
+        }
+    }
+    
+    return doesContain
+}
+
 
 @ModelActor
 actor MagicBox {
@@ -288,12 +302,35 @@ actor MagicBox {
                     
                     if let task = remoteTasks.first(where: {$0.oldid == ID}) {
                         
+                        //Identify if we should create spaced reminders
+                        if task.deleted1 == false && autoSpacedRemindersLookForKeyWords(task.name) {
+                            let generateSpacedReminders = generateSpacedReminders(task: task)
+                            
+                            var timePeriod = generateSpacedReminders.timePeriod
+                            
+                            //Change to be lower if default user setting is lower
+                            if settings.defaultSpacedRemindersTimeSpan < timePeriod {
+                                timePeriod = settings.defaultSpacedRemindersTimeSpan
+                            }
+                            
                         
-                        
-                        
+                            
+                            var sessions = generateSpacedReminders.defaultSessions(timePeriod)
+                            //Change to be lower if default user setting is lower
+                            if settings.defaultSpacedRemindersSessions < sessions {
+                                sessions = settings.defaultSpacedRemindersSessions
+                            }
+                            
+                            //created auto spaced reminders and added them to task
+                            let newReminders = generateSpacedReminders.generate(number: sessions, timePeriod: timePeriod)
+                            task.reminders = newReminders
+                            
+                            
+                            
+                        }
                         //Makes sure the user has automatic reminders enabled and
                         //Makes sure this task wasnt deleted behind the scenes
-                        if task.deleted1 == false && settings.defaultReminderEnabled {
+                       else if task.deleted1 == false && settings.defaultReminderEnabled {
                             //Auto creates a reminder based on the information given in settings
                             
                             task.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminderWrapper))]
