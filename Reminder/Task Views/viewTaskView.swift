@@ -64,7 +64,13 @@ struct autoGenerateRemindersSubView: View {
         let generateSpacedRemindersObject = generateSpacedReminders(task: task)
         self.generateSpacedRemindersObject = generateSpacedRemindersObject
         _numberOfReminders = State(initialValue: generateSpacedRemindersObject.defaultSessions())
-        _timeSpan = State(initialValue: generateSpacedRemindersObject.timePeriod)
+        var timePeriod = generateSpacedRemindersObject.timePeriod
+        
+        if timePeriod > 14 {
+            timePeriod = 14
+        }
+        
+        _timeSpan = State(initialValue: timePeriod)
     }
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager

@@ -51,9 +51,9 @@ struct generateSpacedReminders {
             return 1
         case 5...8:
             return 2
-        case 9...12:
+        case 9...14:
             return 3
-        case 13...:
+        case 15...:
             return 4
         default:
             return 0
