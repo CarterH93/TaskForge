@@ -19,7 +19,7 @@ struct TestMagicBox {
         #expect(autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkjessayttlkfjasd;lf") == true)
         #expect(autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lpaperttlkfjasd;lf") == true)
         #expect(autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj repor    final     ttlkfjasd;lf") == true)
-        #expect(autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj repor    fin     ttlkfjasd;lf") == true)
+        #expect(autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj repor    fin     ttlkfjasd;lf") == false)
         
         
     }
