@@ -123,7 +123,7 @@ struct SpacedReminderSettings: View {
         
         Toggle("Automatic Default Spaced Reminders Creation", isOn: $settings.defaultSpacedRemindersEnabled)
 
-            Picker("Default Time Span", selection: $settings.defaultSpacedRemindersTimeSpan) {
+            Picker("Max Default Time Span", selection: $settings.defaultSpacedRemindersTimeSpan) {
                 ForEach(1...28, id: \.self) {
                     if $0 == 1 {
                         Text("1 day")
@@ -135,7 +135,7 @@ struct SpacedReminderSettings: View {
         
         
         
-            Picker("Default Number of Reminders", selection: $settings.defaultSpacedRemindersSessions) {
+            Picker("Max Default Number of Reminders", selection: $settings.defaultSpacedRemindersSessions) {
                 ForEach(1...10, id: \.self) {
                     Text(String($0))
                 }

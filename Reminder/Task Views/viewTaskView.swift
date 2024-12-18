@@ -12,12 +12,13 @@ struct newReminderSubView: View {
     @Environment(LocalNotificationManager.self) var lnManager
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
-    @State private var newReminderDue = Date.now
+    @State private var newReminderDue: Date
     @State private var newReminderName: String
     private var task: TaskObject
-    init(task: TaskObject) {
+    init(task: TaskObject, settings: Settings1) {
         self.task = task
         _newReminderName = State(initialValue: "Work on \(task.name)")
+        newReminderDue = task.due.addingTimeInterval(-settings.defaultReminderWrapper)
     }
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
@@ -145,6 +146,11 @@ struct viewTaskView: View {
     
     @State private var showingNewReminderSheet = false
     @State private var showingAutoGenerateSheet = false
+    
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -228,7 +234,7 @@ struct viewTaskView: View {
                 
             }
             .sheet(isPresented: $showingNewReminderSheet) {
-                newReminderSubView(task: task)
+                newReminderSubView(task: task, settings: settings.first ?? Settings1())
                     .presentationDetents([.fraction(1/5)])
                     .presentationDragIndicator(.visible)
                     }
