@@ -42,6 +42,7 @@
 		BCB55E672C7D161E00150A93 /* deleteListOfTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */; };
 		BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E682C7D18C900150A93 /* dataLoad.swift */; };
 		BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBBCC812D0F19A000B4FE3E /* plusButton.swift */; };
+		BCD8AEB22D135934002D98AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AEB12D135934002D98AA /* README.md */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		BCB55E682C7D18C900150A93 /* dataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoad.swift; sourceTree = "<group>"; };
 		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
 		BCBBCC812D0F19A000B4FE3E /* plusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plusButton.swift; sourceTree = "<group>"; };
+		BCD8AEB12D135934002D98AA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
 		BCEE6B102C6909600090E274 /* Settings1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
 				BC628D622C6AF5B300D75E37 /* More */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
+				BCD8AEB12D135934002D98AA /* README.md */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD8AEB22D135934002D98AA /* README.md in Resources */,
 				BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */,
 				BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */,
 			);
@@ -465,7 +469,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Reminder/Preview Content\"";
-				DEVELOPMENT_TEAM = K5ZKPZ2Y2S;
+				DEVELOPMENT_TEAM = DAQW29Z9BC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -485,7 +489,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Carter.TaskForge;
+				PRODUCT_BUNDLE_IDENTIFIER = CarterHawkins.TaskForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -506,7 +510,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Reminder/Preview Content\"";
-				DEVELOPMENT_TEAM = K5ZKPZ2Y2S;
+				DEVELOPMENT_TEAM = DAQW29Z9BC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -526,7 +530,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Carter.TaskForge;
+				PRODUCT_BUNDLE_IDENTIFIER = CarterHawkins.TaskForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
