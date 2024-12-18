@@ -206,15 +206,25 @@ struct listOfRemindersView: View {
                         }
                 .toolbar {
                     Menu {
-                        Button(settings.showOnlyToday ? "Show All" : "Show Only Today") {
+                        Button {
                             withAnimation(.linear(duration: 0.01)) {
                                 settings.showOnlyToday.toggle()
                             }
+                        } label: {
+                            HStack {
+                                Text(settings.showOnlyToday ? "✓ Show Only Today" : "Show Only Today")
+                                Image(systemName: "calendar.badge.checkmark")
+                            }
                         }
                         
-                        Button(settings.showCompleted ? "Hide Completed" : "Show Completed") {
+                        Button {
                             withAnimation(.linear(duration: 0.01)) {
                                 settings.showCompleted.toggle()
+                                }
+                            } label: {
+                                HStack {
+                                    Text(settings.showCompleted ? "✓ Show Completed" : "Show Completed")
+                                    Image(systemName: "checklist.checked")
                                 }
                             }
                         
