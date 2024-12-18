@@ -137,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */,
+				BCD8AEB12D135934002D98AA /* README.md */,
 				BC7FBE7A2BDEFE300027A00C /* Reminder */,
 				BC7FBE792BDEFE300027A00C /* Products */,
 				BC12CB132C80169A00473C6B /* Frameworks */,
@@ -170,7 +171,6 @@
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
 				BC628D622C6AF5B300D75E37 /* More */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
-				BCD8AEB12D135934002D98AA /* README.md */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
