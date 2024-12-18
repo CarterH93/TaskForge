@@ -63,13 +63,13 @@ struct autoGenerateRemindersSubView: View {
         self.task = task
         let generateSpacedRemindersObject = generateSpacedReminders(task: task)
         self.generateSpacedRemindersObject = generateSpacedRemindersObject
-        _numberOfReminders = State(initialValue: generateSpacedRemindersObject.defaultSessions())
+        
         var timePeriod = generateSpacedRemindersObject.timePeriod
         
         if timePeriod > 14 {
             timePeriod = 14
         }
-        
+        _numberOfReminders = State(initialValue: generateSpacedRemindersObject.defaultSessions(timePeriod))
         _timeSpan = State(initialValue: timePeriod)
     }
     var body: some View {

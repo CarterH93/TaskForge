@@ -45,7 +45,7 @@ struct generateSpacedReminders {
         self.timePeriod = Calendar.current.dateComponents([.day], from: Date.now, to: task.due).day ?? 0
     }
     
-    func defaultSessions() -> Int {
+    func defaultSessions(_ timePeriod: Int) -> Int {
         switch timePeriod {
         case ...4:
             return 1
