@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,6 +47,16 @@
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BCD8AEBF2D136711002D98AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC7FBE702BDEFE300027A00C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC7FBE772BDEFE300027A00C;
+			remoteInfo = "Task Forge";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		BC12CB142C80169A00473C6B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateSpacedReminders.swift; sourceTree = "<group>"; };
@@ -87,9 +97,14 @@
 		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
 		BCBBCC812D0F19A000B4FE3E /* plusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plusButton.swift; sourceTree = "<group>"; };
 		BCD8AEB12D135934002D98AA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BCD8AEBB2D136711002D98AA /* Task Forge Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task Forge Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
 		BCEE6B102C6909600090E274 /* Settings1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BCD8AEBC2D136711002D98AA /* Task Forge Tests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Task Forge Tests"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BC7FBE752BDEFE300027A00C /* Frameworks */ = {
@@ -97,6 +112,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC12CB152C80169A00473C6B /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD8AEB82D136711002D98AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +161,7 @@
 				BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */,
 				BCD8AEB12D135934002D98AA /* README.md */,
 				BC7FBE7A2BDEFE300027A00C /* Reminder */,
+				BCD8AEBC2D136711002D98AA /* Task Forge Tests */,
 				BC7FBE792BDEFE300027A00C /* Products */,
 				BC12CB132C80169A00473C6B /* Frameworks */,
 			);
@@ -148,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7FBE782BDEFE300027A00C /* Task Forge.app */,
+				BCD8AEBB2D136711002D98AA /* Task Forge Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,6 +274,29 @@
 			productReference = BC7FBE782BDEFE300027A00C /* Task Forge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BCD8AEBA2D136711002D98AA /* Task Forge Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD8AEC32D136711002D98AA /* Build configuration list for PBXNativeTarget "Task Forge Tests" */;
+			buildPhases = (
+				BCD8AEB72D136711002D98AA /* Sources */,
+				BCD8AEB82D136711002D98AA /* Frameworks */,
+				BCD8AEB92D136711002D98AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCD8AEC02D136711002D98AA /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BCD8AEBC2D136711002D98AA /* Task Forge Tests */,
+			);
+			name = "Task Forge Tests";
+			packageProductDependencies = (
+			);
+			productName = "Task Forge Tests";
+			productReference = BCD8AEBB2D136711002D98AA /* Task Forge Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -257,11 +304,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					BC7FBE772BDEFE300027A00C = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					BCD8AEBA2D136711002D98AA = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = BC7FBE772BDEFE300027A00C;
 					};
 				};
 			};
@@ -279,6 +330,7 @@
 			projectRoot = "";
 			targets = (
 				BC7FBE772BDEFE300027A00C /* Task Forge */,
+				BCD8AEBA2D136711002D98AA /* Task Forge Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,6 +343,13 @@
 				BCD8AEB22D135934002D98AA /* README.md in Resources */,
 				BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */,
 				BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD8AEB92D136711002D98AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,7 +397,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BCD8AEB72D136711002D98AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCD8AEC02D136711002D98AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC7FBE772BDEFE300027A00C /* Task Forge */;
+			targetProxy = BCD8AEBF2D136711002D98AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		BC7FBE852BDEFE320027A00C /* Debug */ = {
@@ -541,6 +615,47 @@
 			};
 			name = Release;
 		};
+		BCD8AEC12D136711002D98AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DAQW29Z9BC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Carter.Task-Forge-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Task Forge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Task Forge";
+			};
+			name = Debug;
+		};
+		BCD8AEC22D136711002D98AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DAQW29Z9BC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Carter.Task-Forge-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Task Forge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Task Forge";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -558,6 +673,15 @@
 			buildConfigurations = (
 				BC7FBE882BDEFE320027A00C /* Debug */,
 				BC7FBE892BDEFE320027A00C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCD8AEC32D136711002D98AA /* Build configuration list for PBXNativeTarget "Task Forge Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD8AEC12D136711002D98AA /* Debug */,
+				BCD8AEC22D136711002D98AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

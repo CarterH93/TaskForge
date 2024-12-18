@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+
 func cleanName(_ input: String) -> String {
     return input.components(separatedBy: "[")[0]
 }
