@@ -9,7 +9,6 @@ import Foundation
 import SwiftData
 
 func cleanName(_ input: String) -> String {
-    //Implement logic here
     return input.components(separatedBy: "[")[0]
 }
 
@@ -289,6 +288,9 @@ actor MagicBox {
                     
                     if let task = remoteTasks.first(where: {$0.oldid == ID}) {
                         
+                        
+                        
+                        
                         //Makes sure the user has automatic reminders enabled and
                         //Makes sure this task wasnt deleted behind the scenes
                         if task.deleted1 == false && settings.defaultReminderEnabled {
@@ -300,6 +302,10 @@ actor MagicBox {
                             
                         
                     }
+                        
+                        
+                        
+                        
                         modelContext.insert(task)
                     }
                 
