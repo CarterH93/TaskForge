@@ -45,6 +45,14 @@ struct More: View {
                             Text("Privacy Policy")
                         }
                     }
+                    
+                    Link(destination: URL(string: "https://taskforgeapp.com/")!) {
+                        HStack {
+                            Image(systemName: "globe")
+                            Text("Website")
+                        }
+                        
+                    }
                 }
                 .headerProminence(.increased)
                 
