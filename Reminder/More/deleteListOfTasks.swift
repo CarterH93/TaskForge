@@ -13,10 +13,8 @@ struct deleteListOfTasks: View {
     
     var body: some View {
         Form {
-            Section {
-                Text("Select Tasks to Delete")
-            }
-            Section {
+            
+            Section("Select Tasks To Delete") {
                 ForEach(tasks.indices,  id:\.self) { index in
 
                                             HStack {
@@ -39,6 +37,7 @@ struct deleteListOfTasks: View {
                                     
                                 
             }
+            .headerProminence(.increased)
         }
     }
 }

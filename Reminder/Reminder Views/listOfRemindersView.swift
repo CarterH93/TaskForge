@@ -9,17 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct listOfRemindersView: View {
+    var settings: Settings1
     private var maxDayRange: Int {
-        if showOnlyToday {
+        if settings.showOnlyToday {
             return 0
         } else {
             return 8
         }
     }
-   
-    @Query(
-        sort: \Settings1.Date1
-    ) var settings: [Settings1]
     
     
     @Query(
@@ -27,10 +24,6 @@ struct listOfRemindersView: View {
     ) var reminders: [Reminder]
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewReminderCreation = false
-    
-    @State private var showCompleted = false
-    
-    @State private var showOnlyToday = false
     
     @EnvironmentObject var dataload: dataLoad
     
@@ -44,13 +37,13 @@ struct listOfRemindersView: View {
     func filterDate(date: Date, num: Int) -> [Reminder] {
         var firstFilter: [Reminder]
         
-        if showCompleted {
+        if settings.showCompleted {
             firstFilter = reminders
         } else {
             firstFilter = reminders.filter { $0.completedWrapper == false }
         }
         
-        if num >= maxDayRange && !showOnlyToday {
+        if num >= maxDayRange && !settings.showOnlyToday {
             return firstFilter.filter {
                 $0.due >= date
                
@@ -156,7 +149,7 @@ struct listOfRemindersView: View {
                                                         .foregroundColor(.orange)
                                                 }
                                             }
-                                            Text((num >= maxDayRange && !showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
+                                            Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                                         }
                                         .strikethrough(reminder.completedWrapper)
                                     }
@@ -213,15 +206,15 @@ struct listOfRemindersView: View {
                         }
                 .toolbar {
                     Menu {
-                        Button(showOnlyToday ? "Show All" : "Show Only Today") {
+                        Button(settings.showOnlyToday ? "Show All" : "Show Only Today") {
                             withAnimation(.linear(duration: 0.01)) {
-                                showOnlyToday.toggle()
+                                settings.showOnlyToday.toggle()
                             }
                         }
                         
-                        Button(showCompleted ? "Hide Completed" : "Show Completed") {
+                        Button(settings.showCompleted ? "Hide Completed" : "Show Completed") {
                             withAnimation(.linear(duration: 0.01)) {
-                                showCompleted.toggle()
+                                settings.showCompleted.toggle()
                                 }
                             }
                         
@@ -240,12 +233,12 @@ struct listOfRemindersView: View {
                                     } else if newPhase == .active {
                                         print("Active")
                                         
-                                        for reminder in settings.first!.remindersThatNeedUIUpdate {
+                                        for reminder in settings.remindersThatNeedUIUpdate {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                                                 let realReminder = reminders.first(where: { $0.id == reminder})
                                                 realReminder?.UIUpdate += "fdsa"
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                                                    settings.first!.remindersThatNeedUIUpdate.remove(reminder)
+                                                    settings.remindersThatNeedUIUpdate.remove(reminder)
                                                                                                 })
                                                                                             })
                                             
@@ -262,6 +255,4 @@ struct listOfRemindersView: View {
 
 }
 
-#Preview {
-    listOfRemindersView()
-}
+

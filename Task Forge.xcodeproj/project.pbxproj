@@ -22,7 +22,7 @@
 		BC628E842C6C234800D75E37 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E832C6C234800D75E37 /* LocalNotificationManager.swift */; };
 		BC628E872C6C235900D75E37 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E862C6C235900D75E37 /* LocalNotification.swift */; };
 		BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8A2C6C283B00D75E37 /* NextView.swift */; };
-		BC628E8D2C6C2B6C00D75E37 /* EnableNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8C2C6C2B6C00D75E37 /* EnableNotifications.swift */; };
+		BC628E8D2C6C2B6C00D75E37 /* suggestedActions .swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8C2C6C2B6C00D75E37 /* suggestedActions .swift */; };
 		BC628E8F2C6C2C5500D75E37 /* ContentViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */; };
 		BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */; };
 		BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */; };
@@ -62,7 +62,7 @@
 		BC628E832C6C234800D75E37 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		BC628E862C6C235900D75E37 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		BC628E8A2C6C283B00D75E37 /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
-		BC628E8C2C6C2B6C00D75E37 /* EnableNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotifications.swift; sourceTree = "<group>"; };
+		BC628E8C2C6C2B6C00D75E37 /* suggestedActions .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "suggestedActions .swift"; sourceTree = "<group>"; };
 		BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewWrapper.swift; sourceTree = "<group>"; };
 		BC7FBE782BDEFE300027A00C /* Task Forge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Forge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderApp.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				BC628D602C6AF3AE00D75E37 /* More.swift */,
-				BC628E8C2C6C2B6C00D75E37 /* EnableNotifications.swift */,
+				BC628E8C2C6C2B6C00D75E37 /* suggestedActions .swift */,
 				BC628D632C6AF5C300D75E37 /* syncing.swift */,
 				BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */,
 				BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */,
@@ -202,7 +202,6 @@
 			children = (
 				BC39F06C2C6567930019BB7F /* listOfRemindersView.swift */,
 				BC39F0702C65820E0019BB7F /* createNewReminderView.swift */,
-				BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */,
 				BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */,
 			);
 			path = "Reminder Views";
@@ -211,6 +210,7 @@
 		BCBBCC7E2D0F10D700B4FE3E /* Task Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */,
 				BC39F06A2C6567850019BB7F /* listOfTasksView.swift */,
 				BC39F0762C65C3820019BB7F /* viewTaskView.swift */,
 				BC39F06E2C6578B60019BB7F /* createNewTaskView.swift */,
@@ -322,7 +322,7 @@
 				BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */,
 				BC7FBEA02BDEFE710027A00C /* CalendarICS.swift in Sources */,
 				BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */,
-				BC628E8D2C6C2B6C00D75E37 /* EnableNotifications.swift in Sources */,
+				BC628E8D2C6C2B6C00D75E37 /* suggestedActions .swift in Sources */,
 				BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */,
 				BC7FBEA12BDEFE710027A00C /* CalendarComponent.swift in Sources */,
 				BC12CB172C814E4500473C6B /* generateSpacedReminders.swift in Sources */,

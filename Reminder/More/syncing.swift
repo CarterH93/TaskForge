@@ -30,8 +30,8 @@ struct syncing: View {
     
     var body: some View {
         List {
-            Section("Add URL Link") {
-                TextField("paste link here", text: $link)
+            Section("Add .ICS Link") {
+                TextField("Paste Link Here...", text: $link)
                 Button("Add Source") {
                     
                     if let url = URL(string: link) {

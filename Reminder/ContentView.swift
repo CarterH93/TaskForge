@@ -26,13 +26,13 @@ struct ContentView: View {
             @Bindable var lnManager: LocalNotificationManager = lnManager
                     TabView {
                         
-                        listOfRemindersView()
+                        listOfRemindersView(settings: settings.first ?? Settings1())
                             .tabItem {
                                 Label("Reminders", systemImage: "bell")
                             }
                         
                         
-                        listOfTasksView()
+                        listOfTasksView(settings: settings.first ?? Settings1())
                             .tabItem {
                                 Label("Tasks", systemImage: "list.bullet.clipboard")
                             }

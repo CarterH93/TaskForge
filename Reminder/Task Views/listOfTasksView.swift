@@ -10,16 +10,18 @@ import SwiftData
 
 
 struct listOfTasksView: View {
+    var settings: Settings1
+    
     @EnvironmentObject var dataload: dataLoad
     private var maxDayRange: Int {
-        if showOnlyToday {
+        if settings.showOnlyToday {
             return 0
         } else {
             return 8
         }
     }
     
-    @State private var showOnlyToday = false
+
     
     static var now: Date { Date.now }
     @Query var reminders: [Reminder]
@@ -28,9 +30,7 @@ struct listOfTasksView: View {
     reminders.filter { $0.due > Date.now && $0.completedWrapper == false }
     }
     
-    @Query(
-        sort: \Settings1.Date1
-    ) var settings: [Settings1]
+   
     
     @Query(
         sort: \TaskObject.due
@@ -38,7 +38,7 @@ struct listOfTasksView: View {
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewTaskCreation = false
     
-    @State private var showCompleted = false
+ 
     @Environment(LocalNotificationManager.self) var lnManager
     
     func filterDate(date: Date, num: Int) -> [TaskObject] {
@@ -46,13 +46,13 @@ struct listOfTasksView: View {
         
         var firstFilter: [TaskObject]
         
-        if showCompleted {
+        if settings.showCompleted {
             firstFilter = preFilter
         } else {
             firstFilter = preFilter.filter { $0.completed == false }
         }
         
-        if num >= maxDayRange && !showOnlyToday {
+        if num >= maxDayRange && !settings.showOnlyToday {
             return firstFilter.filter {
                 $0.due >= date
                
@@ -149,7 +149,7 @@ struct listOfTasksView: View {
                                                         .lineLimit(1)
                                                 }
                                             }
-                                            Text((num >= maxDayRange && !showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
+                                            Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
                                     .strikethrough(task.completed)
@@ -179,15 +179,15 @@ struct listOfTasksView: View {
                         }
                 .toolbar {
                     Menu {
-                        Button(showOnlyToday ? "Show All" : "Show Only Today") {
+                        Button(settings.showOnlyToday ? "Show All" : "Show Only Today") {
                             withAnimation(.linear(duration: 0.01)) {
-                                showOnlyToday.toggle()
+                                settings.showOnlyToday.toggle()
                             }
                         }
                         
-                        Button(showCompleted ? "Hide Completed" : "Show Completed") {
+                        Button(settings.showCompleted ? "Hide Completed" : "Show Completed") {
                             withAnimation(.linear(duration: 0.01)) {
-                                showCompleted.toggle()
+                                settings.showCompleted.toggle()
                                 }
                             }
                         
@@ -229,6 +229,3 @@ struct listOfTasksView: View {
     
 }
 
-#Preview {
-    listOfTasksView()
-}
