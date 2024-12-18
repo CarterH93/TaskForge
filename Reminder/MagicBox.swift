@@ -27,6 +27,7 @@ func autoSpacedRemindersLookForKeyWords(_ input: String) -> Bool {
 }
 
 
+/// Handles retrieving information from remote ICS calendar sources and converting and storing them into the SwiftData database.
 @ModelActor
 actor MagicBox {
     
@@ -41,7 +42,11 @@ actor MagicBox {
        return iCal.load(string: string)
     }
     
-    //Creates list of tasks
+    /// Creates list of tasks from remote URL source
+    /// - Parameters:
+    ///   - url: input .ICS URL to retrieve tasks from
+    ///   - deletePastDueTasksOnIntialSync: automatically delete tasks that are overdue
+    /// - Returns: Returns a set of ``TaskObject`` converted from remote URL source
     private func parseRemoteData(_ url: URL, deletePastDueTasksOnIntialSync: Bool) async -> Set<TaskObject> {
         
         var listOfTasks: [TaskObject] = []
