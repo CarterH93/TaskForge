@@ -303,7 +303,8 @@ actor MagicBox {
                     if let task = remoteTasks.first(where: {$0.oldid == ID}) {
                         
                         //Identify if we should create spaced reminders
-                        if task.deleted1 == false && autoSpacedRemindersLookForKeyWords(task.name) {
+                        if task.deleted1 == false && settings.defaultSpacedRemindersEnabled && autoSpacedRemindersLookForKeyWords(task.name)
+                        {
                             let generateSpacedReminders = generateSpacedReminders(task: task)
                             
                             var timePeriod = generateSpacedReminders.timePeriod
