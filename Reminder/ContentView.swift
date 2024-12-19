@@ -19,7 +19,7 @@ struct ContentView: View {
     ) var settings: [Settings1]
     
     var filterReminders: [Reminder] {
-    reminders.filter { $0.due > Date.now && $0.completedWrapper == false }
+        reminders.filter { $0.due > Date.now && $0.completedWrapper == false && $0.task?.deleted1 == false}
     }
     
         var body: some View {

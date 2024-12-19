@@ -14,7 +14,7 @@ struct cleanUpSpam: View {
     @Query var reminders: [Reminder]
     
     var filterReminders: [Reminder] {
-    reminders.filter { $0.due > Date.now && $0.completedWrapper == false }
+        reminders.filter { $0.due > Date.now && $0.completedWrapper == false && $0.task?.deleted1 == false}
     }
     
     @Query(
