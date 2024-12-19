@@ -335,9 +335,8 @@ actor MagicBox {
                             
                             
                         }
-                        //Makes sure the user has automatic reminders enabled and
-                        //Makes sure this task wasnt deleted behind the scenes
-                       else if task.deleted1 == false && settings.defaultReminderEnabled {
+                        //Makes sure the user has automatic reminders enabled
+                       else if settings.defaultReminderEnabled {
                             //Auto creates a reminder based on the information given in settings
                             
                             task.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(task.name)", due: task.due.addingTimeInterval(-settings.defaultReminderWrapper))]
