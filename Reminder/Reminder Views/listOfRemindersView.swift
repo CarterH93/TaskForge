@@ -30,7 +30,7 @@ struct listOfRemindersView: View {
     @Environment(LocalNotificationManager.self) var lnManager
     
     var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.completedWrapper == false && $0.task?.deleted1 == false}
+        reminders.filter { $0.due > Date.now && $0.completedWrapper == false && $0.task?.deleted1 ?? false == false}
     }
     
     
@@ -38,9 +38,9 @@ struct listOfRemindersView: View {
         var firstFilter: [Reminder]
         
         if settings.showCompleted {
-            firstFilter = reminders.filter { $0.task?.deleted1 == false }
+            firstFilter = reminders.filter { $0.task?.deleted1 ?? false == false }
         } else {
-            firstFilter = reminders.filter { $0.completedWrapper == false && $0.task?.deleted1 == false }
+            firstFilter = reminders.filter { $0.completedWrapper == false && $0.task?.deleted1 ?? false == false }
         }
         
         if num >= maxDayRange && !settings.showOnlyToday {

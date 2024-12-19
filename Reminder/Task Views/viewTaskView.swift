@@ -146,12 +146,15 @@ struct viewTaskView: View {
     func deleteReminder(_ indexSet: IndexSet) {
         for index in indexSet {
             let reminder = task.reminders![index]
+            lnManager.removeRequest(withIdentifier: reminder.id)
             modelContext.delete(reminder)
         }
     }
     
     @State private var showingNewReminderSheet = false
     @State private var showingAutoGenerateSheet = false
+    
+    @Environment(LocalNotificationManager.self) var lnManager
     
     @Query(
         sort: \Settings1.Date1
@@ -224,6 +227,30 @@ struct viewTaskView: View {
                     Button(task.completed ? "Mark as uncomplete" : "Mark as complete") {
                         task.completed.toggle()
                         
+                        if task.completed {
+                            for reminder in task.reminders! {
+                                lnManager.removeRequest(withIdentifier: reminder.id)
+                            }
+                        } else {
+                            
+                            Task {
+                                
+                                for reminder in task.reminders! {
+                                    if !reminder.completedWrapper {
+                                    lnManager.removeRequest(withIdentifier: reminder.id)
+                                    
+                                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
+                                    
+                                    
+                                    
+                                    let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
+                                    
+                                    await lnManager.schedule(localNotification: localNotification)
+                                }
+                            }
+                        }
+                        }
+                        
                     }
                 }
                 
@@ -252,7 +279,10 @@ struct viewTaskView: View {
             .alert("Are you sure you want to permanently delete this task and it's associated reminders?", isPresented: $showingDeleteAlert) {
                 Button("Delete", role: .destructive) {
                     for reminder in task.reminders! {
+                        lnManager.removeRequest(withIdentifier: reminder.id)
                         modelContext.delete(reminder)
+                        
+                        
                     }
                     if task.inAppGenerated == true {
                         modelContext.delete(task)

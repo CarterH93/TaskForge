@@ -143,22 +143,66 @@ struct viewReminderView: View {
                     }
             .alert("Are you sure you want to permanently delete this reminder?", isPresented: $showingReminderAlert) {
                 Button("Delete", role: .destructive) {
+                    
+                    Task {
+                        
+                        lnManager.removeRequest(withIdentifier: reminder.id)
+                    }
+                    
                     dismiss()
                     modelContext.delete(reminder)
                             }
                     }
             .onChange(of: reminder.due) {
-                Task {
+                if reminder.completedWrapper == false {
+                    Task {
+                        
+                        lnManager.removeRequest(withIdentifier: reminder.id)
+                        
+                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
+                        
+                        
+                        
+                        let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
+                        
+                        await lnManager.schedule(localNotification: localNotification)
+                    }
+                }
+            }
+            .onChange(of: reminder.name) {
+                if reminder.completedWrapper == false {
+                    Task {
+                        
+                        lnManager.removeRequest(withIdentifier: reminder.id)
+                        
+                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
+                        
+                        
+                        
+                        let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
+                        
+                        await lnManager.schedule(localNotification: localNotification)
+                    }
+                }
+            }
+            .onChange(of: reminder.completed) {
+                
+                if reminder.completedWrapper == false {
                     
+                    Task {
+                        
+                        lnManager.removeRequest(withIdentifier: reminder.id)
+                        
+                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
+                        
+                        
+                        
+                        let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
+                        
+                        await lnManager.schedule(localNotification: localNotification)
+                    }
+                } else {
                     lnManager.removeRequest(withIdentifier: reminder.id)
-                    
-                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
-                    
-                   
-                    
-                    let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
-                    
-                    await lnManager.schedule(localNotification: localNotification)
                 }
             }
         }
