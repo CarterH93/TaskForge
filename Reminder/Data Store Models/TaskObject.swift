@@ -18,7 +18,7 @@ class TaskObject {
     var inAppGenerated: Bool = false
     var deleted1: Bool = false
     //Provided by user
-    var completed: Bool = false
+    private var completed: Bool = false
     var notes: String = ""
     var label: String?
     
@@ -27,6 +27,43 @@ class TaskObject {
     var image: [Data]?
     
     var reminders: [Reminder]?
+    
+    var isCompleted: Bool {
+        return completed
+    }
+    
+    func toggleCompleted(_ manuelBool: Bool? = nil) {
+        if let manuelBool = manuelBool {
+            //manuelly sets value to given parameter
+            self.completed = manuelBool
+            
+        } else {
+            //If no manuel value given, just do normal toggling function
+            self.completed.toggle()
+        }
+        
+        //If task is not completed but all its reminders are completed
+        //Set reminder with larger due date to be uncomplete
+        if !self.completed {
+            
+            var uncomplete = false
+            
+            for reminder in reminders ?? [] {
+                if !reminder.isCompleted {
+                    uncomplete = true
+                    break
+                }
+            }
+            
+            if uncomplete == false {
+                //Set reminder with largest due date to be uncomplete
+                let largestDueDate = reminders?.max { $0.due < $1.due }
+                largestDueDate?.toggleCompleted(false)
+                
+            }
+        }
+        
+    }
     
     var id: String {
         return "\(oldid)\(name)\(info)\(due)"

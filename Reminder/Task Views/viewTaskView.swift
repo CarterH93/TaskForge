@@ -145,7 +145,14 @@ struct viewTaskView: View {
 
     func deleteReminder(_ indexSet: IndexSet) {
         for index in indexSet {
+            if task.reminders?.count ?? 1 < 2 {
+                showingExplanationForNotBeingAbleToDelete = true
+                return
+            }
+            
+            
             let reminder = task.reminders![index]
+            reminder.toggleCompleted(true)
             lnManager.removeRequest(withIdentifier: reminder.id)
             modelContext.delete(reminder)
         }
@@ -153,6 +160,9 @@ struct viewTaskView: View {
     
     @State private var showingNewReminderSheet = false
     @State private var showingAutoGenerateSheet = false
+    
+    @State private var showingExplanationForDisabledSpacedReminders = false
+    @State private var showingExplanationForNotBeingAbleToDelete = false
     
     @Environment(LocalNotificationManager.self) var lnManager
     
@@ -214,20 +224,25 @@ struct viewTaskView: View {
                         showingNewReminderSheet = true
                     }
                 }
-                if Date.now.addingTimeInterval(86400) < task.due {
+                
+                if Date.now.addingTimeInterval(86400) > task.due {
+                    Button("✨ Auto Generate Spaced Reminders ✨") {  }
+                    .disabled(Date.now.addingTimeInterval(86400) > task.due)
+                    .onTapGesture {
+                        showingExplanationForDisabledSpacedReminders = true
+                    }
+                } else {
                     Button("✨ Auto Generate Spaced Reminders ✨") {
-                        //Need to add reminders to task and create notifications for them
                         showingAutoGenerateSheet = true
-                        
-                        
                     }
                 }
                 
+                
                 Section {
-                    Button(task.completed ? "Mark as uncomplete" : "Mark as complete") {
-                        task.completed.toggle()
+                    Button(task.isCompleted ? "Mark as uncomplete" : "Mark as complete") {
+                        task.toggleCompleted()
                         
-                        if task.completed {
+                        if task.isCompleted {
                             for reminder in task.reminders! {
                                 lnManager.removeRequest(withIdentifier: reminder.id)
                             }
@@ -236,7 +251,7 @@ struct viewTaskView: View {
                             Task {
                                 
                                 for reminder in task.reminders! {
-                                    if !reminder.completedWrapper {
+                                    if !reminder.isCompleted {
                                     lnManager.removeRequest(withIdentifier: reminder.id)
                                     
                                     let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
@@ -292,6 +307,10 @@ struct viewTaskView: View {
                     dismiss()
                     
                             }
+                    }
+            .alert("Your task's date needs to be at least one day in the future to use this feature.", isPresented: $showingExplanationForDisabledSpacedReminders) {
+                    }
+            .alert("Your task must have at least one reminder associated with it.", isPresented: $showingExplanationForNotBeingAbleToDelete) {
                     }
         }
     }

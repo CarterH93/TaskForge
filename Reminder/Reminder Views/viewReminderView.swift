@@ -59,12 +59,19 @@ struct viewReminderView: View {
     
     @State private var showingSheetForTaskLinking = false
     
+    @State private var showingCannotDeleteAlert = false
+    
     @Environment(\.modelContext) var modelContext
 
    @State var reminder: Reminder
     
     
     func deleteTaskLink(_ indexSet: IndexSet) {
+        if reminder.task?.reminders?.count ?? 1 < 2 {
+            showingCannotDeleteAlert = true
+            return
+        }
+        
         reminder.task = nil
     }
 
@@ -88,7 +95,7 @@ struct viewReminderView: View {
                     DatePicker("Due:", selection: $reminder.due)
                 }
                 
-                Section("Task") {
+                Section("Linked Task") {
                     if !viewUpdater.isEmpty {
                         if let task = reminder.task {
                             List {
@@ -116,20 +123,25 @@ struct viewReminderView: View {
                     }
                 }
                 
-                if reminder.canChangeCompleted  {
                     Section {
-                        Button(reminder.completed ? "Mark as uncomplete" : "Mark as complete") {
+                        Button(reminder.isCompleted ? "Mark as uncomplete" : "Mark as complete") {
                             reminder.toggleCompleted()
                             
-                        }
                     }
                 }
                 
                 Section {
                   
                         Button("Delete Reminder", role: .destructive) {
-                            showingReminderAlert = true
+                            if let task = reminder.task {
+                                if task.reminders?.count ?? 1 < 2 {
+                                    showingCannotDeleteAlert = true
+                                    return
+                                }
+                            }
                             
+                            
+                            showingReminderAlert = true
                             
                         }
                     
@@ -148,13 +160,14 @@ struct viewReminderView: View {
                         
                         lnManager.removeRequest(withIdentifier: reminder.id)
                     }
-                    
+                    reminder.toggleCompleted(true)
                     dismiss()
                     modelContext.delete(reminder)
                             }
                     }
+            .alert("Cannot complete action because associated task needs at least one reminder.", isPresented: $showingCannotDeleteAlert) { }
             .onChange(of: reminder.due) {
-                if reminder.completedWrapper == false {
+                if reminder.isCompleted == false {
                     Task {
                         
                         lnManager.removeRequest(withIdentifier: reminder.id)
@@ -170,7 +183,7 @@ struct viewReminderView: View {
                 }
             }
             .onChange(of: reminder.name) {
-                if reminder.completedWrapper == false {
+                if reminder.isCompleted == false {
                     Task {
                         
                         lnManager.removeRequest(withIdentifier: reminder.id)
@@ -185,9 +198,9 @@ struct viewReminderView: View {
                     }
                 }
             }
-            .onChange(of: reminder.completed) {
+            .onChange(of: reminder.isCompleted) {
                 
-                if reminder.completedWrapper == false {
+                if reminder.isCompleted == false {
                     
                     Task {
                         

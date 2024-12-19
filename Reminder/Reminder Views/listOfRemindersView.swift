@@ -30,7 +30,7 @@ struct listOfRemindersView: View {
     @Environment(LocalNotificationManager.self) var lnManager
     
     var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.completedWrapper == false && $0.task?.deleted1 ?? false == false}
+        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false}
     }
     
     
@@ -40,7 +40,7 @@ struct listOfRemindersView: View {
         if settings.showCompleted {
             firstFilter = reminders.filter { $0.task?.deleted1 ?? false == false }
         } else {
-            firstFilter = reminders.filter { $0.completedWrapper == false && $0.task?.deleted1 ?? false == false }
+            firstFilter = reminders.filter { $0.isCompleted == false && $0.task?.deleted1 ?? false == false }
         }
         
         if num >= maxDayRange && !settings.showOnlyToday {
@@ -126,12 +126,10 @@ struct listOfRemindersView: View {
                                 } label: {
                                     HStack {
                                         
-                                        Image(systemName: reminder.completedWrapper ? "checkmark.circle.fill" : "circle")
+                                        Image(systemName: reminder.isCompleted ? "checkmark.circle.fill" : "circle")
                                             .onTapGesture {
                                                 withAnimation(.linear(duration: 0.01)) {
-                                                    if reminder.canChangeCompleted  {
                                                         reminder.toggleCompleted()
-                                                    }
                                                 }
                                             }
                                             .accessibilityAddTraits(.isButton)
@@ -151,7 +149,7 @@ struct listOfRemindersView: View {
                                             }
                                             Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                                         }
-                                        .strikethrough(reminder.completedWrapper)
+                                        .strikethrough(reminder.isCompleted)
                                     }
                                     .padding(5)
                                 }

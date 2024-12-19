@@ -27,7 +27,7 @@ struct listOfTasksView: View {
     @Query var reminders: [Reminder]
     
     var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.completedWrapper == false && $0.task?.deleted1 ?? false == false}
+        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false}
     }
     
    
@@ -49,7 +49,7 @@ struct listOfTasksView: View {
         if settings.showCompleted {
             firstFilter = preFilter
         } else {
-            firstFilter = preFilter.filter { $0.completed == false }
+            firstFilter = preFilter.filter { $0.isCompleted == false }
         }
         
         if num >= maxDayRange && !settings.showOnlyToday {
@@ -132,10 +132,10 @@ struct listOfTasksView: View {
                                 } label: {
                                     HStack {
                                         
-                                        Image(systemName: task.completed ? "checkmark.circle.fill" : "circle")
+                                        Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                                             .onTapGesture {
                                                 withAnimation(.linear(duration: 0.01)) {
-                                                    task.completed.toggle()
+                                                    task.toggleCompleted()
                                                 }
                                             }
                                             .accessibilityAddTraits(.isButton)
@@ -152,7 +152,7 @@ struct listOfTasksView: View {
                                             Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
                                         }
                                     }
-                                    .strikethrough(task.completed)
+                                    .strikethrough(task.isCompleted)
                                     .padding(5)
                                 }
                             }

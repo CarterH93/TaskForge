@@ -17,12 +17,12 @@ class Reminder {
     var id: String = ""
     var name: String = ""
     var due: Date = Date.now
-    var completed: Bool = false
+    private var completed: Bool = false
     var notes: String = ""
     var label: String?
     var UIUpdate: String = ""
     
-    
+
     func toggleCompleted(_ manuelBool: Bool? = nil) {
         if let manuelBool = manuelBool {
             //manuelly sets value to given parameter
@@ -33,29 +33,47 @@ class Reminder {
             self.completed.toggle()
         }
         
+        
+        //Sets task to be completed if all its reminders are completed
         var notCompleted = false
         
         for reminder in self.task?.reminders ?? [] {
             if !reminder.completed {
                 notCompleted = true
+                break
             }
         }
         
         if notCompleted == false {
-            self.task?.completed = true
+            self.task?.toggleCompleted(true)
+        }
+        
+        //Sets task to be uncompleted if there is a reminder that is not complete
+        
+        var taskAssociatednotCompleted = false
+        
+        for reminder in self.task?.reminders ?? [] {
+            if !reminder.completed {
+                taskAssociatednotCompleted = true
+                break
+            }
+        }
+        
+        if taskAssociatednotCompleted == true {
+            self.task?.toggleCompleted(false)
         }
         
     }
     
     //The variable to go off for the correct completed value. Looks at parent tasks to see if they are marked off as completed
-    var completedWrapper: Bool {
+    var isCompleted: Bool {
         
         if completed {
             return true
         }
         
         if let task = task {
-            if task.completed || task.deleted1 {
+            if task.isCompleted || task.deleted1 {
                 return true
             }
         }
@@ -63,15 +81,6 @@ class Reminder {
         return false
     }
     
-    //We do not want the user changing the reminder completed bool if the parent task is completed. Results in weird behavior.
-    var canChangeCompleted: Bool {
-        if let task = task {
-            if task.completed {
-                return false
-            }
-        }
-        return true
-    }
     
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
     @Attribute(.externalStorage)
