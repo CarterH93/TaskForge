@@ -133,7 +133,11 @@ actor MagicBox {
     }
     
     //Main Function
-    func work(deletePastDueTasksOnIntialSync: Bool = false, inputURLS: [URL]? = nil) async {
+    func work(inputURLS: [URL]? = nil) async {
+        
+        //Deletes overdue tasks. Makes this always true because people don't need to add overdue assignments from calendar. Also fixes a bunch of glitches.
+        let deletePastDueTasksOnIntialSync = true
+        
         do {
             
             //Accessing Settings
