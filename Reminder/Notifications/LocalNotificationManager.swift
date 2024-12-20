@@ -52,6 +52,11 @@ class LocalNotificationManager: NSObject {
         let content = UNMutableNotificationContent()
         content.title = localNotification.title
         content.body = localNotification.body
+        //Making the notifications be more important
+        content.interruptionLevel = .timeSensitive
+        content.relevanceScore = 1
+        //Prevent grouping of notifications
+        content.threadIdentifier = UUID().uuidString
         if let subtitle = localNotification.subtitle {
             content.subtitle = subtitle
         }
