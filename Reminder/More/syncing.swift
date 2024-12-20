@@ -31,7 +31,14 @@ struct syncing: View {
     var body: some View {
         List {
             Section("Add .ICS Link") {
-                TextField("Paste Link Here...", text: $link)
+                HStack {
+                    TextField("Paste Link Here...", text: $link)
+                    PasteButton(payloadType: String.self) { strings in
+                        guard let first = strings.first else { return }
+                        link = first
+                    }
+                    .buttonBorderShape(.capsule)
+                }
                 Button("Add Source") {
                     
                     if let url = URL(string: link) {
