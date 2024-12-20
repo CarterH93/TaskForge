@@ -233,6 +233,8 @@ struct listOfRemindersView: View {
                     }
                     
                 }
+                //Commented out because glitch is no longer a problem
+                /*
                 .onChange(of: scenePhase) { _, newPhase in
                    
                     
@@ -258,6 +260,7 @@ struct listOfRemindersView: View {
                                         print("Background")
                                     }
                 }
+                */
             }
         }
 

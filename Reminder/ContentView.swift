@@ -43,6 +43,8 @@ struct ContentView: View {
                                 Label("More", systemImage: "ellipsis.circle")
                             }
                     }
+            //Commented out because glitch is no longer a problem.
+            /*
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                            
@@ -57,6 +59,7 @@ struct ContentView: View {
                         })
                        
                     }
+            */
                     .task(priority: .background) {
                         if dataload.loadingICSData == false {
                             dataload.loadingICSData = true
