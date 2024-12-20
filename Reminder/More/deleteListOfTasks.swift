@@ -22,11 +22,7 @@ struct deleteListOfTasks: View {
                                                     systemName:
                                                         tasks[index].deleted1 ? "minus.circle" : "circle"
                                                 )
-                                                HStack {
-                                                    Text(tasks[index].name)
-                                                    Text(tasks[index].due.formatted())
-                                                }
-                                                .strikethrough(tasks[index].deleted1)
+                                                TaskObjectView(task: tasks[index], maxDayRange: 0, num: -1, settings: Settings1(), showCompletedButton: false, showDue: true)
                                             }
                                             .onTapGesture {
                                                 tasks[index].deleted1.toggle()
@@ -38,7 +34,11 @@ struct deleteListOfTasks: View {
                                 
             }
             .headerProminence(.increased)
+            
         }
+        .padding(.top)
+        
+        
     }
 }
 

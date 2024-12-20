@@ -29,6 +29,9 @@ class TaskObject {
     var reminders: [Reminder]?
     
     var isCompleted: Bool {
+        if deleted1 {
+            return true
+        }
         return completed
     }
     

@@ -34,10 +34,7 @@ struct simpleListOfTasks: View {
                     dismiss()
                     
                 } label: {
-                    HStack {
-                        Text(task.name)
-                        Text(task.due.formatted())
-                    }
+                    TaskObjectView(task: task, maxDayRange: 0, num: -1, settings: Settings1(), showCompletedButton: false, showDue: true)
                 }
                 .buttonStyle(.plain)
             }
@@ -103,10 +100,7 @@ struct viewReminderView: View {
                                     NavigationLink {
                                         viewTaskView(task: task)
                                     } label: {
-                                        HStack {
-                                            Text(task.name)
-                                            Text(taskBody(task))
-                                        }
+                                        TaskObjectView(task: task, maxDayRange: 0, num: -1, settings: Settings1(), showCompletedButton: true, showDue: true)
                                     }
                                     .buttonStyle(.plain)
                                 

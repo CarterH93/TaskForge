@@ -39,6 +39,7 @@
 		BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE992BDEFE710027A00C /* Parser.swift */; };
 		BC7FBEAC2BDEFE710027A00C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE9B2BDEFE710027A00C /* String.swift */; };
 		BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */; };
+		BC8FEA6C2D1508A60081EF20 /* ReminderOrTaskListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */; };
 		BCB55E672C7D161E00150A93 /* deleteListOfTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */; };
 		BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E682C7D18C900150A93 /* dataLoad.swift */; };
 		BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBBCC812D0F19A000B4FE3E /* plusButton.swift */; };
@@ -92,6 +93,7 @@
 		BC7FBE992BDEFE710027A00C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BC7FBE9B2BDEFE710027A00C /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
+		BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderOrTaskListObject.swift; sourceTree = "<group>"; };
 		BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteListOfTasks.swift; sourceTree = "<group>"; };
 		BCB55E682C7D18C900150A93 /* dataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoad.swift; sourceTree = "<group>"; };
 		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		BC7FBE7A2BDEFE300027A00C /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */,
 				BCB55E682C7D18C900150A93 /* dataLoad.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
 				BCBBCC812D0F19A000B4FE3E /* plusButton.swift */,
@@ -377,6 +380,7 @@
 				BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */,
 				BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */,
 				BCB55E672C7D161E00150A93 /* deleteListOfTasks.swift in Sources */,
+				BC8FEA6C2D1508A60081EF20 /* ReminderOrTaskListObject.swift in Sources */,
 				BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */,
 				BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */,
 				BC7FBEA22BDEFE710027A00C /* ContentView.swift in Sources */,

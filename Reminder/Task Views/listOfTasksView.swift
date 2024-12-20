@@ -130,30 +130,7 @@ struct listOfTasksView: View {
                                 NavigationLink {
                                     viewTaskView(task: task)
                                 } label: {
-                                    HStack {
-                                        
-                                        Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                                            .onTapGesture {
-                                                withAnimation(.linear(duration: 0.01)) {
-                                                    task.toggleCompleted()
-                                                }
-                                            }
-                                            .accessibilityAddTraits(.isButton)
-                                        HStack {
-                                            VStack {
-                                                Text(task.name)
-                                                if !task.notes.isEmpty {
-                                                    Text(task.notes)
-                                                        .font(.caption)
-                                                        .foregroundColor(.secondary)
-                                                        .lineLimit(1)
-                                                }
-                                            }
-                                            Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
-                                        }
-                                    }
-                                    .strikethrough(task.isCompleted)
-                                    .padding(5)
+                                    TaskObjectView(task: task, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true)
                                 }
                             }
                         }

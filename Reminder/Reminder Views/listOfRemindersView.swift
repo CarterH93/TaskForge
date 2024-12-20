@@ -124,34 +124,7 @@ struct listOfRemindersView: View {
                                 NavigationLink {
                                     viewReminderView(reminder: reminder)
                                 } label: {
-                                    HStack {
-                                        
-                                        Image(systemName: reminder.isCompleted ? "checkmark.circle.fill" : "circle")
-                                            .onTapGesture {
-                                                withAnimation(.linear(duration: 0.01)) {
-                                                        reminder.toggleCompleted()
-                                                }
-                                            }
-                                            .accessibilityAddTraits(.isButton)
-                                        HStack {
-                                            VStack {
-                                                Text(reminder.name)
-                                                if !reminder.notes.isEmpty {
-                                                    Text(reminder.notes)
-                                                        .font(.caption)
-                                                        .foregroundColor(.secondary)
-                                                        .lineLimit(1)
-                                                }
-                                                if let task = reminder.task {
-                                                    Text("Task Due: \(taskBody(task))")
-                                                        .foregroundColor(.orange)
-                                                }
-                                            }
-                                            Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
-                                        }
-                                        .strikethrough(reminder.isCompleted)
-                                    }
-                                    .padding(5)
+                                    ReminderObjectView(reminder: reminder, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true, showAssociatedTask: true)
                                 }
                             }
                         }

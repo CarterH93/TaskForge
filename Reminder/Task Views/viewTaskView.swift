@@ -177,10 +177,9 @@ struct viewTaskView: View {
                             NavigationLink {
                                 viewReminderView(reminder: reminder)
                             } label: {
-                                HStack {
-                                    Text(reminder.name)
-                                    Text(reminderBody(reminder))
-                                }
+                                
+                                ReminderObjectView(reminder: reminder, maxDayRange: 0, num: -1, settings: Settings1(), showCompletedButton: true, showDue: true, showAssociatedTask: false)
+                                
                             }
                            
                             
