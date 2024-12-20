@@ -31,18 +31,6 @@ struct newReminderSubView: View {
                 let newReminder = Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue)
                 task.reminders!.append(newReminder)
                 
-                Task {
-                    
-                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)
-                    
-                   
-                    
-                    
-                    let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: todayReminderBody(newReminder), dateComponents: dateComponents, repeats: false)
-                    
-                    await lnManager.schedule(localNotification: localNotification)
-                    
-                }
                 
                 dismiss()
             }
@@ -104,25 +92,7 @@ struct autoGenerateRemindersSubView: View {
                 let newReminders = generateSpacedRemindersObject.generate(number: numberOfReminders, timePeriod: timeSpan)
                 task.reminders?.append(contentsOf: newReminders)
                 
-                for newReminder in newReminders {
-                    
-                    
-                    Task {
-                        
-                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)
-                        
-                       
-                        
-                        
-                        let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: todayReminderBody(newReminder), dateComponents: dateComponents, repeats: false)
-                        
-                        await lnManager.schedule(localNotification: localNotification)
-                        
-                    }
-                    
-                   
-                    
-                }
+               
                 dismiss()
             }
             .buttonStyle(.borderedProminent)
@@ -241,30 +211,6 @@ struct viewTaskView: View {
                 Section {
                     Button(task.isCompleted ? "Mark as uncomplete" : "Mark as complete") {
                         task.toggleCompleted()
-                        
-                        if task.isCompleted {
-                            for reminder in task.reminders! {
-                                lnManager.removeRequest(withIdentifier: reminder.id)
-                            }
-                        } else {
-                            
-                            Task {
-                                
-                                for reminder in task.reminders! {
-                                    if !reminder.isCompleted {
-                                    lnManager.removeRequest(withIdentifier: reminder.id)
-                                    
-                                    let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
-                                    
-                                    
-                                    
-                                    let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
-                                    
-                                    await lnManager.schedule(localNotification: localNotification)
-                                }
-                            }
-                        }
-                        }
                         
                     }
                 }

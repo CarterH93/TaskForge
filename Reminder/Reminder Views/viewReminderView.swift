@@ -166,58 +166,6 @@ struct viewReminderView: View {
                             }
                     }
             .alert("Cannot complete action because associated task needs at least one reminder.", isPresented: $showingCannotDeleteAlert) { }
-            .onChange(of: reminder.due) {
-                if reminder.isCompleted == false {
-                    Task {
-                        
-                        lnManager.removeRequest(withIdentifier: reminder.id)
-                        
-                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
-                        
-                        
-                        
-                        let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
-                        
-                        await lnManager.schedule(localNotification: localNotification)
-                    }
-                }
-            }
-            .onChange(of: reminder.name) {
-                if reminder.isCompleted == false {
-                    Task {
-                        
-                        lnManager.removeRequest(withIdentifier: reminder.id)
-                        
-                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
-                        
-                        
-                        
-                        let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
-                        
-                        await lnManager.schedule(localNotification: localNotification)
-                    }
-                }
-            }
-            .onChange(of: reminder.isCompleted) {
-                
-                if reminder.isCompleted == false {
-                    
-                    Task {
-                        
-                        lnManager.removeRequest(withIdentifier: reminder.id)
-                        
-                        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: reminder.due)
-                        
-                        
-                        
-                        let localNotification = LocalNotification(identifier: reminder.id, categoryIdentifier: "reminderNotification", title: reminder.name, userInfo: ["nextView" : reminder.id], body: todayReminderBody(reminder), dateComponents: dateComponents, repeats: false)
-                        
-                        await lnManager.schedule(localNotification: localNotification)
-                    }
-                } else {
-                    lnManager.removeRequest(withIdentifier: reminder.id)
-                }
-            }
         }
     }
 }

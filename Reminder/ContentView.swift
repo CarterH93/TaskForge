@@ -11,6 +11,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(LocalNotificationManager.self) var lnManager
+    @Environment(\.scenePhase) var scenePhase
     
     @Query var reminders: [Reminder]
     @EnvironmentObject var dataload: dataLoad
@@ -67,7 +68,10 @@ struct ContentView: View {
                         
                         
                     }
-                    .onAppear {
+                    .onChange(of: scenePhase) { _, newPhase in
+                       
+                        if newPhase == .background { return }
+                        
                         lnManager.clearRequests()
                         
                         for newReminder in filterReminders {
@@ -84,6 +88,7 @@ struct ContentView: View {
                                 
                             }
                         }
+                        
                     }
                     
                 

@@ -42,18 +42,6 @@ struct createNewReminderView: View {
                         let newReminder = Reminder(id: UUID().uuidString, name: name, due: due, notes: notes)
                         modelContext.insert(newReminder)
                         
-                        Task {
-                            
-                            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)
-                            
-                           
-                            
-                            
-                            let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: todayReminderBody(newReminder), dateComponents: dateComponents, repeats: false)
-                            
-                            await lnManager.schedule(localNotification: localNotification)
-                            
-                        }
                         dismiss()
                     }
                 }
