@@ -98,7 +98,7 @@ struct MagicBoxID: Hashable {
 
 func taskBody(_ task: TaskObject) -> String {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "EEEE, MMM dd h:mm a"
+    dateFormatter.dateFormat = "EEEE, MMM dd"
     let time = DateFormatter()
     time.dateFormat = "h:mm a"
     
@@ -111,8 +111,8 @@ func taskBody(_ task: TaskObject) -> String {
     let string = relativeDateFormatter.string(from: task.due)
     
         if let _ = string.rangeOfCharacter(from: .decimalDigits) {
-            return dateFormatter.string(from: task.due)
+            return "\(dateFormatter.string(from: task.due) ) at \(time.string(from: task.due))"
         } else {
-            return "\(string), \(time.string(from: task.due))"
+            return "\(string) at \(time.string(from: task.due))"
         }
 }

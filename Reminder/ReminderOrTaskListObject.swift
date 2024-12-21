@@ -27,30 +27,40 @@ struct ReminderObjectView: View {
                         }
                     }
                     .accessibilityAddTraits(.isButton)
+                    .padding(.trailing)
             }
+                
             
             VStack {
                 HStack {
-                        Text(reminder.name)
-                        if !reminder.notes.isEmpty {
-                            Text(reminder.notes)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .lineLimit(1)
-                        }
+                    Text(reminder.name)
+                    Spacer()
                     if showDue {
                         Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
+                            .font(.callout)
+                            .foregroundStyle(num < 0 ? .red : .blue)
                     }
                 }
+                .strikethrough(reminder.isCompleted)
+                
+                HStack {
+                    if !reminder.notes.isEmpty {
+                        Image(systemName: "text.justify.leading")
+                    }
                 
                 if showAssociatedTask {
                     if let task = reminder.task {
-                        Text("Task Due: \(taskBody(task))")
-                            .foregroundColor(.orange)
+                        Image(systemName: "list.bullet.clipboard")
+                        Text(taskBody(task))
+                        Spacer()
                     }
                 }
+                
             }
-            .strikethrough(reminder.isCompleted)
+                .foregroundColor(.secondary)
+                .font(.footnote)
+            }
+            
         }
         .padding(5)
     }
