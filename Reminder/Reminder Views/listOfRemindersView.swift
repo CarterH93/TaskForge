@@ -110,8 +110,6 @@ struct listOfRemindersView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    
-    
         var body: some View {
             NavigationStack {
                 List {
@@ -125,9 +123,17 @@ struct listOfRemindersView: View {
                                     viewReminderView(reminder: reminder)
                                 } label: {
                                     ReminderObjectView(reminder: reminder, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true, showAssociatedTask: true)
+                                        .padding(4)
                                 }
                             }
                         }
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(Color(UIColor.secondarySystemGroupedBackground))
+                                .padding([.top, .bottom], 6)
+                                
+                        )
+                        .listRowSeparator(.hidden)
                         .headerProminence(num < 1 ? .increased : .standard)
                     }
                     

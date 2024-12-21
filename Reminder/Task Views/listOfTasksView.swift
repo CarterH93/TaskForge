@@ -131,9 +131,17 @@ struct listOfTasksView: View {
                                     viewTaskView(task: task)
                                 } label: {
                                     TaskObjectView(task: task, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true)
+                                        .padding(4)
                                 }
                             }
                         }
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(Color(UIColor.secondarySystemGroupedBackground))
+                                .padding([.top, .bottom], 6)
+                                
+                        )
+                        .listRowSeparator(.hidden)
                         .headerProminence(num < 1 ? .increased : .standard)
                     }
                 
