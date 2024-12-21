@@ -34,6 +34,7 @@ struct ReminderObjectView: View {
             VStack {
                 HStack {
                     Text(reminder.name)
+                        .font(.callout)
                     Spacer()
                     if showDue {
                         Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
