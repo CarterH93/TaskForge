@@ -60,7 +60,7 @@ struct ReminderObjectView: View {
                     if showDue {
                         Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                             .font(.callout)
-                            .foregroundStyle((num < 0 && maxDayRange != -5) ? .red : .blue)
+                            .foregroundStyle((num < 0) ? .red : .blue)
                     }
                 }
                 .strikethrough(reminder.isCompleted)
