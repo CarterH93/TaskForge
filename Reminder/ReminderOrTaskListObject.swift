@@ -50,18 +50,12 @@ struct ReminderObjectView: View {
                     .accessibilityAddTraits(.isButton)
                     .padding(.trailing)
             }
-                
             
             VStack {
                 HStack {
                     Text(reminder.name)
                         .font(.callout)
                     Spacer()
-                    if showDue {
-                        Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
-                            .font(.callout)
-                            .foregroundStyle((num < 0) ? .red : .blue)
-                    }
                 }
                 .strikethrough(reminder.isCompleted)
                 
@@ -73,22 +67,32 @@ struct ReminderObjectView: View {
                         Text(reminder.notes)
                             .lineLimit(1)
                     }
-                
-                if showAssociatedTask {
-                    if let task = reminder.task {
-                        Image(systemName: "list.bullet.clipboard")
-                        Text(taskBody(task))
+                    
+                    if showAssociatedTask {
+                        if let task = reminder.task {
+                            Image(systemName: "list.bullet.clipboard")
+                            Text(taskBody(task))
+                        }
                     }
-                }
                     
                     if (!reminder.notes.isEmpty && showNotes) || (showAssociatedTask && reminder.task != nil) {
                         Spacer()
                     }
-                
-            }
+                    
+                }
                 .foregroundColor(.secondary)
                 .font(.footnote)
             }
+                Spacer()
+                if showDue {
+                    Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
+                        .font(.callout)
+                        .foregroundStyle((num < 0) ? .red : .blue)
+                        .strikethrough(reminder.isCompleted)
+                }
+                    
+                
+        
             
         }
         .padding(5)
