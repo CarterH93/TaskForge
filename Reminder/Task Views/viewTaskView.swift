@@ -178,7 +178,7 @@ struct viewTaskView: View {
                                 viewReminderView(reminder: reminder)
                             } label: {
                                 
-                                ReminderObjectView(reminder: reminder, maxDayRange: 0, num: -1, settings: Settings1(), showCompletedButton: true, showDue: true, showAssociatedTask: false)
+                                ReminderObjectView(reminder: reminder, settings: Settings1(), showCompletedButton: true, showDue: true, showAssociatedTask: false, showNotes: false)
                                 
                             }
                            

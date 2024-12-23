@@ -15,6 +15,27 @@ struct ReminderObjectView: View {
     var showCompletedButton: Bool
     var showDue: Bool
     var showAssociatedTask: Bool
+    var showNotes: Bool
+    
+    
+    init(reminder: Reminder, maxDayRange: Int = 0, num: Int? = nil, settings: Settings1 = Settings1(), showCompletedButton: Bool, showDue: Bool, showAssociatedTask: Bool, showNotes: Bool) {
+        self.reminder = reminder
+        self.maxDayRange = maxDayRange
+        if let num = num {
+            self.num = num
+        } else {
+            if reminder.due < Calendar.current.startOfDay(for: Date.now) {
+                self.num = -1
+            } else {
+                self.num = 3
+            }
+        }
+        self.settings = settings
+        self.showCompletedButton = showCompletedButton
+        self.showDue = showDue
+        self.showAssociatedTask = showAssociatedTask
+        self.showNotes = showNotes
+    }
     
     
     var body: some View {
@@ -39,23 +60,30 @@ struct ReminderObjectView: View {
                     if showDue {
                         Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                             .font(.callout)
-                            .foregroundStyle(num < 0 ? .red : .blue)
+                            .foregroundStyle((num < 0 && maxDayRange != -5) ? .red : .blue)
                     }
                 }
                 .strikethrough(reminder.isCompleted)
                 
                 HStack {
-                    if !reminder.notes.isEmpty {
+                    if (!reminder.notes.isEmpty && showNotes) && (showAssociatedTask && reminder.task != nil) {
                         Image(systemName: "text.justify.leading")
+                    } else if (!reminder.notes.isEmpty && showNotes) {
+                        Image(systemName: "text.justify.leading")
+                        Text(reminder.notes)
+                            .lineLimit(1)
                     }
                 
                 if showAssociatedTask {
                     if let task = reminder.task {
                         Image(systemName: "list.bullet.clipboard")
                         Text(taskBody(task))
-                        Spacer()
                     }
                 }
+                    
+                    if (!reminder.notes.isEmpty && showNotes) || (showAssociatedTask && reminder.task != nil) {
+                        Spacer()
+                    }
                 
             }
                 .foregroundColor(.secondary)

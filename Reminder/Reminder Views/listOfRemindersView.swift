@@ -122,7 +122,7 @@ struct listOfRemindersView: View {
                                 NavigationLink {
                                     viewReminderView(reminder: reminder)
                                 } label: {
-                                    ReminderObjectView(reminder: reminder, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true, showAssociatedTask: true)
+                                    ReminderObjectView(reminder: reminder, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true, showAssociatedTask: true, showNotes: true)
                                         .padding(4)
                                 }
                             }
