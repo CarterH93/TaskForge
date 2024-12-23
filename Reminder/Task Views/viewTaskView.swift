@@ -167,9 +167,9 @@ struct viewTaskView: View {
                     }
                 }
                 
+        
                 
-                
-                Section("Reminders") {
+                Section {
                     
                     List {
                         
@@ -191,6 +191,13 @@ struct viewTaskView: View {
                     
                     Button("Create New Reminder") {
                         showingNewReminderSheet = true
+                    }
+                } header: {
+                    HStack {
+                        Text("Reminders")
+                        Spacer()
+                        EditButton()
+                            .font(.footnote)
                     }
                 }
                 

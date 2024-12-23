@@ -53,11 +53,18 @@ struct syncing: View {
                 }
             }
             
-            Section("Synced Sources") {
+            Section {
                 ForEach(settings.first!.icsSources, id: \.self) { link in
                     Text(link.description)
                 }
                 .onDelete(perform: removeRows)
+            } header: {
+                HStack {
+                    Text("Synced Sources")
+                    Spacer()
+                    EditButton()
+                        .font(.footnote)
+                }
             }
             
             Section {
