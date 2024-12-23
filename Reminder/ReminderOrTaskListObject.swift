@@ -43,7 +43,7 @@ struct ReminderObjectView: View {
             if showCompletedButton {
                 Image(systemName: reminder.isCompleted ? "checkmark.circle.fill" : "circle")
                     .onTapGesture {
-                        withAnimation(.linear(duration: 0.01)) {
+                        withAnimation {
                             reminder.toggleCompleted()
                         }
                     }
@@ -107,36 +107,70 @@ struct TaskObjectView: View {
     var settings: Settings1
     var showCompletedButton: Bool
     var showDue: Bool
+    var showNotes: Bool
     
+    init(task: TaskObject, maxDayRange: Int = 0, num: Int? = nil, settings: Settings1 = Settings1(), showCompletedButton: Bool, showDue: Bool, showNotes: Bool) {
+        self.task = task
+        self.maxDayRange = maxDayRange
+        if let num = num {
+            self.num = num
+        } else {
+            if task.due < Calendar.current.startOfDay(for: Date.now) {
+                self.num = -1
+            } else {
+                self.num = 3
+            }
+        }
+        self.settings = settings
+        self.showCompletedButton = showCompletedButton
+        self.showDue = showDue
+        self.showNotes = showNotes
+    }
     
     var body: some View {
         HStack {
             if showCompletedButton {
                 Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                     .onTapGesture {
-                        withAnimation(.linear(duration: 0.01)) {
+                        withAnimation {
                             task.toggleCompleted()
                         }
                     }
                     .accessibilityAddTraits(.isButton)
+                    .padding(.trailing)
             }
             
             VStack {
                 HStack {
-                        Text(task.name)
-                        if !task.notes.isEmpty {
-                            Text(task.notes)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .lineLimit(1)
-                        }
-                    if showDue {
-                        Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
-                    }
+                    Text(task.name)
+                        .font(.callout)
+                    Spacer()
                 }
+                .strikethrough(task.isCompleted)
                 
+                HStack {
+                   if (!task.notes.isEmpty && showNotes) {
+                        Image(systemName: "text.justify.leading")
+                        Text(task.notes)
+                            .lineLimit(1)
+                       Spacer()
+                    }
+                    
+                }
+                .foregroundColor(.secondary)
+                .font(.footnote)
             }
-            .strikethrough(task.isCompleted)
+                Spacer()
+                if showDue {
+                    Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
+                        .font(.callout)
+                        .foregroundStyle((num < 0) ? .red : .blue)
+                        .strikethrough(task.isCompleted)
+                }
+                    
+                
+        
+            
         }
         .padding(5)
     }

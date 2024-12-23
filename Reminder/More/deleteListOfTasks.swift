@@ -22,7 +22,7 @@ struct deleteListOfTasks: View {
                                                     systemName:
                                                         tasks[index].deleted1 ? "minus.circle" : "circle"
                                                 )
-                                                TaskObjectView(task: tasks[index], maxDayRange: 0, num: -1, settings: Settings1(), showCompletedButton: false, showDue: true)
+                                                TaskObjectView(task: tasks[index], showCompletedButton: false, showDue: true, showNotes: false)
                                             }
                                             .onTapGesture {
                                                 tasks[index].deleted1.toggle()
