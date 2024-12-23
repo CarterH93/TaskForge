@@ -154,11 +154,6 @@ struct viewTaskView: View {
                     }
                 }
                 
-                
-                Section("notes") {
-                    TextEditor(text: $task.notes)
-                }
-                
                 Section("due") {
                     if task.inAppGenerated == true {
                         DatePicker("Due:", selection: $task.due)
@@ -166,6 +161,13 @@ struct viewTaskView: View {
                         Text(taskBody(task))
                     }
                 }
+                
+                
+                Section("notes") {
+                    TextEditor(text: $task.notes)
+                }
+                
+                
                 
         
                 

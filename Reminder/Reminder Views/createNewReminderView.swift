@@ -29,13 +29,15 @@ struct createNewReminderView: View {
                     TextField("type here...", text: $name)
                 }
                 
+                Section("due") {
+                    DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
+                }
+                
                 Section("Notes") {
                     TextEditor(text: $notes)
                 }
                 
-                Section("due") {
-                    DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
-                }
+                
                 
                 Button("Add New Reminder") {
                     if isValidReminder {

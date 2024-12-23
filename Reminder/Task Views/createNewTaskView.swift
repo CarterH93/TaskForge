@@ -33,13 +33,15 @@ struct createNewTaskView: View {
                     TextField("type here...", text: $name)
                 }
                 
+                Section("due") {
+                    DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
+                }
+                
                 Section("notes") {
                     TextField("type here...", text: $notes)
                 }
                 
-                Section("due") {
-                    DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
-                }
+                
                 
                 
                 

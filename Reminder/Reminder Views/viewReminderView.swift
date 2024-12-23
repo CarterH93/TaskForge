@@ -84,12 +84,12 @@ struct viewReminderView: View {
                         .font(.title)
                 }
                 
-                Section("notes") {
-                    TextEditor(text: $reminder.notes)
-                }
-                
                 Section("due") {
                     DatePicker("Due:", selection: $reminder.due)
+                }
+                
+                Section("notes") {
+                    TextEditor(text: $reminder.notes)
                 }
                 
                 Section("Linked Task") {
