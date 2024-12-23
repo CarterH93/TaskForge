@@ -30,6 +30,19 @@ class Reminder {
             
         } else {
             //If no manuel value given, just do normal toggling function
+            
+            //Logic to ensure reminder button doesnt do anything when uncomplete but associated task is complete
+            if let task = task {
+                //if task is completed but the reminder isnt
+                if task.isCompleted && !completed {
+                    //Toggle the task instead of reminder
+                    task.toggleCompleted()
+                    //Return and do not complete normal toggle function below
+                    return
+                }
+            }
+            
+            //Just do normal toggle function
             self.completed.toggle()
         }
         
