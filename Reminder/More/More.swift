@@ -17,10 +17,10 @@ struct More: View {
     @State private var showingAlert = false
     
     var body: some View {
-        
+        NavigationStack {
             List {
                 
-                    SuggestedActions(settings: settings.first ?? Settings1())
+                SuggestedActions(settings: settings.first ?? Settings1())
                 
                 Section("Resources") {
                     Link(destination: URL(string: "http://feedback.taskforgeapp.com/")!) {
@@ -68,7 +68,7 @@ struct More: View {
                 .headerProminence(.increased)
                 
                 Section("Spaced Reminders") {
-                        SpacedReminderSettings(settings: settings.first ?? Settings1())
+                    SpacedReminderSettings(settings: settings.first ?? Settings1())
                 }
                 .headerProminence(.increased)
                 
@@ -83,9 +83,10 @@ struct More: View {
             .navigationTitle("More")
             .alert("Are you sure you want to reset back to default settings?", isPresented: $showingAlert) {
                 resetToDefaultSettings(settings: settings.first ?? Settings1())
-                    }
+            }
         }
     }
+}
 
 struct resetToDefaultSettings: View {
     @State var settings: Settings1
