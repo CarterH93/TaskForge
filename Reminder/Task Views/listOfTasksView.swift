@@ -161,6 +161,7 @@ struct listOfTasksView: View {
                 .sheet(isPresented: $showingSheetForNewTaskCreation) {
                             createNewTaskView()
                         .presentationDragIndicator(.visible)
+                        .presentationDetents([.medium, .large])
                         }
                 .toolbar {
                     Menu {

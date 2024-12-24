@@ -23,33 +23,47 @@ struct createNewReminderView: View {
     @State private var due = Date.now.addingTimeInterval(3600)
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
-            Form {
-                Section("name") {
-                    TextField("type here...", text: $name)
-                }
-                
-                Section("due") {
-                    DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
-                }
-                
-                Section("Notes") {
-                    TextEditor(text: $notes)
-                }
-                
-                
-                
-                Button("Add New Reminder") {
-                    if isValidReminder {
-                        let newReminder = Reminder(id: UUID().uuidString, name: name, due: due, notes: notes)
-                        modelContext.insert(newReminder)
-                        
-                        dismiss()
-                    }
-                }
-                .disabled(isValidReminder ? false : true)
-                
+        NavigationStack {
+        Form {
+            Section("Name") {
+                TextField("Type Here...", text: $name)
             }
-            .navigationTitle("New Reminder")
+            
+            Section("Due") {
+                DatePicker("Due:", selection: $due, in: Date.now.addingTimeInterval(60)...)
+            }
+            
+            Section("Notes") {
+                ImprovedTextEditor(text: $notes)
+            }
+            
+            
+            
+            
+            
+        }
+        .navigationTitle("New Reminder")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+            Button("Create") {
+                if isValidReminder {
+                    let newReminder = Reminder(id: UUID().uuidString, name: name, due: due, notes: notes)
+                    modelContext.insert(newReminder)
+                    
+                    dismiss()
+                }
+            }
+            .disabled(isValidReminder ? false : true)
+        }
+            
+        }
+    }
         }
 }
 

@@ -180,6 +180,7 @@ struct listOfRemindersView: View {
                 .sheet(isPresented: $showingSheetForNewReminderCreation) {
                             createNewReminderView()
                         .presentationDragIndicator(.visible)
+                        .presentationDetents([.medium, .large])
                         }
                 .toolbar {
                     Menu {

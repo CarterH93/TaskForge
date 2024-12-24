@@ -27,25 +27,31 @@ struct createNewTaskView: View {
     @State private var due = Date.now.addingTimeInterval(3600)
     
     var body: some View {
-            Form {
-                Section("name") {
-                    TextField("type here...", text: $name)
+          NavigationStack {
+        Form {
+            Section("Name") {
+                TextField("Type Here...", text: $name)
+            }
+            
+            Section("Due") {
+                DatePicker("Due:", selection: $due, in: Date.now.addingTimeInterval(60)...)
+            }
+            
+            Section("Notes") {
+                ImprovedTextEditor(text: $notes)
+            }
+        }
+        .navigationTitle("New Task")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel") {
+                    dismiss()
                 }
-                
-                Section("due") {
-                    DatePicker("Select Due Date", selection: $due, in: Date.now.addingTimeInterval(60)...)
-                }
-                
-                Section("notes") {
-                    TextField("type here...", text: $notes)
-                }
-                
-                
-                
-                
-                
-                
-                Button("Add New Task") {
+            }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Create") {
                     if isValidTask {
                         let newTask = TaskObject(oldid: UUID().uuidString, name: name, due: due, inAppGenerated: true, notes: notes)
                         newTask.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(newTask.name)", due: due.addingTimeInterval(-settings.first!.defaultReminderWrapper))]
@@ -55,9 +61,9 @@ struct createNewTaskView: View {
                     }
                 }
                 .disabled(isValidTask ? false : true)
-                
             }
-            .navigationTitle("New Task")
+        }
+    }
             
         }
     }
