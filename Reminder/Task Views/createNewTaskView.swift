@@ -27,7 +27,6 @@ struct createNewTaskView: View {
     @State private var due = Date.now.addingTimeInterval(3600)
     
     var body: some View {
-        NavigationStack {
             Form {
                 Section("name") {
                     TextField("type here...", text: $name)
@@ -62,7 +61,6 @@ struct createNewTaskView: View {
             
         }
     }
-}
 
 #Preview {
     NavigationStack {

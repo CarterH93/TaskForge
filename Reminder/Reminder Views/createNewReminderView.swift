@@ -23,7 +23,6 @@ struct createNewReminderView: View {
     @State private var due = Date.now.addingTimeInterval(3600)
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
-        NavigationStack {
             Form {
                 Section("name") {
                     TextField("type here...", text: $name)
@@ -52,7 +51,6 @@ struct createNewReminderView: View {
             }
             .navigationTitle("New Reminder")
         }
-    }
 }
 
 #Preview {

@@ -26,7 +26,6 @@ struct simpleListOfTasks: View {
     @Binding var viewUpdater: String
     
     var body: some View {
-        NavigationStack {
             List(tasks) { task in
                 Button {
                     task.reminders!.append(reminder)
@@ -40,7 +39,6 @@ struct simpleListOfTasks: View {
             }
             .navigationTitle("Select Task")
         }
-    }
 }
 
 struct viewReminderView: View {
@@ -77,9 +75,10 @@ struct viewReminderView: View {
   
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
-        NavigationStack {
+     
             Form {
               
+                Section {
                     HStack {
                         Image(systemName: reminder.isCompleted ? "checkmark.circle.fill" : "circle")
                             .onTapGesture {
@@ -91,6 +90,12 @@ struct viewReminderView: View {
                         TextField("reminder name", text: $reminder.name, axis: .vertical)
                             .font(.title2)
                     }
+                } header: {
+                    HStack {
+                        Text("Reminder")
+                        Image(systemName: "bell.fill")
+                    }
+                }
                 
                 
                 Section("due") {
@@ -153,6 +158,8 @@ struct viewReminderView: View {
                 
                 
             }
+            //.navigationTitle("Reminder")
+            .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showingSheetForTaskLinking) {
                         simpleListOfTasks(reminder: reminder, viewUpdater: $viewUpdater)
                     .presentationDragIndicator(.visible)
@@ -171,5 +178,5 @@ struct viewReminderView: View {
                     }
             .alert("Cannot complete action because associated task needs at least one reminder.", isPresented: $showingCannotDeleteAlert) { }
         }
-    }
+    
 }

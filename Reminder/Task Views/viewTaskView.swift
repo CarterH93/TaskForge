@@ -141,24 +141,30 @@ struct viewTaskView: View {
     ) var settings: [Settings1]
     
     var body: some View {
-        NavigationStack {
             Form {
                 
-                HStack {
-                    Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                        .onTapGesture {
-                            withAnimation {
-                                task.toggleCompleted()
+                Section {
+                    HStack {
+                        Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                            .onTapGesture {
+                                withAnimation {
+                                    task.toggleCompleted()
+                                }
                             }
+                            .accessibilityAddTraits(.isButton)
+                        
+                        if task.inAppGenerated {
+                            TextField("task name", text: $task.name, axis: .vertical)
+                                .font(.title2)
+                        } else {
+                            Text(task.name)
+                                .font(.title2)
                         }
-                        .accessibilityAddTraits(.isButton)
-                    
-                    if task.inAppGenerated {
-                        TextField("task name", text: $task.name, axis: .vertical)
-                            .font(.title2)
-                    } else {
-                        Text(task.name)
-                            .font(.title2)
+                    }
+                } header: {
+                    HStack {
+                        Text("Task")
+                        Image(systemName: "list.bullet.clipboard.fill")
                     }
                 }
                 
@@ -270,7 +276,7 @@ struct viewTaskView: View {
                     }
         }
     }
-}
+
 /*
 #Preview {
     viewTaskView()

@@ -18,7 +18,6 @@ struct More: View {
     
     var body: some View {
         
-        NavigationStack {
             List {
                 
                     SuggestedActions(settings: settings.first ?? Settings1())
@@ -87,7 +86,6 @@ struct More: View {
                     }
         }
     }
-}
 
 struct resetToDefaultSettings: View {
     @State var settings: Settings1
