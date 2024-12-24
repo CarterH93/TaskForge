@@ -210,7 +210,7 @@ struct viewTaskView: View {
                     }
                 } header: {
                     HStack {
-                        Text("Reminders")
+                        Text("Linked Reminders")
                         Spacer()
                         EditButton()
                             .font(.footnote)
