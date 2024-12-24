@@ -16,6 +16,7 @@
 		BC39F06F2C6578B60019BB7F /* createNewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC39F06E2C6578B60019BB7F /* createNewTaskView.swift */; };
 		BC39F0712C65820E0019BB7F /* createNewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC39F0702C65820E0019BB7F /* createNewReminderView.swift */; };
 		BC39F0772C65C3820019BB7F /* viewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC39F0762C65C3820019BB7F /* viewTaskView.swift */; };
+		BC5BCC2A2D1A3129008A3E7A /* ImprovedTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5BCC292D1A3129008A3E7A /* ImprovedTextEditor.swift */; };
 		BC628D612C6AF3AE00D75E37 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D602C6AF3AE00D75E37 /* More.swift */; };
 		BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D632C6AF5C300D75E37 /* syncing.swift */; };
 		BC628D662C6B04F300D75E37 /* cleanUpSpam.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */; };
@@ -68,6 +69,7 @@
 		BC39F06E2C6578B60019BB7F /* createNewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createNewTaskView.swift; sourceTree = "<group>"; };
 		BC39F0702C65820E0019BB7F /* createNewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createNewReminderView.swift; sourceTree = "<group>"; };
 		BC39F0762C65C3820019BB7F /* viewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewTaskView.swift; sourceTree = "<group>"; };
+		BC5BCC292D1A3129008A3E7A /* ImprovedTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprovedTextEditor.swift; sourceTree = "<group>"; };
 		BC628D602C6AF3AE00D75E37 /* More.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More.swift; sourceTree = "<group>"; };
 		BC628D632C6AF5C300D75E37 /* syncing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syncing.swift; sourceTree = "<group>"; };
 		BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cleanUpSpam.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		BC7FBE7A2BDEFE300027A00C /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				BC5BCC292D1A3129008A3E7A /* ImprovedTextEditor.swift */,
 				BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */,
 				BCB55E682C7D18C900150A93 /* dataLoad.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
@@ -376,6 +379,7 @@
 				BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */,
 				BC39F06F2C6578B60019BB7F /* createNewTaskView.swift in Sources */,
 				BC39F0712C65820E0019BB7F /* createNewReminderView.swift in Sources */,
+				BC5BCC2A2D1A3129008A3E7A /* ImprovedTextEditor.swift in Sources */,
 				BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */,
 				BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */,
 				BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */,

@@ -144,13 +144,21 @@ struct viewTaskView: View {
         NavigationStack {
             Form {
                 
-                Section("name") {
+                HStack {
+                    Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                        .onTapGesture {
+                            withAnimation {
+                                task.toggleCompleted()
+                            }
+                        }
+                        .accessibilityAddTraits(.isButton)
+                    
                     if task.inAppGenerated {
-                        TextField("task name", text: $task.name)
-                            .font(.title)
+                        TextField("task name", text: $task.name, axis: .vertical)
+                            .font(.title2)
                     } else {
                         Text(task.name)
-                            .font(.title)
+                            .font(.title2)
                     }
                 }
                 
@@ -164,7 +172,7 @@ struct viewTaskView: View {
                 
                 
                 Section("notes") {
-                    TextEditor(text: $task.notes)
+                    ImprovedTextEditor(text: $task.notes)
                 }
                 
                 
@@ -215,13 +223,7 @@ struct viewTaskView: View {
                     }
                 }
                 
-                
-                Section {
-                    Button(task.isCompleted ? "Mark as uncomplete" : "Mark as complete") {
-                        task.toggleCompleted()
-                        
-                    }
-                }
+            
                 
                 Section {
                   

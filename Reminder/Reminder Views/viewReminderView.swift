@@ -79,20 +79,29 @@ struct viewReminderView: View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
         NavigationStack {
             Form {
-                Section("name") {
-                    TextField("reminder name", text: $reminder.name)
-                        .font(.title)
-                }
+              
+                    HStack {
+                        Image(systemName: reminder.isCompleted ? "checkmark.circle.fill" : "circle")
+                            .onTapGesture {
+                                withAnimation {
+                                    reminder.toggleCompleted()
+                                }
+                            }
+                            .accessibilityAddTraits(.isButton)
+                        TextField("reminder name", text: $reminder.name, axis: .vertical)
+                            .font(.title2)
+                    }
+                
                 
                 Section("due") {
                     DatePicker("Due:", selection: $reminder.due)
                 }
                 
                 Section("notes") {
-                    TextEditor(text: $reminder.notes)
+                    ImprovedTextEditor(text: $reminder.notes)
                 }
                 
-                Section("Linked Task") {
+                Section {
                     if !viewUpdater.isEmpty {
                         if let task = reminder.task {
                             List {
@@ -115,14 +124,15 @@ struct viewReminderView: View {
                             }
                         }
                     }
-                }
-                
-                    Section {
-                        Button(reminder.isCompleted ? "Mark as uncomplete" : "Mark as complete") {
-                            reminder.toggleCompleted()
-                            
+                } header: {
+                    HStack {
+                        Text("Linked Task")
+                        Spacer()
+                        EditButton()
+                            .font(.footnote)
                     }
                 }
+                
                 
                 Section {
                   
