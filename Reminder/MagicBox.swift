@@ -9,28 +9,31 @@ import Foundation
 import SwiftData
 
 
-func cleanName(_ input: String) -> String {
-    return input.components(separatedBy: "[")[0]
-}
 
-let defaultSpacedRemindersKeyWords = ["test", "quiz", "project", "report", "essay", "paper", "final"]
-
-func autoSpacedRemindersLookForKeyWords(_ input: String) -> Bool {
-    
-    var doesContain = false
-    for keyWord in defaultSpacedRemindersKeyWords {
-        if let _ = input.range(of: keyWord, options: .caseInsensitive) {
-            doesContain = true
-        }
-    }
-    
-    return doesContain
-}
 
 
 /// Handles retrieving information from remote ICS calendar sources and converting and storing them into the SwiftData database.
 @ModelActor
 actor MagicBox {
+    
+    
+    static func cleanName(_ input: String) -> String {
+        return input.components(separatedBy: "[")[0]
+    }
+
+    static let defaultSpacedRemindersKeyWords = ["test", "quiz", "project", "report", "essay", "paper", "final"]
+
+    static func autoSpacedRemindersLookForKeyWords(_ input: String) -> Bool {
+        
+        var doesContain = false
+        for keyWord in defaultSpacedRemindersKeyWords {
+            if let _ = input.range(of: keyWord, options: .caseInsensitive) {
+                doesContain = true
+            }
+        }
+        
+        return doesContain
+    }
     
     
     //Retrieves information from remote source based on URL
@@ -77,7 +80,7 @@ actor MagicBox {
                         
                         //Need to cleanup summary (name) data
                         let tempSummary: String = eventItems["SUMMARY"] ?? "N/A"
-                        let summary: String = cleanName(tempSummary)
+                        let summary: String = MagicBox.cleanName(tempSummary)
                         
                         //Deletes any tasks before todays date. Removes clutter.
                         var deleted: Bool {
@@ -313,7 +316,7 @@ actor MagicBox {
                     if let task = remoteTasks.first(where: {$0.oldid == ID}) {
                         
                         //Identify if we should create spaced reminders
-                        if task.deleted1 == false && settings.defaultSpacedRemindersEnabled && autoSpacedRemindersLookForKeyWords(task.name)
+                        if task.deleted1 == false && settings.defaultSpacedRemindersEnabled && MagicBox.autoSpacedRemindersLookForKeyWords(task.name)
                         {
                             let generateSpacedReminders = generateSpacedReminders(task: task)
                             
