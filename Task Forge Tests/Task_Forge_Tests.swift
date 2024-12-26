@@ -24,5 +24,16 @@ struct TestMagicBox {
         
     }
     
+    struct TestListViewDateFormatter {
+        let maxDayRange = 8
+        @Test func testFormatDateBasedOnNum() async throws {
+            #expect(await ListViewDateFormatter.formatDateBasedOnNum(num: -1, maxDayRange: 8) == "Over Due")
+            #expect(await ListViewDateFormatter.formatDateBasedOnNum(num: 0, maxDayRange: 8) == "Today")
+            #expect(await ListViewDateFormatter.formatDateBasedOnNum(num: 1, maxDayRange: 8) == "Tomorrow")
+            #expect(await ListViewDateFormatter.formatDateBasedOnNum(num: 2, maxDayRange: 8) != "Tomorrow")
+            #expect(await ListViewDateFormatter.formatDateBasedOnNum(num: 8, maxDayRange: 8) == "Later")
+        }
+    }
+    
 
 }

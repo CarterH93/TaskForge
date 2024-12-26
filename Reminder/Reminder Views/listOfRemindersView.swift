@@ -10,14 +10,6 @@ import SwiftData
 
 struct listOfRemindersView: View {
     var settings: Settings1
-    private var maxDayRange: Int {
-        if settings.showOnlyToday {
-            return 0
-        } else {
-            return 8
-        }
-    }
-    
     
     @Query(
         sort: \Reminder.due
@@ -30,7 +22,7 @@ struct listOfRemindersView: View {
     @Environment(LocalNotificationManager.self) var lnManager
     
     var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false}
+        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false }
     }
     
     
@@ -43,7 +35,7 @@ struct listOfRemindersView: View {
             firstFilter = reminders.filter { $0.isCompleted == false && $0.task?.deleted1 ?? false == false }
         }
         
-        if num >= maxDayRange && !settings.showOnlyToday {
+        if num >= ListViewDateFormatter.maxDayRange(settings) && !settings.showOnlyToday {
             return firstFilter.filter {
                 $0.due >= date
                
@@ -67,41 +59,8 @@ struct listOfRemindersView: View {
         
     }
     
-    
-    func dateBasedOnNum(_ num: Int) -> Date {
-        if num < 0 {
-            return Calendar.current.startOfDay(for: Date.now)
-        }
-        return Calendar.current.startOfDay(for: Date.now.addingTimeInterval(Double(num * 86400)))
-    }
-    
-    func formatDateBasedOnNum(_ num: Int) -> String {
-        
-        let date = dateBasedOnNum(num)
-        
-        if num < 0 {
-            return "Over Due"
-        }
-        
-        if Calendar.current.isDate(date, inSameDayAs: Date.now) {
-            return "Today"
-        }
-        
-        if Calendar.current.isDate(date, inSameDayAs: Date.now.addingTimeInterval(86400)) {
-            return "Tomorrow"
-        }
-        
-        if num >= maxDayRange {
-            return "later"
-        }
-        
-        
-        return date.formatted(.dateTime.weekday().day().month())
-        
-    }
-    
     var startOfDaySections: Int {
-        if filterDate(date: dateBasedOnNum(-1), num: -1).count == 0 {
+        if filterDate(date: ListViewDateFormatter.dateBasedOnNum(-1), num: -1).count == 0 {
             return 0
         } else {
             return -1
@@ -114,15 +73,15 @@ struct listOfRemindersView: View {
             NavigationStack {
                 List {
                     
-                    ForEach(startOfDaySections...maxDayRange, id: \.self) { num in
+                    ForEach(startOfDaySections...ListViewDateFormatter.maxDayRange(settings), id: \.self) { num in
                         
-                        Section(formatDateBasedOnNum(num)) {
+                        Section(ListViewDateFormatter.formatDateBasedOnNum(num: num, maxDayRange: ListViewDateFormatter.maxDayRange(settings))) {
                             
-                            ForEach(filterDate(date: dateBasedOnNum(num), num: num)) { reminder in
+                            ForEach(filterDate(date: ListViewDateFormatter.dateBasedOnNum(num), num: num)) { reminder in
                                 NavigationLink {
                                     viewReminderView(reminder: reminder)
                                 } label: {
-                                    ReminderObjectView(reminder: reminder, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true, showAssociatedTask: true, showNotes: true)
+                                    ReminderObjectView(reminder: reminder, maxDayRange: ListViewDateFormatter.maxDayRange(settings), num: num, settings: settings, showCompletedButton: true, showDue: true, showAssociatedTask: true, showNotes: true)
                                         .padding(4)
                                 }
                             }

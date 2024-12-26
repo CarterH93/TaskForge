@@ -45,6 +45,7 @@
 		BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E682C7D18C900150A93 /* dataLoad.swift */; };
 		BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBBCC812D0F19A000B4FE3E /* plusButton.swift */; };
 		BCC0D30D2D1DD63A0072A6FB /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = BCC0D30C2D1DD63A0072A6FB /* Vortex */; };
+		BCC0D3132D1E0B470072A6FB /* ListViewDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */; };
 		BCD8AEB22D135934002D98AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AEB12D135934002D98AA /* README.md */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
@@ -101,6 +102,7 @@
 		BCB55E682C7D18C900150A93 /* dataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoad.swift; sourceTree = "<group>"; };
 		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
 		BCBBCC812D0F19A000B4FE3E /* plusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plusButton.swift; sourceTree = "<group>"; };
+		BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDateFormatter.swift; sourceTree = "<group>"; };
 		BCD8AEB12D135934002D98AA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BCD8AEBB2D136711002D98AA /* Task Forge Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task Forge Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				BCB55E682C7D18C900150A93 /* dataLoad.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
 				BCBBCC812D0F19A000B4FE3E /* plusButton.swift */,
+				BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */,
 				BCBBCC7D2D0F10C000B4FE3E /* Reminder Views */,
 				BCEE6B102C6909600090E274 /* Settings1.swift */,
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
@@ -382,6 +385,7 @@
 				BC628D612C6AF3AE00D75E37 /* More.swift in Sources */,
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,
 				BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */,
+				BCC0D3132D1E0B470072A6FB /* ListViewDateFormatter.swift in Sources */,
 				BC39F06F2C6578B60019BB7F /* createNewTaskView.swift in Sources */,
 				BC39F0712C65820E0019BB7F /* createNewReminderView.swift in Sources */,
 				BC5BCC2A2D1A3129008A3E7A /* ImprovedTextEditor.swift in Sources */,

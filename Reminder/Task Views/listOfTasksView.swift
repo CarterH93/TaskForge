@@ -13,13 +13,7 @@ struct listOfTasksView: View {
     var settings: Settings1
     
     @Environment(dataLoad.self) private var dataload
-    private var maxDayRange: Int {
-        if settings.showOnlyToday {
-            return 0
-        } else {
-            return 8
-        }
-    }
+    
     
 
     
@@ -52,7 +46,7 @@ struct listOfTasksView: View {
             firstFilter = preFilter.filter { $0.isCompleted == false }
         }
         
-        if num >= maxDayRange && !settings.showOnlyToday {
+        if num >= ListViewDateFormatter.maxDayRange(settings) && !settings.showOnlyToday {
             return firstFilter.filter {
                 $0.due >= date
                
@@ -77,40 +71,11 @@ struct listOfTasksView: View {
     }
     
     
-    func dateBasedOnNum(_ num: Int) -> Date {
-        if num < 0 {
-            return Calendar.current.startOfDay(for: Date.now)
-        }
-        return Calendar.current.startOfDay(for: Date.now.addingTimeInterval(Double(num * 86400)))
-    }
+   
     
-    func formatDateBasedOnNum(_ num: Int) -> String {
-        
-        let date = dateBasedOnNum(num)
-        
-        if num < 0 {
-            return "Over Due"
-        }
-        
-        if Calendar.current.isDate(date, inSameDayAs: Date.now) {
-            return "Today"
-        }
-        
-        if Calendar.current.isDate(date, inSameDayAs: Date.now.addingTimeInterval(86400)) {
-            return "Tomorrow"
-        }
-        
-        if num >= maxDayRange {
-            return "later"
-        }
-        
-        
-        return date.formatted(.dateTime.weekday().day().month())
-        
-    }
     
     var startOfDaySections: Int {
-        if filterDate(date: dateBasedOnNum(-1), num: -1).count == 0 {
+        if filterDate(date: ListViewDateFormatter.dateBasedOnNum(-1), num: -1).count == 0 {
             return 0
         } else {
             return -1
@@ -122,15 +87,15 @@ struct listOfTasksView: View {
             NavigationStack {
                 List {
                     
-                    ForEach(startOfDaySections...maxDayRange, id: \.self) { num in
+                    ForEach(startOfDaySections...ListViewDateFormatter.maxDayRange(settings), id: \.self) { num in
                         
-                        Section(formatDateBasedOnNum(num)) {
+                        Section(ListViewDateFormatter.formatDateBasedOnNum(num: num, maxDayRange: ListViewDateFormatter.maxDayRange(settings))) {
                             
-                            ForEach(filterDate(date: dateBasedOnNum(num), num: num)) { task in
+                            ForEach(filterDate(date: ListViewDateFormatter.dateBasedOnNum(num), num: num)) { task in
                                 NavigationLink {
                                     viewTaskView(task: task)
                                 } label: {
-                                    TaskObjectView(task: task, maxDayRange: maxDayRange, num: num, settings: settings, showCompletedButton: true, showDue: true, showNotes: true)
+                                    TaskObjectView(task: task, maxDayRange: ListViewDateFormatter.maxDayRange(settings), num: num, settings: settings, showCompletedButton: true, showDue: true, showNotes: true)
                                         .padding(4)
                                 }
                             }
