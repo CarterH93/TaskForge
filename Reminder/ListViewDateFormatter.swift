@@ -9,11 +9,14 @@ import Foundation
 
 struct ListViewDateFormatter {
     
+    //Change this to change max day shown in list view
+   static let maxDayValue = 8
+    
     static func maxDayRange(_ settings: Settings1) -> Int {
         if settings.showOnlyToday {
             return 0
         } else {
-            return 8
+            return maxDayValue
         }
     }
     
