@@ -135,7 +135,7 @@ struct viewTaskView: View {
     @State private var showingExplanationForNotBeingAbleToDelete = false
     
     @Environment(LocalNotificationManager.self) var lnManager
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
     
     @Query(
         sort: \Settings1.Date1

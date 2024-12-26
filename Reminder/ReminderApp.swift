@@ -12,11 +12,12 @@ import Vortex
 @main
 struct ReminderApp: App {
     @State var lnManager = LocalNotificationManager()
+    @State private var dataload = dataLoad()
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(lnManager)
-                .environmentObject(dataLoad())
+                .environment(dataload)
         }
         .modelContainer(for: [TaskObject.self, Settings1.self])
 

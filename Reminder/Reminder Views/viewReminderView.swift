@@ -71,7 +71,7 @@ struct viewReminderView: View {
     }
 
    @State private var viewUpdater = "anyTextWorksHere"
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
   
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
@@ -87,6 +87,9 @@ struct viewReminderView: View {
                                 }
                                 if reminder.isCompleted {
                                     dataload.toggleConfetti.toggle()
+                                    print("toggle")
+                                } else {
+                                    print("not complete")
                                 }
                             }
                             .accessibilityAddTraits(.isButton)

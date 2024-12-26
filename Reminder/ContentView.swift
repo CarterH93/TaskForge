@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @Query var reminders: [Reminder]
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
     @Query(
         sort: \Settings1.Date1
     ) var settings: [Settings1]

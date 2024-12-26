@@ -25,7 +25,7 @@ struct listOfRemindersView: View {
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewReminderCreation = false
     
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
     
     @Environment(LocalNotificationManager.self) var lnManager
     

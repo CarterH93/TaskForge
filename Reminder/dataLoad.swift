@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
-class dataLoad: ObservableObject {
+
+@Observable class dataLoad {
     var loadingICSData = false
-   @Published var toggleConfetti: Bool = false
+    var toggleConfetti: Bool = false
 }

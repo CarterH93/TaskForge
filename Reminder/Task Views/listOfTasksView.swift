@@ -12,7 +12,7 @@ import SwiftData
 struct listOfTasksView: View {
     var settings: Settings1
     
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
     private var maxDayRange: Int {
         if settings.showOnlyToday {
             return 0

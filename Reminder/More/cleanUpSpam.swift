@@ -20,7 +20,7 @@ struct cleanUpSpam: View {
     @Query(
         sort: \Settings1.Date1
     ) var settings: [Settings1]
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
     
     var localTempURLHold: [URL]
     var body: some View {

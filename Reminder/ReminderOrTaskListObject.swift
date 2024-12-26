@@ -36,7 +36,7 @@ struct ReminderObjectView: View {
         self.showAssociatedTask = showAssociatedTask
         self.showNotes = showNotes
     }
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
     
     var body: some View {
         HStack {
@@ -130,7 +130,7 @@ struct TaskObjectView: View {
         self.showNotes = showNotes
     }
     
-    @EnvironmentObject var dataload: dataLoad
+    @Environment(dataLoad.self) private var dataload
     
     var body: some View {
         HStack {
