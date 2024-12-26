@@ -20,9 +20,7 @@ struct listOfTasksView: View {
     static var now: Date { Date.now }
     @Query var reminders: [Reminder]
     
-    var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false}
-    }
+    
     
    
     
@@ -170,7 +168,7 @@ struct listOfTasksView: View {
                 
                 lnManager.clearRequests()
                 
-                for newReminder in filterReminders {
+                for newReminder in ReminderFilter.filterReminders(reminders) {
                     Task {
                         
                         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)

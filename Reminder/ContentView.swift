@@ -19,9 +19,7 @@ struct ContentView: View {
         sort: \Settings1.Date1
     ) var settings: [Settings1]
     
-    var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false}
-    }
+   
     
         var body: some View {
             @Bindable var lnManager: LocalNotificationManager = lnManager
@@ -77,7 +75,7 @@ struct ContentView: View {
                         
                         lnManager.clearRequests()
                         
-                        for newReminder in filterReminders {
+                        for newReminder in ReminderFilter.filterReminders(reminders) {
                             Task {
                                 
                                 let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)

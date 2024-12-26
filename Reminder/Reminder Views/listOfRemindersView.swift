@@ -21,10 +21,6 @@ struct listOfRemindersView: View {
     
     @Environment(LocalNotificationManager.self) var lnManager
     
-    var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false }
-    }
-    
     
     func filterDate(date: Date, num: Int) -> [Reminder] {
         var firstFilter: [Reminder]
@@ -119,7 +115,7 @@ struct listOfRemindersView: View {
                     
                     lnManager.clearRequests()
                     
-                    for newReminder in filterReminders {
+                    for newReminder in ReminderFilter.filterReminders(reminders) {
                         Task {
                             
                             let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)

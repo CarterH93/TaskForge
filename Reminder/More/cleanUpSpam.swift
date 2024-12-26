@@ -13,9 +13,6 @@ struct cleanUpSpam: View {
     @Environment(LocalNotificationManager.self) var lnManager
     @Query var reminders: [Reminder]
     
-    var filterReminders: [Reminder] {
-        reminders.filter { $0.due > Date.now && $0.isCompleted == false && $0.task?.deleted1 ?? false == false}
-    }
     
     @Query(
         sort: \Settings1.Date1
@@ -36,7 +33,7 @@ struct cleanUpSpam: View {
                 }
                 lnManager.clearRequests()
                 
-                for newReminder in filterReminders {
+                for newReminder in ReminderFilter.filterReminders(reminders) {
                     Task {
                         
                         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)
