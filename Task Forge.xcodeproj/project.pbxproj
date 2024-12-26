@@ -44,6 +44,7 @@
 		BCB55E672C7D161E00150A93 /* deleteListOfTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */; };
 		BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E682C7D18C900150A93 /* dataLoad.swift */; };
 		BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBBCC812D0F19A000B4FE3E /* plusButton.swift */; };
+		BCC0D30D2D1DD63A0072A6FB /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = BCC0D30C2D1DD63A0072A6FB /* Vortex */; };
 		BCD8AEB22D135934002D98AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AEB12D135934002D98AA /* README.md */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
@@ -115,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC0D30D2D1DD63A0072A6FB /* Vortex in Frameworks */,
 				BC12CB152C80169A00473C6B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +333,9 @@
 				Base,
 			);
 			mainGroup = BC7FBE6F2BDEFE300027A00C;
+			packageReferences = (
+				BCC0D3092D1CBBB20072A6FB /* XCRemoteSwiftPackageReference "Vortex" */,
+			);
 			productRefGroup = BC7FBE792BDEFE300027A00C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -695,6 +700,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BCC0D3092D1CBBB20072A6FB /* XCRemoteSwiftPackageReference "Vortex" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Vortex";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BCC0D30C2D1DD63A0072A6FB /* Vortex */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCC0D3092D1CBBB20072A6FB /* XCRemoteSwiftPackageReference "Vortex" */;
+			productName = Vortex;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BC7FBE702BDEFE300027A00C /* Project object */;
 }

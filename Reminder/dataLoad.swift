@@ -9,4 +9,5 @@ import Foundation
 
 class dataLoad: ObservableObject {
     var loadingICSData = false
+   @Published var toggleConfetti: Bool = false
 }

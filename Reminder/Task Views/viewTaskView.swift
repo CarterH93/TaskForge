@@ -135,6 +135,7 @@ struct viewTaskView: View {
     @State private var showingExplanationForNotBeingAbleToDelete = false
     
     @Environment(LocalNotificationManager.self) var lnManager
+    @EnvironmentObject var dataload: dataLoad
     
     @Query(
         sort: \Settings1.Date1
@@ -149,6 +150,9 @@ struct viewTaskView: View {
                             .onTapGesture {
                                 withAnimation {
                                     task.toggleCompleted()
+                                }
+                                if task.isCompleted {
+                                    dataload.toggleConfetti.toggle()
                                 }
                             }
                             .accessibilityAddTraits(.isButton)

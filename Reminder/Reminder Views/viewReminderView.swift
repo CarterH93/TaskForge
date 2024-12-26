@@ -71,7 +71,7 @@ struct viewReminderView: View {
     }
 
    @State private var viewUpdater = "anyTextWorksHere"
-    
+    @EnvironmentObject var dataload: dataLoad
   
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
@@ -84,6 +84,9 @@ struct viewReminderView: View {
                             .onTapGesture {
                                 withAnimation {
                                     reminder.toggleCompleted()
+                                }
+                                if reminder.isCompleted {
+                                    dataload.toggleConfetti.toggle()
                                 }
                             }
                             .accessibilityAddTraits(.isButton)

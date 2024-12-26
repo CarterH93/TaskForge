@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Vortex
 
 @main
 struct ReminderApp: App {

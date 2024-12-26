@@ -36,7 +36,7 @@ struct ReminderObjectView: View {
         self.showAssociatedTask = showAssociatedTask
         self.showNotes = showNotes
     }
-    
+    @EnvironmentObject var dataload: dataLoad
     
     var body: some View {
         HStack {
@@ -45,6 +45,9 @@ struct ReminderObjectView: View {
                     .onTapGesture {
                         withAnimation {
                             reminder.toggleCompleted()
+                        }
+                        if reminder.isCompleted {
+                            dataload.toggleConfetti.toggle()
                         }
                     }
                     .accessibilityAddTraits(.isButton)
@@ -127,6 +130,8 @@ struct TaskObjectView: View {
         self.showNotes = showNotes
     }
     
+    @EnvironmentObject var dataload: dataLoad
+    
     var body: some View {
         HStack {
             if showCompletedButton {
@@ -134,6 +139,9 @@ struct TaskObjectView: View {
                     .onTapGesture {
                         withAnimation {
                             task.toggleCompleted()
+                        }
+                        if task.isCompleted {
+                            dataload.toggleConfetti.toggle()
                         }
                     }
                     .accessibilityAddTraits(.isButton)
