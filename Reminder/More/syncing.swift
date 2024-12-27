@@ -68,7 +68,7 @@ struct syncing: View {
             }
             
             Section {
-                NavigationLink("Clean up spam") {
+                NavigationLink("Clean up Spam") {
                    deleteListOfTasks()
                 }
             }
