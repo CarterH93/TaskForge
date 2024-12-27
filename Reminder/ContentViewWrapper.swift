@@ -49,6 +49,7 @@ struct ContentViewWrapper: View {
                 }
                 }
             }
+            .sensoryFeedback(.success, trigger: viewModel.toggleCompletionHaptics)
         
            
         .ignoresSafeArea()

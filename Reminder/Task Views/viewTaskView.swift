@@ -20,6 +20,7 @@ struct newReminderSubView: View {
         _newReminderName = State(initialValue: "Work on \(task.name)")
         newReminderDue = task.due.addingTimeInterval(-settings.defaultReminderWrapper)
     }
+    @State private var buttonPressHaptic = false
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
         VStack {
@@ -30,10 +31,11 @@ struct newReminderSubView: View {
             Button("Add New Reminder") {
                 let newReminder = Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue)
                 task.reminders!.append(newReminder)
-                
+                buttonPressHaptic.toggle()
                 
                 dismiss()
             }
+            .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
         }
         .padding()
     }
@@ -46,6 +48,7 @@ struct autoGenerateRemindersSubView: View {
     var generateSpacedRemindersObject: generateSpacedReminders
     @State private var numberOfReminders: Int
     @State private var timeSpan: Int
+    @State private var buttonPressHaptic = false
     var task: TaskObject
     init(task: TaskObject) {
         self.task = task
@@ -91,10 +94,11 @@ struct autoGenerateRemindersSubView: View {
                 }
                 let newReminders = generateSpacedRemindersObject.generate(number: numberOfReminders, timePeriod: timeSpan)
                 task.reminders?.append(contentsOf: newReminders)
-                
+                buttonPressHaptic.toggle()
                
                 dismiss()
             }
+            .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
             .buttonStyle(.borderedProminent)
             .padding()
             }
@@ -112,6 +116,7 @@ struct viewTaskView: View {
     @Environment(\.modelContext) var modelContext
 
     @State var task: TaskObject
+    @State private var deleteHaptic = false
 
     func deleteReminder(_ indexSet: IndexSet) {
         for index in indexSet {
@@ -120,6 +125,7 @@ struct viewTaskView: View {
                 return
             }
             
+            deleteHaptic.toggle()
             
             let reminder = task.reminders![index]
             reminder.toggleCompleted(true)
@@ -152,8 +158,7 @@ struct viewTaskView: View {
                                     task.toggleCompleted()
                                 }
                                 if task.isCompleted {
-                                    viewModel.toggleConfetti.toggle()
-                                    viewModel.playCompletionSound()
+                                    viewModel.completionActions()
                                 }
                             }
                             .accessibilityAddTraits(.isButton)
@@ -248,6 +253,7 @@ struct viewTaskView: View {
                 
                 
             }
+            .sensoryFeedback(.warning, trigger: deleteHaptic)
             .sheet(isPresented: $showingNewReminderSheet) {
                 newReminderSubView(task: task, settings: settings.first ?? Settings1())
                     .presentationDetents([.fraction(1/5)])
@@ -260,6 +266,7 @@ struct viewTaskView: View {
                     }
             .alert("Are you sure you want to permanently delete this task and it's associated reminders?", isPresented: $showingDeleteAlert) {
                 Button("Delete", role: .destructive) {
+                    deleteHaptic.toggle()
                     for reminder in task.reminders! {
                         lnManager.removeRequest(withIdentifier: reminder.id)
                         modelContext.delete(reminder)

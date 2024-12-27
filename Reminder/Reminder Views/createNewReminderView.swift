@@ -21,6 +21,7 @@ struct createNewReminderView: View {
     @State private var name = ""
     @State private var notes = ""
     @State private var due = Date.now.addingTimeInterval(3600)
+    @State private var buttonPressHaptic = false
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
         NavigationStack {
@@ -55,11 +56,12 @@ struct createNewReminderView: View {
                 if isValidReminder {
                     let newReminder = Reminder(id: UUID().uuidString, name: name, due: due, notes: notes)
                     modelContext.insert(newReminder)
-                    
+                    buttonPressHaptic.toggle()
                     dismiss()
                 }
             }
             .disabled(isValidReminder ? false : true)
+            .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
         }
             
         }

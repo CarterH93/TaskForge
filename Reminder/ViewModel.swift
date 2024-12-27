@@ -5,7 +5,7 @@
 //  Created by Carter Hawkins on 8/26/24.
 //
 
-import Foundation
+import SwiftUI
 import Vortex
 import AVFoundation
 
@@ -41,10 +41,28 @@ import AVFoundation
 
         do {
             soundEngine = try AVAudioPlayer(contentsOf: url)
+            
+            try AVAudioSession.sharedInstance().setCategory(
+                AVAudioSession.Category.ambient,
+                options: AVAudioSession.CategoryOptions.mixWithOthers
+            )
+            
             soundEngine?.play()
         } catch {
             // couldn't load file :(
         }
     }
+    
+    //Haptics
+    var toggleCompletionHaptics = false
+    static let buttonPressHapticImpact: SensoryFeedback = .impact(weight: .medium, intensity: 0.8)
+    
+    func completionActions() {
+        self.toggleConfetti.toggle()
+        self.playCompletionSound()
+        self.toggleCompletionHaptics.toggle()
+    }
+    
+    
     
 }

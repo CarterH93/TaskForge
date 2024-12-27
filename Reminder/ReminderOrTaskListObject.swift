@@ -47,8 +47,7 @@ struct ReminderObjectView: View {
                             reminder.toggleCompleted()
                         }
                         if reminder.isCompleted {
-                            viewModel.toggleConfetti.toggle()
-                            viewModel.playCompletionSound()
+                            viewModel.completionActions()
                         }
                     }
                     .accessibilityAddTraits(.isButton)
@@ -142,8 +141,7 @@ struct TaskObjectView: View {
                             task.toggleCompleted()
                         }
                         if task.isCompleted {
-                            viewModel.toggleConfetti.toggle()
-                            viewModel.playCompletionSound()
+                            viewModel.completionActions()
                         }
                     }
                     .accessibilityAddTraits(.isButton)

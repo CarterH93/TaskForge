@@ -10,7 +10,7 @@ import SwiftData
 
 struct deleteListOfTasks: View {
     @Query(sort: \TaskObject.due, order: .reverse) var tasks: [TaskObject]
-    
+    @State private var buttonPressHaptic = false
     var body: some View {
         Form {
             
@@ -26,9 +26,9 @@ struct deleteListOfTasks: View {
                                             }
                                             .onTapGesture {
                                                 tasks[index].deleted1.toggle()
-                                                
-                                                
+                                                buttonPressHaptic.toggle()
                                             }
+                                            .accessibilityAddTraits(.isButton)
                                         }
                                     
                                 
@@ -37,6 +37,7 @@ struct deleteListOfTasks: View {
             
         }
         .padding(.top)
+        .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
         
         
     }

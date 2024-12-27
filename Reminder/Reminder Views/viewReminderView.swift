@@ -59,14 +59,14 @@ struct viewReminderView: View {
     @Environment(\.modelContext) var modelContext
 
    @State var reminder: Reminder
-    
+    @State private var deleteHaptic = false
     
     func deleteTaskLink(_ indexSet: IndexSet) {
         if reminder.task?.reminders?.count ?? 1 < 2 {
             showingCannotDeleteAlert = true
             return
         }
-        
+        deleteHaptic.toggle()
         reminder.task = nil
     }
 
@@ -86,11 +86,7 @@ struct viewReminderView: View {
                                     reminder.toggleCompleted()
                                 }
                                 if reminder.isCompleted {
-                                    viewModel.toggleConfetti.toggle()
-                                    viewModel.playCompletionSound()
-                                    print("toggle")
-                                } else {
-                                    print("not complete")
+                                    viewModel.completionActions()
                                 }
                             }
                             .accessibilityAddTraits(.isButton)
@@ -165,6 +161,7 @@ struct viewReminderView: View {
                 
                 
             }
+            .sensoryFeedback(.warning, trigger: deleteHaptic)
             //.navigationTitle("Reminder")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showingSheetForTaskLinking) {
@@ -178,6 +175,7 @@ struct viewReminderView: View {
                         
                         lnManager.removeRequest(withIdentifier: reminder.id)
                     }
+                    deleteHaptic.toggle()
                     reminder.toggleCompleted(true)
                     dismiss()
                     modelContext.delete(reminder)

@@ -64,7 +64,7 @@ struct listOfRemindersView: View {
     }
     
     @Environment(\.scenePhase) var scenePhase
-    
+    @State private var buttonPressHaptic = false
         var body: some View {
             NavigationStack {
                 List {
@@ -97,9 +97,11 @@ struct listOfRemindersView: View {
                 .safeAreaInset(edge: .bottom, alignment: .trailing) {
                     Button {
                         showingSheetForNewReminderCreation = true
+                        buttonPressHaptic.toggle()
                     } label: {
                         plusButton()
                     }
+                    .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
                     .padding(.bottom, 40)
                     .padding(.trailing)
                     

@@ -79,6 +79,7 @@ struct listOfTasksView: View {
             return -1
         }
     }
+    @State private var buttonPressHaptic = false
     
         var body: some View {
             @Bindable var lnManager: LocalNotificationManager = lnManager
@@ -113,9 +114,11 @@ struct listOfTasksView: View {
                 .safeAreaInset(edge: .bottom, alignment: .trailing) {
                     Button {
                         showingSheetForNewTaskCreation = true
+                        buttonPressHaptic.toggle()
                     } label: {
                         plusButton()
                     }
+                    .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
                     .padding(.bottom, 40)
                     .padding(.trailing)
                     

@@ -11,6 +11,7 @@ import SwiftData
 
 
 struct syncing: View {
+    @State private var deleteHaptic = false
     @State private var link = ""
     @State private var showingNewSheet = false
     
@@ -26,6 +27,7 @@ struct syncing: View {
         localTempURLHold.remove(atOffsets: offsets)
         settings.first!.icsSources.remove(atOffsets: offsets)
         showingNewSheet = true
+        deleteHaptic.toggle()
         }
     
     var body: some View {
@@ -74,6 +76,7 @@ struct syncing: View {
             }
             
         }
+        .sensoryFeedback(.warning, trigger: deleteHaptic)
         .sheet(isPresented: $showingNewSheet) {
             cleanUpSpam(localTempURLHold: localTempURLHold)
                 .presentationDragIndicator(.visible)

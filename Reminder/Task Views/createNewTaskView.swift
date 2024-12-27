@@ -25,7 +25,7 @@ struct createNewTaskView: View {
     @State private var name = ""
     @State private var notes = ""
     @State private var due = Date.now.addingTimeInterval(3600)
-    
+    @State private var buttonPressHaptic = false
     var body: some View {
           NavigationStack {
         Form {
@@ -56,11 +56,12 @@ struct createNewTaskView: View {
                         let newTask = TaskObject(oldid: UUID().uuidString, name: name, due: due, inAppGenerated: true, notes: notes)
                         newTask.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(newTask.name)", due: due.addingTimeInterval(-settings.first!.defaultReminderWrapper))]
                         modelContext.insert(newTask)
-                        
+                        buttonPressHaptic.toggle()
                         dismiss()
                     }
                 }
                 .disabled(isValidTask ? false : true)
+                .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
             }
         }
     }
