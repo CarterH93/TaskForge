@@ -17,7 +17,7 @@ struct listOfRemindersView: View {
     @Environment(\.modelContext) var modelContext
     @State private var showingSheetForNewReminderCreation = false
     
-    @Environment(dataLoad.self) private var dataload
+    @Environment(ViewModel.self) private var viewModel
     
     @Environment(LocalNotificationManager.self) var lnManager
     
@@ -105,12 +105,12 @@ struct listOfRemindersView: View {
                     
                 }
                 .refreshable {
-                    if dataload.loadingICSData == false {
-                        dataload.loadingICSData = true
+                    if viewModel.loadingICSData == false {
+                        viewModel.loadingICSData = true
                         let cache = MagicBox(modelContainer: modelContext.container)
                         
                         await cache.work()
-                        dataload.loadingICSData = false
+                        viewModel.loadingICSData = false
                     }
                     
                     lnManager.clearRequests()

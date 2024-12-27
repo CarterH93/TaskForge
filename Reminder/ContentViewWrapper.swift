@@ -11,7 +11,7 @@ import Vortex
 struct ContentViewWrapper: View {
     @Environment(LocalNotificationManager.self) var lnManager
     
-    @Environment(dataLoad.self) private var dataload
+    @Environment(ViewModel.self) private var viewModel
     
     let confetti = VortexSystem(
         tags: ["square", "circle"],
@@ -58,7 +58,7 @@ struct ContentViewWrapper: View {
                     
                 }
                 .allowsHitTesting(false)
-                .onChange(of: dataload.toggleConfetti) {
+                .onChange(of: viewModel.toggleConfetti) {
                     proxy.burst()
                     print("saw toggle")
                 }

@@ -135,7 +135,7 @@ struct viewTaskView: View {
     @State private var showingExplanationForNotBeingAbleToDelete = false
     
     @Environment(LocalNotificationManager.self) var lnManager
-    @Environment(dataLoad.self) private var dataload
+    @Environment(ViewModel.self) private var viewModel
     
     @Query(
         sort: \Settings1.Date1
@@ -152,7 +152,7 @@ struct viewTaskView: View {
                                     task.toggleCompleted()
                                 }
                                 if task.isCompleted {
-                                    dataload.toggleConfetti.toggle()
+                                    viewModel.toggleConfetti.toggle()
                                 }
                             }
                             .accessibilityAddTraits(.isButton)

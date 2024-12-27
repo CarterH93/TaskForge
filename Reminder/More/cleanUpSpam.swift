@@ -17,19 +17,19 @@ struct cleanUpSpam: View {
     @Query(
         sort: \Settings1.Date1
     ) var settings: [Settings1]
-    @Environment(dataLoad.self) private var dataload
+    @Environment(ViewModel.self) private var viewModel
     
     var localTempURLHold: [URL]
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
         deleteListOfTasks()
             .task {
-                if dataload.loadingICSData == false {
-                    dataload.loadingICSData = true
+                if viewModel.loadingICSData == false {
+                    viewModel.loadingICSData = true
                     let cache = MagicBox(modelContainer: modelContext.container)
                     
                     await cache.work(inputURLS: localTempURLHold)
-                    dataload.loadingICSData = false
+                    viewModel.loadingICSData = false
                 }
                 lnManager.clearRequests()
                 

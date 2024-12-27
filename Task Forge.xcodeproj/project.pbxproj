@@ -42,7 +42,7 @@
 		BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */; };
 		BC8FEA6C2D1508A60081EF20 /* ReminderOrTaskListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */; };
 		BCB55E672C7D161E00150A93 /* deleteListOfTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */; };
-		BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E682C7D18C900150A93 /* dataLoad.swift */; };
+		BCB55E692C7D18C900150A93 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB55E682C7D18C900150A93 /* ViewModel.swift */; };
 		BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBBCC812D0F19A000B4FE3E /* plusButton.swift */; };
 		BCC0D30D2D1DD63A0072A6FB /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = BCC0D30C2D1DD63A0072A6FB /* Vortex */; };
 		BCC0D3132D1E0B470072A6FB /* ListViewDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */; };
@@ -100,7 +100,7 @@
 		BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskObject.swift; sourceTree = "<group>"; };
 		BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderOrTaskListObject.swift; sourceTree = "<group>"; };
 		BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteListOfTasks.swift; sourceTree = "<group>"; };
-		BCB55E682C7D18C900150A93 /* dataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoad.swift; sourceTree = "<group>"; };
+		BCB55E682C7D18C900150A93 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Task-Forge-Info.plist"; sourceTree = "<group>"; };
 		BCBBCC812D0F19A000B4FE3E /* plusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plusButton.swift; sourceTree = "<group>"; };
 		BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDateFormatter.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 			children = (
 				BC5BCC292D1A3129008A3E7A /* ImprovedTextEditor.swift */,
 				BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */,
-				BCB55E682C7D18C900150A93 /* dataLoad.swift */,
+				BCB55E682C7D18C900150A93 /* ViewModel.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
 				BCBBCC812D0F19A000B4FE3E /* plusButton.swift */,
 				BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */,
@@ -380,7 +380,7 @@
 				BC628E8F2C6C2C5500D75E37 /* ContentViewWrapper.swift in Sources */,
 				BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */,
 				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
-				BCB55E692C7D18C900150A93 /* dataLoad.swift in Sources */,
+				BCB55E692C7D18C900150A93 /* ViewModel.swift in Sources */,
 				BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */,
 				BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */,
 				BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */,

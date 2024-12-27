@@ -12,7 +12,7 @@ import SwiftData
 struct listOfTasksView: View {
     var settings: Settings1
     
-    @Environment(dataLoad.self) private var dataload
+    @Environment(ViewModel.self) private var viewModel
     
     
 
@@ -158,12 +158,12 @@ struct listOfTasksView: View {
                 }
             }
             .refreshable {
-                if dataload.loadingICSData == false {
-                    dataload.loadingICSData = true
+                if viewModel.loadingICSData == false {
+                    viewModel.loadingICSData = true
                     let cache = MagicBox(modelContainer: modelContext.container)
                     
                     await cache.work()
-                    dataload.loadingICSData = false
+                    viewModel.loadingICSData = false
                 }
                 
                 lnManager.clearRequests()

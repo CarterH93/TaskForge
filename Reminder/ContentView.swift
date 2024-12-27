@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @Query var reminders: [Reminder]
-    @Environment(dataLoad.self) private var dataload
+    @Environment(ViewModel.self) private var viewModel
     @Query(
         sort: \Settings1.Date1
     ) var settings: [Settings1]
@@ -59,12 +59,12 @@ struct ContentView: View {
                     }
             */
                     .task(priority: .background) {
-                        if dataload.loadingICSData == false {
-                            dataload.loadingICSData = true
+                        if viewModel.loadingICSData == false {
+                            viewModel.loadingICSData = true
                             let cache = MagicBox(modelContainer: modelContext.container)
                             
                             await cache.work()
-                            dataload.loadingICSData = false
+                            viewModel.loadingICSData = false
                         }
                         
                         
