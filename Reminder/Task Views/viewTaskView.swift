@@ -153,6 +153,7 @@ struct viewTaskView: View {
                                 }
                                 if task.isCompleted {
                                     viewModel.toggleConfetti.toggle()
+                                    viewModel.playCompletionSound()
                                 }
                             }
                             .accessibilityAddTraits(.isButton)

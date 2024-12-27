@@ -47,6 +47,7 @@
 		BCC0D30D2D1DD63A0072A6FB /* Vortex in Frameworks */ = {isa = PBXBuildFile; productRef = BCC0D30C2D1DD63A0072A6FB /* Vortex */; };
 		BCC0D3132D1E0B470072A6FB /* ListViewDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */; };
 		BCC0D3152D1E183F0072A6FB /* ReminderFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D3142D1E183F0072A6FB /* ReminderFilter.swift */; };
+		BCC0D3512D1F338F0072A6FB /* completion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BCC0D3502D1F338F0072A6FB /* completion.mp3 */; };
 		BCD8AEB22D135934002D98AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AEB12D135934002D98AA /* README.md */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
@@ -105,6 +106,7 @@
 		BCBBCC812D0F19A000B4FE3E /* plusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plusButton.swift; sourceTree = "<group>"; };
 		BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewDateFormatter.swift; sourceTree = "<group>"; };
 		BCC0D3142D1E183F0072A6FB /* ReminderFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderFilter.swift; sourceTree = "<group>"; };
+		BCC0D3502D1F338F0072A6FB /* completion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = completion.mp3; sourceTree = "<group>"; };
 		BCD8AEB12D135934002D98AA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BCD8AEBB2D136711002D98AA /* Task Forge Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task Forge Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				BC5BCC292D1A3129008A3E7A /* ImprovedTextEditor.swift */,
+				BCC0D3522D1F33950072A6FB /* Sound Effects */,
 				BC8FEA6B2D1508A60081EF20 /* ReminderOrTaskListObject.swift */,
 				BCB55E682C7D18C900150A93 /* ViewModel.swift */,
 				BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */,
@@ -266,6 +269,14 @@
 				BC31B2282C5FF1F700548F7E /* Reminder.swift */,
 			);
 			path = "Data Store Models";
+			sourceTree = "<group>";
+		};
+		BCC0D3522D1F33950072A6FB /* Sound Effects */ = {
+			isa = PBXGroup;
+			children = (
+				BCC0D3502D1F338F0072A6FB /* completion.mp3 */,
+			);
+			path = "Sound Effects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +370,7 @@
 			files = (
 				BCD8AEB22D135934002D98AA /* README.md in Resources */,
 				BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */,
+				BCC0D3512D1F338F0072A6FB /* completion.mp3 in Resources */,
 				BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

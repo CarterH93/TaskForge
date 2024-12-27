@@ -7,6 +7,7 @@
 
 import Foundation
 import Vortex
+import AVFoundation
 
 
 @Observable class ViewModel {
@@ -29,4 +30,21 @@ import Vortex
         size: 0.5,
         sizeVariation: 0.5
     )
+    
+    
+    //Playing sounds
+    var soundEngine: AVAudioPlayer?
+    
+    func playCompletionSound() {
+        let path = Bundle.main.path(forResource: "completion.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            soundEngine = try AVAudioPlayer(contentsOf: url)
+            soundEngine?.play()
+        } catch {
+            // couldn't load file :(
+        }
+    }
+    
 }

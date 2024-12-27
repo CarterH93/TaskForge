@@ -87,6 +87,7 @@ struct viewReminderView: View {
                                 }
                                 if reminder.isCompleted {
                                     viewModel.toggleConfetti.toggle()
+                                    viewModel.playCompletionSound()
                                     print("toggle")
                                 } else {
                                     print("not complete")
