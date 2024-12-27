@@ -13,22 +13,7 @@ struct ContentViewWrapper: View {
     
     @Environment(ViewModel.self) private var viewModel
     
-    let confetti = VortexSystem(
-        tags: ["square", "circle"],
-        position: [0.5, 0],
-        shape: .box(width: 1, height: 0),
-        birthRate: 0,
-        lifespan: 10,
-        speed: 0.2,
-        speedVariation: 0.5,
-        angle: .degrees(180),
-        angleRange: .degrees(90),
-        acceleration: [0, 0.7],
-        angularSpeedVariation: [4, 4, 4],
-        colors: .random(.white, .red, .green, .blue, .pink, .orange, .cyan),
-        size: 0.5,
-        sizeVariation: 0.5
-    )
+   
     
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
@@ -44,7 +29,7 @@ struct ContentViewWrapper: View {
                 
                 VortexViewReader { proxy in
                     
-                VortexView(confetti) {
+                    VortexView(viewModel.confetti) {
                     
                     Rectangle()
                         .fill(.white)
