@@ -20,7 +20,7 @@ class Reminder {
     private var completed: Bool = false
     var notes: String = ""
     var label: String?
-    var UIUpdate: String = ""
+    var UIUpdate: String = "initial"
     
 
     func toggleCompleted(_ manuelBool: Bool? = nil) {
@@ -101,7 +101,7 @@ class Reminder {
     
     var task: TaskObject?
     
-    init(id: String, name: String, due: Date, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil, UIUpdate: String = "") {
+    init(id: String, name: String, due: Date, completed: Bool = false, notes: String = "", label: String? = nil, image: [Data]? = nil, UIUpdate: String = "initial") {
         self.id = id
         self.name = name
         self.due = due

@@ -170,8 +170,6 @@ struct listOfRemindersView: View {
                     }
                     
                 }
-                //Commented out because glitch is no longer a problem
-                /*
                 .onChange(of: scenePhase) { _, newPhase in
                    
                     
@@ -183,6 +181,7 @@ struct listOfRemindersView: View {
                                         for reminder in settings.remindersThatNeedUIUpdate {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                                                 let realReminder = reminders.first(where: { $0.id == reminder})
+                                                print(realReminder!.name)
                                                 realReminder?.UIUpdate += "fdsa"
                                                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                                                     settings.remindersThatNeedUIUpdate.remove(reminder)
@@ -197,7 +196,7 @@ struct listOfRemindersView: View {
                                         print("Background")
                                     }
                 }
-                */
+                
             }
         }
 

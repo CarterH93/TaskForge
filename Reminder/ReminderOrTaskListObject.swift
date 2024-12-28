@@ -87,7 +87,8 @@ struct ReminderObjectView: View {
                 .font(.footnote)
             }
                 Spacer()
-                if showDue {
+            //reminder.UIUpdate is to fix glitch with date showing up wrong after using quick action on notification
+            if showDue && reminder.UIUpdate.count > 0 {
                     Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                         .font(.callout)
                         .foregroundStyle((num < 0) ? .red : .blue)
