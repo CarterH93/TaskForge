@@ -49,9 +49,9 @@ actor MagicBox {
     /// Creates list of tasks from remote URL source
     /// - Parameters:
     ///   - url: input .ICS URL to retrieve tasks from
-    ///   - deletePastDueTasksOnIntialSync: automatically delete tasks that are overdue
+    ///   - deleteRemoteDeletedTasks: automatically delete tasks that are deleted from remote .ICS source
     /// - Returns: Returns a set of ``TaskObject`` converted from remote URL source
-    private func parseRemoteData(_ url: URL, deletePastDueTasksOnIntialSync: Bool) async -> Set<TaskObject> {
+    private func parseRemoteData(_ url: URL, deleteRemoteDeletedTasks: Bool) async -> Set<TaskObject> {
         
         var listOfTasks: [TaskObject] = []
         //used to check for duplicates. Normal Set duplicate checking does not work because they are an @model.
@@ -84,7 +84,7 @@ actor MagicBox {
                         
                         //Deletes any tasks before todays date. Removes clutter.
                         var deleted: Bool {
-                            if startDate < Calendar.current.startOfDay(for: Date.now) && deletePastDueTasksOnIntialSync {
+                            if startDate < Calendar.current.startOfDay(for: Date.now) {
                                 return true
                             } else {
                                 return false
@@ -136,10 +136,7 @@ actor MagicBox {
     }
     
     //Main Function
-    func work(inputURLS: [URL]? = nil) async {
-        
-        //Deletes overdue tasks. Makes this always true because people don't need to add overdue assignments from calendar. Also fixes a bunch of glitches.
-        let deletePastDueTasksOnIntialSync = true
+    func work(deleteRemoteDeletedTasks: Bool = false, inputURLS: [URL]? = nil) async {
         
         do {
             
@@ -179,7 +176,7 @@ actor MagicBox {
             }
             
             for item in url {
-                await remoteTasks = remoteTasks.union(parseRemoteData(item, deletePastDueTasksOnIntialSync: deletePastDueTasksOnIntialSync))
+                await remoteTasks = remoteTasks.union(parseRemoteData(item, deleteRemoteDeletedTasks: deleteRemoteDeletedTasks))
             }
             
 
@@ -364,7 +361,7 @@ actor MagicBox {
                 
                 //Only run if deleting past tasks. (This code below is causing problems by randomly wiping out all canvas tasks. Related to caching from URLSession when there is no internet connection. But implementing this safety feature to make sure it can't happen in the first place).
                 //This means this code will only run when a new link is added or deleted.
-                if deletePastDueTasksOnIntialSync {
+                if deleteRemoteDeletedTasks {
                     
                     //Creating set of tasks that are in SwiftData but not in ICS Data
                     let inSwiftDataButNotICSData = swiftDataTasksIDOnly.subtracting(remoteTasksIDOnly)

@@ -28,7 +28,7 @@ struct cleanUpSpam: View {
                     viewModel.loadingICSData = true
                     let cache = MagicBox(modelContainer: modelContext.container)
                     
-                    await cache.work(inputURLS: localTempURLHold)
+                    await cache.work(deleteRemoteDeletedTasks: true, inputURLS: localTempURLHold)
                     viewModel.loadingICSData = false
                 }
                 lnManager.clearRequests()
