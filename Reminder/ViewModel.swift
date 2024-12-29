@@ -9,6 +9,19 @@ import SwiftUI
 import Vortex
 import AVFoundation
 
+struct DelayItem: Equatable, Hashable {
+    var id: String
+    var delay = Delay()
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func ==(lhs: DelayItem, rhs: DelayItem) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 
 @Observable class ViewModel {
     var loadingICSData = false
@@ -62,6 +75,9 @@ import AVFoundation
         self.playCompletionSound()
         self.toggleCompletionHaptics.toggle()
     }
+    
+    
+    var pendingCompletion = Set<DelayItem>()
     
     
     

@@ -14,6 +14,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @Query var reminders: [Reminder]
+    @Query var tasks: [TaskObject]
     @Environment(ViewModel.self) private var viewModel
     @Query(
         sort: \Settings1.Date1
@@ -68,6 +69,27 @@ struct ContentView: View {
                         }
                         
                         
+                    }
+                    .onChange(of: scenePhase) { _, newPhase in
+                        if newPhase == .inactive {
+                            for pendingCompletionItem in viewModel.pendingCompletion {
+                                if let reminder = reminders.first(where: {$0.id == pendingCompletionItem.id} ) {
+                                    withAnimation {
+                                        reminder.toggleCompleted(true)
+                                    }
+                                    print("completed delay reminder")
+                                    viewModel.pendingCompletion.remove(pendingCompletionItem)
+                                }
+                                
+                                if let task = tasks.first(where: {$0.id == pendingCompletionItem.id} ) {
+                                    withAnimation {
+                                        task.toggleCompleted(true)
+                                    }
+                                    print("completed delay task")
+                                    viewModel.pendingCompletion.remove(pendingCompletionItem)
+                                }
+                            }
+                        }
                     }
                     .onChange(of: scenePhase) { _, newPhase in
                        

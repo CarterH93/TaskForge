@@ -16,9 +16,10 @@ struct ReminderObjectView: View {
     var showDue: Bool
     var showAssociatedTask: Bool
     var showNotes: Bool
+    var delayCompletion: Bool
     
     
-    init(reminder: Reminder, maxDayRange: Int = 0, num: Int? = nil, settings: Settings1 = Settings1(), showCompletedButton: Bool, showDue: Bool, showAssociatedTask: Bool, showNotes: Bool) {
+    init(reminder: Reminder, maxDayRange: Int = 0, num: Int? = nil, settings: Settings1 = Settings1(), showCompletedButton: Bool, showDue: Bool, showAssociatedTask: Bool, showNotes: Bool, delayCompletion: Bool = false) {
         self.reminder = reminder
         self.maxDayRange = maxDayRange
         if let num = num {
@@ -35,18 +36,29 @@ struct ReminderObjectView: View {
         self.showDue = showDue
         self.showAssociatedTask = showAssociatedTask
         self.showNotes = showNotes
+        self.delayCompletion = delayCompletion
     }
     @Environment(ViewModel.self) private var viewModel
     
     var body: some View {
         HStack {
             if showCompletedButton {
-                Image(systemName: reminder.isCompleted ? "checkmark.circle.fill" : "circle")
+                Image(systemName: reminder.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: reminder.id)) ? "checkmark.circle.fill" : "circle")
                     .onTapGesture {
                         withAnimation {
-                            reminder.toggleCompleted()
+                            
+                            if delayCompletion && !reminder.isCompleted {
+                                
+                                reminder.delayComplete(viewModel)
+                                
+                            } else {
+                                
+                                reminder.toggleCompleted()
+                            }
                         }
-                        if reminder.isCompleted {
+                        
+                        
+                        if reminder.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: reminder.id)) {
                             viewModel.completionActions()
                         }
                     }
@@ -60,7 +72,7 @@ struct ReminderObjectView: View {
                         .font(.callout)
                     Spacer()
                 }
-                .strikethrough(reminder.isCompleted)
+                .strikethrough(reminder.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: reminder.id)))
                 
                 HStack {
                     if (!reminder.notes.isEmpty && showNotes) && (showAssociatedTask && reminder.task != nil) {
@@ -92,7 +104,7 @@ struct ReminderObjectView: View {
                     Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? reminder.due.formatted(.dateTime.day().month().hour().minute()) : reminder.due.formatted(.dateTime.hour().minute()))
                         .font(.callout)
                         .foregroundStyle((num < 0) ? .red : .blue)
-                        .strikethrough(reminder.isCompleted)
+                        .strikethrough(reminder.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: reminder.id)))
                 }
                     
                 
@@ -112,8 +124,9 @@ struct TaskObjectView: View {
     var showCompletedButton: Bool
     var showDue: Bool
     var showNotes: Bool
+    var delayCompletion: Bool
     
-    init(task: TaskObject, maxDayRange: Int = 0, num: Int? = nil, settings: Settings1 = Settings1(), showCompletedButton: Bool, showDue: Bool, showNotes: Bool) {
+    init(task: TaskObject, maxDayRange: Int = 0, num: Int? = nil, settings: Settings1 = Settings1(), showCompletedButton: Bool, showDue: Bool, showNotes: Bool, delayCompletion: Bool = false) {
         self.task = task
         self.maxDayRange = maxDayRange
         if let num = num {
@@ -129,6 +142,7 @@ struct TaskObjectView: View {
         self.showCompletedButton = showCompletedButton
         self.showDue = showDue
         self.showNotes = showNotes
+        self.delayCompletion = delayCompletion
     }
     
     @Environment(ViewModel.self) private var viewModel
@@ -136,12 +150,18 @@ struct TaskObjectView: View {
     var body: some View {
         HStack {
             if showCompletedButton {
-                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                Image(systemName: task.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: task.id)) ? "checkmark.circle.fill" : "circle")
                     .onTapGesture {
                         withAnimation {
-                            task.toggleCompleted()
+                            if delayCompletion && !task.isCompleted {
+                                task.delayComplete(viewModel)
+                            } else {
+                                
+                                
+                                task.toggleCompleted()
+                            }
                         }
-                        if task.isCompleted {
+                        if task.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: task.id)) {
                             viewModel.completionActions()
                         }
                     }
@@ -155,7 +175,7 @@ struct TaskObjectView: View {
                         .font(.callout)
                     Spacer()
                 }
-                .strikethrough(task.isCompleted)
+                .strikethrough(task.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: task.id)))
                 
                 HStack {
                    if (!task.notes.isEmpty && showNotes) {
@@ -174,7 +194,7 @@ struct TaskObjectView: View {
                     Text((num >= maxDayRange && !settings.showOnlyToday) || num < 0 ? task.due.formatted(.dateTime.day().month().hour().minute()) : task.due.formatted(.dateTime.hour().minute()))
                         .font(.callout)
                         .foregroundStyle((num < 0) ? .red : .blue)
-                        .strikethrough(task.isCompleted)
+                        .strikethrough(task.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: task.id)))
                 }
                     
                 

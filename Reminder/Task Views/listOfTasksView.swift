@@ -94,7 +94,7 @@ struct listOfTasksView: View {
                                 NavigationLink {
                                     viewTaskView(task: task)
                                 } label: {
-                                    TaskObjectView(task: task, maxDayRange: ListViewDateFormatter.maxDayRange(settings), num: num, settings: settings, showCompletedButton: true, showDue: true, showNotes: true)
+                                    TaskObjectView(task: task, maxDayRange: ListViewDateFormatter.maxDayRange(settings), num: num, settings: settings, showCompletedButton: true, showDue: true, showNotes: true, delayCompletion: true)
                                         .padding(4)
                                 }
                             }

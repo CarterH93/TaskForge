@@ -11,6 +11,7 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 class Reminder {
@@ -21,6 +22,29 @@ class Reminder {
     var notes: String = ""
     var label: String?
     var UIUpdate: String = "initial"
+    
+    func delayComplete(_ viewModel: ViewModel) {
+        
+        if let selectedItem = viewModel.pendingCompletion.first(where: {$0.id == self.id}) {
+            selectedItem.delay.cancel()
+            viewModel.pendingCompletion.remove(selectedItem)
+        } else {
+            let delayItem = DelayItem(id: self.id)
+            viewModel.pendingCompletion.insert(delayItem)
+            delayItem.delay.performWork {
+                
+                //Complete task
+                withAnimation {
+                    self.toggleCompleted(true)
+                }
+                
+                
+                
+                viewModel.pendingCompletion.remove(delayItem)
+            }
+            
+        }
+    }
     
 
     func toggleCompleted(_ manuelBool: Bool? = nil) {

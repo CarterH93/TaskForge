@@ -51,6 +51,7 @@
 		BCD8AEB22D135934002D98AA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AEB12D135934002D98AA /* README.md */; };
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
+		BCFFED1D2D21F6B20044DE7C /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFED1C2D21F6B20044DE7C /* Delay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		BCD8AEBB2D136711002D98AA /* Task Forge Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task Forge Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewReminderView.swift; sourceTree = "<group>"; };
 		BCEE6B102C6909600090E274 /* Settings1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings1.swift; sourceTree = "<group>"; };
+		BCFFED1C2D21F6B20044DE7C /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -200,6 +202,7 @@
 				BCC0D3122D1E0B470072A6FB /* ListViewDateFormatter.swift */,
 				BCBBCC7D2D0F10C000B4FE3E /* Reminder Views */,
 				BCEE6B102C6909600090E274 /* Settings1.swift */,
+				BCFFED1C2D21F6B20044DE7C /* Delay.swift */,
 				BC2C062A2BF937E400AD85F5 /* MagicBox.swift */,
 				BC7FBEAD2BDEFF1A0027A00C /* ICS Parser */,
 				BC7FBE902BDEFE710027A00C /* ContentView.swift */,
@@ -401,6 +404,7 @@
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,
 				BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */,
 				BCC0D3132D1E0B470072A6FB /* ListViewDateFormatter.swift in Sources */,
+				BCFFED1D2D21F6B20044DE7C /* Delay.swift in Sources */,
 				BC39F06F2C6578B60019BB7F /* createNewTaskView.swift in Sources */,
 				BC39F0712C65820E0019BB7F /* createNewReminderView.swift in Sources */,
 				BC5BCC2A2D1A3129008A3E7A /* ImprovedTextEditor.swift in Sources */,
