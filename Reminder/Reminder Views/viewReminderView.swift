@@ -52,6 +52,8 @@ struct viewReminderView: View {
     
     @State private var showingReminderAlert = false
     
+    @State private var showingReminderDeleteWithTaskAlert = false
+    
     @State private var showingSheetForTaskLinking = false
     
     @State private var showingCannotDeleteAlert = false
@@ -147,7 +149,7 @@ struct viewReminderView: View {
                         Button("Delete Reminder", role: .destructive) {
                             if let task = reminder.task {
                                 if task.reminders?.count ?? 1 < 2 {
-                                    showingCannotDeleteAlert = true
+                                    showingReminderDeleteWithTaskAlert = true
                                     return
                                 }
                             }
@@ -178,6 +180,20 @@ struct viewReminderView: View {
                     deleteHaptic.toggle()
                     reminder.toggleCompleted(true)
                     dismiss()
+                    modelContext.delete(reminder)
+                            }
+                    }
+            .alert("Are you sure you want to permanently delete this reminder and its associated task?", isPresented: $showingReminderDeleteWithTaskAlert) {
+                Button("Delete", role: .destructive) {
+                    
+                    Task {
+                        
+                        lnManager.removeRequest(withIdentifier: reminder.id)
+                    }
+                    deleteHaptic.toggle()
+                    reminder.toggleCompleted(true)
+                    dismiss()
+                    modelContext.delete(reminder.task!)
                     modelContext.delete(reminder)
                             }
                     }
