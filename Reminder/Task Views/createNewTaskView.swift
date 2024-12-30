@@ -56,6 +56,7 @@ struct createNewTaskView: View {
                         let newTask = TaskObject(oldid: UUID().uuidString, name: name, due: due, inAppGenerated: true, notes: notes)
                         newTask.reminders = [Reminder(id: UUID().uuidString, name: "Work on \(newTask.name)", due: due.addingTimeInterval(-settings.first!.defaultReminderWrapper))]
                         modelContext.insert(newTask)
+                        try? modelContext.save()
                         buttonPressHaptic.toggle()
                         dismiss()
                     }

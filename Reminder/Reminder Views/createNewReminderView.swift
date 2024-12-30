@@ -56,6 +56,7 @@ struct createNewReminderView: View {
                 if isValidReminder {
                     let newReminder = Reminder(id: UUID().uuidString, name: name, due: due, notes: notes)
                     modelContext.insert(newReminder)
+                    try? modelContext.save()
                     buttonPressHaptic.toggle()
                     dismiss()
                 }

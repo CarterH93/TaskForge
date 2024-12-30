@@ -181,6 +181,7 @@ struct viewReminderView: View {
                     reminder.toggleCompleted(true)
                     dismiss()
                     modelContext.delete(reminder)
+                    try? modelContext.save()
                             }
                     }
             .alert("Are you sure you want to permanently delete this reminder and its associated task?", isPresented: $showingReminderDeleteWithTaskAlert) {
@@ -195,6 +196,7 @@ struct viewReminderView: View {
                     dismiss()
                     modelContext.delete(reminder.task!)
                     modelContext.delete(reminder)
+                    try? modelContext.save()
                             }
                     }
             .alert("Cannot complete action because associated task needs at least one reminder.", isPresented: $showingCannotDeleteAlert) { }

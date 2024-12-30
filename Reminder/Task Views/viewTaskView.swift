@@ -91,6 +91,7 @@ struct autoGenerateRemindersSubView: View {
                 
                 for reminder in task.reminders! {
                     modelContext.delete(reminder)
+                    try? modelContext.save()
                 }
                 let newReminders = generateSpacedRemindersObject.generate(number: numberOfReminders, timePeriod: timeSpan)
                 task.reminders?.append(contentsOf: newReminders)
@@ -131,6 +132,7 @@ struct viewTaskView: View {
             reminder.toggleCompleted(true)
             lnManager.removeRequest(withIdentifier: reminder.id)
             modelContext.delete(reminder)
+            try? modelContext.save()
         }
     }
     
@@ -270,11 +272,12 @@ struct viewTaskView: View {
                     for reminder in task.reminders! {
                         lnManager.removeRequest(withIdentifier: reminder.id)
                         modelContext.delete(reminder)
-                        
+                        try? modelContext.save()
                         
                     }
                     if task.inAppGenerated == true {
                         modelContext.delete(task)
+                        try? modelContext.save()
                     } else {
                         task.deleted1 = true
                     }
