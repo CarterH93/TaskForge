@@ -32,7 +32,7 @@ struct newReminderSubView: View {
                 let newReminder = Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue)
                 task.reminders!.append(newReminder)
                 buttonPressHaptic.toggle()
-                
+                try? modelContext.save()
                 dismiss()
             }
             .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
@@ -91,12 +91,12 @@ struct autoGenerateRemindersSubView: View {
                 
                 for reminder in task.reminders! {
                     modelContext.delete(reminder)
-                    try? modelContext.save()
+                    
                 }
                 let newReminders = generateSpacedRemindersObject.generate(number: numberOfReminders, timePeriod: timeSpan)
                 task.reminders?.append(contentsOf: newReminders)
                 buttonPressHaptic.toggle()
-               
+                try? modelContext.save()
                 dismiss()
             }
             .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
@@ -162,6 +162,7 @@ struct viewTaskView: View {
                                 if task.isCompleted {
                                     viewModel.completionActions()
                                 }
+                                try? modelContext.save()
                             }
                             .accessibilityAddTraits(.isButton)
                         

@@ -29,6 +29,7 @@ struct simpleListOfTasks: View {
             List(tasks) { task in
                 Button {
                     task.reminders!.append(reminder)
+                    try? modelContext.save()
                     viewUpdater += "123"
                     dismiss()
                     
@@ -70,6 +71,7 @@ struct viewReminderView: View {
         }
         deleteHaptic.toggle()
         reminder.task = nil
+        try? modelContext.save()
     }
 
    @State private var viewUpdater = "anyTextWorksHere"
@@ -90,6 +92,7 @@ struct viewReminderView: View {
                                 if reminder.isCompleted {
                                     viewModel.completionActions()
                                 }
+                                try? modelContext.save()
                             }
                             .accessibilityAddTraits(.isButton)
                         TextField("reminder name", text: $reminder.name, axis: .vertical)
