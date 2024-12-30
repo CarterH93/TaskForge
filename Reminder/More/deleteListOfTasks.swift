@@ -36,6 +36,7 @@ struct deleteListOfTasks: View {
             .headerProminence(.increased)
             
         }
+        .frame(maxWidth: 600)
         .padding(.top)
         .sensoryFeedback(ViewModel.buttonPressHapticImpact, trigger: buttonPressHaptic)
         

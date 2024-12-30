@@ -111,6 +111,7 @@ struct listOfTasksView: View {
                 
                     
                 }
+                .frame(maxWidth: 600)
                 .safeAreaInset(edge: .bottom, alignment: .trailing) {
                     Button {
                         showingSheetForNewTaskCreation = true

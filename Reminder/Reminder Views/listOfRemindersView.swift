@@ -80,8 +80,10 @@ struct listOfRemindersView: View {
                                     ReminderObjectView(reminder: reminder, maxDayRange: ListViewDateFormatter.maxDayRange(settings), num: num, settings: settings, showCompletedButton: true, showDue: true, showAssociatedTask: true, showNotes: true, delayCompletion: true)
                                         .padding(4)
                                 }
+                                
                             }
                         }
+                        
                         .listRowBackground(
                             RoundedRectangle(cornerRadius: 15)
                                 .fill(Color(UIColor.secondarySystemGroupedBackground))
@@ -94,6 +96,7 @@ struct listOfRemindersView: View {
                     
                     
                 }
+                .frame(maxWidth: 600)
                 .safeAreaInset(edge: .bottom, alignment: .trailing) {
                     Button {
                         showingSheetForNewReminderCreation = true
