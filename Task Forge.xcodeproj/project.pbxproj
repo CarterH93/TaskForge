@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC12CB152C80169A00473C6B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC12CB142C80169A00473C6B /* CloudKit.framework */; };
 		BC12CB172C814E4500473C6B /* generateSpacedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */; };
 		BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C062A2BF937E400AD85F5 /* MagicBox.swift */; };
 		BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31B2282C5FF1F700548F7E /* Reminder.swift */; };
@@ -52,6 +51,8 @@
 		BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B0C2C68683A0090E274 /* viewReminderView.swift */; };
 		BCEE6B112C6909600090E274 /* Settings1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE6B102C6909600090E274 /* Settings1.swift */; };
 		BCFFED1D2D21F6B20044DE7C /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFED1C2D21F6B20044DE7C /* Delay.swift */; };
+		BCFFED222D2233FF0044DE7C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC12CB142C80169A00473C6B /* CloudKit.framework */; };
+		BCFFED232D2233FF0044DE7C /* CloudKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC12CB142C80169A00473C6B /* CloudKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,20 @@
 			remoteInfo = "Task Forge";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCFFED242D2233FF0044DE7C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BCFFED232D2233FF0044DE7C /* CloudKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BC12CB142C80169A00473C6B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -125,7 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCC0D30D2D1DD63A0072A6FB /* Vortex in Frameworks */,
-				BC12CB152C80169A00473C6B /* CloudKit.framework in Frameworks */,
+				BCFFED222D2233FF0044DE7C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +307,7 @@
 				BC7FBE742BDEFE300027A00C /* Sources */,
 				BC7FBE752BDEFE300027A00C /* Frameworks */,
 				BC7FBE762BDEFE300027A00C /* Resources */,
+				BCFFED242D2233FF0044DE7C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
