@@ -48,7 +48,7 @@ struct syncing: View {
                         localTempURLHold = settings.first!.icsSources
                         localTempURLHold.append(url)
                         settings.first!.icsSources.append(url)
-                        
+                        try? modelContext.save()
                         showingNewSheet = true
                     }
                     link = ""
