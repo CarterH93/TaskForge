@@ -22,7 +22,7 @@ class Settings1 {
     
     var showOnlyToday = false
     
-    var defaultReminder: Int
+    var defaultReminder: Int = 3
     var defaultReminderEnabled = true
     var Date1: Date = Date.now
     
