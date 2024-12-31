@@ -73,6 +73,15 @@ Notifications are not enabled if the _Enable Notifications_ button shows up in t
 
 <div align="left"><figure><img src=".gitbook/assets/IMG_CA311EF59F03-1.jpeg" alt="" width="375"><figcaption></figcaption></figure></div>
 
+
+
+{% hint style="info" %}
+Long press on notifications to use quick actions
+
+\
+<img src=".gitbook/assets/IMG_3393 (1).jpg" alt="" data-size="original">
+{% endhint %}
+
 ## You are now all set up to use Task Forge!
 
 Provide feedback on improvements for the app at the link below:
