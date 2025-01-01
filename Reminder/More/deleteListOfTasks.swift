@@ -15,6 +15,7 @@ struct deleteListOfTasks: View {
         Form {
             
             Section("Select Tasks To Delete") {
+                Text("Delete any spam or unnecessary tasks that are synced over.")
                 ForEach(tasks.indices,  id:\.self) { index in
 
                                             HStack {

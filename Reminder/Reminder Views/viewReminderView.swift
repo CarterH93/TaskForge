@@ -197,7 +197,13 @@ struct viewReminderView: View {
                     deleteHaptic.toggle()
                     reminder.toggleCompleted(true)
                     dismiss()
-                    modelContext.delete(reminder.task!)
+                    if reminder.task!.inAppGenerated {
+                        modelContext.delete(reminder.task!)
+                    } else {
+                        reminder.task!.deleted1 = true
+                    }
+                    
+                    
                     modelContext.delete(reminder)
                     try? modelContext.save()
                             }

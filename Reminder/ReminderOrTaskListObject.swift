@@ -70,6 +70,7 @@ struct ReminderObjectView: View {
                 HStack {
                     Text(reminder.name)
                         .font(.callout)
+                        .lineLimit(3)
                     Spacer()
                 }
                 .strikethrough(reminder.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: reminder.id)))
@@ -173,6 +174,7 @@ struct TaskObjectView: View {
                 HStack {
                     Text(task.name)
                         .font(.callout)
+                        .lineLimit(3)
                     Spacer()
                 }
                 .strikethrough(task.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: task.id)))
