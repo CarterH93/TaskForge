@@ -26,11 +26,12 @@ class LocalNotificationManager: NSObject {
         notificationCenter.delegate = self
     }
     @MainActor
-    func requestAuthorization() async throws {
-        try await notificationCenter
+    func requestAuthorization() async throws -> Bool {
+       let worked = try await notificationCenter
             .requestAuthorization(options: [.sound, .badge, .alert])
         registerActions()
         await getCurrentSettings()
+        return worked
     }
     
     func getCurrentSettings() async {

@@ -3,22 +3,4 @@
    uuid = "41DF10CB-53F1-4B01-839F-C5AF85A4E246"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "815F5203-3F7F-4D81-B6C9-DE0461268F0F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../../../../var/folders/sw/w55vyv1s2px78247tdzslm_h0000gn/T/swift-generated-sources/@__swiftmacro_10Task_Forge9Settings1C15pendingDeletion18_PersistedPropertyfMa_.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1"
-            endingLineNumber = "1"
-            landmarkName = "pendingDeletion"
-            landmarkType = "37">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

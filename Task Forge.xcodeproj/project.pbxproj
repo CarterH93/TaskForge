@@ -24,6 +24,16 @@
 		BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8A2C6C283B00D75E37 /* NextView.swift */; };
 		BC628E8D2C6C2B6C00D75E37 /* suggestedActions .swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8C2C6C2B6C00D75E37 /* suggestedActions .swift */; };
 		BC628E8F2C6C2C5500D75E37 /* ContentViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */; };
+		BC75A5B42D25D7C800F8DBCF /* OnboardingHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5B32D25D7C800F8DBCF /* OnboardingHolderView.swift */; };
+		BC75A5B62D25D83700F8DBCF /* Screen 1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5B52D25D83700F8DBCF /* Screen 1.swift */; };
+		BC75A5B82D25D95400F8DBCF /* Screen 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5B72D25D95400F8DBCF /* Screen 2.swift */; };
+		BC75A5BA2D25D98300F8DBCF /* Screen 3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5B92D25D98300F8DBCF /* Screen 3.swift */; };
+		BC75A5BC2D25D9B900F8DBCF /* Screen 4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5BB2D25D9B900F8DBCF /* Screen 4.swift */; };
+		BC75A5BE2D25D9E300F8DBCF /* Screen 5.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5BD2D25D9E300F8DBCF /* Screen 5.swift */; };
+		BC75A5C02D25DA0200F8DBCF /* Screen 6.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5BF2D25DA0200F8DBCF /* Screen 6.swift */; };
+		BC75A5C22D25DA1600F8DBCF /* Screen 7.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5C12D25DA1600F8DBCF /* Screen 7.swift */; };
+		BC75A5C62D25DC2500F8DBCF /* Screen 8.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5C52D25DC2500F8DBCF /* Screen 8.swift */; };
+		BC75A5C82D25DEB000F8DBCF /* AddAndViewICSSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC75A5C72D25DEB000F8DBCF /* AddAndViewICSSources.swift */; };
 		BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */; };
 		BC7FBE802BDEFE320027A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */; };
 		BC7FBE842BDEFE320027A00C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7FBE832BDEFE320027A00C /* Preview Assets.xcassets */; };
@@ -82,6 +92,16 @@
 		BC628E8A2C6C283B00D75E37 /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
 		BC628E8C2C6C2B6C00D75E37 /* suggestedActions .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "suggestedActions .swift"; sourceTree = "<group>"; };
 		BC628E8E2C6C2C5500D75E37 /* ContentViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewWrapper.swift; sourceTree = "<group>"; };
+		BC75A5B32D25D7C800F8DBCF /* OnboardingHolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingHolderView.swift; sourceTree = "<group>"; };
+		BC75A5B52D25D83700F8DBCF /* Screen 1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 1.swift"; sourceTree = "<group>"; };
+		BC75A5B72D25D95400F8DBCF /* Screen 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 2.swift"; sourceTree = "<group>"; };
+		BC75A5B92D25D98300F8DBCF /* Screen 3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 3.swift"; sourceTree = "<group>"; };
+		BC75A5BB2D25D9B900F8DBCF /* Screen 4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 4.swift"; sourceTree = "<group>"; };
+		BC75A5BD2D25D9E300F8DBCF /* Screen 5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 5.swift"; sourceTree = "<group>"; };
+		BC75A5BF2D25DA0200F8DBCF /* Screen 6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 6.swift"; sourceTree = "<group>"; };
+		BC75A5C12D25DA1600F8DBCF /* Screen 7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 7.swift"; sourceTree = "<group>"; };
+		BC75A5C52D25DC2500F8DBCF /* Screen 8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen 8.swift"; sourceTree = "<group>"; };
+		BC75A5C72D25DEB000F8DBCF /* AddAndViewICSSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndViewICSSources.swift; sourceTree = "<group>"; };
 		BC7FBE782BDEFE300027A00C /* Task Forge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task Forge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7FBE7B2BDEFE300027A00C /* ReminderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderApp.swift; sourceTree = "<group>"; };
 		BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +171,7 @@
 				BC628D602C6AF3AE00D75E37 /* More.swift */,
 				BC628E8C2C6C2B6C00D75E37 /* suggestedActions .swift */,
 				BC628D632C6AF5C300D75E37 /* syncing.swift */,
+				BC75A5C72D25DEB000F8DBCF /* AddAndViewICSSources.swift */,
 				BC628D652C6B04F300D75E37 /* cleanUpSpam.swift */,
 				BCB55E662C7D161E00150A93 /* deleteListOfTasks.swift */,
 			);
@@ -165,6 +186,22 @@
 				BC628E862C6C235900D75E37 /* LocalNotification.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		BC75A5B22D25D7A700F8DBCF /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				BC75A5B32D25D7C800F8DBCF /* OnboardingHolderView.swift */,
+				BC75A5B52D25D83700F8DBCF /* Screen 1.swift */,
+				BC75A5B72D25D95400F8DBCF /* Screen 2.swift */,
+				BC75A5B92D25D98300F8DBCF /* Screen 3.swift */,
+				BC75A5BB2D25D9B900F8DBCF /* Screen 4.swift */,
+				BC75A5BD2D25D9E300F8DBCF /* Screen 5.swift */,
+				BC75A5BF2D25DA0200F8DBCF /* Screen 6.swift */,
+				BC75A5C12D25DA1600F8DBCF /* Screen 7.swift */,
+				BC75A5C52D25DC2500F8DBCF /* Screen 8.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		BC7FBE6F2BDEFE300027A00C = {
@@ -210,6 +247,7 @@
 				BCBBCC7F2D0F115800B4FE3E /* Data Store Models */,
 				BC7FBE7F2BDEFE320027A00C /* Assets.xcassets */,
 				BC7FBE812BDEFE320027A00C /* Reminder.entitlements */,
+				BC75A5B22D25D7A700F8DBCF /* OnBoarding */,
 				BC628D622C6AF5B300D75E37 /* More */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
 			);
@@ -391,26 +429,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC628E8F2C6C2C5500D75E37 /* ContentViewWrapper.swift in Sources */,
+				BC75A5C62D25DC2500F8DBCF /* Screen 8.swift in Sources */,
+				BC75A5B42D25D7C800F8DBCF /* OnboardingHolderView.swift in Sources */,
 				BC7FBEA72BDEFE710027A00C /* iCalError.swift in Sources */,
 				BC7FBEA52BDEFE710027A00C /* Event.swift in Sources */,
 				BCB55E692C7D18C900150A93 /* ViewModel.swift in Sources */,
 				BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */,
 				BCBBCC822D0F19A000B4FE3E /* plusButton.swift in Sources */,
 				BC7FBEAF2BDF00EF0027A00C /* TaskObject.swift in Sources */,
+				BC75A5C82D25DEB000F8DBCF /* AddAndViewICSSources.swift in Sources */,
 				BC7FBEA92BDEFE710027A00C /* IcsElement.swift in Sources */,
 				BC628D612C6AF3AE00D75E37 /* More.swift in Sources */,
 				BC7FBE7C2BDEFE300027A00C /* ReminderApp.swift in Sources */,
 				BC628E8B2C6C283B00D75E37 /* NextView.swift in Sources */,
+				BC75A5BA2D25D98300F8DBCF /* Screen 3.swift in Sources */,
 				BCC0D3132D1E0B470072A6FB /* ListViewDateFormatter.swift in Sources */,
+				BC75A5B62D25D83700F8DBCF /* Screen 1.swift in Sources */,
 				BCFFED1D2D21F6B20044DE7C /* Delay.swift in Sources */,
 				BC39F06F2C6578B60019BB7F /* createNewTaskView.swift in Sources */,
 				BC39F0712C65820E0019BB7F /* createNewReminderView.swift in Sources */,
 				BC5BCC2A2D1A3129008A3E7A /* ImprovedTextEditor.swift in Sources */,
+				BC75A5C22D25DA1600F8DBCF /* Screen 7.swift in Sources */,
 				BCC0D3152D1E183F0072A6FB /* ReminderFilter.swift in Sources */,
+				BC75A5B82D25D95400F8DBCF /* Screen 2.swift in Sources */,
 				BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */,
 				BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */,
 				BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */,
 				BCB55E672C7D161E00150A93 /* deleteListOfTasks.swift in Sources */,
+				BC75A5C02D25DA0200F8DBCF /* Screen 6.swift in Sources */,
 				BC8FEA6C2D1508A60081EF20 /* ReminderOrTaskListObject.swift in Sources */,
 				BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */,
 				BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */,
@@ -419,6 +465,8 @@
 				BC628E842C6C234800D75E37 /* LocalNotificationManager.swift in Sources */,
 				BC7FBE9E2BDEFE710027A00C /* Alarm.swift in Sources */,
 				BC7FBEA02BDEFE710027A00C /* CalendarICS.swift in Sources */,
+				BC75A5BC2D25D9B900F8DBCF /* Screen 4.swift in Sources */,
+				BC75A5BE2D25D9E300F8DBCF /* Screen 5.swift in Sources */,
 				BCEE6B0D2C68683A0090E274 /* viewReminderView.swift in Sources */,
 				BC628E8D2C6C2B6C00D75E37 /* suggestedActions .swift in Sources */,
 				BC628D642C6AF5C300D75E37 /* syncing.swift in Sources */,

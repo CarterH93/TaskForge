@@ -17,15 +17,12 @@ struct ContentViewWrapper: View {
     
     var body: some View {
         @Bindable var lnManager: LocalNotificationManager = lnManager
-        
+        @Bindable var viewModel = viewModel
        
             ZStack {
                 
                    ContentView()
                         .sheet(item: $lnManager.nextView) { $0 }
-                     .task {
-                            try? await lnManager.requestAuthorization()
-                        }
                 
                 VortexViewReader { proxy in
                     
@@ -49,7 +46,13 @@ struct ContentViewWrapper: View {
                 }
                 }
             }
+            .task {
+                await lnManager.getCurrentSettings()
+            }
             .sensoryFeedback(.success, trigger: viewModel.toggleCompletionHaptics)
+            .sheet(isPresented: $viewModel.storage.showingOnboardingScreen) {
+                OnboardingHolderView()
+            }
         
            
         .ignoresSafeArea()
