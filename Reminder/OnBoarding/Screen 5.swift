@@ -26,9 +26,8 @@ struct Screen5: View {
                     .font(.system(.title2, weight: .semibold))
                     .padding()
                     .padding(.top, 30)
-                List {
-                    AddAndViewICSSources()
-                }
+            
+                    syncing()
                 .frame(maxHeight: 300)
             }
         }
