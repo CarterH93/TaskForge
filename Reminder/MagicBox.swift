@@ -35,6 +35,18 @@ actor MagicBox {
         return doesContain
     }
     
+    /// Determines if to mark a task as deleted1 if it is from the canvas general engineering calendar spam.
+    /// Should replace this with something more permenent
+    /// - Parameter input: text to anaylize to determine if to delete
+    /// - Returns: Should this task be deleted
+    static func shouldDeleteGeneralEngineering(_ input: String) -> Bool {
+        if let _ = input.range(of: "[General]") {
+            return true
+        }
+        
+        return false
+    }
+    
     
     //Retrieves information from remote source based on URL
    private func load(url: URL) async throws -> [CalendarICS] {
@@ -82,16 +94,24 @@ actor MagicBox {
                         let tempSummary: String = eventItems["SUMMARY"] ?? "N/A"
                         let summary: String = MagicBox.cleanName(tempSummary)
                         
+                        var tempDeleted = false
+                        
                         //Deletes any tasks before todays date. Removes clutter.
-                        var deleted: Bool {
+                       
                             if startDate < Calendar.current.startOfDay(for: Date.now) {
-                                return true
+                                tempDeleted = true
                             } else {
-                                return false
+                                tempDeleted = false
                             }
+                        
+                        
+                        //Deletes spam tasks from general engineering calendar
+                        if MagicBox.shouldDeleteGeneralEngineering(tempSummary) {
+                            tempDeleted = true
                         }
                         
-                        let newTask = TaskObject(oldid: oldid, name: summary, info: description, due: startDate, deleted1: deleted)
+                        
+                        let newTask = TaskObject(oldid: oldid, name: summary, info: description, due: startDate, deleted1: tempDeleted)
                         
                         
                         if listOfIDs.contains(oldid) {
