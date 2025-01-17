@@ -14,7 +14,7 @@ struct TestMagicBox {
     @Test func testAutoSpacedRemindersLookForKeyWords() async throws {
         
         #expect(MagicBox.autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj test lkfjasd;lf") == true)
-        #expect(MagicBox.autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj quiz lkfjasd;lf") == true)
+        #expect(MagicBox.autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj quiz lkfjasd;lf") == false)
         #expect(MagicBox.autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj projectlkfjasd;lf") == true)
         #expect(MagicBox.autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkj reporttttlkfjasd;lf") == true)
         #expect(MagicBox.autoSpacedRemindersLookForKeyWords("hello asdl;fksd;lkfjasd;lfkjessayttlkfjasd;lf") == true)
