@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class Settings1 {
     func resetToDefaultSettings() {
-        defaultReminder = 3
+        defaultReminder = 2
         defaultReminderEnabled = true
         defaultSpacedRemindersEnabled = true
         defaultSpacedRemindersTimeSpan = 14
@@ -22,7 +22,7 @@ class Settings1 {
     
     var showOnlyToday = false
     
-    var defaultReminder: Int = 3
+    var defaultReminder: Int = 2
     var defaultReminderEnabled = true
     var Date1: Date = Date.now
     
@@ -38,7 +38,7 @@ class Settings1 {
     
     var remindersThatNeedUIUpdate = Set<String>()
     //Inorder to change default reminder time you need to delete icloud data
-    init(defaultReminder: Int = 3 , icsSources: [URL] = []) {
+    init(defaultReminder: Int = 2 , icsSources: [URL] = []) {
         self.defaultReminder = defaultReminder
         self.icsSources = icsSources
      
