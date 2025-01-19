@@ -21,7 +21,7 @@ actor MagicBox {
         return input.components(separatedBy: "[")[0]
     }
 
-    static let defaultSpacedRemindersKeyWords = ["test", "project", "report", "essay", "paper", "final"]
+    static let defaultSpacedRemindersKeyWords = ["test", "project", "report", "essay", "paper", "final", "exam", "midterm", "mid-term"]
 
     static func autoSpacedRemindersLookForKeyWords(_ input: String) -> Bool {
         
