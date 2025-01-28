@@ -92,7 +92,10 @@ actor MagicBox {
                         
                         //Need to cleanup summary (name) data
                         let tempSummary: String = eventItems["SUMMARY"] ?? "N/A"
-                        let summary: String = MagicBox.cleanName(tempSummary)
+                        //Currently disabling this
+                       // let summary: String = MagicBox.cleanName(tempSummary)
+                        //Just use normal name
+                        let summary = tempSummary
                         
                         var tempDeleted = false
                         
