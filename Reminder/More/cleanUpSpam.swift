@@ -31,9 +31,14 @@ struct cleanUpSpam: View {
                     await cache.work(deleteRemoteDeletedTasks: true, inputURLS: localTempURLHold)
                     viewModel.loadingICSData = false
                 }
+                
+                let remindersFromStorage = ReminderFilter.filterReminders(reminders)
+                 
+                 ViewModel.fixReminderDueDatesToBeBeforeTaskDue(reminders: remindersFromStorage, settings: settings.first ?? Settings1())
+                
                 lnManager.clearRequests()
                 
-                for newReminder in ReminderFilter.filterReminders(reminders) {
+                for newReminder in remindersFromStorage {
                     Task {
                         
                         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newReminder.due)

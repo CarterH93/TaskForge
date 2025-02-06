@@ -24,6 +24,21 @@ struct DelayItem: Equatable, Hashable {
 
 
 @Observable class ViewModel {
+    
+    static func fixReminderDueDatesToBeBeforeTaskDue(reminders: [Reminder], settings: Settings1) {
+        for reminder in reminders {
+            if let task = reminder.task {
+                if task.due > Date.now {
+                    if reminder.due > task.due {
+                        reminder.due = task.due.addingTimeInterval(-settings.defaultReminderWrapper)
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    
     var loadingICSData = false
     var toggleConfetti: Bool = false
     
