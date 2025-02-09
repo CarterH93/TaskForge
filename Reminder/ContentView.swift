@@ -111,7 +111,6 @@ struct ContentView: View {
                                 
                                 let localNotification = LocalNotification(identifier: newReminder.id, categoryIdentifier: "reminderNotification", title: newReminder.name, userInfo: ["nextView" : newReminder.id], body: todayReminderBody(newReminder), dateComponents: dateComponents, repeats: false)
                                 
-                                print(localNotification)
                                 
                                 await lnManager.schedule(localNotification: localNotification)
                                 
