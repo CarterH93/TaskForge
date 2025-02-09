@@ -19,35 +19,38 @@ struct NextView: View, Identifiable {
     
     
     var body: some View {
+         NavigationStack {
         ZStack {
-        
+            
             viewReminderView(reminder: reminders.first(where: { $0.id == id } )!)
             
             VortexViewReader { proxy in
                 
                 VortexView(viewModel.confetti) {
-                
-                Rectangle()
-                    .fill(.white)
-                    .frame(width: 16, height: 16)
-                    .tag("square")
-                
-                Circle()
-                    .fill(.white)
-                    .frame(width: 16)
-                    .tag("circle")
-                
-            }
-            .allowsHitTesting(false)
-            .onChange(of: viewModel.toggleConfetti) {
-                proxy.burst()
-                print("saw toggle")
-            }
+                    
+                    Rectangle()
+                        .fill(.white)
+                        .frame(width: 16, height: 16)
+                        .tag("square")
+                    
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 16)
+                        .tag("circle")
+                    
+                }
+                .allowsHitTesting(false)
+                .onChange(of: viewModel.toggleConfetti) {
+                    proxy.burst()
+                    print("saw toggle")
+                }
             }
         }
-    
-       
-    .ignoresSafeArea()
+        
+        
+        .ignoresSafeArea()
+        
+    }
        
     }
 }
