@@ -44,6 +44,10 @@ actor MagicBox {
             return true
         }
         
+        if let _ = input.range(of: "[FRITH 2024-25]") {
+            return true
+        }
+        
         return false
     }
     

@@ -21,6 +21,7 @@ struct TestMagicBox {
     @Test func testShouldDeleteGeneralEngineering() async throws {
         
         #expect(MagicBox.shouldDeleteGeneralEngineering("First day of classes [General]") == true)
+        #expect(MagicBox.shouldDeleteGeneralEngineering("First day of classes [FRITH 2024-25]") == true)
         #expect(MagicBox.shouldDeleteGeneralEngineering("Essay due [English]") == false)
         
     }
