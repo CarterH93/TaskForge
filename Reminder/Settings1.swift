@@ -13,7 +13,7 @@ class Settings1 {
     func resetToDefaultSettings() {
         defaultReminder = 2
         defaultReminderEnabled = true
-        defaultSpacedRemindersEnabled = true
+        defaultSpacedRemindersEnabled = false //Not using automatic spaced reminders because not that useful.
         defaultSpacedRemindersTimeSpan = 14
         defaultSpacedRemindersSessions = 2
     }
@@ -26,7 +26,7 @@ class Settings1 {
     var defaultReminderEnabled = true
     var Date1: Date = Date.now
     
-    var defaultSpacedRemindersEnabled = true
+    var defaultSpacedRemindersEnabled = false //Not using automatic spaced reminders because not that useful.
     var defaultSpacedRemindersTimeSpan = 14
     var defaultSpacedRemindersSessions = 2
     

@@ -67,10 +67,13 @@ struct More: View {
                 }
                 .headerProminence(.increased)
                 
+                /*
+                 Disabling Spaced Reminders feature because it is not used that much
                 Section("Spaced Reminders") {
                     SpacedReminderSettings(settings: settings.first ?? Settings1())
                 }
                 .headerProminence(.increased)
+                 */
                 
                 Section("Default Settings") {
                     Button("Reset to Default Settings", role: .destructive) {
