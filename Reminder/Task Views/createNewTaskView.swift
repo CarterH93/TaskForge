@@ -24,7 +24,15 @@ struct createNewTaskView: View {
     
     @State private var name = ""
     @State private var notes = ""
-    @State private var due = Date.now.addingTimeInterval(3600)
+    @State private var due = {
+        let calendar = Calendar.current
+        let now = Date()
+        var components = calendar.dateComponents([.year, .month, .day], from: now)
+        components.hour = 23
+        components.minute = 59
+        components.second = 0
+        return calendar.date(from: components) ?? Date()
+    }()
     @State private var buttonPressHaptic = false
     var body: some View {
           NavigationStack {
