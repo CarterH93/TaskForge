@@ -106,8 +106,8 @@ struct viewReminderView: View {
                 }
                 
                 
-                Section("due") {
-                    DatePicker("Due:", selection: $reminder.due)
+                Section("Remind") {
+                    DatePicker("Remind:", selection: $reminder.due)
                 }
                 
                 Section("notes") {

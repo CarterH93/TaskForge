@@ -30,8 +30,8 @@ struct createNewReminderView: View {
                 TextField("Type Here...", text: $name)
             }
             
-            Section("Due") {
-                DatePicker("Due:", selection: $due, in: Date.now.addingTimeInterval(60)...)
+            Section("Remind") {
+                DatePicker("Remind:", selection: $due, in: Date.now.addingTimeInterval(60)...)
             }
             
             Section("Notes") {

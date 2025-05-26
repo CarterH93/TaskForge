@@ -26,7 +26,7 @@ struct newReminderSubView: View {
         VStack {
             TextField("type here...", text: $newReminderName)
                 .padding(.top)
-            DatePicker("Remind", selection: $newReminderDue)
+            DatePicker("Remind:", selection: $newReminderDue)
                 .padding()
             Button("Add New Reminder") {
                 let newReminder = Reminder(id: UUID().uuidString, name: newReminderName, due: newReminderDue)
