@@ -149,6 +149,7 @@ struct DelayItem: Equatable, Hashable {
  struct Storage: Codable {
     //Variables that data can be stored to anywhere in the app
     var showingOnboardingScreen = true
+    var numberOfTimesOpenedApp = 0
 }
     
     

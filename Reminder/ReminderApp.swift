@@ -8,9 +8,13 @@
 import SwiftUI
 import SwiftData
 import Vortex
+import StoreKit
 
 @main
 struct ReminderApp: App {
+    
+    @Environment(\.requestReview) var requestReview
+    
     @State var lnManager = LocalNotificationManager()
     @State private var viewModel = ViewModel()
     var body: some Scene {
@@ -18,6 +22,12 @@ struct ReminderApp: App {
             RootView()
                 .environment(lnManager)
                 .environment(viewModel)
+                .onAppear {
+                    if viewModel.storage.numberOfTimesOpenedApp > 20 {
+                        requestReview()
+                    }
+                    viewModel.storage.numberOfTimesOpenedApp += 1
+                }
         }
         .modelContainer(for: [TaskObject.self, Settings1.self])
 
