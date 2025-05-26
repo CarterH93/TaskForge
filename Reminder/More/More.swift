@@ -89,7 +89,7 @@ struct More: View {
 
                 Section("About") {
                     VStack(alignment: .leading) {
-                        Text("Task Forge is Created by Carter Hawkins")
+                        Text("Task Forge is created by Carter Hawkins")
                         Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "nil")")
                     }
                 }

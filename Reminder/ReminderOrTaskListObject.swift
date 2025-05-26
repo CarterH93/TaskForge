@@ -86,9 +86,13 @@ struct ReminderObjectView: View {
                     
                     if showAssociatedTask {
                         if let task = reminder.task {
-                            Image(systemName: "list.bullet.clipboard")
-                            Text(taskBody(task))
+                            HStack {
+                                Image(systemName: "list.bullet.clipboard")
+                                Text(taskBody(task))
+                            }
+                            .foregroundColor(Calendar.current.startOfDay(for: Date.now) > Calendar.current.startOfDay(for: task.due) ? .red : .secondary)
                         }
+                            
                     }
                     
                     if (!reminder.notes.isEmpty && showNotes) || (showAssociatedTask && reminder.task != nil) {

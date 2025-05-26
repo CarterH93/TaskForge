@@ -135,8 +135,20 @@ func taskBody(_ task: TaskObject) -> String {
     let string = relativeDateFormatter.string(from: task.due)
     
         if let _ = string.rangeOfCharacter(from: .decimalDigits) {
-            return "\(dateFormatter.string(from: task.due) ) at \(time.string(from: task.due))"
+            //Old full date method, not using anymore
+           // return "\(dateFormatter.string(from: task.due) ) at \(time.string(from: task.due))"
+            
+            let numDays = Calendar.current.dateComponents([.day], from: Date.now, to: task.due).day ?? 0
+            
+            if Calendar.current.startOfDay(for: Date.now) > Calendar.current.startOfDay(for: task.due) {
+                //Task is overdue
+                return "Overdue by \(abs(numDays) + 1) days"
+            } else {
+                //Task is in the future
+                return "Due in \(numDays) days"
+            }
+            
         } else {
-            return "\(string) at \(time.string(from: task.due))"
+            return "Due \(string) at \(time.string(from: task.due))"
         }
 }
