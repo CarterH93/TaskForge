@@ -30,7 +30,7 @@ struct DelayItem: Equatable, Hashable {
             if let task = reminder.task {
                 if task.due > Date.now {
                     if reminder.due > task.due {
-                        reminder.due = task.due.addingTimeInterval(-settings.defaultReminderWrapper)
+                        reminder.due = settings.calcNewDefaultReminderDateTime(taskDue: task.due)
                     }
                 }
             }

@@ -3,4 +3,22 @@
    uuid = "41DF10CB-53F1-4B01-839F-C5AF85A4E246"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE393E7D-AB41-4989-9A32-08CD97099951"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../var/folders/sw/w55vyv1s2px78247tdzslm_h0000gn/T/swift-generated-sources/@__swiftmacro_10Task_Forge9Settings1C19defaultReminderTime18_PersistedPropertyfMa_.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "defaultReminderTime"
+            landmarkType = "37">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

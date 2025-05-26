@@ -18,7 +18,7 @@ struct newReminderSubView: View {
     init(task: TaskObject, settings: Settings1) {
         self.task = task
         _newReminderName = State(initialValue: "Work on \(task.name)")
-        newReminderDue = task.due.addingTimeInterval(-settings.defaultReminderWrapper)
+        newReminderDue = settings.calcNewDefaultReminderDateTime(taskDue: task.due)
     }
     @State private var buttonPressHaptic = false
     var body: some View {

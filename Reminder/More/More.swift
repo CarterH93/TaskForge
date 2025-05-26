@@ -67,6 +67,11 @@ struct More: View {
                 }
                 .headerProminence(.increased)
                 
+                Section("Default Reminder Time") {
+                    DefaultReminderTime(settings: settings.first ?? Settings1())
+                }
+                .headerProminence(.increased)
+                
                 /*
                  Disabling Spaced Reminders feature because it is not used that much
                 Section("Spaced Reminders") {
@@ -119,6 +124,15 @@ struct stepperDefaultReminder: View {
     var body: some View {
         Stepper("Remind \(settings.defaultReminder) \(settings.defaultReminder == 1 ? "Day" : "Days") Before Task Due", value: $settings.defaultReminder, in: 0...28)
         
+    }
+}
+
+struct DefaultReminderTime: View {
+    
+    @State var settings: Settings1
+    
+    var body: some View {
+        DatePicker("Default Reminder Time:", selection: $settings.defaultReminderTime, displayedComponents: .hourAndMinute)
     }
 }
 
