@@ -12,8 +12,6 @@ struct OnboardingHolderView: View {
         TabView {
             Screen1()
             Screen2()
-            Screen3()
-            Screen4()
             Screen5()
             Screen6()
             Screen7()

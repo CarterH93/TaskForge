@@ -10,29 +10,43 @@ import SwiftUI
 
 struct Screen2: View {
     var body: some View {
-        VStack {
-            Text("Sync Your Assignments")
-                .frame(alignment: .center)
-                .clipped()
-                .padding()
-                .font(.title2)
-            VStack(alignment: .leading) {
-                Text("On Canvas:")
+        NavigationStack {
+            
+            VStack {
+                Text("Sync Your Tasks")
                     .frame(alignment: .center)
                     .clipped()
-                Image("OnboardingPhoto2")
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
-                    .padding(.vertical)
-                Text("On your computer, select the Calendar tab within Canvas.")
+                    .padding()
+                    .font(.title2)
+                VStack(alignment: .leading) {
+                    Text("Select a method of syncing tasks")
+                        .frame(alignment: .center)
+                        .clipped()
+                    
+                    NavigationLink() {
+                        Screen3()
+                    } label: {
+                        Text("Sync with Canvas (Recommended)")
+                            .font(.title2)
+                    }
+                        .buttonStyle(.borderedProminent)
+                        .padding()
+                    
+                    Text("or...")
+                        .frame(alignment: .center)
+                        .multilineTextAlignment(.center)
+                        .clipped()
+                    
+                    Link("Sync with Google Calendar", destination: URL(string: "https://guide.taskforgeapp.com/sync-tasks-from-google-calendar")!)
+                        .buttonStyle(.borderedProminent)
+                        .padding()
+                }
+                .padding(.top, 60)
+                Spacer()
+                Spacer()
             }
-            .padding(.top, 60)
-            Spacer()
-            Spacer()
+            .padding()
         }
-        .padding()
     }
 }
 

@@ -10,29 +10,53 @@ import SwiftUI
 
 struct Screen3: View {
     var body: some View {
-        VStack {
-            Text("Sync Your Assignments")
+        
+        ScrollView {
+            Text("On Canvas:")
                 .frame(alignment: .center)
                 .clipped()
-                .padding()
-                .font(.title2)
-            VStack(alignment: .leading) {
-                Text("On Canvas:")
-                    .frame(alignment: .center)
-                    .clipped()
-                Image("OnboardingPhoto3")
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
-                    .padding(.vertical)
-                Text("Next, click the Calendar Feed button to bring up a calendar link.")
-            }
-            .padding(.top, 60)
-            Spacer()
-            Spacer()
+            Text("Click on the Hamburger menu icon")
+            Image("OnboardingPhoto11")
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
+                .padding(.vertical)
+                .padding(.bottom, 100)
+            
+            Text("Click the Calendar Tab")
+            Image("OnboardingPhoto12")
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
+                .padding(.vertical)
+                .padding(.bottom, 100)
+            
+            Text("Scroll down and click the Calendar Feed")
+            Image("OnboardingPhoto13")
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
+                .padding(.vertical)
+                .padding(.bottom, 100)
+            
+            Text("Copy the URL Link")
+            Text("*Make sure to select the entire URL")
+            Image("OnboardingPhoto14")
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
+                .padding(.vertical)
+                .padding(.bottom, 100)
+            
+            Text("Exit out of this screen and scroll to next screen to paste the link")
+                .padding(.bottom, 100)
         }
-        .padding()
+        .padding(.top, 60)
+        .padding([.leading, .trailing])
     }
 }
 
