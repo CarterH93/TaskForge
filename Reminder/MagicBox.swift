@@ -312,6 +312,8 @@ actor MagicBox {
                 
                //Updates old swift data tasks with new information
                 
+                //Also fixes reminder due dates to be before task due dates.
+                
                 for id in bothContainSetDifference {
                     if let swiftDataTaskItem = swiftDataTasks.first(where: {$0.oldid == id}) {
                         
@@ -322,6 +324,10 @@ actor MagicBox {
                             swiftDataTaskItem.name = remoteTaskItem.name
                             swiftDataTaskItem.info = remoteTaskItem.info
                             swiftDataTaskItem.due = remoteTaskItem.due
+                            
+                            //Update reminders for the task if task due date is before reminder due dates
+                            ViewModel.fixReminderDueDatesToBeBeforeTaskDue(reminders: swiftDataTaskItem.reminders ?? [], settings: settings)
+                            
                         }
                         
                     }

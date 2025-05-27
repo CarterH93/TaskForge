@@ -120,7 +120,6 @@ struct listOfRemindersView: View {
                     
                    let remindersFromStorage = ReminderFilter.filterReminders(reminders)
                     
-                    ViewModel.fixReminderDueDatesToBeBeforeTaskDue(reminders: remindersFromStorage, settings: settings)
                     
                     lnManager.clearRequests()
                     

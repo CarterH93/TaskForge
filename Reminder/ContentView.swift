@@ -97,7 +97,7 @@ struct ContentView: View {
                         
                         let remindersFromStorage = ReminderFilter.filterReminders(reminders)
                          
-                         ViewModel.fixReminderDueDatesToBeBeforeTaskDue(reminders: remindersFromStorage, settings: settings.first ?? Settings1())
+                    
                         
                         lnManager.clearRequests()
                         
