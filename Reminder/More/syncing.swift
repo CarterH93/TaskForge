@@ -15,6 +15,8 @@ struct syncing: View {
     @State private var link = ""
     @State private var showingNewSheet = false
     
+    @State private var manuelDeleteAlert = false
+    
     @Environment(\.modelContext) var modelContext
     @Query(
         sort: \Settings1.Date1
@@ -75,7 +77,21 @@ struct syncing: View {
                 }
             }
             
+            Section {
+                Button("Manual Remote Task Sync", role: .destructive) {
+                    manuelDeleteAlert = true
+                }
+            }
+            
         }
+        .alert("Do you want to sync to remote tasks?", isPresented: $manuelDeleteAlert, actions: {
+            Button("Sync Remote Tasks", role: .destructive) {
+                showingNewSheet = true
+            }
+            Button("Cancel", role: .cancel) { }
+        }, message: {
+            Text("This will delete all local remote tasks that were deleted in remotes sources.")
+        })
         .sensoryFeedback(.warning, trigger: deleteHaptic)
         .sheet(isPresented: $showingNewSheet) {
             cleanUpSpam(localTempURLHold: localTempURLHold)
