@@ -10,7 +10,7 @@ Follow directions on your phone:
 
 Navigate to your Canvas home page&#x20;
 
-Click on the sidebar panel
+Click on the Hamburger menu icon
 
 <div align="left"><figure><img src=".gitbook/assets/3D13AA17-3732-4926-A956-7090904DBB52_1_201_a.jpeg" alt="" width="188"><figcaption></figcaption></figure></div>
 
