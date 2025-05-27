@@ -1,6 +1,6 @@
 ---
+description: Get automated reminders for your Canvas and Calendar assignments.
 icon: book
-description: Get automated reminders for your Canvas assignments.
 cover: .gitbook/assets/Task Forge Logo.png
 coverY: 14
 layout:
@@ -21,31 +21,27 @@ layout:
 
 # Onboarding Guide
 
-## Sync Canvas Assignments to Task Forge
+## Sync Tasks to Task Forge
 
-On your computer, select the Calendar tab within Canvas.
+Sync via Canvas (Recommended)
 
-<div align="left"><figure><img src=".gitbook/assets/Screenshot 2024-12-30 at 5.21.09 PM.png" alt="" width="375"><figcaption></figcaption></figure></div>
+{% content-ref url="sync-tasks-from-canvas.md" %}
+[sync-tasks-from-canvas.md](sync-tasks-from-canvas.md)
+{% endcontent-ref %}
 
-Next, click the Calendar Feed button to bring up a calendar link.
+Sync via Google Calendar
 
-<div align="left"><figure><img src=".gitbook/assets/Screenshot 2024-12-30 at 10.44.40 PM.png" alt="" width="375"><figcaption></figcaption></figure></div>
-
-Copy the link that is shown in the Calendar Feed Popup.
-
-<div align="left"><figure><img src=".gitbook/assets/Screenshot 2024-12-30 at 10.47.14 PM.png" alt="" width="375"><figcaption></figcaption></figure></div>
-
-In the More tab, navigate to the _Syncing_ section and select _Add Canvas or Calendar Connection._ Paste the link into the _Add .ICS Link_ field.
-
-<div align="left"><figure><img src=".gitbook/assets/Screenshot 2024-12-30 at 10.48.01 PM.png" alt="" width="375"><figcaption></figcaption></figure></div>
+{% content-ref url="sync-tasks-from-google-calendar.md" %}
+[sync-tasks-from-google-calendar.md](sync-tasks-from-google-calendar.md)
+{% endcontent-ref %}
 
 
 
 ## Tasks
 
-Your Canvas Assignments are automatically **made into tasks.**
+Your Canvas assignments or Calendar events are automatically **made into tasks.**
 
-<div align="left"><figure><img src=".gitbook/assets/Screenshot 2024-12-30 at 10.57.23 PM.png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/IMG_4029.jpeg" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Reminders will be made **automatically** for each task.
 
@@ -55,12 +51,12 @@ Reminders will be made **automatically** for each task.
 
 Reminders will be sent as a notification.
 
-<div align="left"><figure><img src=".gitbook/assets/Screenshot 2024-12-30 at 11.00.44 PM.png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/IMG_4030.jpeg" alt="" width="375"><figcaption></figcaption></figure></div>
 
 When all reminders for a task are complete, **the task is complete.**
 
 {% hint style="info" %}
-Reminders are the main tool you should use and work off of.
+Reminders are the primary tool you should use and work from.
 {% endhint %}
 
 
@@ -69,11 +65,9 @@ Reminders are the main tool you should use and work off of.
 
 **Enable notifications** for reminders to work properly.
 
-Notifications are not enabled if the _Enable Notifications_ button shows up in the _More_ tab under _Suggested Actions._
+Notifications are not enabled if the _"Enable Notifications"_ button appears in the _More_ tab under _Suggested Actions_.
 
 <div align="left"><figure><img src=".gitbook/assets/IMG_CA311EF59F03-1.jpeg" alt="" width="375"><figcaption></figcaption></figure></div>
-
-
 
 {% hint style="info" %}
 Long press on notifications to use quick actions
