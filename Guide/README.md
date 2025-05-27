@@ -29,10 +29,10 @@ Sync via Canvas (Recommended)
 [sync-tasks-from-canvas.md](sync-tasks-from-canvas.md)
 {% endcontent-ref %}
 
-Sync via Calendar
+Sync via Google Calendar
 
-{% content-ref url="sync-tasks-from-calendar.md" %}
-[sync-tasks-from-calendar.md](sync-tasks-from-calendar.md)
+{% content-ref url="sync-tasks-from-google-calendar.md" %}
+[sync-tasks-from-google-calendar.md](sync-tasks-from-google-calendar.md)
 {% endcontent-ref %}
 
 
