@@ -10,40 +10,40 @@ import SwiftUI
 
 struct Screen6: View {
     var body: some View {
-        VStack {
-            Text("Tasks")
-                .frame(alignment: .center)
-                .clipped()
+                VStack(spacing: 32) {
+                    VStack(spacing: 8) {
+                        Text("Tasks")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                        Text("Your Canvas Assignments and Calendar events are automatically made into tasks.")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
+                    VStack(spacing: 16) {
+                        Image("OnboardingPhoto6")
+                            .renderingMode(.original)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .frame(maxWidth: 280)
+                        Text("Reminders are made automatically for each task.")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                        Image("OnboardingPhoto7")
+                            .renderingMode(.original)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .frame(maxWidth: 280)
+                    }
+                    Spacer()
+                }
                 .padding()
-                .font(.title2)
-            VStack {
-                Text("Your Canvas Assignments are automatically made into tasks.")
-                    .frame(alignment: .center)
-                    .clipped()
-                    .font(.system(.title2, weight: .regular))
-                Image("OnboardingPhoto6")
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
-            }
-            .padding(.top, 60)
-            VStack {
-                Text("Reminders are made automatically for each task.")
-                    .frame(alignment: .center)
-                    .clipped()
-                    .font(.system(.title2, weight: .regular))
-                Image("OnboardingPhoto7")
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
-            }
-            .padding(.top, 40)
-            Spacer()
-            Spacer()
-        }
-        .padding()
+            
+        
     }
 }
 

@@ -11,38 +11,39 @@ import SwiftUI
 struct Screen2: View {
     var body: some View {
         NavigationStack {
-            
-            VStack {
-                Text("Sync Your Tasks")
-                    .frame(alignment: .center)
-                    .clipped()
-                    .padding()
-                    .font(.title2)
-                VStack(alignment: .leading) {
-                    Text("Select a method of syncing tasks")
-                        .frame(alignment: .center)
-                        .clipped()
-                    
-                    NavigationLink() {
-                        Screen3()
-                    } label: {
-                        Text("Sync with Canvas (Recommended)")
-                            .font(.title2)
-                    }
-                        .buttonStyle(.borderedProminent)
-                        .padding()
-                    
-                    Text("or...")
-                        .frame(alignment: .center)
+            VStack(spacing: 32) {
+                VStack(spacing: 8) {
+                    Text("Sync Your Tasks")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                         .multilineTextAlignment(.center)
-                        .clipped()
-                    
-                    Link("Sync with Google Calendar", destination: URL(string: "https://guide.taskforgeapp.com/sync-tasks-from-google-calendar")!)
-                        .buttonStyle(.borderedProminent)
-                        .padding()
+                    Text("Select a method of syncing tasks")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
                 }
-                .padding(.top, 60)
-                Spacer()
+                VStack(spacing: 16) {
+                    NavigationLink(destination: Screen3()) {
+                        Text("Sync with Canvas (Recommended)")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    Text("or")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
+                    Link(destination: URL(string: "https://guide.taskforgeapp.com/sync-tasks-from-google-calendar")!) {
+                        Text("Sync with Google Calendar")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                }
                 Spacer()
             }
             .padding()

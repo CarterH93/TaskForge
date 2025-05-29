@@ -2,35 +2,33 @@
 //  Screen5.swift
 //  MyProject
 //
-//  Designed in DetailsPro
-//  Copyright © (My Organization). All rights reserved.
 //
 
 import SwiftUI
 
 struct Screen5: View {
     var body: some View {
-        VStack {
-            Text("Sync Your Assignments")
-                .frame(alignment: .center)
-                .clipped()
-                .padding()
-                .font(.title2)
-            VStack {
+            VStack(spacing: 32) {
+                VStack(spacing: 8) {
+                    Text("Sync Your Assignments")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                    Text("Paste your Canvas link below")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                }
                 Image("OnboardingPhoto5")
                     .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .mask { RoundedRectangle(cornerRadius: 10, style: .continuous) }
-                Text("Paste Your Canvas Link Below:")
-                    .font(.system(.title2, weight: .semibold))
-                    .padding()
-                    .padding(.top, 30)
-            
-                    syncing()
-                .frame(maxHeight: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    .frame(maxWidth: 280)
+                syncing()
+                    .frame(maxHeight: 300)
+                Spacer()
             }
+            .padding()
         }
-        .padding()
-    }
 }
