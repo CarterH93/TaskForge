@@ -203,7 +203,7 @@
 			children = (
 				BCB87BC92C6EE07000127E7C /* Task-Forge-Info.plist */,
 				BCD8AEB12D135934002D98AA /* README.md */,
-				BC7FBE7A2BDEFE300027A00C /* Reminder */,
+				BC7FBE7A2BDEFE300027A00C /* TaskForge */,
 				BCD8AEBC2D136711002D98AA /* Task Forge Tests */,
 				BC7FBE792BDEFE300027A00C /* Products */,
 				BC12CB132C80169A00473C6B /* Frameworks */,
@@ -219,7 +219,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC7FBE7A2BDEFE300027A00C /* Reminder */ = {
+		BC7FBE7A2BDEFE300027A00C /* TaskForge */ = {
 			isa = PBXGroup;
 			children = (
 				BC5BCC292D1A3129008A3E7A /* ImprovedTextEditor.swift */,
@@ -245,7 +245,7 @@
 				BC628D622C6AF5B300D75E37 /* More */,
 				BC7FBE822BDEFE320027A00C /* Preview Content */,
 			);
-			path = Reminder;
+			path = TaskForge;
 			sourceTree = "<group>";
 		};
 		BC7FBE822BDEFE320027A00C /* Preview Content */ = {
@@ -613,12 +613,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Reminder/Reminder.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TaskForge/Reminder.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Reminder/Preview Content\"";
-				DEVELOPMENT_TEAM = DAQW29Z9BC;
+				DEVELOPMENT_ASSET_PATHS = "\"TaskForge/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -641,6 +642,7 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = CarterHawkins.TaskForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -657,12 +659,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Reminder/Reminder.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TaskForge/Reminder.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Reminder/Preview Content\"";
-				DEVELOPMENT_TEAM = DAQW29Z9BC;
+				DEVELOPMENT_ASSET_PATHS = "\"TaskForge/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -685,6 +688,7 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = CarterHawkins.TaskForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
