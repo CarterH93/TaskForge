@@ -23,7 +23,7 @@ struct ReminderApp: App {
                 .environment(lnManager)
                 .environment(viewModel)
                 .onAppear {
-                    if viewModel.storage.numberOfTimesOpenedApp > 20 {
+                    if viewModel.storage.numberOfTimesOpenedApp > 9 {
                         requestReview()
                     }
                     viewModel.storage.numberOfTimesOpenedApp += 1
