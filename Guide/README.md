@@ -21,6 +21,10 @@ layout:
 
 # Onboarding Guide
 
+## Video Walkthrough
+
+{% embed url="https://youtu.be/wME3B6dNOVI?si=s7UtWkBwYhvLpEM6" %}
+
 ## Sync Tasks to Task Forge
 
 Sync via Canvas (Recommended)
