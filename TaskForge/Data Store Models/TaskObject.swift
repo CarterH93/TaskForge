@@ -152,3 +152,13 @@ func taskBody(_ task: TaskObject) -> String {
             return "Due \(string) at \(time.string(from: task.due))"
         }
 }
+
+func fullDateText(_ task: TaskObject) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMM dd"
+    let time = DateFormatter()
+    time.dateFormat = "h:mm a"
+    
+    return "\(dateFormatter.string(from: task.due) ) at \(time.string(from: task.due))"
+}
+    
