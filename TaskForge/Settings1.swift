@@ -15,6 +15,7 @@ class Settings1 {
         defaultReminderEnabled = true
         defaultSpacedRemindersEnabled = false //Not using automatic spaced reminders because not that useful.
         defaultSpacedRemindersTimeSpan = 14
+        checklistsEnabled = false
         defaultSpacedRemindersSessions = 2
         defaultReminderTime = Calendar.current.date(from: {
             var comps = Calendar.current.dateComponents([.year, .month, .day], from: Date())
@@ -23,6 +24,8 @@ class Settings1 {
             return comps
         }())!
     }
+    
+    var checklistsEnabled = false
     
     var showCompleted = false
     

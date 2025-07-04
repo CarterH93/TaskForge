@@ -22,6 +22,7 @@ class TaskObject {
     private var completed: Bool = false
     var notes: String = ""
     var label: String?
+    var checklist: [ChecklistItem] = []
     
     //Tutorial for using images https://youtu.be/0hZxtIXmotw?si=lMDfRudYtNNM8sCE&t=968
     @Attribute(.externalStorage)

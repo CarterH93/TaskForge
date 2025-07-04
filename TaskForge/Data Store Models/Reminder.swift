@@ -23,6 +23,8 @@ class Reminder {
     var label: String?
     var UIUpdate: String = "initial"
     
+    var checklist: [ChecklistItem] = []
+    
     func delayComplete(_ viewModel: ViewModel) {
         
         if let selectedItem = viewModel.pendingCompletion.first(where: {$0.id == self.id}) {

@@ -118,6 +118,8 @@ struct viewTaskView: View {
 
     @State var task: TaskObject
     @State private var deleteHaptic = false
+    
+    @State private var newChecklistItem = ""
 
     func deleteReminder(_ indexSet: IndexSet) {
         for index in indexSet {
@@ -194,7 +196,57 @@ struct viewTaskView: View {
                     ImprovedTextEditor(text: $task.notes)
                 }
                 
-                
+                if (settings.first ?? Settings1()).checklistsEnabled {
+                    Section {
+                        
+                        if !task.checklist.isEmpty {
+                            List($task.checklist, editActions: .all) { $item in
+                                    HStack {
+                                        
+                                        Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
+                                            .onTapGesture {
+                                                withAnimation {
+                                                    item.isChecked.toggle()
+                                                    try? modelContext.save()
+                                                }
+                                            }
+                                            .accessibilityAddTraits(.isButton)
+                                        
+                                        
+                                        HStack {
+                                            Text(item.text)
+                                                .font(.callout)
+                                                .lineLimit(3)
+                                        }
+                                        .strikethrough(item.isChecked)
+                                    }
+                                    .padding(5)
+                                    
+                                
+                                
+                            }
+                        }
+                            
+                            HStack {
+                                TextField("Add New Item...", text: $newChecklistItem)
+                                Button("Add Item") {
+                                        let newItem = ChecklistItem(text: newChecklistItem)
+                                        task.checklist.append(newItem)
+                                        newChecklistItem = ""
+                                        try? modelContext.save()
+                                }
+                                .disabled(newChecklistItem.isEmpty)
+                            }
+                        } header: {
+                            HStack {
+                                Text("Checklist")
+                                Spacer()
+                                EditButton()
+                                    .font(.footnote)
+                            }
+                        }
+                    
+                }
                 
         
                 
@@ -207,7 +259,7 @@ struct viewTaskView: View {
                                 viewReminderView(reminder: reminder)
                             } label: {
                                 
-                                ReminderObjectView(reminder: reminder, settings: Settings1(), showCompletedButton: true, showDue: true, showAssociatedTask: false, showNotes: true)
+                                ReminderObjectView(reminder: reminder, settings: settings.first ?? Settings1(), showCompletedButton: true, showDue: true, showAssociatedTask: false, showNotes: true)
                                 
                             }
                            

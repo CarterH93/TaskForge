@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC12CB172C814E4500473C6B /* generateSpacedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */; };
+		BC2282352E15D7160005EB6E /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2282342E15D7100005EB6E /* ChecklistItem.swift */; };
 		BC2C062B2BF937E400AD85F5 /* MagicBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C062A2BF937E400AD85F5 /* MagicBox.swift */; };
 		BC31B2292C5FF1F700548F7E /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31B2282C5FF1F700548F7E /* Reminder.swift */; };
 		BC39F06B2C6567850019BB7F /* listOfTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC39F06A2C6567850019BB7F /* listOfTasksView.swift */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		BC12CB142C80169A00473C6B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		BC12CB162C814E4500473C6B /* generateSpacedReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateSpacedReminders.swift; sourceTree = "<group>"; };
+		BC2282342E15D7100005EB6E /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		BC2C062A2BF937E400AD85F5 /* MagicBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicBox.swift; sourceTree = "<group>"; };
 		BC31B2282C5FF1F700548F7E /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		BC39F06A2C6567850019BB7F /* listOfTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listOfTasksView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		BCBBCC7F2D0F115800B4FE3E /* Data Store Models */ = {
 			isa = PBXGroup;
 			children = (
+				BC2282342E15D7100005EB6E /* ChecklistItem.swift */,
 				BC7FBEAE2BDF00EF0027A00C /* TaskObject.swift */,
 				BC31B2282C5FF1F700548F7E /* Reminder.swift */,
 			);
@@ -445,6 +448,7 @@
 				BC75A5C22D25DA1600F8DBCF /* Screen 7.swift in Sources */,
 				BCC0D3152D1E183F0072A6FB /* ReminderFilter.swift in Sources */,
 				BC75A5B82D25D95400F8DBCF /* Screen 2.swift in Sources */,
+				BC2282352E15D7160005EB6E /* ChecklistItem.swift in Sources */,
 				BC7FBEAA2BDEFE710027A00C /* Parser.swift in Sources */,
 				BC7FBEA62BDEFE710027A00C /* iCal.swift in Sources */,
 				BC7FBEA32BDEFE710027A00C /* Date.swift in Sources */,
@@ -619,7 +623,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TaskForge/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DAQW29Z9BC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -639,7 +643,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = CarterHawkins.TaskForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -665,7 +669,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"TaskForge/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DAQW29Z9BC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -685,7 +689,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = CarterHawkins.TaskForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -51,6 +51,13 @@ struct viewReminderView: View {
         
     }
     
+    @Query(
+        sort: \Settings1.Date1
+    ) var settings: [Settings1]
+    
+    
+    @State private var newChecklistItem = ""
+    
     @State private var showingReminderAlert = false
     
     @State private var showingReminderDeleteWithTaskAlert = false
@@ -112,6 +119,58 @@ struct viewReminderView: View {
                 
                 Section("notes") {
                     ImprovedTextEditor(text: $reminder.notes)
+                }
+                
+                if (settings.first ?? Settings1()).checklistsEnabled {
+                    Section {
+                        
+                        if !reminder.checklist.isEmpty {
+                            List($reminder.checklist, editActions: .all) { $item in
+                                    HStack {
+                                        
+                                        Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
+                                            .onTapGesture {
+                                                withAnimation {
+                                                    item.isChecked.toggle()
+                                                    try? modelContext.save()
+                                                }
+                                            }
+                                            .accessibilityAddTraits(.isButton)
+                                        
+                                        
+                                        HStack {
+                                            Text(item.text)
+                                                .font(.callout)
+                                                .lineLimit(3)
+                                        }
+                                        .strikethrough(item.isChecked)
+                                    }
+                                    .padding(5)
+                                    
+                                
+                                
+                            }
+                        }
+                            
+                            HStack {
+                                TextField("Add New Item...", text: $newChecklistItem)
+                                Button("Add Item") {
+                                        let newItem = ChecklistItem(text: newChecklistItem)
+                                        reminder.checklist.append(newItem)
+                                        newChecklistItem = ""
+                                        try? modelContext.save()
+                                }
+                                .disabled(newChecklistItem.isEmpty)
+                            }
+                        } header: {
+                            HStack {
+                                Text("Checklist")
+                                Spacer()
+                                EditButton()
+                                    .font(.footnote)
+                            }
+                        }
+                    
                 }
                 
                 Section {

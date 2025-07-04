@@ -80,6 +80,11 @@ struct More: View {
                 .headerProminence(.increased)
                  */
                 
+                Section("Additional Features") {
+                    checklistsToggle(settings: settings.first ?? Settings1())
+                }
+                .headerProminence(.increased)
+                
                 Section("Default Settings") {
                     Button("Reset to Default Settings", role: .destructive) {
                         showingAlert = true
@@ -102,6 +107,14 @@ struct More: View {
                 resetToDefaultSettings(settings: settings.first ?? Settings1())
             }
         }
+    }
+}
+
+struct checklistsToggle: View {
+    @State var settings: Settings1
+    
+    var body: some View {
+        Toggle("Enable Checklist Feature", isOn: $settings.checklistsEnabled)
     }
 }
 
