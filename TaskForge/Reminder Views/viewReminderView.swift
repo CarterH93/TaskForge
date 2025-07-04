@@ -139,7 +139,7 @@ struct viewReminderView: View {
                                         
                                         
                                         HStack {
-                                            Text(item.text)
+                                            TextField("Checklist Item", text: $item.text, axis: .vertical)
                                                 .font(.callout)
                                                 .lineLimit(3)
                                         }
