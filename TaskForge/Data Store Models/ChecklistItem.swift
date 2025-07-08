@@ -5,15 +5,37 @@
 //  Created by Carter Hawkins on 7/2/25.
 //
 
-import Foundation
+//Because of cloudkits inverse relationship requirement, we have two create two seperate classes (even though they are the same thing)
 
-@Observable
-class ChecklistItem: Identifiable, Codable {
-    var id: String = UUID().uuidString
-    var text: String
-    var isChecked: Bool = false
+import SwiftData
+
+@Model
+class ChecklistItemTask {
     
-    init(text: String) {
+    var text: String = ""
+    var isChecked: Bool = false
+    var order: Int = 0
+    
+    var task: TaskObject?
+    
+    init(text: String, isChecked: Bool = false, order: Int) {
         self.text = text
+        self.isChecked = isChecked
+    }
+}
+
+
+@Model
+class ChecklistItemReminder {
+    
+    var text: String = ""
+    var isChecked: Bool = false
+    var order: Int = 0
+    
+    var reminder: Reminder?
+    
+    init(text: String, isChecked: Bool = false, order: Int) {
+        self.text = text
+        self.isChecked = isChecked
     }
 }

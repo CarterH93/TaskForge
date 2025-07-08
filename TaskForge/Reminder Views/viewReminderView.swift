@@ -80,6 +80,26 @@ struct viewReminderView: View {
         reminder.task = nil
         try? modelContext.save()
     }
+    
+    func deleteChecklistItem(_ indexSet: IndexSet) {
+        let checklistItems = reminder.checklist!.sorted(by: { $0.order < $1.order })
+        for index in indexSet {
+            let item = checklistItems[index]
+            modelContext.delete(item)
+            try? modelContext.save()
+        }
+    }
+    
+    func moveChecklistItem(from source: IndexSet, to destination: Int) {
+        guard var checklist = reminder.checklist?.sorted(by: { $0.order < $1.order }) else { return }
+        // Move the item in the array
+        checklist.move(fromOffsets: source, toOffset: destination)
+        // Update the order property for each item
+        for (index, item) in checklist.enumerated() {
+            item.order = index
+        }
+        try? modelContext.save()
+    }
 
    @State private var viewUpdater = "anyTextWorksHere"
     @Environment(ViewModel.self) private var viewModel
@@ -121,32 +141,51 @@ struct viewReminderView: View {
                     ImprovedTextEditor(text: $reminder.notes)
                 }
                 
+                
+                
                 if (settings.first ?? Settings1()).checklistsEnabled {
                     Section {
                         
-                        if !reminder.checklist.isEmpty {
-                            List($reminder.checklist, editActions: .all) { $item in
-                                    HStack {
-                                        
-                                        Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
-                                            .onTapGesture {
-                                                withAnimation {
-                                                    item.isChecked.toggle()
-                                                    try? modelContext.save()
-                                                }
-                                            }
-                                            .accessibilityAddTraits(.isButton)
-                                        
+                        if let checklist = reminder.checklist {
+                            
+                            if !(checklist.isEmpty)  {
+                                
+                                
+                                List {
+                                    
+                                    ForEach(reminder.checklist!.sorted(by: { $0.order < $1.order })) { item in
                                         
                                         HStack {
-                                            TextField("Checklist Item", text: $item.text, axis: .vertical)
-                                                .font(.callout)
-                                                .lineLimit(3)
+                                            
+                                            Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
+                                                .onTapGesture {
+                                                    withAnimation {
+                                                        item.isChecked.toggle()
+                                                    }
+                                                    try? modelContext.save()
+                                                }
+                                                .accessibilityAddTraits(.isButton)
+                                            
+                                            
+                                            HStack {
+                                                TextField("Checklist Item", text: Binding(
+                                                    get: { item.text },
+                                                    set: { item.text = $0 }
+                                                ), axis: .vertical)
+                                                    .font(.callout)
+                                            }
+                                            .strikethrough(item.isChecked)
                                         }
-                                        .strikethrough(item.isChecked)
+                                        .padding(5)
+                                       
+                                        
                                     }
-                                    .padding(5)
+                                    .onDelete(perform: deleteChecklistItem)
+                                    .onMove(perform: moveChecklistItem)
+                                   
                                     
+                                }
+                                
                                 
                                 
                             }
@@ -155,8 +194,8 @@ struct viewReminderView: View {
                             HStack {
                                 TextField("Add New Item...", text: $newChecklistItem)
                                 Button("Add Item") {
-                                        let newItem = ChecklistItem(text: newChecklistItem)
-                                        reminder.checklist.append(newItem)
+                                    let newItem = ChecklistItemReminder(text: newChecklistItem, order: (reminder.checklist?.count ?? 0))
+                                        reminder.checklist!.append(newItem)
                                         newChecklistItem = ""
                                         try? modelContext.save()
                                 }
@@ -172,6 +211,7 @@ struct viewReminderView: View {
                         }
                     
                 }
+                
                 
                 Section {
                     if !viewUpdater.isEmpty {

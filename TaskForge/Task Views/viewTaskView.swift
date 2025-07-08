@@ -122,20 +122,41 @@ struct viewTaskView: View {
     @State private var newChecklistItem = ""
 
     func deleteReminder(_ indexSet: IndexSet) {
+        let reminders = task.reminders!.sorted(by: { $0.due < $1.due })
         for index in indexSet {
-            if task.reminders?.count ?? 1 < 2 {
+            if reminders.count < 2 {
                 showingExplanationForNotBeingAbleToDelete = true
                 return
             }
             
             deleteHaptic.toggle()
             
-            let reminder = task.reminders![index]
+            let reminder = reminders[index]
             reminder.toggleCompleted(true)
             lnManager.removeRequest(withIdentifier: reminder.id)
             modelContext.delete(reminder)
             try? modelContext.save()
         }
+    }
+    
+    func deleteChecklistItem(_ indexSet: IndexSet) {
+        let checklistItems = task.checklist!.sorted(by: { $0.order < $1.order })
+        for index in indexSet {
+            let item = checklistItems[index]
+            modelContext.delete(item)
+            try? modelContext.save()
+        }
+    }
+    
+    func moveChecklistItem(from source: IndexSet, to destination: Int) {
+        guard var checklist = task.checklist?.sorted(by: { $0.order < $1.order }) else { return }
+        // Move the item in the array
+        checklist.move(fromOffsets: source, toOffset: destination)
+        // Update the order property for each item
+        for (index, item) in checklist.enumerated() {
+            item.order = index
+        }
+        try? modelContext.save()
     }
     
     @State private var showingNewReminderSheet = false
@@ -199,29 +220,46 @@ struct viewTaskView: View {
                 if (settings.first ?? Settings1()).checklistsEnabled {
                     Section {
                         
-                        if !task.checklist.isEmpty {
-                            List($task.checklist, editActions: .all) { $item in
-                                    HStack {
-                                        
-                                        Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
-                                            .onTapGesture {
-                                                withAnimation {
-                                                    item.isChecked.toggle()
-                                                    try? modelContext.save()
-                                                }
-                                            }
-                                            .accessibilityAddTraits(.isButton)
-                                        
+                        if let checklist = task.checklist {
+                            
+                            if !(checklist.isEmpty)  {
+                                
+                                
+                                List {
+                                    
+                                    ForEach(task.checklist!.sorted(by: { $0.order < $1.order })) { item in
                                         
                                         HStack {
-                                            TextField("Checklist Item", text: $item.text, axis: .vertical)
-                                                .font(.callout)
-                                                .lineLimit(3)
+                                            
+                                            Image(systemName: item.isChecked ? "checkmark.circle.fill" : "circle")
+                                                .onTapGesture {
+                                                    withAnimation {
+                                                        item.isChecked.toggle()
+                                                    }
+                                                    try? modelContext.save()
+                                                }
+                                                .accessibilityAddTraits(.isButton)
+                                            
+                                            
+                                            HStack {
+                                                TextField("Checklist Item", text: Binding(
+                                                    get: { item.text },
+                                                    set: { item.text = $0 }
+                                                ), axis: .vertical)
+                                                    .font(.callout)
+                                            }
+                                            .strikethrough(item.isChecked)
                                         }
-                                        .strikethrough(item.isChecked)
+                                        .padding(5)
+                                       
+                                        
                                     }
-                                    .padding(5)
+                                    .onDelete(perform: deleteChecklistItem)
+                                    .onMove(perform: moveChecklistItem)
+                                   
                                     
+                                }
+                                
                                 
                                 
                             }
@@ -230,8 +268,8 @@ struct viewTaskView: View {
                             HStack {
                                 TextField("Add New Item...", text: $newChecklistItem)
                                 Button("Add Item") {
-                                        let newItem = ChecklistItem(text: newChecklistItem)
-                                        task.checklist.append(newItem)
+                                    let newItem = ChecklistItemTask(text: newChecklistItem, order: (task.checklist?.count ?? 0))
+                                        task.checklist!.append(newItem)
                                         newChecklistItem = ""
                                         try? modelContext.save()
                                 }

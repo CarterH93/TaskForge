@@ -23,7 +23,7 @@ class Reminder {
     var label: String?
     var UIUpdate: String = "initial"
     
-    var checklist: [ChecklistItem] = []
+    var checklist: [ChecklistItemReminder]?
     
     func delayComplete(_ viewModel: ViewModel) {
         

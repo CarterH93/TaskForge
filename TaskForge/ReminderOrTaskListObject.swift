@@ -76,9 +76,9 @@ struct ReminderObjectView: View {
                 .strikethrough(reminder.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: reminder.id)))
                 
                 HStack {
-                    if ((!reminder.notes.isEmpty || !reminder.checklist.isEmpty) && showNotes) && (showAssociatedTask && reminder.task != nil) {
+                    if ((!reminder.notes.isEmpty || !(reminder.checklist?.isEmpty ?? true)) && showNotes) && (showAssociatedTask && reminder.task != nil) {
                         Image(systemName: "text.justify.leading")
-                    } else if ((!reminder.notes.isEmpty || !reminder.checklist.isEmpty) && showNotes) {
+                    } else if ((!reminder.notes.isEmpty || !(reminder.checklist?.isEmpty ?? true)) && showNotes) {
                         Image(systemName: "text.justify.leading")
                         Text(reminder.notes)
                             .lineLimit(1)
@@ -95,7 +95,7 @@ struct ReminderObjectView: View {
                             
                     }
                     
-                    if ((!reminder.notes.isEmpty || !reminder.checklist.isEmpty) && showNotes) || (showAssociatedTask && reminder.task != nil) {
+                    if ((!reminder.notes.isEmpty || !(reminder.checklist?.isEmpty ?? true)) && showNotes) || (showAssociatedTask && reminder.task != nil) {
                         Spacer()
                     }
                     
@@ -184,7 +184,7 @@ struct TaskObjectView: View {
                 .strikethrough(task.isCompleted || viewModel.pendingCompletion.contains(DelayItem(id: task.id)))
                 
                 HStack {
-                   if ((!task.notes.isEmpty || !task.checklist.isEmpty) && showNotes) {
+                   if ((!task.notes.isEmpty || !(task.checklist?.isEmpty ?? true)) && showNotes) {
                         Image(systemName: "text.justify.leading")
                         Text(task.notes)
                             .lineLimit(1)
