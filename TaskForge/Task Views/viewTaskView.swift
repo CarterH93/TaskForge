@@ -268,7 +268,7 @@ struct viewTaskView: View {
                             HStack {
                                 TextField("Add New Item...", text: $newChecklistItem)
                                 Button("Add Item") {
-                                    let newItem = ChecklistItemTask(text: newChecklistItem, order: (task.checklist?.count ?? 0))
+                                    let newItem = ChecklistItemTask(text: newChecklistItem, order: (task.checklist!.count))
                                         task.checklist!.append(newItem)
                                         newChecklistItem = ""
                                         try? modelContext.save()

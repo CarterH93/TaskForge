@@ -194,7 +194,7 @@ struct viewReminderView: View {
                             HStack {
                                 TextField("Add New Item...", text: $newChecklistItem)
                                 Button("Add Item") {
-                                    let newItem = ChecklistItemReminder(text: newChecklistItem, order: (reminder.checklist?.count ?? 0))
+                                    let newItem = ChecklistItemReminder(text: newChecklistItem, order: (reminder.checklist!.count))
                                         reminder.checklist!.append(newItem)
                                         newChecklistItem = ""
                                         try? modelContext.save()
