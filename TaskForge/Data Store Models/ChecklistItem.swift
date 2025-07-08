@@ -21,6 +21,7 @@ class ChecklistItemTask {
     init(text: String, isChecked: Bool = false, order: Int) {
         self.text = text
         self.isChecked = isChecked
+        self.order = order
     }
 }
 
@@ -37,5 +38,6 @@ class ChecklistItemReminder {
     init(text: String, isChecked: Bool = false, order: Int) {
         self.text = text
         self.isChecked = isChecked
+        self.order = order
     }
 }
