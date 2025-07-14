@@ -139,11 +139,11 @@ func taskBody(_ task: TaskObject) -> String {
             //Old full date method, not using anymore
            // return "\(dateFormatter.string(from: task.due) ) at \(time.string(from: task.due))"
             
-            let numDays = Calendar.current.dateComponents([.day], from: Date.now, to: task.due).day ?? 0
+            let numDays = Calendar.current.dateComponents([.day], from: Calendar.current.startOfDay(for: Date.now), to: Calendar.current.startOfDay(for: task.due)).day ?? 0
             
             if Calendar.current.startOfDay(for: Date.now) > Calendar.current.startOfDay(for: task.due) {
                 //Task is overdue
-                return "Overdue by \(abs(numDays) + 1) days"
+                return "Overdue by \(abs(numDays)) days"
             } else {
                 //Task is in the future
                 return "Due in \(numDays) days"
