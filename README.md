@@ -5,9 +5,6 @@
 - Implemented push notifications to the user's device
 - Created an automatic spaced reminder scheduling system that increases task completion
 
-More information at this website: 
-[TaskForge](https://taskforgeapp.com/)
-
 ## Walkthrough Video
 
 https://github.com/user-attachments/assets/df33c4d8-d9a9-49ca-9a0e-8386848179b5
